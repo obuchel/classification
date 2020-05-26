@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Style circles with a data-driven property</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js" integrity="sha256-LHLWSn9RC2p119R1eT2pO3Om+Ir2G0kTZOJmWQ2//pw=" crossorigin="anonymous"></script>
+
+<style>
+	body { margin: 0; padding: 0;}
+	#map { position: absolute; top: 0;  width: 98%; height:90%;}
+  
+#plot {  width: 260px; height:260px !important;background-color: #F0F0F0; visibility:hidden}
+.map-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 20px;
+
+  overflow: auto;
+  border-radius: 3px;
+  width: 260px; height:260px !important;
+
+}
+    
+    #features {
+  top: 0;
+  height: 100px;
+  margin-top: 20px;
+  width: 250px;
+        visibility:hidden
+}
+    
+     #legend {
+        padding: 10px;
+       /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);*/
+        line-height: 18px;
+       /* height: 80px;*/
+        margin-bottom: 20px;
+        width: 200px;
+        
+      }
+      .legend-key {
+        display: inline-block;
+        border-radius: 20%;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+          font-size: 90% !important;
+      }
+</style>
+</head>
+<body>
+<body>
+    
+    
+
+<div id="map"></div> 
+     
+    <div class="map-overlay" id="features">
+    <div id="plot"></div>
+    
+    </div>
+     <div class="map-overlay" id="legend"></div>
+<script>
+var popup;
+    
+    
+    
+var arr=[[-1, '#000000'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']];   
+     var arr2=[[1, 0.1], [100, 0.2],[200, 0.7],[500, 1],[1000, 1],[2000, 1],[2500, 1],[3000, 1],[50000, 1]];  
+var comms=["All",0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21];  
+var data3=[];    
+
+    var data0=[];
+            fetch('classification/classification_ids_counties2.json').then(res => res.json()) 
+.then(data0 => { 
+             // console.log(data0);  
+         var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
+                var ids=data0.map(function(d){return d.id.toString().substring(3)});
+         //  console.log(ids);
+        fetch('counties.json').then(res => res.json()) 
+.then(data => {  
+ 
+            for (var i=0; i<data["features"].length; i++) {
+                data["features"][i]["id"]=data["features"][i]["properties"]["GEOID"].toString();
+                if (ids.indexOf(data["features"][i]["properties"]["GEOID"])>-1) {
+                      data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["c"];
+                    data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["max"];
+                data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["c"]];
+                } else {
+                  //  console.log(data["features"][i]["properties"]);
+                    data["features"][i]["properties"]["v"]=-1;
+                }
+            }
+            
+            
+
+            var hoveredStateId = null;
+
+	mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJmOWQ2MzQxNmE0M2Y3YmVjNzA2NmM2MGQzYTIwYmQ3OCJ9.psxJSN8q9n2-HfFGoIUNJA';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/light-v10',
+zoom: 3,
+center: [-82.447303,37.753574]
+});
+            
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');            
+map.on('load', function() {    
+    
+    
+    // define layer names
+        var layers = [
+          '0-0.1 - Regions where COVID-19 is under control',
+          '0.1-0.39 - Regions where new COVID-19 is almost under control',
+          '0.4-0.8 - Regions where new COVID-19 cases are high, but falling or constant',
+          '0.8-1 - Regions where new COVID-19 cases are high and spreading rapidly'
+        ];
+   // [0, '#1a9850'],[0.1, '#ffffb2'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']]; 
+        var colors = [
+          '#1a9850',
+          '#ffffb2',
+          '#fd8d3c',
+          '#bd0026'
+        //  '#800026'
+        ];
+
+        // create legend
+        for (i = 0; i < layers.length; i++) {
+          var layer = layers[i];
+          var color = colors[i];
+          var item = document.createElement('div');
+          var key = document.createElement('span');
+          key.className = 'legend-key';
+          key.style.backgroundColor = color;
+
+          var value = document.createElement('span');
+          value.innerHTML = layer;
+          item.appendChild(key);
+          item.appendChild(value);
+          legend.appendChild(item);
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+map.addSource('ethnicity', {
+type: 'geojson',
+'data': data    
+});
+    
+/*
+map.addLayer({
+'id': 'population',
+'type': 'circle',
+'source': 'ethnicity',
+//'source-layer': 'sf2010',
+'paint': {
+'circle-radius':1,
+'circle-color': ['get', 'com0_color']
+}
+});*/
+    
+    
+      
+      map.addLayer({
+'id': 'place_data0',
+'type': 'fill',
+'source': 'ethnicity',
+      /*
+className: {
+property: "country"
+},*/
+'paint': {
+'fill-color': {
+property: "v",
+stops: arr
+},
+'fill-outline-color': 'black',
+'fill-opacity': [
+'case',
+['boolean', ['feature-state', 'hover'], false],
+1,
+0.5
+]/*,     
+'fill-opacity': {
+property: "value",
+stops: arr2
+}*/
+},
+'filter': ['==', '$type', 'Polygon']
+});  
+    
+map.on('click', 'place_data0', function(e) {
+    if (typeof popup=="object") popup.remove();
+//if (e.features.length > 0) {
+   
+ hoveredStateId = null;
+//if (hoveredStateId) {
+/*map.setFeatureState(
+{ source: 'ethnicity', id: hoveredStateId },
+{ hover: false }
+);
+}*/
+    var coordinates = e.features[0].geometry.coordinates[0][0].slice();
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+    
+     var htm=e.features[0].properties.NAMELSAD+" - "+e.features[0].properties.max+"<br>";
+    
+    hoveredStateId = e.features[0].id;    
+    var lats=e.lngLat;
+    
+if (e.features[0].properties["c"]=="yellow") {
+    var color="#fed976";
+} else if (e.features[0].properties["c"]=="green") {
+ var color="#1a9850";
+} else if (e.features[0].properties["c"]=="red") {
+ var color="#800026";
+} else 
+
+
+{
+    var color=e.features[0].properties["c"];
+}
+   // if (document.getElementById("plot")!==null) {
+    document.getElementById("plot").innerHTML="";
+    
+    if (e.features[0].id.toString().length==4){
+        var num="0"+e.features[0].id.toString();
+        
+    } else {
+    var num=e.features[0].id.toString();
+    }
+  fetch('http://ec2-35-153-102-199.compute-1.amazonaws.com/elastic/classification/data_counties_840'+num+'.json').then(res => res.json()) 
+.then(data7 => {      
+        draw_plot(data7,color);
+     // console.log(data7);
+      
+     
+//hoveredStateId = e.features[0].properties.id;
+
+popup=new mapboxgl.Popup()
+.setLngLat(lats)
+.setHTML(htm)
+.addTo(map);
+      
+    document.getElementsByClassName("mapboxgl-popup-close-button")[0].on('click', function(e) {
+         alert(e);
+   // popup opened so we fire an event
+turn_off();
+ });
+      
+      
+      
+      
+      
+  });
+   // console.log(e.features[0].properties);
+/*map.setFeatureState(
+{ source: 'ethnicity', id: hoveredStateId },
+{ hover: true }
+);
+}*/
+});
+
+// When the mouse leaves the state-fill layer, update the feature state of the
+// previously hovered feature.
+/*map.on('mouseleave', 'place_data0', function() {
+
+
+if (hoveredStateId) {
+map.setFeatureState(
+{ source: 'ethnicity', id: hoveredStateId },
+{ hover: false }
+);
+}
+hoveredStateId = null;
+    
+ 
+});*/
+    
+    
+    /*
+    
+    
+    map.on('mouseenter', 'places', function(e) {
+
+var coordinates = e.features[0].geometry.coordinates[0][0];
+var description = e.features[0].properties.NAMELSAD;
+
+popup
+.setLngLat(coordinates)
+.setHTML(description)
+.addTo(map);
+});
+ 
+map.on('mouseleave', 'places', function() {
+
+popup.remove();
+});*/
+     });
+      
+     });
+/*
+var map2 = new mapboxgl.Map({
+container: 'map2',
+style: 'mapbox://styles/mapbox/light-v10',
+zoom: 1,
+center: [-22.447303, 37.753574]
+});    
+    var zoomCurrent = 1;
+    var zoomThreshold = 5;
+    var 
+    zoomPrevious = 'com1_color'; 
+var stateLegendEl = document.getElementById('state-legend');
+    */
+    
+    
+    
+     /*   
+data3=data1;    
+data0=data; 
+map.on('load', function() {
+
+map.addSource('ethnicity', {
+type: 'geojson',
+
+'data': data    
+});
+    
+
+map.addLayer({
+'id': 'population',
+'type': 'circle',
+'source': 'ethnicity',
+//'source-layer': 'sf2010',
+'paint': {
+'circle-radius':3,
+'circle-color': ['get', 'com1_color']
+}
+});
+    
+
+});     
+        
+        map2.on('load', function() {
+   
+            
+   
+            
+            
+
+map2.addSource('ethnicity', {
+type: 'geojson',
+
+'data': data    
+});
+    
+
+map2.addLayer({
+'id': 'population',
+'type': 'circle',
+'source': 'ethnicity',
+
+'paint': {
+'circle-radius':3,    
+'circle-color': ['get', 'com0_color']
+}
+});
+   
+            
+   map2.addSource('places', {
+'type': 'geojson',
+'data': data3
+});
+
+});     
+});   
+        
+   */     
+        
+        
+
+         });
+    
+        
+    
+    
+function change_map(e){
+    
+    map.removeLayer('population');
+    map.removeSource('ethnicity');
+       // map2.removeLayer('places');
+    //map2.removeLayer('place_data');
+    map2.removeLayer('population');
+    map2.removeSource('ethnicity');
+    
+  var data2={}
+  data2["type"]="FeatureCollection";
+  data2["features"]=[];
+    
+for (var i=0; i<data0["features"].length; i++) {
+    
+    if (data0["features"][i]["properties"]["com1"]==document.getElementById("mySelect").value) {
+    data2["features"].push(data0["features"][i]);
+    }
+}    
+    
+    
+    map.addSource('ethnicity', {
+type: 'geojson',
+'data': data2   
+});
+    
+    
+    map.addLayer({
+'id': 'population',
+'type': 'circle',
+'source': 'ethnicity',
+//'source-layer': 'sf2010',
+'paint': {
+    'circle-radius':2,
+         //   'circle-stroke-color': "black",//['get', 'com1_color'],
+   // 'circle-stroke-width':0.5,
+'circle-color': ['get', 'com0_color'],
+     'circle-opacity': 0.7
+}
+});
+    
+    map2.addSource('ethnicity', {
+type: 'geojson',
+
+'data': data2   
+});
+    
+
+    
+     map2.addLayer({
+'id': 'population',
+'type': 'circle',
+'source': 'ethnicity',
+//'source-layer': 'sf2010',
+'paint': {
+    'circle-radius':2,
+ // 'circle-stroke-color': "black",//['get', 'com0_color'],
+  //  'circle-stroke-width': 0.5,
+'circle-color': ['get', 'com0_color'],
+     'circle-opacity': 0.7
+}
+});
+    
+    
+    
+}    
+    
+function draw_plot(data,color) {
+    document.getElementById("plot").style.visibility="visible";
+   document.getElementById("features").style.visibility="visible";
+    //console.log(data);
+   // console.log(data["dates"][0].split("/"));
+    var data0=[];
+    
+    for (var i=0; i<data["dates"].length; i++) {
+        
+        var temp={"date":new Date(2020,Number(data["dates"][i].split("/")[0])-1,Number(data["dates"][i].split("/")[1])),"value":data["value"][i]};
+        data0.push(temp);
+    }
+    
+
+    
+    var margin = {top: 10, right: 15, bottom: 20, left: 15},
+    width = 250 - margin.left - margin.right,
+    height = 250 - margin.top - margin.bottom;
+    
+    var svg = d3.select("#plot")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+    var defs = svg.append("defs");
+
+
+var dropShadowFilter = defs.append('svg:filter')
+  .attr('id', 'drop-shadow')
+  .attr('filterUnits', "userSpaceOnUse")
+  .attr('width', '250%')
+  .attr('height', '250%');
+dropShadowFilter.append('svg:feGaussianBlur')
+  .attr('in', 'SourceGraphic')
+  .attr('stdDeviation', 2)
+  .attr('result', 'blur-out');
+dropShadowFilter.append('svg:feColorMatrix')
+  .attr('in', 'blur-out')
+  .attr('type', 'hueRotate')
+  .attr('values', 180)
+  .attr('result', 'color-out');
+dropShadowFilter.append('svg:feOffset')
+  .attr('in', 'color-out')
+  .attr('dx', 3)
+  .attr('dy', 3)
+  .attr('result', 'the-shadow');
+dropShadowFilter.append('svg:feBlend')
+  .attr('in', 'SourceGraphic')
+  .attr('in2', 'the-shadow')
+  .attr('mode', 'normal');
+    
+    // Add X axis --> it is a date format
+    var x = d3.scaleTime()
+      .domain(d3.extent(data0, function(d) { return d.date; }))
+      .range([ 0, width ]);
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).ticks(5));
+
+    // Add Y axis
+    var y = d3.scaleLinear()
+      .domain(d3.extent(data0, function(d) { return +d.value; }))
+      .range([ height, 0 ]);
+   // svg.append("g")
+     // .call(d3.axisLeft(y));
+
+    // Add the line
+      var path = svg.append("path")
+      .datum(data0)
+
+      .attr("fill", "none")
+      .attr("stroke", color)
+      .attr("stroke-width", 3)
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.date) })
+        .y(function(d) { return y(d.value) })
+            .curve(d3.curveNatural)
+        )
+        .style("filter", "url(#drop-shadow)");
+  
+    
+
+    
+    var curtain = svg.append('rect')
+ .attr('x', -1 * width)
+ .attr('y', -1 * height)
+ .attr('height', height)
+ .attr('width', width-2)
+ .attr('class', 'curtain')
+ .attr('transform', 'rotate(180)')
+ .style('fill', '#F0F0F0')
+        
+  curtain.transition()
+ .duration(1500)
+ //.ease("linear")
+ .attr('x', -2 * width)
+            
+            
+            svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 20)
+        .attr("text-anchor", "middle")  
+        .style("font-size", "12px") 
+       //.style("text-decoration", "underline")  
+        .text("Last two weeks: "+data["max_14"]+" Total: "+data["max"]);
+            
+    
+    
+    
+    
+    
+    
+    
+            
+    }
+    
+   
+       function turn_off(){
+        
+        document.getElementById("plot").style.visibility="hidden";
+   document.getElementById("features").style.visibility="hidden";
+    }
+   
+//document.getElementById("mySelect").addEventListener("click",change_map);  
+</script>
+ 
+</body>
+</html>
