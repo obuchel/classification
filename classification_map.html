@@ -243,7 +243,7 @@ if (e.features[0].properties["c"]=="yellow") {
     } else {
     var num=e.features[0].id.toString();
     }
-  fetch('http://ec2-35-153-102-199.compute-1.amazonaws.com/elastic/classification/data_counties_840'+num+'.json').then(res => res.json()) 
+  fetch('classification/data_counties_840'+num+'.json').then(res => res.json()) 
 .then(data7 => {      
         draw_plot(data7,color);
      // console.log(data7);
