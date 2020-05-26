@@ -1,0 +1,2951 @@
+province_country,id,value,color
+"Guam, US",316,0.044444444444444446,green
+"Northern Mariana Islands, US",580,0.45454545454545453,orange
+"Puerto Rico, US",630,0.8282085561497327,red
+"Virgin Islands, US",850,0.019607843137254905,green
+"Autauga, Alabama, US",84001001,1.0,red
+"Baldwin, Alabama, US",84001003,0.6515151515151515,orange
+"Barbour, Alabama, US",84001005,0.9843749999999999,red
+"Bibb, Alabama, US",84001007,0.275,yellow
+"Blount, Alabama, US",84001009,0.18181818181818182,yellow
+"Bullock, Alabama, US",84001011,1.0,red
+"Butler, Alabama, US",84001013,0.7992831541218639,red
+"Calhoun, Alabama, US",84001015,0.1935483870967742,yellow
+"Chambers, Alabama, US",84001017,0.10294117647058823,yellow
+"Cherokee, Alabama, US",84001019,0.7777777777777777,orange
+"Chilton, Alabama, US",84001021,0.8157894736842106,red
+"Choctaw, Alabama, US",84001023,0.9661016949152542,red
+"Clarke, Alabama, US",84001025,0.9642857142857144,red
+"Clay, Alabama, US",84001027,0.10526315789473685,yellow
+"Cleburne, Alabama, US",84001029,0.0,green
+"Coffee, Alabama, US",84001031,0.5742574257425742,orange
+"Colbert, Alabama, US",84001033,0.7857142857142856,orange
+"Conecuh, Alabama, US",84001035,0.888888888888889,red
+"Coosa, Alabama, US",84001037,0.15384615384615385,yellow
+"Covington, Alabama, US",84001039,0.3823529411764706,yellow
+"Crenshaw, Alabama, US",84001041,0.5192307692307693,orange
+"Cullman, Alabama, US",84001043,0.2222222222222222,yellow
+"Dale, Alabama, US",84001045,0.8,red
+"Dallas, Alabama, US",84001047,0.6967741935483871,orange
+"DeKalb, Alabama, US",84001049,0.5179487179487179,orange
+"Elmore, Alabama, US",84001051,0.9280575539568345,red
+"Escambia, Alabama, US",84001053,0.2142857142857143,yellow
+"Etowah, Alabama, US",84001055,0.6190476190476191,orange
+"Fayette, Alabama, US",84001057,0.5714285714285715,orange
+"Franklin, Alabama, US",84001059,0.8436578171091447,red
+"Geneva, Alabama, US",84001061,1.0,red
+"Greene, Alabama, US",84001063,0.6538461538461539,orange
+"Hale, Alabama, US",84001065,0.9661016949152542,red
+"Henry, Alabama, US",84001067,1.0,red
+"Houston, Alabama, US",84001069,0.922077922077922,red
+"Jackson, Alabama, US",84001071,0.18918918918918917,yellow
+"Jefferson, Alabama, US",84001073,0.8842105263157894,red
+"Lamar, Alabama, US",84001075,0.28571428571428575,yellow
+"Lauderdale, Alabama, US",84001077,0.45614035087719296,orange
+"Lawrence, Alabama, US",84001079,0.8518518518518517,red
+"Lee, Alabama, US",84001081,0.1505681818181818,yellow
+"Limestone, Alabama, US",84001083,0.3137254901960785,yellow
+"Lowndes, Alabama, US",84001085,0.9444444444444444,red
+"Macon, Alabama, US",84001087,0.38888888888888884,yellow
+"Madison, Alabama, US",84001089,0.32124352331606215,yellow
+"Marengo, Alabama, US",84001091,1.0,red
+"Marion, Alabama, US",84001093,0.24390243902439027,yellow
+"Marshall, Alabama, US",84001095,0.35353535353535354,yellow
+"Mobile, Alabama, US",84001097,0.6872812135355892,orange
+"Monroe, Alabama, US",84001099,1.0,red
+"Montgomery, Alabama, US",84001101,0.9402985074626866,red
+"Morgan, Alabama, US",84001103,0.8833333333333333,red
+"Perry, Alabama, US",84001105,0.3,yellow
+"Pickens, Alabama, US",84001107,0.8181818181818181,red
+"Pike, Alabama, US",84001109,0.5277777777777778,orange
+"Randolph, Alabama, US",84001111,0.3695652173913044,yellow
+"Russell, Alabama, US",84001113,0.9253731343283582,red
+"St. Clair, Alabama, US",84001115,0.4222222222222222,orange
+"Shelby, Alabama, US",84001117,0.3361702127659575,yellow
+"Sumter, Alabama, US",84001119,1.0,red
+"Talladega, Alabama, US",84001121,0.30188679245283023,yellow
+"Tallapoosa, Alabama, US",84001123,0.3311897106109325,yellow
+"Tuscaloosa, Alabama, US",84001125,1.0,red
+"Walker, Alabama, US",84001127,0.9032258064516129,red
+"Washington, Alabama, US",84001129,0.42857142857142855,orange
+"Wilcox, Alabama, US",84001131,0.5238095238095238,orange
+"Winston, Alabama, US",84001133,1.0,red
+"Anchorage,Alaska,US",84002020,0.18181818181818185,yellow
+"Bethel, Alaska, US",84002050,1.0,red
+"Fairbanks North Star,Alaska,US",84002090,0.031914893617021274,green
+"Juneau, Alaska, US",84002110,0.2608695652173913,yellow
+"Kenai Peninsula,Alaska,US",84002122,0.23529411764705885,yellow
+"Ketchikan Gateway, Alaska, US",84002130,0.0,green
+"Kodiak Island, Alaska, US",84002150,0.0,green
+"Matanuska-Susitna,Alaska,US",84002170,0.08333333333333334,green
+"Nome, Alaska, US",84002180,0.0,green
+"Petersburg, Alaska, US",84002195,0.0,green
+"Prince of Wales-Hyder, Alaska, US",84002198,0.0,green
+"Sitka, Alaska, US",84002220,0.0,green
+"Southeast Fairbanks, Alaska, US",84002240,0.6666666666666667,orange
+"Yukon-Koyukuk, Alaska, US",84002290,0.0,green
+"Apache, Arizona, US",84004001,0.8844507845934381,red
+"Cochise, Arizona, US",84004003,0.25,yellow
+"Coconino, Arizona, US",84004005,0.9825918762088974,red
+"Gila, Arizona, US",84004007,0.35294117647058826,yellow
+"Graham, Arizona, US",84004009,0.06666666666666667,green
+"Greenlee, Arizona, US",84004011,1.0,red
+"La Paz, Arizona, US",84004012,0.7948717948717949,red
+"Maricopa, Arizona, US",84004013,0.8388708468648514,red
+"Mohave, Arizona, US",84004015,0.7846153846153846,orange
+"Navajo, Arizona, US",84004017,0.9561527581329561,red
+"Pima, Arizona, US",84004019,0.7972465581977471,red
+"Pinal, Arizona, US",84004021,0.6280788177339901,orange
+"Santa Cruz, Arizona, US",84004023,1.0,red
+"Yavapai, Arizona, US",84004025,0.6458333333333334,orange
+"Yuma, Arizona, US",84004027,0.9419237749546279,red
+"Arkansas, Arkansas, US",84005001,0.0,green
+"Ashley, Arkansas, US",84005003,0.15,yellow
+"Baxter, Arkansas, US",84005005,0.28571428571428575,yellow
+"Benton, Arkansas, US",84005007,0.8255813953488372,red
+"Boone, Arkansas, US",84005009,0.5,orange
+"Bradley, Arkansas, US",84005011,0.6,orange
+"Carroll, Arkansas, US",84005015,0.0,green
+"Chicot, Arkansas, US",84005017,0.2,yellow
+"Clark, Arkansas, US",84005019,0.10638297872340426,yellow
+"Clay, Arkansas, US",84005021,0.5,orange
+"Cleburne, Arkansas, US",84005023,0.0,green
+"Cleveland, Arkansas, US",84005025,0.8,red
+"Columbia, Arkansas, US",84005027,0.37499999999999994,yellow
+"Conway, Arkansas, US",84005029,0.125,yellow
+"Craighead, Arkansas, US",84005031,1.0,red
+"Crawford, Arkansas, US",84005033,1.0,red
+"Crittenden, Arkansas, US",84005035,0.4652777777777778,orange
+"Cross, Arkansas, US",84005037,0.7857142857142858,orange
+"Dallas, Arkansas, US",84005039,0.0,green
+"Desha, Arkansas, US",84005041,0.2,yellow
+"Drew, Arkansas, US",84005043,0.0,green
+"Faulkner, Arkansas, US",84005045,0.38571428571428573,yellow
+"Franklin, Arkansas, US",84005047,0.0,green
+"Fulton, Arkansas, US",84005049,0.5,orange
+"Garland, Arkansas, US",84005051,0.18253968253968253,yellow
+"Grant, Arkansas, US",84005053,0.125,yellow
+"Greene, Arkansas, US",84005055,0.25,yellow
+"Hempstead, Arkansas, US",84005057,0.5,orange
+"Hot Spring, Arkansas, US",84005059,0.4166666666666667,orange
+"Howard, Arkansas, US",84005061,0.0,green
+"Independence, Arkansas, US",84005063,0.8214285714285714,red
+"Izard, Arkansas, US",84005065,0.4285714285714286,orange
+"Jackson, Arkansas, US",84005067,0.0,green
+"Jefferson, Arkansas, US",84005069,0.9962686567164178,red
+"Johnson, Arkansas, US",84005071,0.08695652173913045,green
+"Lafayette, Arkansas, US",84005073,0.0,green
+"Lawrence, Arkansas, US",84005075,0.2272727272727273,yellow
+"Lee, Arkansas, US",84005077,0.9375,red
+"Lincoln, Arkansas, US",84005079,0.0647590361445783,green
+"Logan, Arkansas, US",84005083,0.5,orange
+"Lonoke, Arkansas, US",84005085,0.06,green
+"Madison, Arkansas, US",84005087,1.0,red
+"Marion, Arkansas, US",84005089,0.0,green
+"Miller, Arkansas, US",84005091,0.29268292682926833,yellow
+"Mississippi, Arkansas, US",84005093,0.4626865671641791,orange
+"Monroe, Arkansas, US",84005095,0.16666666666666669,yellow
+"Montgomery, Arkansas, US",84005097,0.0,green
+"Nevada, Arkansas, US",84005099,0.5,orange
+"Newton, Arkansas, US",84005101,0.0,green
+"Ouachita, Arkansas, US",84005103,0.3,yellow
+"Perry, Arkansas, US",84005105,0.9,red
+"Phillips, Arkansas, US",84005107,0.25,yellow
+"Pike, Arkansas, US",84005109,0.0,green
+"Poinsett, Arkansas, US",84005111,0.24,yellow
+"Polk, Arkansas, US",84005113,0.2,yellow
+"Pope, Arkansas, US",84005115,1.0,red
+"Prairie, Arkansas, US",84005117,0.0,green
+"Pulaski, Arkansas, US",84005119,0.5157894736842106,orange
+"Randolph, Arkansas, US",84005121,0.23529411764705885,yellow
+"St. Francis, Arkansas, US",84005123,0.6828282828282828,orange
+"Saline, Arkansas, US",84005125,0.3392857142857143,yellow
+"Scott, Arkansas, US",84005127,0.0,green
+"Searcy, Arkansas, US",84005129,0.0,green
+"Sebastian, Arkansas, US",84005131,0.35714285714285715,yellow
+"Sevier, Arkansas, US",84005133,1.0,red
+"Sharp, Arkansas, US",84005135,0.9500000000000001,red
+"Stone, Arkansas, US",84005137,0.0,green
+"Union, Arkansas, US",84005139,0.9883720930232559,red
+"Van Buren, Arkansas, US",84005141,0.0,green
+"Washington, Arkansas, US",84005143,0.9886363636363634,red
+"White, Arkansas, US",84005145,0.06521739130434782,green
+"Woodruff, Arkansas, US",84005147,0.0,green
+"Yell, Arkansas, US",84005149,1.0,red
+"Alameda, California, US",84006001,0.9149139579349905,red
+"Alpine, California, US",84006003,0.0,green
+"Amador, California, US",84006005,0.36363636363636365,yellow
+"Butte, California, US",84006007,1.0,red
+"Calaveras, California, US",84006009,0.0,green
+"Colusa, California, US",84006011,0.0,green
+"Contra Costa, California, US",84006013,0.5033557046979865,orange
+"Del Norte, California, US",84006015,1.0,red
+"El Dorado, California, US",84006017,0.6842105263157895,orange
+"Fresno, California, US",84006019,1.0,red
+"Glenn, California, US",84006021,1.0,red
+"Humboldt, California, US",84006023,0.8219178082191781,red
+"Imperial, California, US",84006025,1.0,red
+"Inyo, California, US",84006027,0.0,green
+"Kern, California, US",84006029,0.842911877394636,red
+"Kings, California, US",84006031,0.7786666666666666,orange
+"Lake, California, US",84006033,0.6,orange
+"Los Angeles, California, US",84006037,0.8291284990532727,red
+"Madera, California, US",84006039,0.6590909090909091,orange
+"Marin, California, US",84006041,1.0,red
+"Mariposa, California, US",84006043,0.0,green
+"Mendocino, California, US",84006045,0.28571428571428575,yellow
+"Merced, California, US",84006047,1.0,red
+"Mono, California, US",84006051,0.29411764705882354,yellow
+"Monterey, California, US",84006053,0.8216216216216216,red
+"Napa, California, US",84006055,0.6136363636363636,orange
+"Nevada, California, US",84006057,0.0,green
+"Orange, California, US",84006059,0.8465227817745804,red
+"Placer, California, US",84006061,0.10967741935483871,yellow
+"Plumas, California, US",84006063,0.0,green
+"Riverside, California, US",84006065,0.7185912631222485,orange
+"Sacramento, California, US",84006067,0.1958041958041958,yellow
+"San Benito, California, US",84006069,0.4102564102564103,orange
+"San Bernardino, California, US",84006071,0.7998012916045703,orange
+"San Diego, California, US",84006073,0.885801423246357,red
+"San Francisco, California, US",84006075,0.5708061002178649,orange
+"San Joaquin, California, US",84006077,0.5180412371134021,orange
+"San Luis Obispo, California, US",84006079,0.5172413793103449,orange
+"San Mateo, California, US",84006081,0.7148703956343793,orange
+"Santa Barbara, California, US",84006083,0.3079584775086505,yellow
+"Santa Clara, California, US",84006085,0.22408963585434172,yellow
+"Santa Cruz, California, US",84006087,0.5925925925925926,orange
+"Shasta, California, US",84006089,0.15384615384615385,yellow
+"Siskiyou, California, US",84006093,0.28571428571428575,yellow
+"Solano, California, US",84006095,0.572463768115942,orange
+"Sonoma, California, US",84006097,0.9301075268817204,red
+"Stanislaus, California, US",84006099,0.5906432748538011,orange
+"Sutter, California, US",84006101,0.2727272727272727,yellow
+"Tehama, California, US",84006103,1.0,red
+"Tulare, California, US",84006107,0.808090310442145,red
+"Tuolumne, California, US",84006109,0.0,green
+"Ventura, California, US",84006111,0.9764705882352942,red
+"Yolo, California, US",84006113,0.16883116883116883,yellow
+"Yuba, California, US",84006115,0.7619047619047619,orange
+"Adams, Colorado, US",84008001,0.6440798858773181,orange
+"Alamosa, Colorado, US",84008003,0.7659574468085106,orange
+"Arapahoe, Colorado, US",84008005,0.6354625550660793,orange
+"Archuleta, Colorado, US",84008007,0.0,green
+"Baca, Colorado, US",84008009,0.0,green
+"Boulder, Colorado, US",84008013,0.4698275862068966,orange
+"Broomfield, Colorado, US",84008014,0.3333333333333333,yellow
+"Chaffee, Colorado, US",84008015,0.027397260273972605,green
+"Clear Creek, Colorado, US",84008019,0.28571428571428575,yellow
+"Costilla, Colorado, US",84008023,0.33333333333333337,yellow
+"Crowley, Colorado, US",84008025,0.0,green
+"Custer, Colorado, US",84008027,0.0,green
+"Delta, Colorado, US",84008029,0.019607843137254905,green
+"Denver, Colorado, US",84008031,0.6493115318416524,orange
+"Douglas, Colorado, US",84008035,0.3778501628664495,yellow
+"Eagle, Colorado, US",84008037,0.056644880174291944,green
+"Elbert, Colorado, US",84008039,0.6153846153846154,orange
+"El Paso, Colorado, US",84008041,0.8264604810996563,red
+"Fremont, Colorado, US",84008043,0.15384615384615385,yellow
+"Garfield, Colorado, US",84008045,0.32857142857142857,yellow
+"Gilpin, Colorado, US",84008047,0.33333333333333337,yellow
+"Grand, Colorado, US",84008049,0.0,green
+"Gunnison, Colorado, US",84008051,0.09022556390977443,green
+"Hinsdale, Colorado, US",84008053,0.0,green
+"Huerfano, Colorado, US",84008055,0.0,green
+"Jefferson, Colorado, US",84008059,0.6069651741293531,orange
+"Kit Carson, Colorado, US",84008063,0.0,green
+"Lake, Colorado, US",84008065,0.2727272727272727,yellow
+"La Plata, Colorado, US",84008067,0.2916666666666667,yellow
+"Larimer, Colorado, US",84008069,0.5061224489795918,orange
+"Las Animas, Colorado, US",84008071,0.0,green
+"Lincoln, Colorado, US",84008073,0.0,green
+"Logan, Colorado, US",84008075,0.3502824858757062,yellow
+"Mesa, Colorado, US",84008077,-0.05,green
+"Mineral, Colorado, US",84008079,0.0,green
+"Moffat, Colorado, US",84008081,0.0,green
+"Montezuma, Colorado, US",84008083,0.5714285714285714,orange
+"Montrose, Colorado, US",84008085,0.3209876543209877,yellow
+"Morgan, Colorado, US",84008087,0.37897310513447435,yellow
+"Otero, Colorado, US",84008089,0.33333333333333337,yellow
+"Ouray, Colorado, US",84008091,0.25,yellow
+"Park, Colorado, US",84008093,0.625,orange
+"Phillips, Colorado, US",84008095,0.4444444444444445,orange
+"Pitkin, Colorado, US",84008097,0.15789473684210525,yellow
+"Prowers, Colorado, US",84008099,0.3125,yellow
+"Pueblo, Colorado, US",84008101,0.6956521739130435,orange
+"Rio Blanco, Colorado, US",84008103,0.0,green
+"Rio Grande, Colorado, US",84008105,0.4,orange
+"Routt, Colorado, US",84008107,0.0425531914893617,green
+"Saguache, Colorado, US",84008109,1.0,red
+"San Juan, Colorado, US",84008111,0.0,green
+"San Miguel, Colorado, US",84008113,0.2105263157894737,yellow
+"Summit, Colorado, US",84008117,0.5480769230769231,orange
+"Teller, Colorado, US",84008119,0.04,green
+"Washington, Colorado, US",84008121,0.4444444444444445,orange
+"Weld, Colorado, US",84008123,0.30324074074074076,yellow
+"Yuma, Colorado, US",84008125,0.09090909090909091,green
+"Fairfield, Connecticut, US",84009001,0.33257512271040346,yellow
+"Hartford, Connecticut, US",84009003,0.8499202915053518,red
+"Litchfield, Connecticut, US",84009005,0.41007194244604317,orange
+"Middlesex, Connecticut, US",84009007,0.5385964912280702,orange
+"New Haven, Connecticut, US",84009009,0.43032855939342884,orange
+"New London, Connecticut, US",84009011,0.42291666666666666,orange
+"Tolland, Connecticut, US",84009013,1.0,red
+"Windham, Connecticut, US",84009015,0.6236559139784945,orange
+"Kent, Delaware, US",84010001,0.7725190839694657,orange
+"New Castle, Delaware, US",84010003,0.8941176470588236,red
+"Sussex, Delaware, US",84010005,0.7279968140183195,orange
+"District of Columbia,District of Columbia,US",84011001,0.632192648922687,orange
+"Alachua, Florida, US",84012001,0.28431372549019607,yellow
+"Baker, Florida, US",84012003,0.18749999999999997,yellow
+"Bay, Florida, US",84012005,0.37037037037037035,yellow
+"Bradford, Florida, US",84012007,0.03333333333333333,green
+"Brevard, Florida, US",84012009,0.39631336405529954,yellow
+"Broward, Florida, US",84012011,0.35772357723577236,yellow
+"Calhoun, Florida, US",84012013,0.6190476190476191,orange
+"Charlotte, Florida, US",84012015,0.6764705882352942,orange
+"Citrus, Florida, US",84012017,0.19780219780219782,yellow
+"Clay, Florida, US",84012019,0.15412186379928317,yellow
+"Collier, Florida, US",84012021,0.9728813559322034,red
+"Columbia, Florida, US",84012023,0.21212121212121213,yellow
+"DeSoto,Florida,US",84012027,0.8800000000000001,red
+"Dixie, Florida, US",84012029,1.0,red
+"Duval, Florida, US",84012031,0.3953216374269006,yellow
+"Escambia, Florida, US",84012033,0.4334203655352481,orange
+"Flagler, Florida, US",84012035,0.2797202797202797,yellow
+"Franklin, Florida, US",84012037,0.0,green
+"Gadsden, Florida, US",84012039,0.987012987012987,red
+"Gilchrist, Florida, US",84012041,0.33333333333333337,yellow
+"Glades, Florida, US",84012043,1.0,red
+"Gulf, Florida, US",84012045,0.0,green
+"Hamilton, Florida, US",84012047,0.960573476702509,red
+"Hardee, Florida, US",84012049,0.3076923076923077,yellow
+"Hendry, Florida, US",84012051,0.943502824858757,red
+"Hernando, Florida, US",84012053,0.25,yellow
+"Highlands, Florida, US",84012055,0.29850746268656714,yellow
+"Hillsborough, Florida, US",84012057,0.6187576126674786,orange
+"Holmes, Florida, US",84012059,0.0,green
+"Indian River, Florida, US",84012061,0.17204301075268816,yellow
+"Jackson, Florida, US",84012063,0.6244131455399061,orange
+"Jefferson, Florida, US",84012065,0.0,green
+"Lafayette, Florida, US",84012067,1.0,red
+"Lake, Florida, US",84012069,0.16842105263157894,yellow
+"Lee, Florida, US",84012071,0.7324929971988795,orange
+"Leon, Florida, US",84012073,0.4636363636363636,orange
+"Levy, Florida, US",84012075,0.7142857142857143,orange
+"Liberty, Florida, US",84012077,0.010309278350515465,green
+"Madison, Florida, US",84012079,0.09374999999999999,green
+"Manatee, Florida, US",84012081,0.5115303983228511,orange
+"Marion, Florida, US",84012083,0.24,yellow
+"Martin, Florida, US",84012085,1.0,red
+"Miami-Dade, Florida, US",84012086,0.477237791178905,orange
+"Monroe, Florida, US",84012087,0.28767123287671237,yellow
+"Nassau, Florida, US",84012089,0.26666666666666666,yellow
+"Okaloosa, Florida, US",84012091,0.21495327102803738,yellow
+"Okeechobee, Florida, US",84012093,0.9285714285714285,red
+"Orange, Florida, US",84012095,0.325776658270361,yellow
+"Osceola, Florida, US",84012097,0.3112244897959183,yellow
+"Palm Beach, Florida, US",84012099,0.8402136959689169,red
+"Pasco, Florida, US",84012101,0.3106796116504854,yellow
+"Pinellas, Florida, US",84012103,0.706984667802385,orange
+"Polk, Florida, US",84012105,0.824773413897281,red
+"Putnam, Florida, US",84012107,0.16831683168316833,yellow
+"St. Johns, Florida, US",84012109,0.10091743119266056,yellow
+"St. Lucie, Florida, US",84012111,0.5233644859813084,orange
+"Santa Rosa, Florida, US",84012113,0.20610687022900764,yellow
+"Sarasota, Florida, US",84012115,0.8252788104089219,red
+"Seminole, Florida, US",84012117,0.1914191419141914,yellow
+"Sumter, Florida, US",84012119,0.16541353383458646,yellow
+"Suwannee, Florida, US",84012121,0.2377049180327869,yellow
+"Taylor, Florida, US",84012123,1.0,red
+"Union, Florida, US",84012125,1.0,red
+"Volusia, Florida, US",84012127,0.33497536945812806,yellow
+"Wakulla, Florida, US",84012129,0.35294117647058826,yellow
+"Walton, Florida, US",84012131,1.0,red
+"Washington, Florida, US",84012133,0.28571428571428575,yellow
+"Appling, Georgia, US",84013001,0.41,orange
+"Atkinson, Georgia, US",84013003,0.15384615384615385,yellow
+"Bacon, Georgia, US",84013005,0.9508196721311476,red
+"Baker, Georgia, US",84013007,0.08333333333333334,green
+"Baldwin, Georgia, US",84013009,0.20379146919431276,yellow
+"Banks, Georgia, US",84013011,0.5714285714285714,orange
+"Barrow, Georgia, US",84013013,0.8032786885245901,red
+"Bartow, Georgia, US",84013015,0.5052631578947369,orange
+"Ben Hill, Georgia, US",84013017,0.5806451612903226,orange
+"Berrien, Georgia, US",84013019,0.5,orange
+"Bibb, Georgia, US",84013021,0.2821316614420063,yellow
+"Bleckley, Georgia, US",84013023,0.3666666666666667,yellow
+"Brantley, Georgia, US",84013025,1.0,red
+"Brooks, Georgia, US",84013027,0.05970149253731343,green
+"Bryan, Georgia, US",84013029,0.30952380952380953,yellow
+"Bulloch, Georgia, US",84013031,0.15625,yellow
+"Burke, Georgia, US",84013033,0.2954545454545454,yellow
+"Butts, Georgia, US",84013035,0.23834196891191708,yellow
+"Calhoun, Georgia, US",84013037,0.12790697674418605,yellow
+"Camden, Georgia, US",84013039,0.9062499999999999,red
+"Candler, Georgia, US",84013043,0.37499999999999994,yellow
+"Carroll, Georgia, US",84013045,0.200836820083682,yellow
+"Catoosa, Georgia, US",84013047,0.6153846153846154,orange
+"Charlton, Georgia, US",84013049,0.923076923076923,red
+"Chatham, Georgia, US",84013051,0.6933333333333334,orange
+"Chattahoochee, Georgia, US",84013053,1.0,red
+"Chattooga, Georgia, US",84013055,0.14285714285714288,yellow
+"Cherokee, Georgia, US",84013057,0.838150289017341,red
+"Clarke, Georgia, US",84013059,0.3478260869565218,yellow
+"Clay, Georgia, US",84013061,0.2222222222222222,yellow
+"Clayton, Georgia, US",84013063,0.4127659574468085,orange
+"Clinch, Georgia, US",84013065,1.0,red
+"Cobb, Georgia, US",84013067,0.6288014311270125,orange
+"Coffee, Georgia, US",84013069,0.5762711864406779,orange
+"Colquitt, Georgia, US",84013071,0.6623376623376622,orange
+"Columbia, Georgia, US",84013073,0.5081967213114754,orange
+"Cook, Georgia, US",84013075,-0.03571428571428572,green
+"Coweta, Georgia, US",84013077,0.21153846153846154,yellow
+"Crawford, Georgia, US",84013079,0.5,orange
+"Crisp, Georgia, US",84013081,0.2426470588235294,yellow
+"Dade, Georgia, US",84013083,0.2692307692307692,yellow
+"Dawson, Georgia, US",84013085,0.36363636363636365,yellow
+"Decatur, Georgia, US",84013087,0.5116279069767442,orange
+"DeKalb, Georgia, US",84013089,0.5603864734299517,orange
+"Dodge, Georgia, US",84013091,1.0,red
+"Dooly, Georgia, US",84013093,0.32456140350877194,yellow
+"Dougherty, Georgia, US",84013095,0.104,yellow
+"Douglas, Georgia, US",84013097,0.38636363636363635,yellow
+"Early, Georgia, US",84013099,0.0935672514619883,green
+"Echols, Georgia, US",84013101,1.0,red
+"Effingham, Georgia, US",84013103,0.5588235294117647,orange
+"Elbert, Georgia, US",84013105,1.0,red
+"Emanuel, Georgia, US",84013107,0.3,yellow
+"Evans, Georgia, US",84013109,0.0,green
+"Fannin, Georgia, US",84013111,0.33333333333333337,yellow
+"Fayette, Georgia, US",84013113,0.25862068965517243,yellow
+"Floyd, Georgia, US",84013115,0.5547445255474452,orange
+"Forsyth, Georgia, US",84013117,0.34653465346534656,yellow
+"Franklin, Georgia, US",84013119,0.6086956521739131,orange
+"Fulton, Georgia, US",84013121,0.3865779256794232,yellow
+"Gilmer, Georgia, US",84013123,0.37735849056603776,yellow
+"Glynn, Georgia, US",84013127,0.2765957446808511,yellow
+"Gordon, Georgia, US",84013129,0.23333333333333334,yellow
+"Grady, Georgia, US",84013131,0.28571428571428575,yellow
+"Greene, Georgia, US",84013133,0.15217391304347827,yellow
+"Gwinnett, Georgia, US",84013135,0.484593837535014,orange
+"Habersham, Georgia, US",84013137,0.32718894009216587,yellow
+"Hall, Georgia, US",84013139,0.21137277426766227,yellow
+"Hancock, Georgia, US",84013141,0.4619565217391305,orange
+"Haralson, Georgia, US",84013143,0.20689655172413793,yellow
+"Harris, Georgia, US",84013145,0.26153846153846155,yellow
+"Hart, Georgia, US",84013147,0.9375,red
+"Heard, Georgia, US",84013149,1.0,red
+"Henry, Georgia, US",84013151,0.0755287009063444,green
+"Houston, Georgia, US",84013153,0.44,orange
+"Irwin, Georgia, US",84013155,0.125,yellow
+"Jackson, Georgia, US",84013157,0.2558139534883721,yellow
+"Jasper, Georgia, US",84013159,0.08333333333333334,green
+"Jeff Davis, Georgia, US",84013161,0.15384615384615385,yellow
+"Jefferson, Georgia, US",84013163,1.0,red
+"Jenkins, Georgia, US",84013165,-0.10526315789473685,green
+"Johnson, Georgia, US",84013167,0.5714285714285715,orange
+"Jones, Georgia, US",84013169,0.04347826086956522,green
+"Lamar, Georgia, US",84013171,0.32142857142857145,yellow
+"Lanier, Georgia, US",84013173,0.1,green
+"Laurens, Georgia, US",84013175,0.7346938775510203,orange
+"Lee, Georgia, US",84013177,0.021021021021021023,green
+"Liberty, Georgia, US",84013179,0.18421052631578946,yellow
+"Lincoln, Georgia, US",84013181,0.25,yellow
+"Long, Georgia, US",84013183,0.33333333333333337,yellow
+"Lowndes, Georgia, US",84013185,0.3983739837398374,yellow
+"Lumpkin, Georgia, US",84013187,0.16091954022988506,yellow
+"McDuffie,Georgia,US",84013189,0.18367346938775508,yellow
+"McIntosh, Georgia, US",84013191,0.888888888888889,red
+"Macon, Georgia, US",84013193,0.22093023255813954,yellow
+"Madison, Georgia, US",84013195,0.10526315789473685,yellow
+"Marion, Georgia, US",84013197,0.3191489361702127,yellow
+"Meriwether, Georgia, US",84013199,0.18867924528301888,yellow
+"Miller, Georgia, US",84013201,0.28571428571428575,yellow
+"Mitchell, Georgia, US",84013205,0.29965156794425085,yellow
+"Monroe, Georgia, US",84013207,1.0,red
+"Montgomery, Georgia, US",84013209,0.6666666666666667,orange
+"Morgan, Georgia, US",84013211,0.11538461538461538,yellow
+"Murray, Georgia, US",84013213,0.7,orange
+"Muscogee, Georgia, US",84013215,0.5422077922077921,orange
+"Newton, Georgia, US",84013217,0.17054263565891473,yellow
+"Oconee, Georgia, US",84013219,0.6590909090909091,orange
+"Oglethorpe, Georgia, US",84013221,0.0,green
+"Paulding, Georgia, US",84013223,0.35000000000000003,yellow
+"Peach, Georgia, US",84013225,0.2765957446808511,yellow
+"Pickens, Georgia, US",84013227,0.631578947368421,orange
+"Pierce, Georgia, US",84013229,0.38461538461538464,yellow
+"Pike, Georgia, US",84013231,0.075,green
+"Polk, Georgia, US",84013233,0.6170212765957447,orange
+"Pulaski, Georgia, US",84013235,0.14285714285714288,yellow
+"Putnam, Georgia, US",84013237,0.9803921568627452,red
+"Quitman, Georgia, US",84013239,0.5,orange
+"Rabun, Georgia, US",84013241,0.18181818181818182,yellow
+"Randolph, Georgia, US",84013243,0.008771929824561403,green
+"Richmond, Georgia, US",84013245,0.2612137203166227,yellow
+"Rockdale, Georgia, US",84013247,0.2573529411764706,yellow
+"Schley, Georgia, US",84013249,0.2,yellow
+"Screven, Georgia, US",84013251,0.37499999999999994,yellow
+"Seminole, Georgia, US",84013253,0.5833333333333334,orange
+"Spalding, Georgia, US",84013255,0.13157894736842105,yellow
+"Stephens, Georgia, US",84013257,0.5111111111111111,orange
+"Stewart, Georgia, US",84013259,0.75,orange
+"Sumter, Georgia, US",84013261,0.1131578947368421,yellow
+"Talbot, Georgia, US",84013263,0.24,yellow
+"Taliaferro, Georgia, US",84013265,0.0,green
+"Tattnall, Georgia, US",84013267,0.8,red
+"Taylor, Georgia, US",84013269,0.4285714285714286,orange
+"Telfair, Georgia, US",84013271,0.2142857142857143,yellow
+"Terrell, Georgia, US",84013273,0.011976047904191617,green
+"Thomas, Georgia, US",84013275,0.5911949685534591,orange
+"Tift, Georgia, US",84013277,0.7555555555555555,orange
+"Toombs, Georgia, US",84013279,0.5,orange
+"Towns, Georgia, US",84013281,0.0625,green
+"Treutlen, Georgia, US",84013283,0.7499999999999999,orange
+"Troup, Georgia, US",84013285,0.4621848739495798,orange
+"Turner, Georgia, US",84013287,0.20588235294117646,yellow
+"Twiggs, Georgia, US",84013289,0.4444444444444445,orange
+"Union, Georgia, US",84013291,0.13043478260869565,yellow
+"Upson, Georgia, US",84013293,0.12727272727272726,yellow
+"Walker, Georgia, US",84013295,0.21698113207547168,yellow
+"Walton, Georgia, US",84013297,0.22656249999999997,yellow
+"Ware, Georgia, US",84013299,0.35789473684210527,yellow
+"Warren, Georgia, US",84013301,0.25,yellow
+"Washington, Georgia, US",84013303,0.65,orange
+"Wayne, Georgia, US",84013305,0.16666666666666669,yellow
+"Webster, Georgia, US",84013307,0.18181818181818182,yellow
+"Wheeler, Georgia, US",84013309,0.6666666666666667,orange
+"White, Georgia, US",84013311,0.044444444444444446,green
+"Whitfield, Georgia, US",84013313,0.5902777777777778,orange
+"Wilcox, Georgia, US",84013315,0.042105263157894736,green
+"Wilkes, Georgia, US",84013317,0.1935483870967742,yellow
+"Wilkinson, Georgia, US",84013319,0.393939393939394,yellow
+"Worth, Georgia, US",84013321,0.26241134751773054,yellow
+"Hawaii, Hawaii, US",84015001,0.08333333333333333,green
+"Honolulu, Hawaii, US",84015003,0.03496503496503497,green
+"Kauai, Hawaii, US",84015007,0.0,green
+"Maui, Hawaii, US",84015009,0.0,green
+"Ada, Idaho, US",84016001,0.13832853025936598,yellow
+"Adams, Idaho, US",84016003,0.0,green
+"Bannock, Idaho, US",84016005,1.0,red
+"Bingham, Idaho, US",84016011,1.0,red
+"Blaine, Idaho, US",84016013,0.019746121297602254,green
+"Bonner, Idaho, US",84016017,0.0,green
+"Bonneville, Idaho, US",84016019,0.16666666666666666,yellow
+"Boundary, Idaho, US",84016021,0.0,green
+"Camas, Idaho, US",84016025,0.0,green
+"Canyon, Idaho, US",84016027,0.0546448087431694,green
+"Caribou, Idaho, US",84016029,0.0,green
+"Cassia, Idaho, US",84016031,0.75,orange
+"Custer, Idaho, US",84016037,0.0,green
+"Elmore, Idaho, US",84016039,0.0,green
+"Fremont, Idaho, US",84016043,0.0,green
+"Gem, Idaho, US",84016045,0.0,green
+"Gooding, Idaho, US",84016047,0.95,red
+"Idaho, Idaho, US",84016049,0.0,green
+"Jefferson, Idaho, US",84016051,0.6666666666666667,orange
+"Jerome, Idaho, US",84016053,0.9166666666666666,red
+"Kootenai, Idaho, US",84016055,0.09374999999999999,green
+"Latah, Idaho, US",84016057,0.4,orange
+"Lemhi, Idaho, US",84016059,0.0,green
+"Lewis, Idaho, US",84016061,0.0,green
+"Lincoln, Idaho, US",84016063,0.0,green
+"Madison, Idaho, US",84016065,0.3333333333333333,yellow
+"Minidoka, Idaho, US",84016067,0.5714285714285715,orange
+"Nez Perce, Idaho, US",84016069,0.026315789473684213,green
+"Owyhee, Idaho, US",84016073,0.0,green
+"Payette, Idaho, US",84016075,0.7142857142857143,orange
+"Power, Idaho, US",84016077,0.5,orange
+"Teton, Idaho, US",84016081,0.125,yellow
+"Twin Falls, Idaho, US",84016083,0.8192090395480226,red
+"Valley, Idaho, US",84016085,0.0,green
+"Washington, Idaho, US",84016087,1.0,red
+"Adams, Illinois, US",84017001,0.03921568627450981,green
+"Alexander, Illinois, US",84017003,0.37499999999999994,yellow
+"Bond, Illinois, US",84017005,1.0,red
+"Boone, Illinois, US",84017007,0.9652509652509653,red
+"Brown, Illinois, US",84017009,0.25,yellow
+"Bureau, Illinois, US",84017011,0.5,orange
+"Calhoun, Illinois, US",84017013,0.0,green
+"Carroll, Illinois, US",84017015,0.8749999999999999,red
+"Cass, Illinois, US",84017017,0.3076923076923077,yellow
+"Champaign, Illinois, US",84017019,1.0,red
+"Christian, Illinois, US",84017021,0.13953488372093023,yellow
+"Clark, Illinois, US",84017023,0.37499999999999994,yellow
+"Clay, Illinois, US",84017025,0.5,orange
+"Clinton, Illinois, US",84017027,0.624,orange
+"Coles, Illinois, US",84017029,0.9840000000000001,red
+"Cook, Illinois, US",84017031,0.7460468717429499,orange
+"Crawford, Illinois, US",84017033,0.16666666666666669,yellow
+"Cumberland, Illinois, US",84017035,1.0,red
+"DeKalb, Illinois, US",84017037,0.9264705882352942,red
+"De Witt, Illinois, US",84017039,0.4,orange
+"Douglas, Illinois, US",84017041,0.631578947368421,orange
+"DuPage, Illinois, US",84017043,0.9436046511627908,red
+"Effingham, Illinois, US",84017049,0.0,green
+"Fayette, Illinois, US",84017051,0.2,yellow
+"Ford, Illinois, US",84017053,0.8181818181818181,red
+"Franklin, Illinois, US",84017055,0.25,yellow
+"Fulton, Illinois, US",84017057,1.0,red
+"Gallatin, Illinois, US",84017059,0.0,green
+"Greene, Illinois, US",84017061,0.0,green
+"Grundy, Illinois, US",84017063,0.8627450980392158,red
+"Hamilton, Illinois, US",84017065,0.0,green
+"Hancock, Illinois, US",84017067,0.08333333333333334,green
+"Hardin, Illinois, US",84017069,0.0,green
+"Henderson, Illinois, US",84017071,0.5,orange
+"Henry, Illinois, US",84017073,0.35,yellow
+"Iroquois, Illinois, US",84017075,0.3897058823529412,yellow
+"Jackson, Illinois, US",84017077,0.24293785310734464,yellow
+"Jasper, Illinois, US",84017079,-0.025641025641025644,green
+"Jefferson, Illinois, US",84017081,0.06206896551724138,green
+"Jersey, Illinois, US",84017083,0.4166666666666667,orange
+"Jo Daviess, Illinois, US",84017085,0.35294117647058826,yellow
+"Johnson, Illinois, US",84017087,1.0,red
+"Kane, Illinois, US",84017089,0.911969111969112,red
+"Kankakee, Illinois, US",84017091,0.7414141414141415,orange
+"Kendall, Illinois, US",84017093,0.9146341463414634,red
+"Knox, Illinois, US",84017095,0.4722222222222222,orange
+"Lake, Illinois, US",84017097,0.817032967032967,red
+"LaSalle,Illinois,US",84017099,0.3333333333333333,yellow
+"Lawrence, Illinois, US",84017101,0.0,green
+"Lee, Illinois, US",84017103,0.26373626373626374,yellow
+"Livingston, Illinois, US",84017105,0.2608695652173913,yellow
+"Logan, Illinois, US",84017107,0.28571428571428575,yellow
+"McDonough, Illinois, US",84017109,0.6133333333333333,orange
+"McHenry, Illinois, US",84017111,0.8181818181818182,red
+"McLean, Illinois, US",84017113,0.9864864864864864,red
+"Macon, Illinois, US",84017115,0.5,orange
+"Macoupin, Illinois, US",84017117,0.26666666666666666,yellow
+"Madison, Illinois, US",84017119,0.5181518151815181,orange
+"Marion, Illinois, US",84017121,0.37931034482758624,yellow
+"Marshall, Illinois, US",84017123,0.33333333333333337,yellow
+"Mason, Illinois, US",84017125,0.11764705882352942,yellow
+"Massac, Illinois, US",84017127,0.0,green
+"Menard, Illinois, US",84017129,0.0,green
+"Mercer, Illinois, US",84017131,0.5555555555555556,orange
+"Monroe, Illinois, US",84017133,0.26829268292682934,yellow
+"Montgomery, Illinois, US",84017135,0.35714285714285715,yellow
+"Morgan, Illinois, US",84017137,0.47619047619047616,orange
+"Moultrie, Illinois, US",84017139,0.6666666666666667,orange
+"Ogle, Illinois, US",84017141,0.38582677165354334,yellow
+"Peoria, Illinois, US",84017143,0.3983739837398374,yellow
+"Perry, Illinois, US",84017145,0.0967741935483871,green
+"Piatt, Illinois, US",84017147,0.33333333333333337,yellow
+"Pike, Illinois, US",84017149,0.0,green
+"Pulaski, Illinois, US",84017153,0.7027027027027027,orange
+"Randolph, Illinois, US",84017157,0.18224299065420563,yellow
+"Richland, Illinois, US",84017159,0.0,green
+"Rock Island, Illinois, US",84017161,0.4474393530997305,orange
+"St. Clair, Illinois, US",84017163,0.546583850931677,orange
+"Saline, Illinois, US",84017165,0.5,orange
+"Sangamon, Illinois, US",84017167,0.4,orange
+"Schuyler, Illinois, US",84017169,0.0,green
+"Shelby, Illinois, US",84017173,0.8333333333333334,red
+"Stark, Illinois, US",84017175,1.0,red
+"Stephenson, Illinois, US",84017177,0.9375,red
+"Tazewell, Illinois, US",84017179,0.25641025641025644,yellow
+"Union, Illinois, US",84017181,0.7083333333333334,orange
+"Vermilion, Illinois, US",84017183,0.4347826086956522,orange
+"Wabash, Illinois, US",84017185,0.0,green
+"Warren, Illinois, US",84017187,0.1891891891891892,yellow
+"Washington, Illinois, US",84017189,0.4285714285714286,orange
+"Wayne, Illinois, US",84017191,0.7058823529411765,orange
+"White, Illinois, US",84017193,0.0,green
+"Whiteside, Illinois, US",84017195,0.47826086956521746,orange
+"Will, Illinois, US",84017197,0.6993006993006994,orange
+"Williamson, Illinois, US",84017199,0.4571428571428572,orange
+"Winnebago, Illinois, US",84017201,0.9007427413909521,red
+"Woodford, Illinois, US",84017203,0.2,yellow
+"Adams, Indiana, US",84018001,0.4,orange
+"Allen, Indiana, US",84018003,0.8925318761384335,red
+"Bartholomew, Indiana, US",84018005,0.7800829875518672,orange
+"Benton, Indiana, US",84018007,1.0,red
+"Blackford, Indiana, US",84018009,0.5833333333333334,orange
+"Boone, Indiana, US",84018011,0.5298013245033113,orange
+"Brown, Indiana, US",84018013,0.5,orange
+"Carroll,Indiana,US",84018015,0.15094339622641512,yellow
+"Cass, Indiana, US",84018017,0.04208144796380091,green
+"Clark, Indiana, US",84018019,0.39350180505415167,yellow
+"Clay, Indiana, US",84018021,0.7619047619047619,orange
+"Clinton, Indiana, US",84018023,0.9920634920634921,red
+"Crawford, Indiana, US",84018025,0.18181818181818182,yellow
+"Daviess, Indiana, US",84018027,0.5862068965517241,orange
+"Dearborn, Indiana, US",84018029,0.1267605633802817,yellow
+"Decatur, Indiana, US",84018031,0.10738255033557047,yellow
+"DeKalb, Indiana, US",84018033,0.09999999999999999,green
+"Delaware, Indiana, US",84018035,0.9375,red
+"Dubois, Indiana, US",84018037,0.9753086419753085,red
+"Elkhart, Indiana, US",84018039,0.951219512195122,red
+"Fayette, Indiana, US",84018041,0.4444444444444444,orange
+"Floyd, Indiana, US",84018043,0.9299363057324841,red
+"Fountain, Indiana, US",84018045,0.4166666666666667,orange
+"Franklin, Indiana, US",84018047,0.047619047619047616,green
+"Fulton, Indiana, US",84018049,0.34615384615384615,yellow
+"Gibson, Indiana, US",84018051,0.625,orange
+"Grant, Indiana, US",84018053,0.19444444444444442,yellow
+"Greene, Indiana, US",84018055,0.14736842105263157,yellow
+"Hamilton, Indiana, US",84018057,0.3930921052631579,yellow
+"Hancock, Indiana, US",84018059,0.45679012345679015,orange
+"Harrison, Indiana, US",84018061,0.30973451327433627,yellow
+"Hendricks, Indiana, US",84018063,0.327054794520548,yellow
+"Henry, Indiana, US",84018065,0.852112676056338,red
+"Howard, Indiana, US",84018067,0.47791164658634544,orange
+"Huntington, Indiana, US",84018069,0.7647058823529412,orange
+"Jackson, Indiana, US",84018071,0.4195804195804196,orange
+"Jasper, Indiana, US",84018073,0.18181818181818182,yellow
+"Jay, Indiana, US",84018075,0.8400000000000001,red
+"Jefferson, Indiana, US",84018077,0.47826086956521746,orange
+"Jennings, Indiana, US",84018079,0.6142857142857142,orange
+"Johnson, Indiana, US",84018081,0.9216101694915254,red
+"Knox, Indiana, US",84018083,0.13636363636363635,yellow
+"Kosciusko, Indiana, US",84018085,1.0,red
+"LaGrange, Indiana, US",84018087,0.9354838709677419,red
+"Lake, Indiana, US",84018089,0.7519600855310049,orange
+"LaPorte, Indiana, US",84018091,0.3303964757709251,yellow
+"Lawrence, Indiana, US",84018093,0.4629629629629629,orange
+"Madison, Indiana, US",84018095,0.27461139896373055,yellow
+"Marion, Indiana, US",84018097,0.6274460612142498,orange
+"Marshall, Indiana, US",84018099,0.8214285714285714,red
+"Martin, Indiana, US",84018101,0.2,yellow
+"Miami, Indiana, US",84018103,0.07228915662650602,green
+"Monroe, Indiana, US",84018105,0.1759259259259259,yellow
+"Montgomery, Indiana, US",84018107,0.7530864197530864,orange
+"Morgan, Indiana, US",84018109,0.8134328358208955,red
+"Newton, Indiana, US",84018111,0.25925925925925924,yellow
+"Noble, Indiana, US",84018113,0.31428571428571433,yellow
+"Ohio, Indiana, US",84018115,0.6666666666666667,orange
+"Orange, Indiana, US",84018117,0.12781954887218044,yellow
+"Owen, Indiana, US",84018119,-0.09090909090909091,green
+"Parke, Indiana, US",84018121,0.07142857142857144,green
+"Perry, Indiana, US",84018123,0.3684210526315789,yellow
+"Pike, Indiana, US",84018125,0.8333333333333334,red
+"Porter, Indiana, US",84018127,0.8864628820960699,red
+"Posey, Indiana, US",84018129,0.16666666666666669,yellow
+"Pulaski, Indiana, US",84018131,0.04,green
+"Putnam, Indiana, US",84018133,0.9871794871794872,red
+"Randolph, Indiana, US",84018135,0.6923076923076923,orange
+"Ripley, Indiana, US",84018137,0.1271186440677966,yellow
+"Rush, Indiana, US",84018139,0.4,orange
+"St. Joseph, Indiana, US",84018141,0.7704626334519572,orange
+"Scott, Indiana, US",84018143,0.48000000000000004,orange
+"Shelby, Indiana, US",84018145,0.41884816753926696,orange
+"Spencer, Indiana, US",84018147,1.0,red
+"Starke, Indiana, US",84018149,0.631578947368421,orange
+"Steuben, Indiana, US",84018151,0.17073170731707318,yellow
+"Sullivan, Indiana, US",84018153,0.8,red
+"Switzerland, Indiana, US",84018155,0.38095238095238093,yellow
+"Tippecanoe, Indiana, US",84018157,0.6536964980544747,orange
+"Tipton, Indiana, US",84018159,0.0,green
+"Union, Indiana, US",84018161,0.0,green
+"Vanderburgh, Indiana, US",84018163,0.7452830188679246,orange
+"Vermillion, Indiana, US",84018165,0.0,green
+"Vigo, Indiana, US",84018167,0.9418604651162791,red
+"Wabash, Indiana, US",84018169,0.13725490196078433,yellow
+"Warren, Indiana, US",84018171,0.0,green
+"Warrick, Indiana, US",84018173,0.7435897435897436,orange
+"Washington, Indiana, US",84018175,0.11764705882352942,yellow
+"Wayne, Indiana, US",84018177,0.5,orange
+"Wells, Indiana, US",84018179,0.9411764705882354,red
+"White, Indiana, US",84018181,0.3779904306220096,yellow
+"Whitley, Indiana, US",84018183,0.5555555555555556,orange
+"Adair, Iowa, US",84019001,1.0,red
+"Allamakee, Iowa, US",84019005,0.17307692307692307,yellow
+"Appanoose, Iowa, US",84019007,0.5,orange
+"Audubon, Iowa, US",84019009,0.17647058823529413,yellow
+"Benton, Iowa, US",84019011,0.11538461538461538,yellow
+"Black Hawk, Iowa, US",84019013,0.16149068322981366,yellow
+"Boone, Iowa, US",84019015,0.47058823529411764,orange
+"Bremer, Iowa, US",84019017,0.2333333333333333,yellow
+"Buchanan, Iowa, US",84019019,0.3,yellow
+"Buena Vista, Iowa, US",84019021,1.0,red
+"Butler, Iowa, US",84019023,0.26666666666666666,yellow
+"Calhoun, Iowa, US",84019025,1.0,red
+"Carroll, Iowa, US",84019027,0.2,yellow
+"Cass, Iowa, US",84019029,1.0,red
+"Cedar, Iowa, US",84019031,0.15384615384615385,yellow
+"Cerro Gordo, Iowa, US",84019033,0.29411764705882354,yellow
+"Cherokee, Iowa, US",84019035,1.0,red
+"Chickasaw, Iowa, US",84019037,0.5,orange
+"Clarke, Iowa, US",84019039,1.0,red
+"Clay, Iowa, US",84019041,0.0,green
+"Clayton, Iowa, US",84019043,0.625,orange
+"Clinton, Iowa, US",84019045,0.25,yellow
+"Crawford, Iowa, US",84019047,0.8722554890219562,red
+"Dallas, Iowa, US",84019049,0.264033264033264,yellow
+"Davis, Iowa, US",84019051,0.36363636363636365,yellow
+"Decatur, Iowa, US",84019053,0.0,green
+"Delaware, Iowa, US",84019055,0.5714285714285715,orange
+"Des Moines, Iowa, US",84019057,0.03773584905660378,green
+"Dickinson, Iowa, US",84019059,0.2,yellow
+"Dubuque, Iowa, US",84019061,1.0,red
+"Emmet, Iowa, US",84019063,1.0,red
+"Fayette, Iowa, US",84019065,0.06666666666666667,green
+"Floyd, Iowa, US",84019067,0.8333333333333333,red
+"Franklin, Iowa, US",84019069,0.2,yellow
+"Greene, Iowa, US",84019073,0.0,green
+"Grundy, Iowa, US",84019075,0.22222222222222224,yellow
+"Guthrie, Iowa, US",84019077,0.2692307692307692,yellow
+"Hamilton, Iowa, US",84019079,0.3,yellow
+"Hancock, Iowa, US",84019081,0.6666666666666667,orange
+"Hardin, Iowa, US",84019083,0.0,green
+"Harrison, Iowa, US",84019085,0.13333333333333333,yellow
+"Henry, Iowa, US",84019087,0.26666666666666666,yellow
+"Howard, Iowa, US",84019089,0.0,green
+"Humboldt, Iowa, US",84019091,0.125,yellow
+"Iowa, Iowa, US",84019095,0.4736842105263158,orange
+"Jackson, Iowa, US",84019097,0.25,yellow
+"Jasper, Iowa, US",84019099,0.08633093525179855,green
+"Jefferson, Iowa, US",84019101,1.0,red
+"Johnson, Iowa, US",84019103,0.12435233160621761,yellow
+"Jones, Iowa, US",84019105,0.4347826086956522,orange
+"Keokuk, Iowa, US",84019107,0.7692307692307692,orange
+"Kossuth, Iowa, US",84019109,0.8,red
+"Lee, Iowa, US",84019111,0.1739130434782609,yellow
+"Linn, Iowa, US",84019113,0.24958949096880131,yellow
+"Louisa, Iowa, US",84019115,0.19186046511627908,yellow
+"Lyon, Iowa, US",84019119,0.3157894736842105,yellow
+"Madison, Iowa, US",84019121,0.7142857142857143,orange
+"Mahaska, Iowa, US",84019123,1.0,red
+"Marion, Iowa, US",84019125,1.0,red
+"Marshall, Iowa, US",84019127,0.2918395573997234,yellow
+"Mills, Iowa, US",84019129,0.6666666666666667,orange
+"Mitchell, Iowa, US",84019131,0.5,orange
+"Monona, Iowa, US",84019133,0.6666666666666667,orange
+"Monroe, Iowa, US",84019135,0.9473684210526316,red
+"Montgomery, Iowa, US",84019137,0.22222222222222224,yellow
+"Muscatine, Iowa, US",84019139,0.322884012539185,yellow
+"O'Brien, Iowa, US",84019141,0.6,orange
+"Osceola, Iowa, US",84019143,0.72,orange
+"Page, Iowa, US",84019145,0.11111111111111112,yellow
+"Plymouth, Iowa, US",84019149,0.693877551020408,orange
+"Pocahontas, Iowa, US",84019151,0.0,green
+"Polk, Iowa, US",84019153,0.69248291571754,orange
+"Pottawattamie, Iowa, US",84019155,0.9731182795698925,red
+"Poweshiek, Iowa, US",84019157,0.16842105263157894,yellow
+"Sac, Iowa, US",84019161,1.0,red
+"Scott, Iowa, US",84019163,0.3224043715846995,yellow
+"Shelby, Iowa, US",84019165,0.5,orange
+"Sioux, Iowa, US",84019167,0.7904761904761906,orange
+"Story, Iowa, US",84019169,0.7101449275362319,orange
+"Tama, Iowa, US",84019171,0.2274247491638796,yellow
+"Taylor, Iowa, US",84019173,1.0,red
+"Union, Iowa, US",84019175,1.0,red
+"Van Buren, Iowa, US",84019177,0.0,green
+"Wapello, Iowa, US",84019179,0.7584830339321357,orange
+"Warren, Iowa, US",84019181,1.0,red
+"Washington, Iowa, US",84019183,0.29245283018867924,yellow
+"Wayne, Iowa, US",84019185,0.0,green
+"Webster, Iowa, US",84019187,0.5714285714285715,orange
+"Winnebago, Iowa, US",84019189,1.0,red
+"Winneshiek, Iowa, US",84019191,0.15789473684210525,yellow
+"Woodbury, Iowa, US",84019193,0.7644964394710072,orange
+"Worth, Iowa, US",84019195,0.7499999999999999,orange
+"Wright, Iowa, US",84019197,1.0,red
+"Anderson, Kansas, US",84020003,0.5,orange
+"Atchison, Kansas, US",84020005,0.45454545454545453,orange
+"Barber, Kansas, US",84020007,0.0,green
+"Barton, Kansas, US",84020009,0.55,orange
+"Bourbon, Kansas, US",84020011,0.0,green
+"Brown, Kansas, US",84020013,1.0,red
+"Butler, Kansas, US",84020015,0.8,red
+"Chase, Kansas, US",84020017,0.0,green
+"Chautauqua, Kansas, US",84020019,0.0,green
+"Cherokee, Kansas, US",84020021,0.0,green
+"Cheyenne, Kansas, US",84020023,0.0,green
+"Clark, Kansas, US",84020025,0.22222222222222224,yellow
+"Clay, Kansas, US",84020027,0.25,yellow
+"Cloud, Kansas, US",84020029,0.0,green
+"Coffey, Kansas, US",84020031,0.0,green
+"Cowley, Kansas, US",84020035,0.5,orange
+"Crawford, Kansas, US",84020037,0.0,green
+"Dickinson, Kansas, US",84020041,0.0,green
+"Doniphan, Kansas, US",84020043,0.3,yellow
+"Douglas, Kansas, US",84020045,0.24,yellow
+"Edwards, Kansas, US",84020047,0.33333333333333337,yellow
+"Elk, Kansas, US",84020049,0.0,green
+"Ellis, Kansas, US",84020051,0.0,green
+"Finney, Kansas, US",84020055,0.7015535568274734,orange
+"Ford, Kansas, US",84020057,0.6078971533516988,orange
+"Franklin, Kansas, US",84020059,0.8400000000000001,red
+"Geary, Kansas, US",84020061,0.0,green
+"Gove, Kansas, US",84020063,0.0,green
+"Grant, Kansas, US",84020067,0.7368421052631579,orange
+"Gray, Kansas, US",84020069,1.0,red
+"Greenwood, Kansas, US",84020073,0.0,green
+"Hamilton, Kansas, US",84020075,0.16666666666666669,yellow
+"Harper, Kansas, US",84020077,0.0,green
+"Harvey, Kansas, US",84020079,0.5,orange
+"Haskell, Kansas, US",84020081,0.05555555555555556,green
+"Jackson, Kansas, US",84020085,0.9827586206896552,red
+"Jefferson, Kansas, US",84020087,0.888888888888889,red
+"Jewell, Kansas, US",84020089,0.0,green
+"Johnson, Kansas, US",84020091,0.49122807017543857,orange
+"Kearny, Kansas, US",84020093,0.6666666666666666,orange
+"Kiowa, Kansas, US",84020097,0.0,green
+"Labette, Kansas, US",84020099,0.0,green
+"Leavenworth, Kansas, US",84020103,0.1958041958041958,yellow
+"Linn, Kansas, US",84020107,0.25,yellow
+"Lyon, Kansas, US",84020111,0.11888111888111887,yellow
+"McPherson, Kansas, US",84020113,0.1,green
+"Marion, Kansas, US",84020115,0.0,green
+"Meade, Kansas, US",84020119,0.05405405405405406,green
+"Miami, Kansas, US",84020121,0.0,green
+"Mitchell, Kansas, US",84020123,0.0,green
+"Montgomery, Kansas, US",84020125,-0.11111111111111112,green
+"Morris, Kansas, US",84020127,0.0,green
+"Morton, Kansas, US",84020129,1.0,red
+"Nemaha, Kansas, US",84020131,1.0,red
+"Neosho, Kansas, US",84020133,0.0,green
+"Norton, Kansas, US",84020137,0.0,green
+"Osage, Kansas, US",84020139,0.6666666666666667,orange
+"Osborne, Kansas, US",84020141,0.0,green
+"Ottawa, Kansas, US",84020143,0.0,green
+"Phillips, Kansas, US",84020147,1.0,red
+"Pottawatomie, Kansas, US",84020149,0.35714285714285715,yellow
+"Pratt, Kansas, US",84020151,0.0,green
+"Reno, Kansas, US",84020155,0.0,green
+"Republic, Kansas, US",84020157,0.0,green
+"Rice, Kansas, US",84020159,0.33333333333333337,yellow
+"Riley, Kansas, US",84020161,0.125,yellow
+"Rooks, Kansas, US",84020163,0.0,green
+"Saline, Kansas, US",84020169,0.3333333333333333,yellow
+"Scott, Kansas, US",84020171,0.9473684210526316,red
+"Sedgwick, Kansas, US",84020173,0.5415162454873647,orange
+"Seward, Kansas, US",84020175,0.21931818181818183,yellow
+"Shawnee, Kansas, US",84020177,0.7155963302752293,orange
+"Sheridan, Kansas, US",84020179,0.0,green
+"Sherman, Kansas, US",84020181,0.25,yellow
+"Smith, Kansas, US",84020183,0.0,green
+"Stafford, Kansas, US",84020185,0.0,green
+"Stanton, Kansas, US",84020187,0.0,green
+"Stevens, Kansas, US",84020189,0.6428571428571429,orange
+"Sumner, Kansas, US",84020191,1.0,red
+"Wabaunsee, Kansas, US",84020197,0.05,green
+"Washington, Kansas, US",84020201,0.0,green
+"Wilson, Kansas, US",84020205,0.0,green
+"Woodson, Kansas, US",84020207,0.0,green
+"Wyandotte, Kansas, US",84020209,0.26753864447086806,yellow
+"Adair, Kentucky, US",84021001,0.15841584158415842,yellow
+"Allen, Kentucky, US",84021003,0.8,red
+"Anderson, Kentucky, US",84021005,1.0,red
+"Ballard, Kentucky, US",84021007,0.33333333333333337,yellow
+"Barren, Kentucky, US",84021009,0.4615384615384615,orange
+"Bath, Kentucky, US",84021011,0.6666666666666667,orange
+"Boone, Kentucky, US",84021015,0.9966996699669967,red
+"Bourbon, Kentucky, US",84021017,0.0,green
+"Boyd, Kentucky, US",84021019,0.3181818181818181,yellow
+"Boyle, Kentucky, US",84021021,0.22222222222222224,yellow
+"Bracken, Kentucky, US",84021023,0.0,green
+"Breathitt, Kentucky, US",84021025,0.0,green
+"Breckinridge, Kentucky, US",84021027,0.4,orange
+"Bullitt, Kentucky, US",84021029,0.5396825396825397,orange
+"Butler, Kentucky, US",84021031,0.26829268292682934,yellow
+"Caldwell, Kentucky, US",84021033,0.0,green
+"Calloway, Kentucky, US",84021035,0.5882352941176471,orange
+"Campbell, Kentucky, US",84021037,0.47619047619047616,orange
+"Carlisle, Kentucky, US",84021039,0.0,green
+"Carroll, Kentucky, US",84021041,0.5,orange
+"Carter, Kentucky, US",84021043,0.8571428571428572,red
+"Casey, Kentucky, US",84021045,1.0,red
+"Christian, Kentucky, US",84021047,0.09090909090909091,green
+"Clark, Kentucky, US",84021049,0.11111111111111112,yellow
+"Clay, Kentucky, US",84021051,1.0,red
+"Clinton, Kentucky, US",84021053,0.0,green
+"Crittenden, Kentucky, US",84021055,0.0,green
+"Cumberland, Kentucky, US",84021057,0.0,green
+"Daviess, Kentucky, US",84021059,0.3711340206185567,yellow
+"Edmonson, Kentucky, US",84021061,0.18518518518518517,yellow
+"Fayette, Kentucky, US",84021067,0.957983193277311,red
+"Fleming, Kentucky, US",84021069,1.0,red
+"Floyd, Kentucky, US",84021071,0.1,green
+"Franklin, Kentucky, US",84021073,0.3157894736842105,yellow
+"Fulton, Kentucky, US",84021075,1.0,red
+"Gallatin, Kentucky, US",84021077,1.0,red
+"Garrard, Kentucky, US",84021079,0.0,green
+"Grant, Kentucky, US",84021081,0.35714285714285715,yellow
+"Graves, Kentucky, US",84021083,0.06557377049180327,green
+"Grayson, Kentucky, US",84021085,0.2641509433962264,yellow
+"Green, Kentucky, US",84021087,0.0,green
+"Greenup, Kentucky, US",84021089,0.11111111111111112,yellow
+"Hancock, Kentucky, US",84021091,0.0,green
+"Hardin, Kentucky, US",84021093,1.0,red
+"Harrison, Kentucky, US",84021097,0.0,green
+"Hart, Kentucky, US",84021099,0.9411764705882354,red
+"Henderson, Kentucky, US",84021101,0.4666666666666666,orange
+"Henry, Kentucky, US",84021103,0.8,red
+"Hickman, Kentucky, US",84021105,0.0,green
+"Hopkins, Kentucky, US",84021107,0.01183431952662722,green
+"Jackson, Kentucky, US",84021109,0.018518518518518517,green
+"Jefferson, Kentucky, US",84021111,0.5571177504393673,orange
+"Jessamine, Kentucky, US",84021113,0.3125,yellow
+"Johnson, Kentucky, US",84021115,0.0,green
+"Kenton, Kentucky, US",84021117,0.7384615384615384,orange
+"Knott, Kentucky, US",84021119,0.0,green
+"Knox, Kentucky, US",84021121,0.2,yellow
+"Larue, Kentucky, US",84021123,0.0,green
+"Laurel, Kentucky, US",84021125,-0.09090909090909091,green
+"Lawrence, Kentucky, US",84021127,0.0,green
+"Leslie, Kentucky, US",84021131,0.33333333333333337,yellow
+"Letcher, Kentucky, US",84021133,1.0,red
+"Lewis, Kentucky, US",84021135,0.4,orange
+"Lincoln, Kentucky, US",84021137,0.5,orange
+"Livingston, Kentucky, US",84021139,0.2,yellow
+"Logan, Kentucky, US",84021141,0.7007299270072993,orange
+"Lyon, Kentucky, US",84021143,0.0,green
+"McCracken, Kentucky, US",84021145,0.5333333333333333,orange
+"McCreary, Kentucky, US",84021147,0.125,yellow
+"McLean, Kentucky, US",84021149,0.28571428571428575,yellow
+"Madison, Kentucky, US",84021151,1.0,red
+"Marion, Kentucky, US",84021155,0.0,green
+"Marshall, Kentucky, US",84021157,0.09090909090909091,green
+"Martin, Kentucky, US",84021159,0.0,green
+"Mason, Kentucky, US",84021161,0.25,yellow
+"Meade, Kentucky, US",84021163,0.18181818181818182,yellow
+"Menifee, Kentucky, US",84021165,0.5,orange
+"Mercer, Kentucky, US",84021167,0.14285714285714288,yellow
+"Metcalfe, Kentucky, US",84021169,0.5,orange
+"Monroe, Kentucky, US",84021171,0.0,green
+"Montgomery, Kentucky, US",84021173,0.8333333333333334,red
+"Morgan, Kentucky, US",84021175,0.0,green
+"Muhlenberg, Kentucky, US",84021177,0.04405286343612335,green
+"Nelson, Kentucky, US",84021179,0.4210526315789474,orange
+"Nicholas, Kentucky, US",84021181,0.0,green
+"Ohio, Kentucky, US",84021183,0.9800000000000001,red
+"Oldham, Kentucky, US",84021185,0.9743589743589743,red
+"Owen, Kentucky, US",84021187,0.0,green
+"Owsley, Kentucky, US",84021189,0.0,green
+"Pendleton, Kentucky, US",84021191,0.33333333333333337,yellow
+"Perry, Kentucky, US",84021193,0.5454545454545454,orange
+"Pike, Kentucky, US",84021195,0.9629629629629629,red
+"Powell, Kentucky, US",84021197,0.0,green
+"Pulaski, Kentucky, US",84021199,0.27999999999999997,yellow
+"Rockcastle, Kentucky, US",84021203,-0.125,green
+"Rowan, Kentucky, US",84021205,0.7499999999999999,orange
+"Russell, Kentucky, US",84021207,0.3478260869565218,yellow
+"Scott, Kentucky, US",84021209,0.0625,green
+"Shelby, Kentucky, US",84021211,0.7160493827160493,orange
+"Simpson, Kentucky, US",84021213,0.5833333333333334,orange
+"Spencer, Kentucky, US",84021215,0.0,green
+"Taylor, Kentucky, US",84021217,0.0,green
+"Todd, Kentucky, US",84021219,0.3,yellow
+"Trigg, Kentucky, US",84021221,0.0,green
+"Trimble, Kentucky, US",84021223,0.0,green
+"Union, Kentucky, US",84021225,0.0,green
+"Warren, Kentucky, US",84021227,0.9099236641221374,red
+"Washington, Kentucky, US",84021229,0.0,green
+"Wayne, Kentucky, US",84021231,0.0,green
+"Webster, Kentucky, US",84021233,0.6,orange
+"Whitley, Kentucky, US",84021235,0.25,yellow
+"Woodford, Kentucky, US",84021239,0.16666666666666669,yellow
+"Acadia, Louisiana, US",84022001,0.9955752212389379,red
+"Allen, Louisiana, US",84022003,0.7387387387387387,orange
+"Ascension, Louisiana, US",84022005,0.27755905511811024,yellow
+"Assumption, Louisiana, US",84022007,0.13953488372093023,yellow
+"Avoyelles, Louisiana, US",84022009,0.5063291139240506,orange
+"Beauregard, Louisiana, US",84022011,0.27906976744186046,yellow
+"Bienville, Louisiana, US",84022013,0.15555555555555556,yellow
+"Bossier, Louisiana, US",84022015,0.33628318584070793,yellow
+"Caddo, Louisiana, US",84022017,0.2370689655172414,yellow
+"Calcasieu, Louisiana, US",84022019,0.1787878787878788,yellow
+"Caldwell, Louisiana, US",84022021,0.06666666666666667,green
+"Cameron, Louisiana, US",84022023,0.0,green
+"Catahoula, Louisiana, US",84022025,0.3728813559322034,yellow
+"Claiborne, Louisiana, US",84022027,-0.030303030303030307,green
+"Concordia, Louisiana, US",84022029,0.9333333333333332,red
+"De Soto, Louisiana, US",84022031,0.15527950310559005,yellow
+"East Baton Rouge, Louisiana, US",84022033,0.8653421633554085,red
+"East Carroll, Louisiana, US",84022035,1.0,red
+"East Feliciana, Louisiana, US",84022037,0.763157894736842,orange
+"Evangeline, Louisiana, US",84022039,0.0,green
+"Franklin, Louisiana, US",84022041,0.6039215686274509,orange
+"Grant, Louisiana, US",84022043,0.4444444444444445,orange
+"Iberia, Louisiana, US",84022045,0.8295454545454545,red
+"Iberville, Louisiana, US",84022047,0.1756373937677054,yellow
+"Jackson, Louisiana, US",84022049,0.4655172413793104,orange
+"Jefferson, Louisiana, US",84022051,0.11252981619194612,yellow
+"Jefferson Davis, Louisiana, US",84022053,0.10958904109589042,yellow
+"Lafayette, Louisiana, US",84022055,0.4203187250996016,orange
+"Lafourche, Louisiana, US",84022057,0.11840228245363768,yellow
+"LaSalle,Louisiana,US",84022059,0.6086956521739131,orange
+"Lincoln, Louisiana, US",84022061,0.4705882352941177,orange
+"Livingston, Louisiana, US",84022063,0.7849999999999999,orange
+"Madison, Louisiana, US",84022065,0.9375,red
+"Morehouse, Louisiana, US",84022067,0.9014084507042255,red
+"Natchitoches, Louisiana, US",84022069,0.11111111111111112,yellow
+"Orleans, Louisiana, US",84022071,0.051055867415129644,green
+"Ouachita, Louisiana, US",84022073,0.46777163904235725,orange
+"Plaquemines, Louisiana, US",84022075,0.06190476190476191,green
+"Pointe Coupee, Louisiana, US",84022077,1.0,red
+"Rapides, Louisiana, US",84022079,0.9247648902821317,red
+"Red River, Louisiana, US",84022081,0.43749999999999994,orange
+"Richland, Louisiana, US",84022083,0.19999999999999998,yellow
+"Sabine, Louisiana, US",84022085,1.0,red
+"St. Bernard, Louisiana, US",84022087,0.012867647058823529,green
+"St. Charles, Louisiana, US",84022089,0.0681458003169572,green
+"St. Helena, Louisiana, US",84022091,0.48,orange
+"St. James, Louisiana, US",84022093,0.20610687022900764,yellow
+"St. John the Baptist, Louisiana, US",84022095,0.07290400972053464,green
+"St. Landry, Louisiana, US",84022097,0.31788079470198677,yellow
+"St. Martin, Louisiana, US",84022099,0.16744186046511628,yellow
+"St. Mary, Louisiana, US",84022101,0.4267515923566879,orange
+"St. Tammany, Louisiana, US",84022103,0.18311036789297658,yellow
+"Tangipahoa, Louisiana, US",84022105,0.2971619365609349,yellow
+"Tensas, Louisiana, US",84022107,-0.2,green
+"Terrebonne, Louisiana, US",84022109,0.337468982630273,yellow
+"Union, Louisiana, US",84022111,0.8956043956043956,red
+"Vermilion, Louisiana, US",84022113,0.20512820512820515,yellow
+"Vernon, Louisiana, US",84022115,0.3333333333333333,yellow
+"Washington, Louisiana, US",84022117,0.3696682464454976,yellow
+"Webster, Louisiana, US",84022119,0.5,orange
+"West Baton Rouge, Louisiana, US",84022121,0.504950495049505,orange
+"West Carroll, Louisiana, US",84022123,1.0,red
+"West Feliciana, Louisiana, US",84022125,0.0921985815602837,green
+"Winn, Louisiana, US",84022127,0.9746835443037974,red
+"Androscoggin, Maine, US",84023001,1.0,red
+"Aroostook, Maine, US",84023003,0.33333333333333337,yellow
+"Cumberland, Maine, US",84023005,0.7290322580645161,orange
+"Franklin, Maine, US",84023007,0.1142857142857143,yellow
+"Hancock, Maine, US",84023009,0.25,yellow
+"Kennebec, Maine, US",84023011,0.15492957746478875,yellow
+"Knox, Maine, US",84023013,0.25,yellow
+"Lincoln, Maine, US",84023015,0.4,orange
+"Oxford, Maine, US",84023017,0.0,green
+"Penobscot, Maine, US",84023019,0.1285714285714286,yellow
+"Piscataquis, Maine, US",84023021,0.0,green
+"Sagadahoc, Maine, US",84023023,0.7222222222222222,orange
+"Somerset, Maine, US",84023025,0.2727272727272727,yellow
+"Waldo, Maine, US",84023027,0.02777777777777778,green
+"Washington, Maine, US",84023029,0.0,green
+"York, Maine, US",84023031,0.5987654320987654,orange
+"Allegany, Maryland, US",84024001,0.23204419889502761,yellow
+"Anne Arundel, Maryland, US",84024003,0.7783149171270718,orange
+"Baltimore, Maryland, US",84024005,0.9404112463281578,red
+"Calvert, Maryland, US",84024009,0.7727272727272727,orange
+"Caroline, Maryland, US",84024011,0.9057591623036649,red
+"Carroll, Maryland, US",84024013,0.9720496894409937,red
+"Cecil, Maryland, US",84024015,0.8685446009389671,red
+"Charles, Maryland, US",84024017,0.7728395061728395,orange
+"Dorchester, Maryland, US",84024019,0.6590909090909091,orange
+"Frederick, Maryland, US",84024021,0.7066848567530696,orange
+"Garrett, Maryland, US",84024023,0.33333333333333337,yellow
+"Harford, Maryland, US",84024025,0.5185185185185185,orange
+"Howard, Maryland, US",84024027,0.7917261055634808,orange
+"Kent, Maryland, US",84024029,0.6460176991150441,orange
+"Montgomery, Maryland, US",84024031,0.9420349434737925,red
+"Prince George's, Maryland, US",84024033,0.8351156069364162,red
+"Queen Anne's, Maryland, US",84024035,0.9500000000000001,red
+"St. Mary's, Maryland, US",84024037,0.8072289156626508,red
+"Somerset, Maryland, US",84024039,0.8478260869565218,red
+"Talbot, Maryland, US",84024041,0.35294117647058826,yellow
+"Washington, Maryland, US",84024043,0.8534031413612565,red
+"Wicomico, Maryland, US",84024045,0.9716814159292035,red
+"Worcester, Maryland, US",84024047,0.9375,red
+"Baltimore City, Maryland, US",84024510,0.605403192795743,orange
+"Barnstable, Massachusetts, US",84025001,0.40852575488454707,orange
+"Berkshire, Massachusetts, US",84025003,0.12051282051282051,yellow
+"Bristol, Massachusetts, US",84025005,0.6033434650455927,orange
+"Essex, Massachusetts, US",84025009,0.4137736381597516,orange
+"Franklin, Massachusetts, US",84025011,0.16766467065868262,yellow
+"Hampden, Massachusetts, US",84025013,0.4663341645885287,orange
+"Hampshire, Massachusetts, US",84025015,0.5079006772009029,orange
+"Middlesex, Massachusetts, US",84025017,0.37334301797712,yellow
+"Norfolk, Massachusetts, US",84025021,0.3141119221411192,yellow
+"Plymouth, Massachusetts, US",84025023,0.38124020595477953,yellow
+"Suffolk, Massachusetts, US",84025025,0.3321417628434276,yellow
+"Worcester, Massachusetts, US",84025027,0.73794305636258,orange
+"Alcona, Michigan, US",84026001,0.5,orange
+"Allegan, Michigan, US",84026005,0.7130434782608696,orange
+"Alpena, Michigan, US",84026007,0.06201550387596899,green
+"Antrim, Michigan, US",84026009,0.16666666666666669,yellow
+"Arenac, Michigan, US",84026011,0.27586206896551724,yellow
+"Baraga, Michigan, US",84026013,0.0,green
+"Barry, Michigan, US",84026015,0.5,orange
+"Bay, Michigan, US",84026017,0.9083969465648856,red
+"Benzie, Michigan, US",84026019,0.0,green
+"Berrien, Michigan, US",84026021,0.8958333333333334,red
+"Branch, Michigan, US",84026023,0.6666666666666667,orange
+"Calhoun, Michigan, US",84026025,0.5051546391752578,orange
+"Cass, Michigan, US",84026027,0.9090909090909091,red
+"Charlevoix, Michigan, US",84026029,0.15384615384615385,yellow
+"Cheboygan, Michigan, US",84026031,0.0,green
+"Chippewa, Michigan, US",84026033,0.0,green
+"Clare, Michigan, US",84026035,0.5,orange
+"Clinton, Michigan, US",84026037,0.1417910447761194,yellow
+"Crawford, Michigan, US",84026039,0.0,green
+"Delta, Michigan, US",84026041,0.125,yellow
+"Dickinson, Michigan, US",84026043,0.0,green
+"Eaton, Michigan, US",84026045,0.2654867256637168,yellow
+"Emmet, Michigan, US",84026047,0.0,green
+"Genesee, Michigan, US",84026049,0.20868240670220867,yellow
+"Gladwin, Michigan, US",84026051,0.07692307692307693,green
+"Gogebic, Michigan, US",84026053,0.33333333333333337,yellow
+"Grand Traverse, Michigan, US",84026055,0.2857142857142857,yellow
+"Gratiot, Michigan, US",84026057,0.9302325581395349,red
+"Hillsdale, Michigan, US",84026059,0.2410714285714286,yellow
+"Houghton, Michigan, US",84026061,0.0,green
+"Huron, Michigan, US",84026063,0.48717948717948717,orange
+"Ingham, Michigan, US",84026065,0.45768025078369906,orange
+"Ionia, Michigan, US",84026067,0.2627118644067796,yellow
+"Iosco, Michigan, US",84026069,0.28,yellow
+"Isabella, Michigan, US",84026073,0.015625,green
+"Jackson, Michigan, US",84026075,0.20930232558139536,yellow
+"Kalamazoo, Michigan, US",84026077,0.5629921259842521,orange
+"Kalkaska, Michigan, US",84026079,-0.05882352941176471,green
+"Kent, Michigan, US",84026081,0.6974619289340102,orange
+"Lake, Michigan, US",84026085,0.5,orange
+"Lapeer, Michigan, US",84026087,0.05172413793103449,green
+"Leelanau, Michigan, US",84026089,0.5,orange
+"Lenawee, Michigan, US",84026091,0.3466666666666667,yellow
+"Livingston, Michigan, US",84026093,0.0794979079497908,green
+"Luce, Michigan, US",84026095,1.0,red
+"Mackinac, Michigan, US",84026097,0.0,green
+"Macomb, Michigan, US",84026099,0.16039084842707338,yellow
+"Manistee, Michigan, US",84026101,0.0,green
+"Marquette, Michigan, US",84026103,0.05882352941176471,green
+"Mason, Michigan, US",84026105,0.6086956521739131,orange
+"Mecosta, Michigan, US",84026107,0.37499999999999994,yellow
+"Menominee, Michigan, US",84026109,0.5,orange
+"Midland, Michigan, US",84026111,0.5128205128205129,orange
+"Missaukee, Michigan, US",84026113,0.0,green
+"Monroe, Michigan, US",84026115,0.36,yellow
+"Montcalm, Michigan, US",84026117,0.5714285714285714,orange
+"Montmorency, Michigan, US",84026119,0.0,green
+"Muskegon, Michigan, US",84026121,0.9491017964071856,red
+"Newaygo, Michigan, US",84026123,0.8947368421052632,red
+"Oakland, Michigan, US",84026125,0.12525808671713695,yellow
+"Oceana, Michigan, US",84026127,1.0,red
+"Ogemaw, Michigan, US",84026129,0.35294117647058826,yellow
+"Ontonagon, Michigan, US",84026131,0.0,green
+"Osceola, Michigan, US",84026133,0.25,yellow
+"Oscoda, Michigan, US",84026135,0.0,green
+"Otsego, Michigan, US",84026137,0.04040404040404041,green
+"Ottawa, Michigan, US",84026139,0.6861313868613138,orange
+"Presque Isle, Michigan, US",84026141,0.0,green
+"Roscommon, Michigan, US",84026143,0.13333333333333333,yellow
+"Saginaw, Michigan, US",84026145,0.6282828282828283,orange
+"St. Clair, Michigan, US",84026147,0.38513513513513514,yellow
+"St. Joseph, Michigan, US",84026149,0.6329113924050632,orange
+"Sanilac, Michigan, US",84026151,0.11111111111111112,yellow
+"Schoolcraft, Michigan, US",84026153,0.0,green
+"Shiawassee, Michigan, US",84026155,0.3888888888888889,yellow
+"Tuscola, Michigan, US",84026157,0.8181818181818181,red
+"Van Buren, Michigan, US",84026159,0.7407407407407408,orange
+"Washtenaw, Michigan, US",84026161,0.16822429906542058,yellow
+"Wayne, Michigan, US",84026163,0.18444283646888568,yellow
+"Wexford, Michigan, US",84026165,0.08333333333333334,green
+"Aitkin, Minnesota, US",84027001,1.0,red
+"Anoka, Minnesota, US",84027003,0.9722572509457755,red
+"Becker, Minnesota, US",84027005,0.30434782608695654,yellow
+"Beltrami, Minnesota, US",84027007,0.5454545454545454,orange
+"Benton, Minnesota, US",84027009,0.6818181818181818,orange
+"Big Stone, Minnesota, US",84027011,1.0,red
+"Blue Earth, Minnesota, US",84027013,0.9344262295081968,red
+"Brown, Minnesota, US",84027015,0.14285714285714288,yellow
+"Carlton, Minnesota, US",84027017,0.13636363636363635,yellow
+"Carver, Minnesota, US",84027019,0.6442953020134228,orange
+"Cass, Minnesota, US",84027021,1.0,red
+"Chippewa, Minnesota, US",84027023,1.0,red
+"Chisago, Minnesota, US",84027025,0.9487179487179488,red
+"Clay, Minnesota, US",84027027,0.8115942028985508,red
+"Clearwater, Minnesota, US",84027029,0.0,green
+"Cottonwood, Minnesota, US",84027033,0.3802816901408451,yellow
+"Crow Wing, Minnesota, US",84027035,0.48148148148148145,orange
+"Dakota, Minnesota, US",84027037,0.9690011481056259,red
+"Dodge, Minnesota, US",84027039,1.0,red
+"Douglas, Minnesota, US",84027041,0.5357142857142857,orange
+"Faribault, Minnesota, US",84027043,0.0,green
+"Fillmore,Minnesota,US",84027045,0.5625,orange
+"Freeborn, Minnesota, US",84027047,0.8666666666666667,red
+"Goodhue, Minnesota, US",84027049,0.8800000000000001,red
+"Grant, Minnesota, US",84027051,0.0,green
+"Hennepin, Minnesota, US",84027053,0.9637729180472719,red
+"Houston, Minnesota, US",84027055,0.0,green
+"Isanti, Minnesota, US",84027059,0.96,red
+"Itasca, Minnesota, US",84027061,0.7758620689655172,orange
+"Jackson, Minnesota, US",84027063,0.21951219512195125,yellow
+"Kanabec, Minnesota, US",84027065,0.0,green
+"Kandiyohi, Minnesota, US",84027067,0.6392694063926941,orange
+"Kittson, Minnesota, US",84027069,0.0,green
+"Koochiching, Minnesota, US",84027071,1.0,red
+"Lac qui Parle,Minnesota,US",84027073,1.0,red
+"Le Sueur, Minnesota, US",84027079,0.48387096774193544,orange
+"Lincoln, Minnesota, US",84027081,1.0,red
+"Lyon, Minnesota, US",84027083,0.6206896551724138,orange
+"McLeod, Minnesota, US",84027085,0.7272727272727273,orange
+"Mahnomen, Minnesota, US",84027087,0.8333333333333334,red
+"Marshall, Minnesota, US",84027089,0.0,green
+"Martin, Minnesota, US",84027091,0.15827338129496404,yellow
+"Meeker, Minnesota, US",84027093,1.0,red
+"Mille Lacs, Minnesota, US",84027095,1.0,red
+"Morrison, Minnesota, US",84027097,1.0,red
+"Mower, Minnesota, US",84027099,0.9827586206896552,red
+"Murray, Minnesota, US",84027101,0.3125,yellow
+"Nicollet, Minnesota, US",84027103,1.0,red
+"Nobles, Minnesota, US",84027105,0.19700910273081923,yellow
+"Norman, Minnesota, US",84027107,0.23076923076923075,yellow
+"Olmsted, Minnesota, US",84027109,1.0,red
+"Otter Tail, Minnesota, US",84027111,1.0,red
+"Pennington, Minnesota, US",84027113,1.0,red
+"Pine, Minnesota, US",84027115,0.25806451612903225,yellow
+"Pipestone, Minnesota, US",84027117,0.6,orange
+"Polk, Minnesota, US",84027119,0.23076923076923075,yellow
+"Ramsey, Minnesota, US",84027123,0.9850299401197605,red
+"Red Lake, Minnesota, US",84027125,0.7499999999999999,orange
+"Redwood, Minnesota, US",84027127,0.0,green
+"Renville, Minnesota, US",84027129,-0.33333333333333337,green
+"Rice, Minnesota, US",84027131,0.8459530026109661,red
+"Rock, Minnesota, US",84027133,0.07692307692307693,green
+"Roseau, Minnesota, US",84027135,0.0,green
+"St. Louis, Minnesota, US",84027137,0.543859649122807,orange
+"Scott, Minnesota, US",84027139,0.975,red
+"Sherburne, Minnesota, US",84027141,0.691358024691358,orange
+"Sibley, Minnesota, US",84027143,0.9285714285714287,red
+"Stearns, Minnesota, US",84027145,0.3421940928270042,yellow
+"Steele, Minnesota, US",84027147,0.8057553956834531,red
+"Stevens, Minnesota, US",84027149,-1.0,green
+"Swift, Minnesota, US",84027151,0.8571428571428571,red
+"Todd, Minnesota, US",84027153,1.0,red
+"Traverse, Minnesota, US",84027155,0.0,green
+"Wabasha, Minnesota, US",84027157,0.5,orange
+"Wadena, Minnesota, US",84027159,0.5714285714285715,orange
+"Waseca, Minnesota, US",84027161,0.3846153846153846,yellow
+"Washington, Minnesota, US",84027163,0.943620178041543,red
+"Watonwan, Minnesota, US",84027165,0.8444444444444444,red
+"Wilkin, Minnesota, US",84027167,0.0,green
+"Winona, Minnesota, US",84027169,0.11392405063291139,yellow
+"Wright, Minnesota, US",84027171,0.9497206703910616,red
+"Yellow Medicine, Minnesota, US",84027173,0.5,orange
+"Adams, Mississippi, US",84028001,0.33333333333333337,yellow
+"Alcorn, Mississippi, US",84028003,0.33333333333333337,yellow
+"Amite, Mississippi, US",84028005,0.6666666666666666,orange
+"Attala, Mississippi, US",84028007,0.7210526315789473,orange
+"Benton, Mississippi, US",84028009,0.0,green
+"Bolivar, Mississippi, US",84028011,0.23595505617977527,yellow
+"Calhoun, Mississippi, US",84028013,0.07017543859649122,green
+"Carroll, Mississippi, US",84028015,0.08888888888888889,green
+"Chickasaw, Mississippi, US",84028017,0.7272727272727273,orange
+"Choctaw, Mississippi, US",84028019,0.9375,red
+"Claiborne, Mississippi, US",84028021,0.5,orange
+"Clarke, Mississippi, US",84028023,1.0,red
+"Clay, Mississippi, US",84028025,0.6507936507936507,orange
+"Coahoma, Mississippi, US",84028027,0.7999999999999999,orange
+"Copiah, Mississippi, US",84028029,0.6884057971014492,orange
+"Covington, Mississippi, US",84028031,0.5774647887323944,orange
+"DeSoto, Mississippi, US",84028033,0.8727272727272728,red
+"Forrest, Mississippi, US",84028035,0.8344594594594594,red
+"Franklin, Mississippi, US",84028037,0.3157894736842105,yellow
+"George, Mississippi, US",84028039,0.8,red
+"Greene, Mississippi, US",84028041,0.4,orange
+"Grenada, Mississippi, US",84028043,0.5116279069767442,orange
+"Hancock, Mississippi, US",84028045,0.3,yellow
+"Harrison, Mississippi, US",84028047,0.34782608695652173,yellow
+"Hinds, Mississippi, US",84028049,0.5494252873563218,orange
+"Holmes, Mississippi, US",84028051,0.9054054054054055,red
+"Humphreys, Mississippi, US",84028053,1.0,red
+"Itawamba, Mississippi, US",84028057,0.3235294117647059,yellow
+"Jackson, Mississippi, US",84028059,0.12834224598930483,yellow
+"Jasper, Mississippi, US",84028061,0.5825242718446602,orange
+"Jefferson, Mississippi, US",84028063,0.4571428571428572,orange
+"Jefferson Davis, Mississippi, US",84028065,0.6037735849056605,orange
+"Jones, Mississippi, US",84028067,0.9112903225806452,red
+"Kemper, Mississippi, US",84028069,0.2783505154639176,yellow
+"Lafayette, Mississippi, US",84028071,0.21782178217821785,yellow
+"Lamar, Mississippi, US",84028073,1.0,red
+"Lauderdale, Mississippi, US",84028075,0.7943037974683544,red
+"Lawrence, Mississippi, US",84028077,0.5555555555555555,orange
+"Leake, Mississippi, US",84028079,0.5394190871369294,orange
+"Lee, Mississippi, US",84028081,0.74,orange
+"Leflore, Mississippi, US",84028083,0.22666666666666666,yellow
+"Lincoln, Mississippi, US",84028085,0.4342105263157895,orange
+"Lowndes, Mississippi, US",84028087,0.9622641509433962,red
+"Madison, Mississippi, US",84028089,0.6058558558558559,orange
+"Marion, Mississippi, US",84028091,0.3548387096774194,yellow
+"Marshall, Mississippi, US",84028093,0.7058823529411765,orange
+"Monroe, Mississippi, US",84028095,0.22777777777777775,yellow
+"Montgomery, Mississippi, US",84028097,0.12903225806451613,yellow
+"Neshoba, Mississippi, US",84028099,0.8222996515679443,red
+"Newton, Mississippi, US",84028101,0.8417266187050358,red
+"Noxubee, Mississippi, US",84028103,0.819047619047619,red
+"Oktibbeha, Mississippi, US",84028105,0.4588235294117647,orange
+"Panola, Mississippi, US",84028107,0.5806451612903226,orange
+"Pearl River, Mississippi, US",84028109,0.09243697478991597,green
+"Perry, Mississippi, US",84028111,0.24,yellow
+"Pike, Mississippi, US",84028113,0.217687074829932,yellow
+"Pontotoc, Mississippi, US",84028115,0.09523809523809523,green
+"Prentiss, Mississippi, US",84028117,0.03225806451612903,green
+"Quitman, Mississippi, US",84028119,0.5294117647058824,orange
+"Rankin, Mississippi, US",84028121,0.7076923076923076,orange
+"Scott, Mississippi, US",84028123,0.5080645161290321,orange
+"Sharkey, Mississippi, US",84028125,0.8,red
+"Simpson, Mississippi, US",84028127,0.6181818181818182,orange
+"Smith, Mississippi, US",84028129,0.6349206349206349,orange
+"Stone, Mississippi, US",84028131,0.0,green
+"Sunflower, Mississippi, US",84028133,0.20833333333333334,yellow
+"Tallahatchie, Mississippi, US",84028135,1.0,red
+"Tate, Mississippi, US",84028137,0.4,orange
+"Tippah, Mississippi, US",84028139,0.18181818181818182,yellow
+"Tishomingo, Mississippi, US",84028141,1.0,red
+"Tunica, Mississippi, US",84028143,0.5,orange
+"Union, Mississippi, US",84028145,0.564516129032258,orange
+"Walthall, Mississippi, US",84028147,0.5454545454545454,orange
+"Warren, Mississippi, US",84028149,0.5612244897959183,orange
+"Washington, Mississippi, US",84028151,1.0,red
+"Wayne, Mississippi, US",84028153,1.0,red
+"Webster, Mississippi, US",84028155,0.05,green
+"Wilkinson, Mississippi, US",84028157,0.07272727272727274,green
+"Winston, Mississippi, US",84028159,1.0,red
+"Yalobusha, Mississippi, US",84028161,0.9468085106382979,red
+"Yazoo, Mississippi, US",84028163,0.537037037037037,orange
+"Adair, Missouri, US",84029001,1.0,red
+"Andrew, Missouri, US",84029003,1.0,red
+"Atchison, Missouri, US",84029005,0.0,green
+"Audrain, Missouri, US",84029007,1.0,red
+"Barry, Missouri, US",84029009,0.0,green
+"Bates, Missouri, US",84029013,0.22222222222222224,yellow
+"Benton, Missouri, US",84029015,0.2,yellow
+"Bollinger, Missouri, US",84029017,0.0,green
+"Boone, Missouri, US",84029019,0.13333333333333333,yellow
+"Buchanan, Missouri, US",84029021,0.2981715893108298,yellow
+"Butler, Missouri, US",84029023,0.3055555555555556,yellow
+"Caldwell, Missouri, US",84029025,1.0,red
+"Callaway, Missouri, US",84029027,0.0,green
+"Camden, Missouri, US",84029029,0.023255813953488375,green
+"Cape Girardeau, Missouri, US",84029031,0.25806451612903225,yellow
+"Carroll, Missouri, US",84029033,0.8,red
+"Carter, Missouri, US",84029035,0.25,yellow
+"Cass, Missouri, US",84029037,0.10909090909090909,yellow
+"Cedar, Missouri, US",84029039,0.0,green
+"Chariton, Missouri, US",84029041,0.25,yellow
+"Christian, Missouri, US",84029043,0.06896551724137931,green
+"Clark, Missouri, US",84029045,0.0,green
+"Clay, Missouri, US",84029047,0.9310344827586208,red
+"Clinton, Missouri, US",84029049,0.4285714285714286,orange
+"Cole, Missouri, US",84029051,0.044444444444444446,green
+"Cooper, Missouri, US",84029053,0.0,green
+"Crawford, Missouri, US",84029055,0.28571428571428575,yellow
+"Dallas, Missouri, US",84029059,0.5,orange
+"Daviess, Missouri, US",84029061,0.0,green
+"DeKalb, Missouri, US",84029063,0.0,green
+"Dunklin, Missouri, US",84029069,0.2,yellow
+"Franklin, Missouri, US",84029071,0.0916030534351145,green
+"Gasconade, Missouri, US",84029073,0.0,green
+"Gentry, Missouri, US",84029075,1.0,red
+"Greene, Missouri, US",84029077,0.09876543209876544,green
+"Harrison, Missouri, US",84029081,0.4,orange
+"Henry, Missouri, US",84029083,0.0,green
+"Holt, Missouri, US",84029087,0.0,green
+"Howard, Missouri, US",84029089,0.0,green
+"Howell, Missouri, US",84029091,0.0,green
+"Iron, Missouri, US",84029093,0.0,green
+"Jackson, Missouri, US",84029095,0.4980237154150197,orange
+"Jasper,Missouri,US",84029097,0.0625,green
+"Jefferson, Missouri, US",84029099,0.18803418803418806,yellow
+"Johnson, Missouri, US",84029101,0.34615384615384615,yellow
+"Lafayette, Missouri, US",84029107,0.2857142857142857,yellow
+"Lewis, Missouri, US",84029111,0.16666666666666669,yellow
+"Lincoln, Missouri, US",84029113,0.7887323943661971,orange
+"Linn, Missouri, US",84029115,0.0,green
+"Livingston, Missouri, US",84029117,0.0,green
+"McDonald, Missouri, US",84029119,1.0,red
+"Macon, Missouri, US",84029121,0.0,green
+"Madison, Missouri, US",84029123,0.0,green
+"Maries, Missouri, US",84029125,0.0,green
+"Marion, Missouri, US",84029127,0.0,green
+"Miller, Missouri, US",84029131,0.5,orange
+"Mississippi, Missouri, US",84029133,0.0,green
+"Moniteau, Missouri, US",84029135,0.0,green
+"Montgomery, Missouri, US",84029139,0.0,green
+"Morgan, Missouri, US",84029141,0.25,yellow
+"New Madrid, Missouri, US",84029143,0.28571428571428575,yellow
+"Newton, Missouri, US",84029145,0.8333333333333334,red
+"Nodaway, Missouri, US",84029147,0.5,orange
+"Oregon, Missouri, US",84029149,0.0,green
+"Osage, Missouri, US",84029151,0.0,green
+"Pemiscot, Missouri, US",84029155,0.2777777777777778,yellow
+"Perry, Missouri, US",84029157,0.08888888888888889,green
+"Pettis, Missouri, US",84029159,0.19999999999999998,yellow
+"Phelps, Missouri, US",84029161,0.6666666666666667,orange
+"Pike, Missouri, US",84029163,0.2,yellow
+"Platte, Missouri, US",84029165,0.9722222222222222,red
+"Polk, Missouri, US",84029167,1.0,red
+"Pulaski, Missouri, US",84029169,-0.15,green
+"Ralls, Missouri, US",84029173,1.0,red
+"Randolph, Missouri, US",84029175,0.0,green
+"Ray, Missouri, US",84029177,0.33333333333333337,yellow
+"Reynolds, Missouri, US",84029179,0.0,green
+"Ripley, Missouri, US",84029181,1.0,red
+"St. Charles, Missouri, US",84029183,0.1791044776119403,yellow
+"St. Clair, Missouri, US",84029185,0.5,orange
+"Ste. Genevieve, Missouri, US",84029186,0.0,green
+"St. Francois, Missouri, US",84029187,0.0,green
+"St. Louis, Missouri, US",84029189,0.4762381190595298,orange
+"Saline, Missouri, US",84029195,0.32653061224489793,yellow
+"Scotland, Missouri, US",84029199,0.0,green
+"Scott, Missouri, US",84029201,0.1585365853658537,yellow
+"Shelby, Missouri, US",84029205,0.0,green
+"Stoddard, Missouri, US",84029207,1.0,red
+"Stone, Missouri, US",84029209,0.33333333333333337,yellow
+"Taney, Missouri, US",84029213,0.0,green
+"Texas, Missouri, US",84029215,0.0,green
+"Vernon, Missouri, US",84029217,0.25,yellow
+"Warren, Missouri, US",84029219,0.0,green
+"Washington, Missouri, US",84029221,0.0,green
+"Webster, Missouri, US",84029225,0.11111111111111112,yellow
+"Worth, Missouri, US",84029227,1.0,red
+"Wright, Missouri, US",84029229,0.16666666666666669,yellow
+"St. Louis City, Missouri, US",84029510,0.4758064516129032,orange
+"Beaverhead, Montana, US",84030001,0.0,green
+"Big Horn, Montana, US",84030003,1.0,red
+"Broadwater, Montana, US",84030007,0.0,green
+"Carbon, Montana, US",84030009,0.0,green
+"Cascade, Montana, US",84030013,0.125,yellow
+"Deer Lodge, Montana, US",84030023,0.0,green
+"Fergus, Montana, US",84030027,0.0,green
+"Flathead, Montana, US",84030029,0.0,green
+"Gallatin, Montana, US",84030031,0.0,green
+"Glacier, Montana, US",84030035,0.0,green
+"Golden Valley, Montana, US",84030037,0.0,green
+"Hill, Montana, US",84030041,0.0,green
+"Jefferson, Montana, US",84030043,0.5,orange
+"Lake, Montana, US",84030047,0.0,green
+"Lewis and Clark, Montana, US",84030049,0.0,green
+"Liberty, Montana, US",84030051,0.0,green
+"Lincoln, Montana, US",84030053,0.0,green
+"Madison, Montana, US",84030057,0.0,green
+"Meagher, Montana, US",84030059,0.0,green
+"Missoula, Montana, US",84030063,0.0,green
+"Musselshell, Montana, US",84030065,0.0,green
+"Park, Montana, US",84030067,0.0,green
+"Pondera, Montana, US",84030073,0.0,green
+"Ravalli, Montana, US",84030081,0.28571428571428575,yellow
+"Richland, Montana, US",84030083,0.0,green
+"Roosevelt, Montana, US",84030085,0.0,green
+"Silver Bow, Montana, US",84030093,0.0,green
+"Stillwater, Montana, US",84030095,0.0,green
+"Toole, Montana, US",84030101,0.0,green
+"Wheatland, Montana, US",84030107,0.0,green
+"Yellowstone, Montana, US",84030111,0.1724137931034483,yellow
+"Adams, Nebraska, US",84031001,0.33507853403141363,yellow
+"Antelope, Nebraska, US",84031003,0.6666666666666667,orange
+"Box Butte, Nebraska, US",84031013,0.0,green
+"Buffalo, Nebraska, US",84031019,0.27777777777777773,yellow
+"Burt, Nebraska, US",84031021,-0.25,green
+"Butler, Nebraska, US",84031023,0.9,red
+"Cass, Nebraska, US",84031025,1.0,red
+"Cedar, Nebraska, US",84031027,0.125,yellow
+"Cherry, Nebraska, US",84031031,0.0,green
+"Cheyenne, Nebraska, US",84031033,0.33333333333333337,yellow
+"Clay, Nebraska, US",84031035,0.9411764705882354,red
+"Colfax, Nebraska, US",84031037,0.3256445047489823,yellow
+"Cuming, Nebraska, US",84031039,0.5,orange
+"Custer, Nebraska, US",84031041,0.10526315789473685,yellow
+"Dakota, Nebraska, US",84031043,0.15188405797101448,yellow
+"Dawes, Nebraska, US",84031045,0.6666666666666667,orange
+"Dawson, Nebraska, US",84031047,0.27450980392156865,yellow
+"Dixon, Nebraska, US",84031051,0.15384615384615385,yellow
+"Dodge, Nebraska, US",84031053,1.0,red
+"Douglas, Nebraska, US",84031055,0.9061294470638662,red
+"Fillmore, Nebraska, US",84031059,0.5,orange
+"Franklin, Nebraska, US",84031061,0.0,green
+"Frontier, Nebraska, US",84031063,0.0,green
+"Furnas, Nebraska, US",84031065,1.0,red
+"Gage, Nebraska, US",84031067,0.1020408163265306,yellow
+"Gosper, Nebraska, US",84031073,0.14285714285714288,yellow
+"Greeley, Nebraska, US",84031077,0.0,green
+"Hall, Nebraska, US",84031079,0.166156202143951,yellow
+"Hamilton, Nebraska, US",84031081,0.2,yellow
+"Hitchcock, Nebraska, US",84031087,0.0,green
+"Holt, Nebraska, US",84031089,0.0,green
+"Hooker, Nebraska, US",84031091,0.0,green
+"Howard, Nebraska, US",84031093,1.0,red
+"Jefferson, Nebraska, US",84031095,0.5,orange
+"Johnson, Nebraska, US",84031097,0.6666666666666667,orange
+"Kearney, Nebraska, US",84031099,0.9090909090909091,red
+"Keith, Nebraska, US",84031101,0.0,green
+"Kimball, Nebraska, US",84031105,0.0,green
+"Knox, Nebraska, US",84031107,0.625,orange
+"Lancaster, Nebraska, US",84031109,0.8128205128205128,red
+"Lincoln, Nebraska, US",84031111,0.3333333333333333,yellow
+"Logan, Nebraska, US",84031113,0.0,green
+"McPherson, Nebraska, US",84031117,0.0,green
+"Madison, Nebraska, US",84031119,0.13680781758957655,yellow
+"Merrick, Nebraska, US",84031121,0.8421052631578948,red
+"Morrill, Nebraska, US",84031123,0.125,yellow
+"Nance, Nebraska, US",84031125,0.0,green
+"Nemaha, Nebraska, US",84031127,1.0,red
+"Otoe, Nebraska, US",84031131,1.0,red
+"Phelps, Nebraska, US",84031137,0.4285714285714286,orange
+"Pierce, Nebraska, US",84031139,0.0,green
+"Platte, Nebraska, US",84031141,0.43356643356643354,orange
+"Polk, Nebraska, US",84031143,0.0,green
+"Red Willow, Nebraska, US",84031145,0.0,green
+"Saline, Nebraska, US",84031151,0.3587628865979381,yellow
+"Sarpy, Nebraska, US",84031153,0.888135593220339,red
+"Saunders, Nebraska, US",84031155,1.0,red
+"Scotts Bluff, Nebraska, US",84031157,0.7428571428571429,orange
+"Seward, Nebraska, US",84031159,0.8571428571428571,red
+"Sherman, Nebraska, US",84031163,0.0,green
+"Stanton, Nebraska, US",84031167,1.0,red
+"Thurston, Nebraska, US",84031173,0.5,orange
+"Valley, Nebraska, US",84031175,1.0,red
+"Washington, Nebraska, US",84031177,0.10526315789473685,yellow
+"Wayne, Nebraska, US",84031179,0.6666666666666667,orange
+"Webster, Nebraska, US",84031181,0.0,green
+"York, Nebraska, US",84031185,0.8666666666666667,red
+"Churchill, Nevada, US",84032001,1.0,red
+"Clark, Nevada, US",84032003,0.5573646346081029,orange
+"Douglas, Nevada, US",84032005,0.14285714285714288,yellow
+"Elko, Nevada, US",84032007,1.0,red
+"Humboldt, Nevada, US",84032013,0.30188679245283023,yellow
+"Lander, Nevada, US",84032015,0.15384615384615385,yellow
+"Lincoln, Nevada, US",84032017,0.5,orange
+"Lyon, Nevada, US",84032019,0.5517241379310345,orange
+"Mineral, Nevada, US",84032021,0.0,green
+"Nye, Nevada, US",84032023,0.7,orange
+"Washoe, Nevada, US",84032031,0.6852459016393442,orange
+"White Pine, Nevada, US",84032033,0.5,orange
+"Carson City, Nevada, US",84032510,1.0,red
+"Belknap, New Hampshire, US",84033001,0.6666666666666667,orange
+"Carroll, New Hampshire, US",84033003,0.5,orange
+"Cheshire, New Hampshire, US",84033005,0.3870967741935484,yellow
+"Coos, New Hampshire, US",84033007,1.0,red
+"Grafton, New Hampshire, US",84033009,0.35714285714285715,yellow
+"Hillsborough, New Hampshire, US",84033011,0.8167860798362333,red
+"Merrimack, New Hampshire, US",84033013,0.5307262569832403,orange
+"Rockingham, New Hampshire, US",84033015,0.537842190016103,orange
+"Strafford, New Hampshire, US",84033017,0.8467741935483871,red
+"Sullivan, New Hampshire, US",84033019,0.5,orange
+"Atlantic, New Jersey, US",84034001,0.5590682196339435,orange
+"Bergen, New Jersey, US",84034003,0.11028855051737191,yellow
+"Burlington, New Jersey, US",84034005,0.4205827067669173,orange
+"Camden, New Jersey, US",84034007,0.6093979441997064,orange
+"Cape May, New Jersey, US",84034009,0.5,orange
+"Cumberland, New Jersey, US",84034011,0.7983805668016194,orange
+"Essex, New Jersey, US",84034013,0.24156007548752362,yellow
+"Gloucester, New Jersey, US",84034015,0.5619596541786743,orange
+"Hudson, New Jersey, US",84034017,0.24211656741189105,yellow
+"Hunterdon, New Jersey, US",84034019,0.8684863523573202,red
+"Mercer, New Jersey, US",84034021,0.4857796665576986,orange
+"Middlesex, New Jersey, US",84034023,0.2515306122448979,yellow
+"Monmouth, New Jersey, US",84034025,0.26158096047598806,yellow
+"Morris, New Jersey, US",84034027,0.12825,yellow
+"Ocean, New Jersey, US",84034029,0.29243170622480963,yellow
+"Passaic, New Jersey, US",84034031,0.21324503311258278,yellow
+"Salem, New Jersey, US",84034033,0.364406779661017,yellow
+"Somerset, New Jersey, US",84034035,0.24229632756437314,yellow
+"Sussex, New Jersey, US",84034037,0.1345514950166113,yellow
+"Union, New Jersey, US",84034039,0.22958082471884586,yellow
+"Warren, New Jersey, US",84034041,0.16415410385259632,yellow
+"Bernalillo, New Mexico, US",84035001,0.5351882160392799,orange
+"Catron, New Mexico, US",84035003,0.0,green
+"Chaves, New Mexico, US",84035005,0.4,orange
+"Cibola, New Mexico, US",84035006,0.5365853658536587,orange
+"Colfax, New Mexico, US",84035007,0.0,green
+"Curry, New Mexico, US",84035009,0.8484848484848485,red
+"De Baca, New Mexico, US",84035011,0.0,green
+"Dona Ana, New Mexico, US",84035013,0.9773755656108597,red
+"Eddy, New Mexico, US",84035015,0.5,orange
+"Grant, New Mexico, US",84035017,0.10526315789473685,yellow
+"Guadalupe, New Mexico, US",84035019,0.3076923076923077,yellow
+"Harding, New Mexico, US",84035021,0.0,green
+"Hidalgo, New Mexico, US",84035023,1.0,red
+"Lea, New Mexico, US",84035025,0.43749999999999994,orange
+"Lincoln, New Mexico, US",84035027,1.0,red
+"Los Alamos, New Mexico, US",84035028,0.0,green
+"Luna, New Mexico, US",84035029,0.25,yellow
+"McKinley, New Mexico, US",84035031,0.7468354430379747,orange
+"Otero, New Mexico, US",84035035,0.0625,green
+"Quay, New Mexico, US",84035037,0.33333333333333337,yellow
+"Rio Arriba, New Mexico, US",84035039,0.4615384615384615,orange
+"Roosevelt, New Mexico, US",84035041,1.0,red
+"Sandoval, New Mexico, US",84035043,0.2311827956989247,yellow
+"San Juan, New Mexico, US",84035045,0.8159574468085107,red
+"San Miguel, New Mexico, US",84035047,0.6666666666666667,orange
+"Santa Fe, New Mexico, US",84035049,0.35632183908045983,yellow
+"Sierra, New Mexico, US",84035051,0.0,green
+"Socorro, New Mexico, US",84035053,0.03921568627450981,green
+"Taos, New Mexico, US",84035055,0.2,yellow
+"Torrance, New Mexico, US",84035057,0.14285714285714288,yellow
+"Union, New Mexico, US",84035059,0.0,green
+"Valencia, New Mexico, US",84035061,0.6046511627906977,orange
+"Albany, New York, US",84036001,0.4615384615384616,orange
+"Allegany, New York, US",84036003,0.5151515151515151,orange
+"Broome, New York, US",84036007,0.551219512195122,orange
+"Cattaraugus, New York, US",84036009,0.4,orange
+"Cayuga, New York, US",84036011,0.4629629629629629,orange
+"Chautauqua, New York, US",84036013,0.53125,orange
+"Chemung, New York, US",84036015,0.06122448979591836,green
+"Chenango, New York, US",84036017,0.21176470588235294,yellow
+"Clinton, New York, US",84036019,0.7058823529411765,orange
+"Columbia, New York, US",84036021,0.27450980392156865,yellow
+"Cortland, New York, US",84036023,0.6086956521739131,orange
+"Delaware, New York, US",84036025,0.1929824561403509,yellow
+"Dutchess, New York, US",84036027,0.31334459459459457,yellow
+"Erie, New York, US",84036029,0.4988344988344989,orange
+"Essex, New York, US",84036031,0.20833333333333334,yellow
+"Franklin, New York, US",84036033,0.10526315789473685,yellow
+"Fulton, New York, US",84036035,0.9745222929936307,red
+"Genesee, New York, US",84036037,0.16793893129770995,yellow
+"Greene, New York, US",84036039,0.1016949152542373,yellow
+"Hamilton, New York, US",84036041,0.0,green
+"Herkimer, New York, US",84036043,0.5714285714285714,orange
+"Jefferson, New York, US",84036045,0.10606060606060606,yellow
+"Lewis, New York, US",84036049,1.0,red
+"Livingston, New York, US",84036051,0.22891566265060237,yellow
+"Madison, New York, US",84036053,0.07692307692307693,green
+"Monroe, New York, US",84036055,0.9888793840889648,red
+"Montgomery, New York, US",84036057,0.37777777777777777,yellow
+"Nassau, New York, US",84036059,0.09019924609585352,green
+"Manhattan, New York, US",84036061,0.19493878828176947,yellow
+"Bronx, New York, US",84036005,0.19493878828176947,yellow
+"Queens, New York, US",84036081,0.19493878828176947,yellow
+"Richmond, New York, US",84036085,0.19493878828176947,yellow
+"Kings, New York, US",84036047,0.19493878828176947,yellow
+"Niagara, New York, US",84036063,0.9210526315789473,red
+"Oneida, New York, US",84036065,0.6195899772209568,orange
+"Onondaga, New York, US",84036067,0.9463687150837989,red
+"Ontario, New York, US",84036069,1.0,red
+"Orange, New York, US",84036071,0.15055643879173292,yellow
+"Orleans, New York, US",84036073,0.7394957983193278,orange
+"Oswego, New York, US",84036075,0.48275862068965514,orange
+"Otsego, New York, US",84036077,0.0,green
+"Putnam, New York, US",84036079,0.18509316770186335,yellow
+"Rensselaer, New York, US",84036083,0.26181818181818184,yellow
+"Rockland, New York, US",84036087,0.0885323826500297,green
+"St. Lawrence, New York, US",84036089,0.06802721088435375,green
+"Saratoga, New York, US",84036091,0.35678391959798994,yellow
+"Schenectady, New York, US",84036093,0.25157232704402516,yellow
+"Schoharie, New York, US",84036095,0.08333333333333334,green
+"Schuyler, New York, US",84036097,0.6666666666666666,orange
+"Seneca, New York, US",84036099,0.09259259259259259,green
+"Steuben, New York, US",84036101,0.09268292682926829,green
+"Suffolk, New York, US",84036103,0.1311469251286675,yellow
+"Sullivan, New York, US",84036105,0.48956884561891517,orange
+"Tioga, New York, US",84036107,0.16346153846153846,yellow
+"Tompkins, New York, US",84036109,0.1360544217687075,yellow
+"Ulster, New York, US",84036111,0.24870466321243523,yellow
+"Warren, New York, US",84036113,0.3885350318471337,yellow
+"Washington, New York, US",84036115,0.1382488479262673,yellow
+"Wayne, New York, US",84036117,0.7254901960784315,orange
+"Westchester, New York, US",84036119,0.13859177486701368,yellow
+"Wyoming, New York, US",84036121,0.1111111111111111,yellow
+"Yates, New York, US",84036123,0.55,orange
+"Alamance, North Carolina, US",84037001,0.825503355704698,red
+"Alexander,North Carolina,US",84037003,0.7692307692307692,orange
+"Alleghany, North Carolina, US",84037005,0.9,red
+"Anson, North Carolina, US",84037007,0.7741935483870968,orange
+"Ashe, North Carolina, US",84037009,0.8333333333333333,red
+"Beaufort, North Carolina, US",84037013,0.47826086956521746,orange
+"Bertie, North Carolina, US",84037015,0.9344262295081968,red
+"Bladen, North Carolina, US",84037017,0.581081081081081,orange
+"Brunswick, North Carolina, US",84037019,0.5,orange
+"Buncombe, North Carolina, US",84037021,0.9302325581395349,red
+"Burke, North Carolina, US",84037023,0.9020979020979021,red
+"Cabarrus, North Carolina, US",84037025,0.29277566539923955,yellow
+"Caldwell, North Carolina, US",84037027,0.7571428571428571,orange
+"Camden, North Carolina, US",84037029,0.0,green
+"Carteret, North Carolina, US",84037031,0.2105263157894737,yellow
+"Caswell, North Carolina, US",84037033,0.275,yellow
+"Catawba, North Carolina, US",84037035,0.7848101265822784,orange
+"Chatham, North Carolina, US",84037037,0.26406926406926406,yellow
+"Cherokee, North Carolina, US",84037039,0.0,green
+"Chowan, North Carolina, US",84037041,0.6428571428571429,orange
+"Clay, North Carolina, US",84037043,0.0,green
+"Cleveland, North Carolina, US",84037045,0.16666666666666666,yellow
+"Columbus, North Carolina, US",84037047,0.543010752688172,orange
+"Craven, North Carolina, US",84037049,0.9622641509433962,red
+"Cumberland, North Carolina, US",84037051,0.692063492063492,orange
+"Currituck, North Carolina, US",84037053,0.33333333333333337,yellow
+"Dare, North Carolina, US",84037055,0.30434782608695654,yellow
+"Davidson, North Carolina, US",84037057,0.9581151832460733,red
+"Davie, North Carolina, US",84037059,0.7575757575757576,orange
+"Duplin, North Carolina, US",84037061,0.843298969072165,red
+"Durham, North Carolina, US",84037063,0.5063694267515924,orange
+"Edgecombe, North Carolina, US",84037065,0.2900763358778626,yellow
+"Forsyth, North Carolina, US",84037067,0.9510385756676556,red
+"Franklin, North Carolina, US",84037069,0.2429906542056075,yellow
+"Gaston, North Carolina, US",84037071,0.7,orange
+"Gates, North Carolina, US",84037073,0.7499999999999999,orange
+"Graham, North Carolina, US",84037075,0.0,green
+"Granville, North Carolina, US",84037077,0.4478527607361963,orange
+"Greene, North Carolina, US",84037079,0.85,red
+"Guilford, North Carolina, US",84037081,0.9189189189189189,red
+"Halifax, North Carolina, US",84037083,0.617283950617284,orange
+"Harnett, North Carolina, US",84037085,0.31100478468899523,yellow
+"Haywood, North Carolina, US",84037087,0.6153846153846154,orange
+"Henderson, North Carolina, US",84037089,0.8456375838926175,red
+"Hertford, North Carolina, US",84037091,0.15517241379310345,yellow
+"Hoke, North Carolina, US",84037093,0.49230769230769234,orange
+"Hyde, North Carolina, US",84037095,0.0,green
+"Iredell, North Carolina, US",84037097,0.8514851485148515,red
+"Jackson, North Carolina, US",84037099,0.1923076923076923,yellow
+"Johnston, North Carolina, US",84037101,0.7320261437908496,orange
+"Jones, North Carolina, US",84037103,0.5,orange
+"Lee, North Carolina, US",84037105,0.49242424242424243,orange
+"Lenoir, North Carolina, US",84037107,0.7798165137614679,orange
+"Lincoln, North Carolina, US",84037109,0.6071428571428572,orange
+"McDowell, North Carolina, US",84037111,0.23809523809523808,yellow
+"Macon, North Carolina, US",84037113,1.0,red
+"Madison, North Carolina, US",84037115,1.0,red
+"Martin, North Carolina, US",84037117,0.4666666666666666,orange
+"Mecklenburg, North Carolina, US",84037119,0.8911411411411413,red
+"Mitchell, North Carolina, US",84037121,1.0,red
+"Montgomery, North Carolina, US",84037123,0.65,orange
+"Moore, North Carolina, US",84037125,0.2348993288590604,yellow
+"Nash, North Carolina, US",84037127,0.7065217391304348,orange
+"New Hanover, North Carolina, US",84037129,0.8837209302325582,red
+"Northampton, North Carolina, US",84037131,0.4301075268817204,orange
+"Onslow, North Carolina, US",84037133,0.8113207547169812,red
+"Orange, North Carolina, US",84037135,0.24545454545454548,yellow
+"Pamlico, North Carolina, US",84037137,0.25,yellow
+"Pasquotank, North Carolina, US",84037139,0.1326530612244898,yellow
+"Pender, North Carolina, US",84037141,0.44230769230769224,orange
+"Perquimans, North Carolina, US",84037143,0.6,orange
+"Person, North Carolina, US",84037145,0.2857142857142857,yellow
+"Pitt, North Carolina, US",84037147,0.9,red
+"Polk, North Carolina, US",84037149,0.07142857142857144,green
+"Randolph, North Carolina, US",84037151,0.8042168674698794,red
+"Richmond, North Carolina, US",84037153,0.5666666666666667,orange
+"Robeson, North Carolina, US",84037155,0.5392670157068062,orange
+"Rockingham, North Carolina, US",84037157,0.3823529411764706,yellow
+"Rowan, North Carolina, US",84037159,0.32773109243697474,yellow
+"Rutherford, North Carolina, US",84037161,0.01639344262295082,green
+"Sampson, North Carolina, US",84037163,0.8930041152263374,red
+"Scotland, North Carolina, US",84037165,0.8333333333333333,red
+"Stanly, North Carolina, US",84037167,0.16666666666666669,yellow
+"Stokes, North Carolina, US",84037169,1.0,red
+"Surry, North Carolina, US",84037171,0.9062499999999999,red
+"Swain, North Carolina, US",84037173,0.2,yellow
+"Transylvania, North Carolina, US",84037175,-0.1,green
+"Tyrrell, North Carolina, US",84037177,0.0,green
+"Union, North Carolina, US",84037179,0.7668711656441718,orange
+"Vance, North Carolina, US",84037181,0.4473684210526316,orange
+"Wake, North Carolina, US",84037183,0.7797202797202797,orange
+"Warren, North Carolina, US",84037185,0.3870967741935484,yellow
+"Washington, North Carolina, US",84037187,0.06666666666666667,green
+"Watauga, North Carolina, US",84037189,0.36363636363636365,yellow
+"Wayne, North Carolina, US",84037191,0.2504725897920605,yellow
+"Wilkes, North Carolina, US",84037193,0.8262626262626263,red
+"Wilson, North Carolina, US",84037195,0.5886524822695036,orange
+"Yadkin, North Carolina, US",84037197,0.8156028368794327,red
+"Yancey, North Carolina, US",84037199,0.16666666666666666,yellow
+"Barnes, North Dakota, US",84038003,0.0,green
+"Benson, North Dakota, US",84038005,-0.5,green
+"Bowman, North Dakota, US",84038011,0.0,green
+"Burke, North Dakota, US",84038013,0.0,green
+"Burleigh, North Dakota, US",84038015,0.49122807017543857,orange
+"Cass, North Dakota, US",84038017,1.0,red
+"Divide, North Dakota, US",84038023,0.0,green
+"Dunn, North Dakota, US",84038025,0.125,yellow
+"Eddy, North Dakota, US",84038027,1.0,red
+"Emmons, North Dakota, US",84038029,0.0,green
+"Foster, North Dakota, US",84038031,0.0,green
+"Grand Forks, North Dakota, US",84038035,0.17105263157894737,yellow
+"Grant, North Dakota, US",84038037,1.0,red
+"McHenry, North Dakota, US",84038049,0.0,green
+"McIntosh, North Dakota, US",84038051,0.0,green
+"McKenzie, North Dakota, US",84038053,0.15384615384615385,yellow
+"McLean, North Dakota, US",84038055,1.0,red
+"Mercer, North Dakota, US",84038057,0.25,yellow
+"Morton, North Dakota, US",84038059,0.3333333333333333,yellow
+"Mountrail, North Dakota, US",84038061,0.10526315789473685,yellow
+"Nelson, North Dakota, US",84038063,0.0,green
+"Oliver, North Dakota, US",84038065,0.0,green
+"Pembina, North Dakota, US",84038067,0.0,green
+"Pierce, North Dakota, US",84038069,0.0,green
+"Ramsey, North Dakota, US",84038071,0.25,yellow
+"Ransom, North Dakota, US",84038073,1.0,red
+"Renville, North Dakota, US",84038075,0.0,green
+"Richland, North Dakota, US",84038077,0.5555555555555556,orange
+"Rolette, North Dakota, US",84038079,0.33333333333333337,yellow
+"Sargent, North Dakota, US",84038081,0.0,green
+"Sioux, North Dakota, US",84038085,1.0,red
+"Slope, North Dakota, US",84038087,0.0,green
+"Stark, North Dakota, US",84038089,0.0,green
+"Stutsman, North Dakota, US",84038093,0.37499999999999994,yellow
+"Traill, North Dakota, US",84038097,1.0,red
+"Walsh, North Dakota, US",84038099,0.5,orange
+"Ward, North Dakota, US",84038101,0.08695652173913045,green
+"Wells, North Dakota, US",84038103,0.0,green
+"Williams, North Dakota, US",84038105,0.3157894736842105,yellow
+"Adams, Ohio, US",84039001,0.6666666666666667,orange
+"Allen, Ohio, US",84039003,0.43200000000000005,orange
+"Ashland, Ohio, US",84039005,0.13333333333333333,yellow
+"Ashtabula, Ohio, US",84039007,0.7464788732394366,orange
+"Athens, Ohio, US",84039009,1.0,red
+"Auglaize, Ohio, US",84039011,0.7222222222222222,orange
+"Belmont, Ohio, US",84039013,0.8991935483870968,red
+"Brown, Ohio, US",84039015,0.6842105263157895,orange
+"Butler, Ohio, US",84039017,0.8944954128440367,red
+"Carroll, Ohio, US",84039019,0.35294117647058826,yellow
+"Champaign, Ohio, US",84039021,0.7333333333333334,orange
+"Clark, Ohio, US",84039023,0.9548872180451127,red
+"Clermont, Ohio, US",84039025,0.7613636363636364,orange
+"Clinton, Ohio, US",84039027,0.46875,orange
+"Columbiana, Ohio, US",84039029,1.0,red
+"Coshocton, Ohio, US",84039031,0.22222222222222224,yellow
+"Crawford, Ohio, US",84039033,0.7681159420289855,orange
+"Cuyahoga, Ohio, US",84039035,0.9347826086956522,red
+"Darke, Ohio, US",84039037,1.0,red
+"Defiance, Ohio, US",84039039,0.28571428571428575,yellow
+"Delaware, Ohio, US",84039041,0.7829457364341085,orange
+"Erie, Ohio, US",84039043,1.0,red
+"Fairfield, Ohio, US",84039045,0.6608695652173913,orange
+"Fayette, Ohio, US",84039047,0.391304347826087,yellow
+"Franklin, Ohio, US",84039049,0.6376283537595231,orange
+"Fulton, Ohio, US",84039051,0.391304347826087,yellow
+"Gallia, Ohio, US",84039053,0.25,yellow
+"Geauga, Ohio, US",84039055,0.6379310344827587,orange
+"Greene, Ohio, US",84039057,0.8627450980392158,red
+"Guernsey, Ohio, US",84039059,0.5555555555555556,orange
+"Hamilton, Ohio, US",84039061,0.6828422876949739,orange
+"Hancock, Ohio, US",84039063,0.5185185185185185,orange
+"Hardin, Ohio, US",84039065,0.16129032258064516,yellow
+"Harrison, Ohio, US",84039067,1.0,red
+"Henry, Ohio, US",84039069,0.8,red
+"Highland, Ohio, US",84039071,0.6,orange
+"Hocking, Ohio, US",84039073,1.0,red
+"Holmes, Ohio, US",84039075,0.9166666666666667,red
+"Huron, Ohio, US",84039077,0.3448275862068966,yellow
+"Jackson, Ohio, US",84039079,0.8749999999999999,red
+"Jefferson, Ohio, US",84039081,0.4516129032258064,orange
+"Knox, Ohio, US",84039083,0.6,orange
+"Lake, Ohio, US",84039085,0.5546874999999999,orange
+"Lawrence, Ohio, US",84039087,0.17857142857142858,yellow
+"Licking, Ohio, US",84039089,0.5045045045045045,orange
+"Logan, Ohio, US",84039091,0.1,green
+"Lorain, Ohio, US",84039093,0.37283236994219654,yellow
+"Lucas, Ohio, US",84039095,0.5231527093596059,orange
+"Madison, Ohio, US",84039097,0.5294117647058824,orange
+"Mahoning, Ohio, US",84039099,0.44941956882255396,orange
+"Marion, Ohio, US",84039101,0.0671946244300456,green
+"Medina, Ohio, US",84039103,0.6068376068376068,orange
+"Meigs, Ohio, US",84039105,0.0,green
+"Mercer, Ohio, US",84039107,0.9588235294117647,red
+"Miami, Ohio, US",84039109,0.4108108108108108,orange
+"Monroe, Ohio, US",84039111,0.9494949494949495,red
+"Montgomery, Ohio, US",84039113,0.9209726443768997,red
+"Morgan, Ohio, US",84039115,0.0,green
+"Morrow, Ohio, US",84039117,0.32075471698113206,yellow
+"Muskingum, Ohio, US",84039119,0.896551724137931,red
+"Noble, Ohio, US",84039121,-0.125,green
+"Ottawa, Ohio, US",84039123,0.7346938775510203,orange
+"Paulding, Ohio, US",84039125,0.4,orange
+"Perry, Ohio, US",84039127,0.4166666666666667,orange
+"Pickaway, Ohio, US",84039129,0.11337939698492464,yellow
+"Pike, Ohio, US",84039131,0.5,orange
+"Portage, Ohio, US",84039133,0.25,yellow
+"Preble, Ohio, US",84039135,0.13333333333333333,yellow
+"Putnam, Ohio, US",84039137,0.16494845360824745,yellow
+"Richland, Ohio, US",84039139,0.7734375,orange
+"Ross, Ohio, US",84039141,0.38775510204081626,yellow
+"Sandusky, Ohio, US",84039143,0.5094339622641509,orange
+"Scioto, Ohio, US",84039145,0.125,yellow
+"Seneca, Ohio, US",84039147,0.2,yellow
+"Shelby, Ohio, US",84039149,0.14634146341463417,yellow
+"Stark, Ohio, US",84039151,0.8006644518272426,red
+"Summit, Ohio, US",84039153,0.475609756097561,orange
+"Trumbull, Ohio, US",84039155,0.6066350710900474,orange
+"Tuscarawas, Ohio, US",84039157,0.5018315018315018,orange
+"Union, Ohio, US",84039159,0.8,red
+"Van Wert, Ohio, US",84039161,1.0,red
+"Vinton, Ohio, US",84039163,0.5555555555555556,orange
+"Warren, Ohio, US",84039165,0.9050279329608939,red
+"Washington, Ohio, US",84039167,0.0574712643678161,green
+"Wayne, Ohio, US",84039169,0.27941176470588236,yellow
+"Williams, Ohio, US",84039171,0.1111111111111111,yellow
+"Wood, Ohio, US",84039173,0.40718562874251496,orange
+"Wyandot, Ohio, US",84039175,0.391304347826087,yellow
+"Adair, Oklahoma, US",84040001,0.09836065573770492,green
+"Alfalfa, Oklahoma, US",84040003,0.0,green
+"Atoka, Oklahoma, US",84040005,0.0,green
+"Beaver, Oklahoma, US",84040007,0.20689655172413793,yellow
+"Beckham, Oklahoma, US",84040009,0.0,green
+"Blaine, Oklahoma, US",84040011,0.16666666666666669,yellow
+"Bryan, Oklahoma, US",84040013,1.0,red
+"Caddo, Oklahoma, US",84040015,0.4,orange
+"Canadian, Oklahoma, US",84040017,0.2878787878787879,yellow
+"Carter, Oklahoma, US",84040019,1.0,red
+"Cherokee, Oklahoma, US",84040021,-0.06451612903225806,green
+"Choctaw, Oklahoma, US",84040023,1.0,red
+"Cimarron, Oklahoma, US",84040025,0.0,green
+"Cleveland, Oklahoma, US",84040027,0.0847953216374269,green
+"Comanche, Oklahoma, US",84040031,0.963302752293578,red
+"Cotton, Oklahoma, US",84040033,0.0,green
+"Craig, Oklahoma, US",84040035,0.36363636363636365,yellow
+"Creek, Oklahoma, US",84040037,0.07792207792207792,green
+"Custer, Oklahoma, US",84040039,0.2,yellow
+"Delaware, Oklahoma, US",84040041,0.060606060606060615,green
+"Dewey, Oklahoma, US",84040043,0.0,green
+"Garfield, Oklahoma, US",84040047,0.1,green
+"Garvin, Oklahoma, US",84040049,0.05555555555555556,green
+"Grady, Oklahoma, US",84040051,0.8695652173913044,red
+"Grant, Oklahoma, US",84040053,0.0,green
+"Greer, Oklahoma, US",84040055,0.02150537634408602,green
+"Harper, Oklahoma, US",84040059,0.0,green
+"Haskell, Oklahoma, US",84040061,0.0,green
+"Jackson, Oklahoma, US",84040065,0.22222222222222224,yellow
+"Jefferson, Oklahoma, US",84040067,0.0,green
+"Johnston, Oklahoma, US",84040069,0.0,green
+"Kay, Oklahoma, US",84040071,0.09090909090909091,green
+"Kingfisher, Oklahoma, US",84040073,0.4,orange
+"Kiowa, Oklahoma, US",84040075,-0.4,green
+"Latimer, Oklahoma, US",84040077,0.25,yellow
+"Le Flore, Oklahoma, US",84040079,0.0,green
+"Lincoln, Oklahoma, US",84040081,0.28571428571428575,yellow
+"Logan, Oklahoma, US",84040083,0.0,green
+"Love, Oklahoma, US",84040085,0.5,orange
+"McClain, Oklahoma, US",84040087,0.18518518518518517,yellow
+"McCurtain, Oklahoma, US",84040089,0.6666666666666667,orange
+"McIntosh, Oklahoma, US",84040091,0.8333333333333334,red
+"Major, Oklahoma, US",84040093,0.33333333333333337,yellow
+"Marshall, Oklahoma, US",84040095,1.0,red
+"Mayes, Oklahoma, US",84040097,0.4210526315789474,orange
+"Murray, Oklahoma, US",84040099,0.0,green
+"Muskogee, Oklahoma, US",84040101,0.0625,green
+"Noble, Oklahoma, US",84040103,0.0,green
+"Nowata, Oklahoma, US",84040105,0.11111111111111112,yellow
+"Okfuskee, Oklahoma, US",84040107,1.0,red
+"Oklahoma, Oklahoma, US",84040109,0.593320235756385,orange
+"Okmulgee, Oklahoma, US",84040111,0.2,yellow
+"Osage, Oklahoma, US",84040113,0.11594202898550725,yellow
+"Ottawa, Oklahoma, US",84040115,0.07407407407407407,green
+"Pawnee, Oklahoma, US",84040117,0.0,green
+"Payne, Oklahoma, US",84040119,0.0,green
+"Pittsburg, Oklahoma, US",84040121,0.0,green
+"Pontotoc, Oklahoma, US",84040123,0.16666666666666669,yellow
+"Pottawatomie, Oklahoma, US",84040125,0.14285714285714285,yellow
+"Pushmataha, Oklahoma, US",84040127,0.0,green
+"Rogers, Oklahoma, US",84040131,0.08888888888888889,green
+"Seminole, Oklahoma, US",84040133,0.045454545454545456,green
+"Sequoyah, Oklahoma, US",84040135,0.0625,green
+"Stephens, Oklahoma, US",84040137,0.4,orange
+"Texas, Oklahoma, US",84040139,0.9669811320754718,red
+"Tillman, Oklahoma, US",84040141,0.16666666666666666,yellow
+"Tulsa, Oklahoma, US",84040143,0.43999999999999995,orange
+"Wagoner, Oklahoma, US",84040145,0.17699115044247787,yellow
+"Washington, Oklahoma, US",84040147,0.07017543859649122,green
+"Washita, Oklahoma, US",84040149,1.0,red
+"Woods, Oklahoma, US",84040151,0.0,green
+"Woodward, Oklahoma, US",84040153,0.0,green
+"Baker, Oregon, US",84041001,0.0,green
+"Benton, Oregon, US",84041003,0.4722222222222222,orange
+"Clackamas, Oregon, US",84041005,0.34074074074074073,yellow
+"Clatsop, Oregon, US",84041007,0.3275862068965517,yellow
+"Columbia, Oregon, US",84041009,0.09523809523809523,green
+"Coos, Oregon, US",84041011,0.0,green
+"Crook, Oregon, US",84041013,0.0,green
+"Curry, Oregon, US",84041015,0.33333333333333337,yellow
+"Deschutes, Oregon, US",84041017,0.8269230769230769,red
+"Douglas, Oregon, US",84041019,0.09090909090909091,green
+"Grant, Oregon, US",84041023,0.0,green
+"Harney, Oregon, US",84041025,0.0,green
+"Hood River, Oregon, US",84041027,0.2142857142857143,yellow
+"Jackson, Oregon, US",84041029,0.10344827586206896,yellow
+"Jefferson, Oregon, US",84041031,0.0,green
+"Josephine, Oregon, US",84041033,0.09090909090909091,green
+"Klamath, Oregon, US",84041035,0.11111111111111112,yellow
+"Lane, Oregon, US",84041039,0.24390243902439027,yellow
+"Lincoln, Oregon, US",84041041,0.5,orange
+"Linn, Oregon, US",84041043,0.24561403508771928,yellow
+"Malheur, Oregon, US",84041045,0.9333333333333332,red
+"Marion, Oregon, US",84041047,0.8131868131868132,red
+"Morrow, Oregon, US",84041049,0.0,green
+"Multnomah, Oregon, US",84041051,0.5598290598290598,orange
+"Polk, Oregon, US",84041053,0.2061855670103093,yellow
+"Sherman, Oregon, US",84041055,0.0,green
+"Tillamook, Oregon, US",84041057,0.0,green
+"Umatilla, Oregon, US",84041059,0.3928571428571428,yellow
+"Union, Oregon, US",84041061,0.8,red
+"Wallowa, Oregon, US",84041063,0.0,green
+"Wasco, Oregon, US",84041065,0.4285714285714286,orange
+"Washington, Oregon, US",84041067,0.5204081632653061,orange
+"Yamhill, Oregon, US",84041071,0.7999999999999999,orange
+"Adams, Pennsylvania, US",84042001,0.7156862745098039,orange
+"Allegheny, Pennsylvania, US",84042003,0.342050209205021,yellow
+"Armstrong, Pennsylvania, US",84042005,0.14634146341463417,yellow
+"Beaver, Pennsylvania, US",84042007,0.2334152334152334,yellow
+"Bedford, Pennsylvania, US",84042009,0.1935483870967742,yellow
+"Berks, Pennsylvania, US",84042011,0.32211170619739865,yellow
+"Blair, Pennsylvania, US",84042013,1.0,red
+"Bradford, Pennsylvania, US",84042015,0.23076923076923075,yellow
+"Bucks, Pennsylvania, US",84042017,0.5680068434559453,orange
+"Butler, Pennsylvania, US",84042019,0.1631205673758865,yellow
+"Cambria, Pennsylvania, US",84042021,0.6285714285714287,orange
+"Cameron, Pennsylvania, US",84042023,0.0,green
+"Carbon, Pennsylvania, US",84042025,0.2317880794701987,yellow
+"Centre, Pennsylvania, US",84042027,0.3333333333333333,yellow
+"Chester, Pennsylvania, US",84042029,0.7354651162790699,orange
+"Clarion, Pennsylvania, US",84042031,0.08333333333333334,green
+"Clearfield, Pennsylvania, US",84042033,0.7083333333333334,orange
+"Clinton, Pennsylvania, US",84042035,0.19047619047619047,yellow
+"Columbia, Pennsylvania, US",84042037,0.10112359550561799,yellow
+"Crawford, Pennsylvania, US",84042039,0.09090909090909091,green
+"Cumberland, Pennsylvania, US",84042041,0.7060702875399362,orange
+"Dauphin, Pennsylvania, US",84042043,0.7458333333333332,orange
+"Delaware, Pennsylvania, US",84042045,0.6495595557257755,orange
+"Elk, Pennsylvania, US",84042047,0.5,orange
+"Erie, Pennsylvania, US",84042049,0.6666666666666666,orange
+"Fayette, Pennsylvania, US",84042051,0.18421052631578946,yellow
+"Forest, Pennsylvania, US",84042053,0.0,green
+"Franklin, Pennsylvania, US",84042055,0.7389277389277389,orange
+"Fulton, Pennsylvania, US",84042057,0.888888888888889,red
+"Greene, Pennsylvania, US",84042059,0.0,green
+"Huntingdon, Pennsylvania, US",84042061,0.43686006825938567,orange
+"Indiana, Pennsylvania, US",84042063,0.2857142857142857,yellow
+"Jefferson, Pennsylvania, US",84042065,0.0,green
+"Juniata, Pennsylvania, US",84042067,0.02061855670103093,green
+"Lackawanna, Pennsylvania, US",84042069,0.6088154269972452,orange
+"Lancaster, Pennsylvania, US",84042071,0.6429752066115703,orange
+"Lawrence, Pennsylvania, US",84042073,0.10606060606060606,yellow
+"Lebanon, Pennsylvania, US",84042075,0.24573378839590443,yellow
+"Lehigh, Pennsylvania, US",84042077,0.24290220820189276,yellow
+"Luzerne, Pennsylvania, US",84042079,0.15245009074410162,yellow
+"Lycoming, Pennsylvania, US",84042081,0.31007751937984496,yellow
+"McKean,Pennsylvania,US",84042083,1.0,red
+"Mercer, Pennsylvania, US",84042085,0.7187499999999999,orange
+"Mifflin, Pennsylvania, US",84042087,0.3333333333333333,yellow
+"Monroe, Pennsylvania, US",84042089,0.102803738317757,yellow
+"Montgomery, Pennsylvania, US",84042091,0.6164142303628038,orange
+"Montour, Pennsylvania, US",84042093,0.030303030303030307,green
+"Northampton, Pennsylvania, US",84042095,0.4187582562747688,orange
+"Northumberland, Pennsylvania, US",84042097,0.5222222222222223,orange
+"Perry, Pennsylvania, US",84042099,0.43333333333333335,orange
+"Philadelphia, Pennsylvania, US",84042101,0.40829908005480525,orange
+"Pike, Pennsylvania, US",84042103,0.2523961661341853,yellow
+"Potter, Pennsylvania, US",84042105,0.0,green
+"Schuylkill, Pennsylvania, US",84042107,0.6766917293233082,orange
+"Snyder, Pennsylvania, US",84042109,0.0,green
+"Somerset, Pennsylvania, US",84042111,0.36363636363636365,yellow
+"Sullivan, Pennsylvania, US",84042113,1.0,red
+"Susquehanna, Pennsylvania, US",84042115,0.0851063829787234,green
+"Tioga, Pennsylvania, US",84042117,0.0,green
+"Union, Pennsylvania, US",84042119,0.5263157894736842,orange
+"Venango, Pennsylvania, US",84042121,0.2,yellow
+"Warren, Pennsylvania, US",84042123,1.0,red
+"Washington, Pennsylvania, US",84042125,0.15584415584415584,yellow
+"Wayne, Pennsylvania, US",84042127,-0.14444444444444446,green
+"Westmoreland, Pennsylvania, US",84042129,0.10452961672473868,yellow
+"Wyoming, Pennsylvania, US",84042131,0.0,green
+"York, Pennsylvania, US",84042133,0.4164859002169197,orange
+"Bristol, Rhode Island, US",84044001,0.22222222222222224,yellow
+"Kent, Rhode Island, US",84044003,0.6428571428571429,orange
+"Newport, Rhode Island, US",84044005,0.679245283018868,orange
+"Providence, Rhode Island, US",84044007,0.6171642957636392,orange
+"Washington, Rhode Island, US",84044009,0.4558823529411765,orange
+"Abbeville, South Carolina, US",84045001,0.11111111111111112,yellow
+"Aiken, South Carolina, US",84045003,0.8863636363636362,red
+"Allendale, South Carolina, US",84045005,0.5151515151515151,orange
+"Anderson, South Carolina, US",84045007,0.42063492063492064,orange
+"Bamberg, South Carolina, US",84045009,0.4166666666666667,orange
+"Barnwell, South Carolina, US",84045011,0.5161290322580645,orange
+"Beaufort, South Carolina, US",84045013,0.17829457364341084,yellow
+"Berkeley, South Carolina, US",84045015,0.1517241379310345,yellow
+"Calhoun, South Carolina, US",84045017,0.25,yellow
+"Charleston, South Carolina, US",84045019,0.15090090090090091,yellow
+"Cherokee, South Carolina, US",84045021,0.3333333333333333,yellow
+"Chester, South Carolina, US",84045023,0.16666666666666666,yellow
+"Chesterfield, South Carolina, US",84045025,0.7741935483870968,orange
+"Clarendon, South Carolina, US",84045027,0.3315217391304348,yellow
+"Colleton, South Carolina, US",84045029,1.0,red
+"Darlington, South Carolina, US",84045031,0.8770491803278688,red
+"Dillon, South Carolina, US",84045033,0.801980198019802,red
+"Dorchester, South Carolina, US",84045035,0.18085106382978722,yellow
+"Edgefield, South Carolina, US",84045037,0.29411764705882354,yellow
+"Fairfield, South Carolina, US",84045039,1.0,red
+"Florence, South Carolina, US",84045041,0.7938461538461539,red
+"Georgetown, South Carolina, US",84045043,0.11764705882352942,yellow
+"Greenville, South Carolina, US",84045045,0.8640776699029126,red
+"Greenwood, South Carolina, US",84045047,0.4166666666666667,orange
+"Hampton, South Carolina, US",84045049,0.15625,yellow
+"Horry, South Carolina, US",84045051,0.47826086956521746,orange
+"Jasper, South Carolina, US",84045053,0.3333333333333333,yellow
+"Kershaw, South Carolina, US",84045055,0.2275449101796407,yellow
+"Lancaster, South Carolina, US",84045057,0.02197802197802198,green
+"Laurens, South Carolina, US",84045059,0.525,orange
+"Lee, South Carolina, US",84045061,0.8313953488372093,red
+"Lexington, South Carolina, US",84045063,0.2897526501766784,yellow
+"McCormick, South Carolina, US",84045065,0.0,green
+"Marion, South Carolina, US",84045067,0.24444444444444446,yellow
+"Marlboro, South Carolina, US",84045069,0.8636363636363635,red
+"Newberry, South Carolina, US",84045071,0.125,yellow
+"Oconee, South Carolina, US",84045073,0.2962962962962963,yellow
+"Orangeburg, South Carolina, US",84045075,0.38961038961038963,yellow
+"Pickens, South Carolina, US",84045077,0.7704918032786886,orange
+"Richland, South Carolina, US",84045079,0.5799011532125206,orange
+"Saluda, South Carolina, US",84045081,0.776595744680851,orange
+"Spartanburg, South Carolina, US",84045083,0.5742971887550201,orange
+"Sumter, South Carolina, US",84045085,0.36318407960199,yellow
+"Union, South Carolina, US",84045087,0.05555555555555556,green
+"Williamsburg, South Carolina, US",84045089,0.5973154362416108,orange
+"York, South Carolina, US",84045091,0.9215686274509803,red
+"Aurora, South Dakota, US",84046003,0.7499999999999999,orange
+"Beadle, South Dakota, US",84046005,1.0,red
+"Bon Homme, South Dakota, US",84046009,0.0,green
+"Brookings, South Dakota, US",84046011,0.0,green
+"Brown, South Dakota, US",84046013,0.8144796380090498,red
+"Brule, South Dakota, US",84046015,0.0,green
+"Buffalo, South Dakota, US",84046017,1.0,red
+"Butte, South Dakota, US",84046019,0.0,green
+"Charles Mix, South Dakota, US",84046023,1.0,red
+"Clark, South Dakota, US",84046025,0.6666666666666667,orange
+"Clay, South Dakota, US",84046027,0.7999999999999999,orange
+"Codington, South Dakota, US",84046029,0.2,yellow
+"Corson, South Dakota, US",84046031,1.0,red
+"Davison, South Dakota, US",84046035,0.8,red
+"Day, South Dakota, US",84046037,0.1,green
+"Deuel, South Dakota, US",84046039,0.0,green
+"Dewey, South Dakota, US",84046041,0.0,green
+"Douglas, South Dakota, US",84046043,0.0,green
+"Fall River, South Dakota, US",84046047,1.0,red
+"Faulk, South Dakota, US",84046049,0.0,green
+"Grant, South Dakota, US",84046051,0.9285714285714287,red
+"Hamlin, South Dakota, US",84046057,1.0,red
+"Hand, South Dakota, US",84046059,0.0,green
+"Hughes, South Dakota, US",84046065,0.25,yellow
+"Hutchinson, South Dakota, US",84046067,0.0,green
+"Hyde, South Dakota, US",84046069,0.0,green
+"Jerauld, South Dakota, US",84046073,0.0,green
+"Kingsbury, South Dakota, US",84046077,0.0,green
+"Lake, South Dakota, US",84046079,0.0,green
+"Lawrence, South Dakota, US",84046081,0.0,green
+"Lincoln, South Dakota, US",84046083,0.2975206611570248,yellow
+"Lyman, South Dakota, US",84046085,1.0,red
+"McCook, South Dakota, US",84046087,0.5,orange
+"McPherson, South Dakota, US",84046089,0.0,green
+"Marshall, South Dakota, US",84046091,1.0,red
+"Meade, South Dakota, US",84046093,0.5,orange
+"Miner, South Dakota, US",84046097,0.0,green
+"Minnehaha, South Dakota, US",84046099,0.32508173750583835,yellow
+"Moody, South Dakota, US",84046101,0.36363636363636365,yellow
+"Oglala Lakota, South Dakota, US",84046102,1.0,red
+"Pennington, South Dakota, US",84046103,1.0,red
+"Roberts, South Dakota, US",84046109,0.6842105263157895,orange
+"Sanborn, South Dakota, US",84046111,1.0,red
+"Spink, South Dakota, US",84046115,0.0,green
+"Stanley, South Dakota, US",84046117,0.0,green
+"Sully, South Dakota, US",84046119,0.0,green
+"Todd, South Dakota, US",84046121,0.8095238095238094,red
+"Turner, South Dakota, US",84046125,0.2727272727272727,yellow
+"Union, South Dakota, US",84046127,0.25,yellow
+"Walworth, South Dakota, US",84046129,0.0,green
+"Yankton, South Dakota, US",84046135,0.78125,orange
+"Ziebach, South Dakota, US",84046137,0.0,green
+"Anderson, Tennessee, US",84047001,0.5217391304347826,orange
+"Bedford, Tennessee, US",84047003,0.1832669322709163,yellow
+"Benton, Tennessee, US",84047005,0.25,yellow
+"Bledsoe, Tennessee, US",84047007,0.005132591958939264,green
+"Blount, Tennessee, US",84047009,0.14705882352941177,yellow
+"Bradley, Tennessee, US",84047011,0.6521739130434783,orange
+"Campbell, Tennessee, US",84047013,0.07142857142857144,green
+"Cannon, Tennessee, US",84047015,0.0,green
+"Carroll, Tennessee, US",84047017,0.8666666666666667,red
+"Carter, Tennessee, US",84047019,0.11764705882352942,yellow
+"Cheatham, Tennessee, US",84047021,0.9538461538461539,red
+"Chester, Tennessee, US",84047023,0.0,green
+"Claiborne, Tennessee, US",84047025,0.33333333333333337,yellow
+"Clay, Tennessee, US",84047027,0.0,green
+"Cocke, Tennessee, US",84047029,0.3333333333333333,yellow
+"Coffee, Tennessee, US",84047031,0.5526315789473685,orange
+"Crockett, Tennessee, US",84047033,0.7142857142857143,orange
+"Cumberland, Tennessee, US",84047035,0.3333333333333333,yellow
+"Davidson, Tennessee, US",84047037,0.7850790513833992,orange
+"Decatur, Tennessee, US",84047039,0.28571428571428575,yellow
+"DeKalb,Tennessee,US",84047041,0.37037037037037035,yellow
+"Dickson, Tennessee, US",84047043,0.24590163934426232,yellow
+"Dyer, Tennessee, US",84047045,0.25,yellow
+"Fayette, Tennessee, US",84047047,0.7234042553191489,orange
+"Fentress, Tennessee, US",84047049,1.0,red
+"Franklin, Tennessee, US",84047051,0.20689655172413793,yellow
+"Gibson, Tennessee, US",84047053,0.2972972972972973,yellow
+"Giles, Tennessee, US",84047055,0.7499999999999999,orange
+"Grainger, Tennessee, US",84047057,0.0,green
+"Greene, Tennessee, US",84047059,0.07142857142857144,green
+"Grundy, Tennessee, US",84047061,0.06666666666666667,green
+"Hamblen, Tennessee, US",84047063,0.3157894736842105,yellow
+"Hamilton, Tennessee, US",84047065,0.9829931972789115,red
+"Hardeman, Tennessee, US",84047069,0.308411214953271,yellow
+"Hardin, Tennessee, US",84047071,0.8333333333333334,red
+"Hawkins, Tennessee, US",84047073,0.0,green
+"Haywood, Tennessee, US",84047075,0.2608695652173913,yellow
+"Henderson, Tennessee, US",84047077,0.4444444444444445,orange
+"Henry, Tennessee, US",84047079,0.9090909090909091,red
+"Hickman, Tennessee, US",84047081,0.03614457831325301,green
+"Houston, Tennessee, US",84047083,0.33333333333333337,yellow
+"Humphreys, Tennessee, US",84047085,0.08333333333333334,green
+"Jackson, Tennessee, US",84047087,0.8,red
+"Jefferson, Tennessee, US",84047089,0.0,green
+"Johnson, Tennessee, US",84047091,0.9090909090909091,red
+"Knox, Tennessee, US",84047093,0.45909090909090905,orange
+"Lake, Tennessee, US",84047095,0.9971014492753623,red
+"Lauderdale, Tennessee, US",84047097,1.0,red
+"Lawrence, Tennessee, US",84047099,0.08333333333333334,green
+"Lewis, Tennessee, US",84047101,0.0,green
+"Lincoln, Tennessee, US",84047103,0.15384615384615385,yellow
+"Loudon, Tennessee, US",84047105,1.0,red
+"McMinn, Tennessee, US",84047107,0.08854166666666667,green
+"McNairy, Tennessee, US",84047109,0.125,yellow
+"Macon, Tennessee, US",84047111,1.0,red
+"Madison, Tennessee, US",84047113,0.21296296296296294,yellow
+"Marion, Tennessee, US",84047115,0.2857142857142857,yellow
+"Marshall, Tennessee, US",84047117,0.15384615384615385,yellow
+"Maury, Tennessee, US",84047119,0.7272727272727273,orange
+"Meigs, Tennessee, US",84047121,0.0,green
+"Monroe, Tennessee, US",84047123,1.0,red
+"Montgomery, Tennessee, US",84047125,0.6564885496183206,orange
+"Moore, Tennessee, US",84047127,0.0,green
+"Morgan, Tennessee, US",84047129,0.923076923076923,red
+"Obion, Tennessee, US",84047131,0.5,orange
+"Overton, Tennessee, US",84047133,1.0,red
+"Perry, Tennessee, US",84047135,0.0,green
+"Polk, Tennessee, US",84047139,0.33333333333333337,yellow
+"Putnam, Tennessee, US",84047141,1.0,red
+"Rhea, Tennessee, US",84047143,1.0,red
+"Roane, Tennessee, US",84047145,0.25,yellow
+"Robertson, Tennessee, US",84047147,0.9520958083832336,red
+"Rutherford, Tennessee, US",84047149,0.7017208413001913,orange
+"Scott, Tennessee, US",84047151,0.0,green
+"Sequatchie, Tennessee, US",84047153,0.6,orange
+"Sevier, Tennessee, US",84047155,0.1276595744680851,yellow
+"Shelby, Tennessee, US",84047157,0.8182863714778609,red
+"Smith, Tennessee, US",84047159,0.5555555555555556,orange
+"Stewart, Tennessee, US",84047161,0.25,yellow
+"Sullivan, Tennessee, US",84047163,0.12244897959183672,yellow
+"Sumner, Tennessee, US",84047165,0.2580071174377224,yellow
+"Tipton, Tennessee, US",84047167,0.8704028021015762,red
+"Trousdale, Tennessee, US",84047169,0.020454545454545454,green
+"Unicoi, Tennessee, US",84047171,0.33333333333333337,yellow
+"Union, Tennessee, US",84047173,0.5,orange
+"Van Buren, Tennessee, US",84047175,1.0,red
+"Warren, Tennessee, US",84047177,0.6666666666666667,orange
+"Washington, Tennessee, US",84047179,0.40909090909090906,orange
+"Wayne, Tennessee, US",84047181,1.0,red
+"Weakley, Tennessee, US",84047183,0.19999999999999998,yellow
+"White, Tennessee, US",84047185,0.4347826086956522,orange
+"Williamson, Tennessee, US",84047187,0.2680965147453083,yellow
+"Wilson, Tennessee, US",84047189,0.42473118279569894,orange
+"Anderson, Texas, US",84048001,0.8837209302325582,red
+"Andrews, Texas, US",84048003,0.08695652173913045,green
+"Angelina, Texas, US",84048005,0.8571428571428572,red
+"Aransas, Texas, US",84048007,0.5,orange
+"Armstrong, Texas, US",84048011,0.0,green
+"Atascosa, Texas, US",84048013,1.0,red
+"Austin, Texas, US",84048015,0.6666666666666666,orange
+"Bailey, Texas, US",84048017,1.0,red
+"Bandera, Texas, US",84048019,0.0,green
+"Bastrop, Texas, US",84048021,0.8315789473684211,red
+"Bee, Texas, US",84048025,0.0,green
+"Bell, Texas, US",84048027,0.6837606837606838,orange
+"Bexar, Texas, US",84048029,0.8649669499527856,red
+"Blanco, Texas, US",84048031,0.0,green
+"Bosque, Texas, US",84048035,0.33333333333333337,yellow
+"Bowie, Texas, US",84048037,1.0,red
+"Brazoria, Texas, US",84048039,0.7391304347826088,orange
+"Brazos, Texas, US",84048041,0.7671957671957672,orange
+"Brewster, Texas, US",84048043,0.0,green
+"Briscoe, Texas, US",84048045,0.0,green
+"Brooks, Texas, US",84048047,0.0,green
+"Brown, Texas, US",84048049,0.5652173913043479,orange
+"Burleson, Texas, US",84048051,0.8333333333333334,red
+"Burnet, Texas, US",84048053,0.2,yellow
+"Caldwell, Texas, US",84048055,0.8620689655172414,red
+"Calhoun, Texas, US",84048057,0.0,green
+"Callahan, Texas, US",84048059,0.33333333333333337,yellow
+"Cameron, Texas, US",84048061,0.752136752136752,orange
+"Camp, Texas, US",84048063,1.0,red
+"Carson, Texas, US",84048065,1.0,red
+"Cass, Texas, US",84048067,0.29411764705882354,yellow
+"Castro, Texas, US",84048069,0.5789473684210527,orange
+"Chambers, Texas, US",84048071,0.30952380952380953,yellow
+"Cherokee, Texas, US",84048073,1.0,red
+"Childress, Texas, US",84048075,0.5,orange
+"Clay, Texas, US",84048077,0.0,green
+"Cochran, Texas, US",84048079,0.0,green
+"Coke, Texas, US",84048081,0.0,green
+"Coleman, Texas, US",84048083,0.0,green
+"Collin, Texas, US",84048085,0.5885947046843176,orange
+"Collingsworth, Texas, US",84048087,0.37499999999999994,yellow
+"Colorado, Texas, US",84048089,0.37499999999999994,yellow
+"Comal, Texas, US",84048091,0.25,yellow
+"Comanche, Texas, US",84048093,1.0,red
+"Concho, Texas, US",84048095,0.0,green
+"Cooke, Texas, US",84048097,0.14285714285714288,yellow
+"Coryell, Texas, US",84048099,0.1831683168316832,yellow
+"Cottle, Texas, US",84048101,0.0,green
+"Crane, Texas, US",84048103,0.0,green
+"Crosby, Texas, US",84048107,1.0,red
+"Dallam, Texas, US",84048111,0.8181818181818181,red
+"Dallas, Texas, US",84048113,0.8749999999999999,red
+"Dawson, Texas, US",84048115,0.6956521739130436,orange
+"Deaf Smith, Texas, US",84048117,0.9877300613496933,red
+"Delta, Texas, US",84048119,0.0,green
+"Denton, Texas, US",84048121,0.7484407484407484,orange
+"DeWitt, Texas, US",84048123,0.2105263157894737,yellow
+"Dickens, Texas, US",84048125,0.0,green
+"Dimmit, Texas, US",84048127,0.0,green
+"Donley, Texas, US",84048129,0.06976744186046512,green
+"Duval, Texas, US",84048131,0.0,green
+"Eastland, Texas, US",84048133,0.5,orange
+"Ector, Texas, US",84048135,0.6557377049180328,orange
+"Ellis, Texas, US",84048139,0.8484848484848485,red
+"El Paso, Texas, US",84048141,0.930193439865433,red
+"Erath, Texas, US",84048143,0.10526315789473685,yellow
+"Falls, Texas, US",84048145,0.0,green
+"Fannin, Texas, US",84048147,0.38095238095238093,yellow
+"Fayette, Texas, US",84048149,0.5416666666666667,orange
+"Floyd, Texas, US",84048153,0.5,orange
+"Fort Bend, Texas, US",84048157,0.5151515151515151,orange
+"Franklin, Texas, US",84048159,1.0,red
+"Freestone, Texas, US",84048161,0.0,green
+"Frio, Texas, US",84048163,0.037037037037037035,green
+"Gaines, Texas, US",84048165,1.0,red
+"Galveston, Texas, US",84048167,0.11864406779661016,yellow
+"Garza, Texas, US",84048169,0.33333333333333337,yellow
+"Gillespie, Texas, US",84048171,0.33333333333333337,yellow
+"Glasscock, Texas, US",84048173,0.0,green
+"Goliad, Texas, US",84048175,0.0,green
+"Gonzales, Texas, US",84048177,0.7745098039215688,orange
+"Gray, Texas, US",84048179,0.5405405405405405,orange
+"Grayson, Texas, US",84048181,0.9349112426035504,red
+"Gregg, Texas, US",84048183,0.8951612903225806,red
+"Grimes, Texas, US",84048185,0.5679012345679012,orange
+"Guadalupe, Texas, US",84048187,0.4852941176470588,orange
+"Hale, Texas, US",84048189,0.7741935483870968,orange
+"Hamilton, Texas, US",84048193,0.28571428571428575,yellow
+"Hansford, Texas, US",84048195,0.5714285714285715,orange
+"Hardin, Texas, US",84048199,0.08602150537634408,green
+"Harris, Texas, US",84048201,0.7492576095025985,orange
+"Harrison, Texas, US",84048203,0.22797927461139897,yellow
+"Hartley, Texas, US",84048205,0.7499999999999999,orange
+"Hays, Texas, US",84048209,0.26016260162601623,yellow
+"Hemphill, Texas, US",84048211,0.0,green
+"Henderson, Texas, US",84048213,0.5526315789473685,orange
+"Hidalgo, Texas, US",84048215,0.5019011406844106,orange
+"Hill, Texas, US",84048217,0.5714285714285715,orange
+"Hockley, Texas, US",84048219,0.5714285714285715,orange
+"Hood, Texas, US",84048221,0.0,green
+"Hopkins, Texas, US",84048223,0.125,yellow
+"Houston, Texas, US",84048225,0.9928571428571429,red
+"Howard, Texas, US",84048227,0.0,green
+"Hunt, Texas, US",84048231,0.45833333333333337,orange
+"Hutchinson, Texas, US",84048233,1.0,red
+"Jack, Texas, US",84048237,0.0,green
+"Jackson, Texas, US",84048239,0.125,yellow
+"Jasper, Texas, US",84048241,0.5599999999999999,orange
+"Jefferson, Texas, US",84048245,0.6587301587301588,orange
+"Jim Hogg, Texas, US",84048247,0.33333333333333337,yellow
+"Jim Wells, Texas, US",84048249,0.37499999999999994,yellow
+"Johnson, Texas, US",84048251,0.935064935064935,red
+"Jones, Texas, US",84048253,0.3172413793103448,yellow
+"Karnes, Texas, US",84048255,0.5,orange
+"Kaufman, Texas, US",84048257,0.8297872340425532,red
+"Kendall, Texas, US",84048259,0.5333333333333333,orange
+"Kerr, Texas, US",84048265,0.2,yellow
+"Kimble, Texas, US",84048267,0.0,green
+"Kleberg, Texas, US",84048273,0.7,orange
+"Knox, Texas, US",84048275,0.0,green
+"Lamar, Texas, US",84048277,0.5038167938931297,orange
+"Lamb, Texas, US",84048279,0.7692307692307692,orange
+"Lampasas, Texas, US",84048281,0.0,green
+"La Salle, Texas, US",84048283,0.6666666666666667,orange
+"Lavaca, Texas, US",84048285,0.6666666666666667,orange
+"Lee, Texas, US",84048287,0.5,orange
+"Leon, Texas, US",84048289,0.0,green
+"Liberty, Texas, US",84048291,0.43636363636363634,orange
+"Limestone, Texas, US",84048293,0.29411764705882354,yellow
+"Lipscomb, Texas, US",84048295,0.0,green
+"Live Oak, Texas, US",84048297,0.6666666666666667,orange
+"Llano, Texas, US",84048299,0.0,green
+"Lubbock, Texas, US",84048303,0.17391304347826084,yellow
+"Lynn, Texas, US",84048305,0.0,green
+"McCulloch, Texas, US",84048307,0.0,green
+"McLennan, Texas, US",84048309,0.12903225806451613,yellow
+"Madison, Texas, US",84048313,0.7692307692307692,orange
+"Marion, Texas, US",84048315,-0.11111111111111112,green
+"Martin, Texas, US",84048317,0.0,green
+"Mason, Texas, US",84048319,0.11764705882352941,yellow
+"Matagorda, Texas, US",84048321,0.03174603174603175,green
+"Maverick, Texas, US",84048323,1.0,red
+"Medina, Texas, US",84048325,0.8904109589041096,red
+"Midland, Texas, US",84048329,0.5833333333333334,orange
+"Milam, Texas, US",84048331,0.8333333333333334,red
+"Mitchell, Texas, US",84048335,0.0,green
+"Montague, Texas, US",84048337,0.0,green
+"Montgomery, Texas, US",84048339,0.6464208242950108,orange
+"Moore, Texas, US",84048341,0.2835164835164835,yellow
+"Morris, Texas, US",84048343,1.0,red
+"Motley, Texas, US",84048345,0.0,green
+"Nacogdoches, Texas, US",84048347,0.5248226950354611,orange
+"Navarro, Texas, US",84048349,0.125,yellow
+"Newton, Texas, US",84048351,0.0,green
+"Nolan, Texas, US",84048353,0.0,green
+"Nueces, Texas, US",84048355,0.9742489270386265,red
+"Ochiltree, Texas, US",84048357,0.44000000000000006,orange
+"Oldham, Texas, US",84048359,0.0,green
+"Orange, Texas, US",84048361,0.05333333333333334,green
+"Palo Pinto, Texas, US",84048363,0.0,green
+"Panola, Texas, US",84048365,0.07954545454545453,green
+"Parker, Texas, US",84048367,0.9473684210526316,red
+"Parmer, Texas, US",84048369,1.0,red
+"Pecos, Texas, US",84048371,0.8,red
+"Polk, Texas, US",84048373,0.6521739130434783,orange
+"Potter, Texas, US",84048375,0.8858858858858859,red
+"Rains, Texas, US",84048379,0.0,green
+"Randall, Texas, US",84048381,0.9221014492753622,red
+"Red River, Texas, US",84048387,0.8823529411764706,red
+"Reeves, Texas, US",84048389,0.0,green
+"Refugio, Texas, US",84048391,0.8,red
+"Roberts, Texas, US",84048393,0.0,green
+"Robertson, Texas, US",84048395,0.6666666666666667,orange
+"Rockwall, Texas, US",84048397,0.7835051546391752,orange
+"Runnels, Texas, US",84048399,0.0,green
+"Rusk, Texas, US",84048401,0.13793103448275862,yellow
+"Sabine, Texas, US",84048403,1.0,red
+"San Augustine, Texas, US",84048405,0.5,orange
+"San Jacinto, Texas, US",84048407,0.16666666666666666,yellow
+"San Patricio, Texas, US",84048409,0.6086956521739131,orange
+"Scurry, Texas, US",84048415,0.0,green
+"Shackelford, Texas, US",84048417,0.0,green
+"Shelby, Texas, US",84048419,0.5104166666666667,orange
+"Sherman, Texas, US",84048421,0.13043478260869565,yellow
+"Smith, Texas, US",84048423,0.36363636363636365,yellow
+"Starr, Texas, US",84048427,1.0,red
+"Stephens, Texas, US",84048429,1.0,red
+"Swisher, Texas, US",84048437,0.7,orange
+"Tarrant, Texas, US",84048439,0.8781180928323336,red
+"Taylor, Texas, US",84048441,0.08284023668639054,green
+"Terry, Texas, US",84048445,0.16666666666666669,yellow
+"Titus, Texas, US",84048449,1.0,red
+"Tom Green, Texas, US",84048451,0.075,green
+"Travis, Texas, US",84048453,0.7117794486215538,orange
+"Trinity, Texas, US",84048455,0.0,green
+"Tyler, Texas, US",84048457,0.7499999999999999,orange
+"Upshur, Texas, US",84048459,0.16666666666666669,yellow
+"Uvalde, Texas, US",84048463,-0.11111111111111112,green
+"Val Verde, Texas, US",84048465,0.0,green
+"Van Zandt, Texas, US",84048467,0.625,orange
+"Victoria, Texas, US",84048469,0.13559322033898305,yellow
+"Walker, Texas, US",84048471,0.6330275229357797,orange
+"Waller, Texas, US",84048473,0.4,orange
+"Washington, Texas, US",84048477,0.2298850574712644,yellow
+"Webb, Texas, US",84048479,0.3861003861003861,yellow
+"Wharton, Texas, US",84048481,0.15789473684210525,yellow
+"Wheeler, Texas, US",84048483,0.06666666666666667,green
+"Wichita, Texas, US",84048485,0.14285714285714288,yellow
+"Wilbarger, Texas, US",84048487,1.0,red
+"Willacy, Texas, US",84048489,0.0,green
+"Williamson, Texas, US",84048491,0.8263665594855305,red
+"Wilson, Texas, US",84048493,0.16129032258064516,yellow
+"Winkler, Texas, US",84048495,0.0,green
+"Wise, Texas, US",84048497,0.6153846153846154,orange
+"Wood, Texas, US",84048499,1.0,red
+"Yoakum, Texas, US",84048501,0.0,green
+"Young, Texas, US",84048503,0.0,green
+"Zapata, Texas, US",84048505,0.0,green
+"Zavala, Texas, US",84048507,0.8749999999999999,red
+"Beaver, Utah, US",84049001,0.0,green
+"Cache, Utah, US",84049005,0.0,green
+"Carbon, Utah, US",84049007,0.0,green
+"Davis, Utah, US",84049011,0.4009661835748793,orange
+"Duchesne, Utah, US",84049013,0.0,green
+"Emery, Utah, US",84049015,0.0,green
+"Garfield, Utah, US",84049017,0.0,green
+"Grand, Utah, US",84049019,0.0,green
+"Iron, Utah, US",84049021,0.0,green
+"Kane, Utah, US",84049025,0.0,green
+"Salt Lake, Utah, US",84049035,0.8805714285714286,red
+"San Juan, Utah, US",84049037,0.9064039408866994,red
+"Summit, Utah, US",84049043,0.11285266457680251,yellow
+"Tooele, Utah, US",84049045,0.9814814814814814,red
+"Uintah, Utah, US",84049047,0.0,green
+"Utah, Utah, US",84049049,0.441334768568353,orange
+"Wasatch, Utah, US",84049051,0.6371681415929203,orange
+"Washington,Utah,US",84049053,0.0,green
+"Addison, Vermont, US",84050001,0.0,green
+"Bennington, Vermont, US",84050003,0.09999999999999999,green
+"Caledonia, Vermont, US",84050005,0.0,green
+"Chittenden, Vermont, US",84050007,0.036585365853658534,green
+"Essex, Vermont, US",84050009,0.0,green
+"Franklin, Vermont, US",84050011,0.0,green
+"Grand Isle, Vermont, US",84050013,0.0,green
+"Lamoille, Vermont, US",84050015,0.14285714285714288,yellow
+"Orange, Vermont, US",84050017,0.0,green
+"Orleans, Vermont, US",84050019,0.0,green
+"Rutland, Vermont, US",84050021,0.03571428571428572,green
+"Washington, Vermont, US",84050023,0.029411764705882356,green
+"Windham, Vermont, US",84050025,0.08571428571428572,green
+"Windsor, Vermont, US",84050027,0.16666666666666666,yellow
+"Accomack, Virginia, US",84051001,0.6132511556240369,orange
+"Albemarle, Virginia, US",84051003,0.5443037974683543,orange
+"Alleghany, Virginia, US",84051005,1.0,red
+"Amelia, Virginia, US",84051007,0.4285714285714286,orange
+"Amherst, Virginia, US",84051009,1.0,red
+"Appomattox, Virginia, US",84051011,0.15384615384615385,yellow
+"Arlington, Virginia, US",84051013,0.8076463560334527,red
+"Augusta, Virginia, US",84051015,0.7796610169491525,orange
+"Bedford, Virginia, US",84051019,0.2142857142857143,yellow
+"Botetourt, Virginia, US",84051023,0.12121212121212123,yellow
+"Brunswick, Virginia, US",84051025,0.3181818181818181,yellow
+"Buchanan, Virginia, US",84051027,0.16666666666666669,yellow
+"Buckingham, Virginia, US",84051029,0.8218527315914489,red
+"Campbell, Virginia, US",84051031,0.0,green
+"Caroline, Virginia, US",84051033,0.39999999999999997,yellow
+"Carroll, Virginia, US",84051035,0.8297872340425532,red
+"Charles City, Virginia, US",84051036,0.37499999999999994,yellow
+"Charlotte, Virginia, US",84051037,0.35714285714285715,yellow
+"Chesterfield, Virginia, US",84051041,0.8782894736842105,red
+"Clarke, Virginia, US",84051043,0.3333333333333333,yellow
+"Craig, Virginia, US",84051045,0.0,green
+"Culpeper, Virginia, US",84051047,1.0,red
+"Cumberland, Virginia, US",84051049,1.0,red
+"Dinwiddie, Virginia, US",84051053,1.0,red
+"Essex, Virginia, US",84051057,0.6944444444444444,orange
+"Fairfax, Virginia, US",84051059,0.8892808152067412,red
+"Fauquier, Virginia, US",84051061,0.9668874172185431,red
+"Floyd, Virginia, US",84051063,0.5,orange
+"Fluvanna, Virginia, US",84051065,0.05454545454545454,green
+"Franklin, Virginia, US",84051067,0.3684210526315789,yellow
+"Frederick, Virginia, US",84051069,0.916030534351145,red
+"Giles, Virginia, US",84051071,-0.7499999999999999,green
+"Gloucester, Virginia, US",84051073,0.08333333333333334,green
+"Goochland, Virginia, US",84051075,0.20588235294117646,yellow
+"Grayson, Virginia, US",84051077,0.78125,orange
+"Greene, Virginia, US",84051079,0.75,orange
+"Greensville, Virginia, US",84051081,0.4736842105263158,orange
+"Halifax, Virginia, US",84051083,0.7,orange
+"Hanover, Virginia, US",84051085,0.9424460431654675,red
+"Henrico, Virginia, US",84051087,0.7619808306709266,orange
+"Henry, Virginia, US",84051089,1.0,red
+"Highland, Virginia, US",84051091,0.0,green
+"Isle of Wight, Virginia, US",84051093,0.16129032258064516,yellow
+"James City, Virginia, US",84051095,0.2608695652173913,yellow
+"King and Queen, Virginia, US",84051097,0.5,orange
+"King George, Virginia, US",84051099,0.5862068965517241,orange
+"King William, Virginia, US",84051101,0.6153846153846154,orange
+"Lancaster, Virginia, US",84051103,0.2,yellow
+"Lee, Virginia, US",84051105,0.0,green
+"Loudoun, Virginia, US",84051107,0.8868360277136259,red
+"Louisa, Virginia, US",84051109,0.2777777777777778,yellow
+"Lunenburg, Virginia, US",84051111,0.25,yellow
+"Madison, Virginia, US",84051113,0.8666666666666667,red
+"Mathews, Virginia, US",84051115,0.0,green
+"Mecklenburg, Virginia, US",84051117,0.983050847457627,red
+"Middlesex, Virginia, US",84051119,0.33333333333333337,yellow
+"Montgomery, Virginia, US",84051121,0.04838709677419355,green
+"Nelson, Virginia, US",84051125,0.7499999999999999,orange
+"New Kent, Virginia, US",84051127,0.08695652173913045,green
+"Northampton, Virginia, US",84051131,0.3495934959349593,yellow
+"Northumberland, Virginia, US",84051133,1.0,red
+"Nottoway, Virginia, US",84051135,0.6666666666666667,orange
+"Orange, Virginia, US",84051137,1.0,red
+"Page, Virginia, US",84051139,0.4088397790055249,orange
+"Patrick, Virginia, US",84051141,1.0,red
+"Pittsylvania, Virginia, US",84051143,1.0,red
+"Powhatan, Virginia, US",84051145,0.8749999999999999,red
+"Prince Edward, Virginia, US",84051147,0.5,orange
+"Prince George, Virginia, US",84051149,0.65,orange
+"Prince William, Virginia, US",84051153,0.9659303631598651,red
+"Pulaski, Virginia, US",84051155,0.16666666666666669,yellow
+"Rappahannock, Virginia, US",84051157,0.8181818181818181,red
+"Richmond, Virginia, US",84051159,0.5687732342007435,orange
+"Roanoke, Virginia, US",84051161,0.9454545454545454,red
+"Rockbridge, Virginia, US",84051163,1.0,red
+"Rockingham, Virginia, US",84051165,0.4559386973180076,orange
+"Russell, Virginia, US",84051167,0.6666666666666667,orange
+"Scott, Virginia, US",84051169,0.0,green
+"Shenandoah, Virginia, US",84051171,0.5625000000000001,orange
+"Smyth, Virginia, US",84051173,0.22222222222222224,yellow
+"Southampton, Virginia, US",84051175,0.05529953917050691,green
+"Spotsylvania, Virginia, US",84051177,0.841409691629956,red
+"Stafford, Virginia, US",84051179,0.9547038327526132,red
+"Surry, Virginia, US",84051181,0.33333333333333337,yellow
+"Sussex, Virginia, US",84051183,1.0,red
+"Tazewell, Virginia, US",84051185,-0.14285714285714288,green
+"Warren, Virginia, US",84051187,0.6,orange
+"Washington, Virginia, US",84051191,0.18,yellow
+"Westmoreland, Virginia, US",84051193,0.34375,yellow
+"Wise, Virginia, US",84051195,0.06451612903225806,green
+"Wythe, Virginia, US",84051197,0.5454545454545454,orange
+"York, Virginia, US",84051199,0.39473684210526316,yellow
+"Alexandria, Virginia, US",84051510,0.8375973303670744,red
+"Bristol, Virginia, US",84051520,0.25,yellow
+"Buena Vista, Virginia, US",84051530,0.7499999999999999,orange
+"Charlottesville, Virginia, US",84051540,0.3243243243243243,yellow
+"Chesapeake, Virginia, US",84051550,0.7128205128205128,orange
+"Colonial Heights, Virginia, US",84051570,0.3709677419354838,yellow
+"Covington, Virginia, US",84051580,0.5,orange
+"Danville, Virginia, US",84051590,0.34375,yellow
+"Emporia, Virginia, US",84051595,0.37500000000000006,yellow
+"Fairfax City, Virginia, US",84051600,0.3076923076923077,yellow
+"Falls Church, Virginia, US",84051610,0.2692307692307692,yellow
+"Franklin City, Virginia, US",84051620,0.65,orange
+"Fredericksburg, Virginia, US",84051630,0.9880952380952381,red
+"Galax, Virginia, US",84051640,0.8673469387755102,red
+"Hampton, Virginia, US",84051650,0.4646464646464646,orange
+"Harrisonburg, Virginia, US",84051660,0.2589792060491493,yellow
+"Hopewell, Virginia, US",84051670,1.0,red
+"Lexington, Virginia, US",84051678,0.6666666666666667,orange
+"Lynchburg, Virginia, US",84051680,0.2978723404255319,yellow
+"Manassas,Virginia,US",84051683,1.0,red
+"Manassas Park, Virginia, US",84051685,0.9882352941176471,red
+"Martinsville, Virginia, US",84051690,1.0,red
+"Newport News, Virginia, US",84051700,0.8991596638655461,red
+"Norfolk, Virginia, US",84051710,0.6822429906542057,orange
+"Norton, Virginia, US",84051720,0.0,green
+"Petersburg, Virginia, US",84051730,1.0,red
+"Poquoson, Virginia, US",84051735,0.0,green
+"Portsmouth, Virginia, US",84051740,0.38674033149171266,yellow
+"Radford, Virginia, US",84051750,0.0,green
+"Richmond City, Virginia, US",84051760,0.9931506849315068,red
+"Roanoke City, Virginia, US",84051770,0.7567567567567568,orange
+"Salem, Virginia, US",84051775,0.09090909090909091,green
+"Staunton, Virginia, US",84051790,0.85,red
+"Suffolk, Virginia, US",84051800,0.6506024096385542,orange
+"Virginia Beach, Virginia, US",84051810,0.45705521472392635,orange
+"Waynesboro, Virginia, US",84051820,0.7,orange
+"Williamsburg, Virginia, US",84051830,0.372093023255814,yellow
+"Winchester, Virginia, US",84051840,1.0,red
+"Adams, Washington, US",84053001,0.0425531914893617,green
+"Asotin, Washington, US",84053003,0.0,green
+"Benton, Washington, US",84053005,0.4919093851132686,orange
+"Chelan, Washington, US",84053007,0.7934782608695653,orange
+"Clallam, Washington, US",84053009,0.3076923076923077,yellow
+"Clark, Washington, US",84053011,0.3469387755102041,yellow
+"Columbia, Washington, US",84053013,0.0,green
+"Cowlitz, Washington, US",84053015,0.14285714285714285,yellow
+"Douglas, Washington, US",84053017,0.4555555555555555,orange
+"Ferry, Washington, US",84053019,0.0,green
+"Franklin, Washington, US",84053021,0.3802816901408451,yellow
+"Garfield, Washington, US",84053023,0.0,green
+"Grant, Washington, US",84053025,0.0970873786407767,green
+"Grays Harbor, Washington, US",84053027,0.16666666666666666,yellow
+"Island, Washington, US",84053029,0.0273224043715847,green
+"Jefferson, Washington, US",84053031,0.06666666666666667,green
+"King, Washington, US",84053033,0.3162140360311912,yellow
+"Kitsap, Washington, US",84053035,0.07692307692307693,green
+"Kittitas, Washington, US",84053037,1.0,red
+"Klickitat, Washington, US",84053039,0.923076923076923,red
+"Lewis, Washington, US",84053041,0.47619047619047616,orange
+"Lincoln, Washington, US",84053043,0.0,green
+"Mason, Washington, US",84053045,0.3333333333333333,yellow
+"Okanogan, Washington, US",84053047,0.868421052631579,red
+"Pacific, Washington, US",84053049,0.0,green
+"Pend Oreille, Washington, US",84053051,0.0,green
+"Pierce, Washington, US",84053053,0.2943432406519655,yellow
+"San Juan, Washington, US",84053055,0.0,green
+"Skagit, Washington, US",84053057,0.24434389140271492,yellow
+"Skamania, Washington, US",84053059,0.0,green
+"Snohomish, Washington, US",84053061,0.17311124330755503,yellow
+"Spokane, Washington, US",84053063,0.17302052785923755,yellow
+"Stevens, Washington, US",84053065,0.25,yellow
+"Thurston, Washington, US",84053067,0.10309278350515465,yellow
+"Wahkiakum, Washington, US",84053069,0.5,orange
+"Walla Walla, Washington, US",84053071,0.13999999999999999,yellow
+"Whatcom, Washington, US",84053073,0.20072992700729927,yellow
+"Whitman, Washington, US",84053075,0.11111111111111112,yellow
+"Yakima, Washington, US",84053077,0.9173660426081343,red
+"Barbour, West Virginia, US",84054001,0.0,green
+"Berkeley, West Virginia, US",84054003,0.41134751773049644,orange
+"Boone, West Virginia, US",84054005,0.09090909090909091,green
+"Braxton, West Virginia, US",84054007,0.0,green
+"Brooke, West Virginia, US",84054009,0.0,green
+"Cabell, West Virginia, US",84054011,0.2727272727272727,yellow
+"Clay, West Virginia, US",84054015,0.0,green
+"Fayette, West Virginia, US",84054019,0.2558139534883721,yellow
+"Gilmer, West Virginia, US",84054021,0.33333333333333337,yellow
+"Grant, West Virginia, US",84054023,0.8571428571428572,red
+"Greenbrier, West Virginia, US",84054025,0.2,yellow
+"Hampshire, West Virginia, US",84054027,0.5,orange
+"Hancock, West Virginia, US",84054029,0.0,green
+"Hardy, West Virginia, US",84054031,0.96875,red
+"Harrison, West Virginia, US",84054033,0.08888888888888889,green
+"Jackson, West Virginia, US",84054035,-0.011111111111111112,green
+"Jefferson, West Virginia, US",84054037,0.35064935064935066,yellow
+"Kanawha, West Virginia, US",84054039,0.35537190082644626,yellow
+"Lewis, West Virginia, US",84054041,0.5,orange
+"Lincoln, West Virginia, US",84054043,0.16666666666666669,yellow
+"Logan, West Virginia, US",84054045,0.3076923076923077,yellow
+"McDowell, West Virginia, US",84054047,0.0,green
+"Marion, West Virginia, US",84054049,0.07547169811320756,green
+"Marshall, West Virginia, US",84054051,0.4,orange
+"Mason, West Virginia, US",84054053,0.36363636363636365,yellow
+"Mercer, West Virginia, US",84054055,0.33333333333333337,yellow
+"Mineral, West Virginia, US",84054057,0.7894736842105263,orange
+"Mingo, West Virginia, US",84054059,0.5,orange
+"Monongalia, West Virginia, US",84054061,0.07446808510638298,green
+"Monroe, West Virginia, US",84054063,0.0,green
+"Morgan, West Virginia, US",84054065,0.14285714285714288,yellow
+"Nicholas, West Virginia, US",84054067,0.28571428571428575,yellow
+"Ohio, West Virginia, US",84054069,0.06666666666666667,green
+"Pendleton, West Virginia, US",84054071,0.0,green
+"Pleasants, West Virginia, US",84054073,0.0,green
+"Pocahontas, West Virginia, US",84054075,1.0,red
+"Preston, West Virginia, US",84054077,0.14285714285714288,yellow
+"Putnam, West Virginia, US",84054079,0.15384615384615385,yellow
+"Raleigh, West Virginia, US",84054081,0.8571428571428572,red
+"Randolph, West Virginia, US",84054083,0.6666666666666667,orange
+"Ritchie, West Virginia, US",84054085,0.0,green
+"Roane, West Virginia, US",84054087,0.25,yellow
+"Summers, West Virginia, US",84054089,0.0,green
+"Taylor, West Virginia, US",84054091,0.0,green
+"Tucker, West Virginia, US",84054093,0.0,green
+"Tyler, West Virginia, US",84054095,0.0,green
+"Upshur, West Virginia, US",84054097,0.33333333333333337,yellow
+"Wayne, West Virginia, US",84054099,0.0392156862745098,green
+"Wetzel, West Virginia, US",84054103,0.5714285714285715,orange
+"Wirt, West Virginia, US",84054105,0.0,green
+"Wood, West Virginia, US",84054107,0.3125,yellow
+"Wyoming, West Virginia, US",84054109,1.0,red
+"Adams, Wisconsin, US",84055001,0.0,green
+"Ashland, Wisconsin, US",84055003,0.0,green
+"Barron, Wisconsin, US",84055005,0.0,green
+"Bayfield, Wisconsin, US",84055007,0.0,green
+"Brown, Wisconsin, US",84055009,0.2848279751833051,yellow
+"Buffalo, Wisconsin, US",84055011,0.0,green
+"Calumet, Wisconsin, US",84055015,0.5774647887323944,orange
+"Chippewa, Wisconsin, US",84055017,0.9285714285714287,red
+"Clark, Wisconsin, US",84055019,0.47619047619047616,orange
+"Columbia, Wisconsin, US",84055021,0.25806451612903225,yellow
+"Crawford, Wisconsin, US",84055023,0.4285714285714286,orange
+"Dane, Wisconsin, US",84055025,0.40166204986149584,orange
+"Dodge, Wisconsin, US",84055027,0.8275862068965517,red
+"Door, Wisconsin, US",84055029,0.8333333333333334,red
+"Douglas, Wisconsin, US",84055031,0.6666666666666667,orange
+"Dunn, Wisconsin, US",84055033,0.7999999999999999,orange
+"Eau Claire, Wisconsin, US",84055035,0.7636363636363637,orange
+"Florence, Wisconsin, US",84055037,0.0,green
+"Fond du Lac, Wisconsin, US",84055039,0.9568965517241379,red
+"Forest, Wisconsin, US",84055041,0.8749999999999999,red
+"Grant, Wisconsin, US",84055043,0.21739130434782608,yellow
+"Green, Wisconsin, US",84055045,0.5777777777777778,orange
+"Green Lake, Wisconsin, US",84055047,0.5833333333333334,orange
+"Iowa, Wisconsin, US",84055049,0.25,yellow
+"Iron, Wisconsin, US",84055051,0.0,green
+"Jackson, Wisconsin, US",84055053,0.25,yellow
+"Jefferson, Wisconsin, US",84055055,0.7999999999999999,yellow
+"Juneau, Wisconsin, US",84055057,0.13333333333333333,yellow
+"Kenosha, Wisconsin, US",84055059,0.689119170984456,orange
+"Kewaunee, Wisconsin, US",84055061,0.16129032258064516,yellow
+"La Crosse, Wisconsin, US",84055063,1.0,red
+"Lafayette, Wisconsin, US",84055065,0.3157894736842105,yellow
+"Lincoln, Wisconsin, US",84055069,1.0,red
+"Manitowoc, Wisconsin, US",84055071,0.7499999999999999,orange
+"Marathon, Wisconsin, US",84055073,0.8695652173913044,red
+"Marinette, Wisconsin, US",84055075,0.8181818181818181,red
+"Marquette, Wisconsin, US",84055077,0.0,green
+"Menominee, Wisconsin, US",84055078,0.0,green
+"Milwaukee, Wisconsin, US",84055079,0.8812922614575507,red
+"Monroe, Wisconsin, US",84055081,0.125,yellow
+"Oconto, Wisconsin, US",84055083,0.12820512820512822,yellow
+"Oneida, Wisconsin, US",84055085,0.0,green
+"Outagamie, Wisconsin, US",84055087,0.6,orange
+"Ozaukee, Wisconsin, US",84055089,0.5774647887323944,orange
+"Pepin, Wisconsin, US",84055091,0.14285714285714288,yellow
+"Pierce, Wisconsin, US",84055093,1.0,red
+"Polk, Wisconsin, US",84055095,0.5,orange
+"Portage, Wisconsin, US",84055097,0.0,green
+"Price, Wisconsin, US",84055099,0.0,green
+"Racine, Wisconsin, US",84055101,0.8463302752293578,red
+"Richland, Wisconsin, US",84055103,0.2,yellow
+"Rock, Wisconsin, US",84055105,0.5271084337349398,orange
+"Rusk, Wisconsin, US",84055107,0.0,green
+"St. Croix, Wisconsin, US",84055109,0.9767441860465117,red
+"Sauk, Wisconsin, US",84055111,0.20338983050847456,yellow
+"Sawyer, Wisconsin, US",84055113,0.0,green
+"Shawano, Wisconsin, US",84055115,0.8571428571428572,red
+"Sheboygan, Wisconsin, US",84055117,0.19148936170212766,yellow
+"Trempealeau, Wisconsin, US",84055121,1.0,red
+"Vernon, Wisconsin, US",84055123,1.0,red
+"Vilas, Wisconsin, US",84055125,0.0,green
+"Walworth, Wisconsin, US",84055127,0.5641025641025641,orange
+"Washburn, Wisconsin, US",84055129,0.0,green
+"Washington, Wisconsin, US",84055131,1.0,red
+"Waukesha, Wisconsin, US",84055133,0.8995215311004786,red
+"Waupaca, Wisconsin, US",84055135,0.8571428571428572,red
+"Waushara, Wisconsin, US",84055137,1.0,red
+"Winnebago, Wisconsin, US",84055139,0.6086956521739131,orange
+"Wood, Wisconsin, US",84055141,1.0,red
+"Albany, Wyoming, US",84056001,0.5714285714285715,orange
+"Big Horn, Wyoming, US",84056003,0.0,green
+"Campbell, Wyoming, US",84056005,0.0,green
+"Carbon, Wyoming, US",84056007,1.0,red
+"Converse, Wyoming, US",84056009,0.07692307692307693,green
+"Crook, Wyoming, US",84056011,0.0,green
+"Fremont, Wyoming, US",84056013,0.6137931034482759,orange
+"Goshen, Wyoming, US",84056015,0.0,green
+"Hot Springs, Wyoming, US",84056017,1.0,red
+"Johnson, Wyoming, US",84056019,0.125,yellow
+"Laramie, Wyoming, US",84056021,0.2785714285714286,yellow
+"Lincoln, Wyoming, US",84056023,0.7,orange
+"Natrona, Wyoming, US",84056025,0.8421052631578948,red
+"Niobrara, Wyoming, US",84056027,0.0,green
+"Park, Wyoming, US",84056029,0.0,green
+"Platte, Wyoming, US",84056031,0.0,green
+"Sheridan, Wyoming, US",84056033,0.0,green
+"Sublette, Wyoming, US",84056035,0.0,green
+"Sweetwater, Wyoming, US",84056037,0.5555555555555556,orange
+"Teton, Wyoming, US",84056039,0.052631578947368425,green
+"Uinta, Wyoming, US",84056041,0.5,orange
+"Washakie, Wyoming, US",84056043,1.0,red
+"Out of GA, Georgia, US",84080013,0.3452801615345785,yellow
+"Out of HI, Hawaii, US",84080015,-0.15384615384615385,green
+"Out of IL, Illinois, US",84080017,0.10465116279069768,yellow
+"Out of MI, Michigan, US",84080026,-0.07359307359307359,green
+"Out of OK, Oklahoma, US",84080040,0.0,green
+"Out of TN, Tennessee, US",84080047,0.07159353348729793,green
+"Out of UT, Utah, US",84080049,0.0,green
+"Diamond Princess, US",84088888,0.0,green
+"Unassigned, Alabama, US",84090001,0.0,green
+"Unassigned, Alaska, US",84090002,0.25,yellow
+"Unassigned, Arkansas, US",84090005,-0.058333333333333334,green
+"Unassigned, California, US",84090006,0.0,green
+"Unassigned, Colorado, US",84090008,-0.7787356321839082,green
+"Unassigned, Connecticut, US",84090009,-0.18121911037891267,green
+"Unassigned, Delaware, US",84090010,0.7666666666666666,orange
+"Unassigned, Florida, US",84090012,0.42142857142857143,orange
+"Unassigned, Georgia, US",84090013,0.9759825327510916,red
+"Unassigned, Hawaii, US",84090015,0.0,green
+"Unassigned, Idaho, US",84090016,0.0,green
+"Unassigned, Illinois, US",84090017,-0.025373134328358207,green
+"Unassigned, Indiana, US",84090018,0.0,green
+"Unassigned, Iowa, US",84090019,0.0330188679245283,green
+"Unassigned, Kentucky, US",84090021,-0.002710027100271003,green
+"Unassigned, Louisiana, US",84090022,0.19753086419753088,yellow
+"Unassigned, Maine, US",84090023,-0.09523809523809523,green
+"Unassigned, Maryland, US",84090024,0.0,green
+"Unassigned, Massachusetts, US",84090025,-0.010071942446043165,green
+"Unassigned, Michigan, US",84090026,-0.034106412005457026,green
+"Unassigned, Minnesota, US",84090027,0.7777777777777778,orange
+"Unassigned, Mississippi, US",84090028,0.0,green
+"Unassigned, Missouri, US",84090029,0.0,green
+"Unassigned, Montana, US",84090030,0.0,green
+"Unassigned, Nebraska, US",84090031,0.972972972972973,red
+"Unassigned, Nevada, US",84090032,-0.32795698924731176,green
+"Unassigned, New Hampshire, US",84090033,-0.7450980392156863,green
+"Unassigned, New Jersey, US",84090034,0.0,green
+"Unassigned, New Mexico, US",84090035,0.90625,red
+"Unassigned, New York, US",84090036,0.0,green
+"Unassigned, North Carolina, US",84090037,0.0,green
+"Unassigned, Ohio, US",84090039,0.0,green
+"Unassigned, Oklahoma, US",84090040,0.0,green
+"Unassigned, Oregon, US",84090041,0.0,green
+"Unassigned, Rhode Island, US",84090044,-0.29319882850634554,green
+"Unassigned, Tennessee, US",84090047,0.13484646194926567,yellow
+"Unassigned, Texas, US",84090048,0.0,green
+"Unassigned, Utah, US",84090049,0.0,green
+"Unassigned, Vermont, US",84090050,0.08888888888888889,green
+"Unassigned, Virginia, US",84090051,0.0,green
+"Unassigned, Washington, US",84090053,0.005453306066803,green
+"Unassigned, West Virginia, US",84090054,0.0,green
+"Unassigned, Wisconsin, US",84090055,0.0,green
+"Grand Princess, US",84099999,0.0,green
+"Dukes and Nantucket,Massachusetts,US",84070002,0.25925925925925924,yellow
+"Kansas City,Missouri,US",84070003,0.6195652173913043,orange
+"Michigan Department of Corrections (MDOC), Michigan, US",84070004,0.8736141906873615,red
+"Federal Correctional Institution (FCI), Michigan, US",84070005,0.14035087719298245,yellow
+"Bear River, Utah, US",84070015,0.32584269662921345,yellow
+"Central Utah, Utah, US",84070016,0.11363636363636363,yellow
+"Southeast Utah, Utah, US",84070017,0.23076923076923075,yellow
+"Southwest Utah, Utah, US",84070018,0.9095744680851064,red
+"TriCounty, Utah, US",84070019,0.2727272727272727,yellow
+"Weber-Morgan, Utah, US",84070020,0.8113207547169812,red
