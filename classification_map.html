@@ -94,7 +94,7 @@ var data3=[];
                     data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["max"];
                 data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["c"]];
                 } else {
-                  //  console.log(data["features"][i]["properties"]);
+
                     data["features"][i]["properties"]["v"]=-1;
                 }
             }
@@ -113,16 +113,14 @@ center: [-82.447303,37.753574]
             
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');            
 map.on('load', function() {    
-    
-    
-    // define layer names
+
         var layers = [
           '0-0.1 - Regions where COVID-19 is under control',
           '0.1-0.39 - Regions where new COVID-19 is almost under control',
           '0.4-0.8 - Regions where new COVID-19 cases are high, but falling or constant',
           '0.8-1 - Regions where new COVID-19 cases are high and spreading rapidly'
         ];
-   // [0, '#1a9850'],[0.1, '#ffffb2'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']]; 
+
         var colors = [
           '#1a9850',
           '#ffffb2',
@@ -131,7 +129,6 @@ map.on('load', function() {
         //  '#800026'
         ];
 
-        // create legend
         for (i = 0; i < layers.length; i++) {
           var layer = layers[i];
           var color = colors[i];
@@ -146,41 +143,18 @@ map.on('load', function() {
           item.appendChild(value);
           legend.appendChild(item);
         }
-    
-    
-    
-    
-    
-    
-    
-    
+ 
 map.addSource('ethnicity', {
 type: 'geojson',
 'data': data    
 });
     
-/*
-map.addLayer({
-'id': 'population',
-'type': 'circle',
-'source': 'ethnicity',
-//'source-layer': 'sf2010',
-'paint': {
-'circle-radius':1,
-'circle-color': ['get', 'com0_color']
-}
-});*/
-    
-    
-      
+   
       map.addLayer({
 'id': 'place_data0',
 'type': 'fill',
 'source': 'ethnicity',
-      /*
-className: {
-property: "country"
-},*/
+
 'paint': {
 'fill-color': {
 property: "v",
@@ -192,26 +166,17 @@ stops: arr
 ['boolean', ['feature-state', 'hover'], false],
 1,
 0.5
-]/*,     
-'fill-opacity': {
-property: "value",
-stops: arr2
-}*/
+]
 },
 'filter': ['==', '$type', 'Polygon']
 });  
     
 map.on('click', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();
-//if (e.features.length > 0) {
+
    
  hoveredStateId = null;
-//if (hoveredStateId) {
-/*map.setFeatureState(
-{ source: 'ethnicity', id: hoveredStateId },
-{ hover: false }
-);
-}*/
+
     var coordinates = e.features[0].geometry.coordinates[0][0].slice();
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -234,7 +199,7 @@ if (e.features[0].properties["c"]=="yellow") {
 {
     var color=e.features[0].properties["c"];
 }
-   // if (document.getElementById("plot")!==null) {
+
     document.getElementById("plot").innerHTML="";
     
     if (e.features[0].id.toString().length==4){
@@ -246,10 +211,6 @@ if (e.features[0].properties["c"]=="yellow") {
   fetch('classification/data_counties_840'+num+'.json').then(res => res.json()) 
 .then(data7 => {      
         draw_plot(data7,color);
-     // console.log(data7);
-      
-     
-//hoveredStateId = e.features[0].properties.id;
 
 popup=new mapboxgl.Popup()
 .setLngLat(lats)
@@ -258,7 +219,7 @@ popup=new mapboxgl.Popup()
       
     document.getElementsByClassName("mapboxgl-popup-close-button")[0].on('click', function(e) {
          alert(e);
-   // popup opened so we fire an event
+
 turn_off();
  });
       
@@ -267,131 +228,16 @@ turn_off();
       
       
   });
-   // console.log(e.features[0].properties);
-/*map.setFeatureState(
-{ source: 'ethnicity', id: hoveredStateId },
-{ hover: true }
-);
-}*/
+
 });
 
-// When the mouse leaves the state-fill layer, update the feature state of the
-// previously hovered feature.
-/*map.on('mouseleave', 'place_data0', function() {
 
-
-if (hoveredStateId) {
-map.setFeatureState(
-{ source: 'ethnicity', id: hoveredStateId },
-{ hover: false }
-);
-}
-hoveredStateId = null;
     
- 
-});*/
-    
-    
-    /*
-    
-    
-    map.on('mouseenter', 'places', function(e) {
-
-var coordinates = e.features[0].geometry.coordinates[0][0];
-var description = e.features[0].properties.NAMELSAD;
-
-popup
-.setLngLat(coordinates)
-.setHTML(description)
-.addTo(map);
-});
- 
-map.on('mouseleave', 'places', function() {
-
-popup.remove();
-});*/
+   
      });
       
      });
-/*
-var map2 = new mapboxgl.Map({
-container: 'map2',
-style: 'mapbox://styles/mapbox/light-v10',
-zoom: 1,
-center: [-22.447303, 37.753574]
-});    
-    var zoomCurrent = 1;
-    var zoomThreshold = 5;
-    var 
-    zoomPrevious = 'com1_color'; 
-var stateLegendEl = document.getElementById('state-legend');
-    */
-    
-    
-    
-     /*   
-data3=data1;    
-data0=data; 
-map.on('load', function() {
 
-map.addSource('ethnicity', {
-type: 'geojson',
-
-'data': data    
-});
-    
-
-map.addLayer({
-'id': 'population',
-'type': 'circle',
-'source': 'ethnicity',
-//'source-layer': 'sf2010',
-'paint': {
-'circle-radius':3,
-'circle-color': ['get', 'com1_color']
-}
-});
-    
-
-});     
-        
-        map2.on('load', function() {
-   
-            
-   
-            
-            
-
-map2.addSource('ethnicity', {
-type: 'geojson',
-
-'data': data    
-});
-    
-
-map2.addLayer({
-'id': 'population',
-'type': 'circle',
-'source': 'ethnicity',
-
-'paint': {
-'circle-radius':3,    
-'circle-color': ['get', 'com0_color']
-}
-});
-   
-            
-   map2.addSource('places', {
-'type': 'geojson',
-'data': data3
-});
-
-});     
-});   
-        
-   */     
-        
-        
 
          });
     
