@@ -24,7 +24,21 @@
 
   overflow: auto;
   border-radius: 3px;
-  width: 260px; height:260px !important;
+  width: 260px; 
+height:260px !important;
+
+}
+    .map-overlay1 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 20px;
+
+  overflow: auto;
+  border-radius: 3px;
+  width: 260px; 
+height:310px !important;
 
 }
     
@@ -42,7 +56,8 @@
         line-height: 18px;
        /* height: 80px;*/
         margin-bottom: 20px;
-        width: 200px;
+        width: 230px;
+         height:310px !important;
         
       }
       .legend-key {
@@ -66,7 +81,7 @@
     <div id="plot"></div>
     
     </div>
-     <div class="map-overlay" id="legend"></div>
+     <div class="map-overlay1" id="legend"></div>
 <script>
 var popup;
     
@@ -82,8 +97,10 @@ var data3=[];
 .then(data0 => { 
              // console.log(data0);  
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
-                var ids=data0.map(function(d){return d.id.toString().substring(3)});
-         //  console.log(ids);
+                var ids=[];
+                
+                data0.map(function(d,i){ids.push(d.id.toString().substring(3))});
+          // console.log(ids);
         fetch('counties.json').then(res => res.json()) 
 .then(data => {  
  var data2={"type":"FeatureCollection"};
@@ -91,17 +108,22 @@ var data3=[];
             
             for (var i=0; i<data["features"].length; i++) {
                 data["features"][i]["id"]=data["features"][i]["properties"]["GEOID"].toString();
+                 if (data["features"][i]["properties"]["STATEFP"]!="72") {
                 if (ids.indexOf(data["features"][i]["properties"]["GEOID"])>-1) {
                       data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["c"];
                     data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["max"];
-                     data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["max"]+1);
+                     data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["max"]+1)*0.5;
                 data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["c"]];
                 } else {
 
                     data["features"][i]["properties"]["v"]=-1;
+                    data["features"][i]["properties"]["max"]=0;
+                     data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
                 }
-                
+                if (data["features"][i]["id"]!="630") {
                 data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":[Number(data["features"][i]["properties"]["INTPTLON"]),Number(data["features"][i]["properties"]["INTPTLAT"])]},"properties":data["features"][i]["properties"]});
+                }
+                 }
             }
             
             
@@ -120,10 +142,10 @@ map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 map.on('load', function() {    
 
         var layers = [
-          '0-0.1 - Regions where COVID-19 is under control',
-          '0.1-0.39 - Regions where new COVID-19 is almost under control',
-          '0.4-0.8 - Regions where new COVID-19 cases are high, but falling or constant',
-          '0.8-1 - Regions where new COVID-19 cases are high and spreading rapidly'
+          '0-0.1 <img width="18px" height="18px" src="green.png"> - Regions where COVID-19 is under control',
+          '0.1-0.39 <img width="18px" height="18px" src="yellow.png"> - Regions where new COVID-19 is almost under control',
+          '0.4-0.8 <img width="18px" height="18px" src="orange.png"> - Regions where new COVID-19 cases are high, but falling or constant',
+          '0.8-1 <img width="18px" height="18px" src="red.png"> - Regions where new COVID-19 cases are high and spreading rapidly'
         ];
 
         var colors = [
@@ -133,6 +155,13 @@ map.on('load', function() {
           '#bd0026'
         //  '#800026'
         ];
+    
+    var value = document.createElement('span');
+          value.innerHTML = '<b>Legend</b>:';
+var item = document.createElement('div');
+     item.appendChild(value);
+          legend.appendChild(item);
+    
 
         for (i = 0; i < layers.length; i++) {
           var layer = layers[i];
@@ -148,7 +177,13 @@ map.on('load', function() {
           item.appendChild(value);
           legend.appendChild(item);
         }
- 
+  var value = document.createElement('span');
+          value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fill="none" stroke="black"/></svg> <svg width="10" height="10">  <circle cx="5" cy="5" r="4.5" fill="none" stroke="black"/></svg> <svg width="15" height="15"><circle cx="7.5" cy="7.5" r="7" fill="none" stroke="black"/></svg> - Numbers of cases in the past 2 weeks';
+var item = document.createElement('div');
+     item.appendChild(value);
+          legend.appendChild(item);
+    
+    
 map.addSource('ethnicity', {
 type: 'geojson',
 'data': data    
@@ -191,8 +226,8 @@ stops: arr
     'circle-stroke-width': 0.5,
  //   'fill-outline-color': 'black',
   //  'circle-stroke-width': 0.5,
-'circle-color': "red",
-     'circle-opacity': 0.7
+'circle-color': "grey",
+     'circle-opacity': 0.1
 }
 });    
     
@@ -292,7 +327,7 @@ function draw_plot(data,color) {
         data10.push(temp);
     }
    // console.log(data10);
-    var margin = {top: 10, right: 15, bottom: 20, left: 15},
+    var margin = {top: 20, right: 15, bottom: 20, left: 25},
     width = 250 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
     
@@ -343,8 +378,8 @@ dropShadowFilter.append('svg:feBlend')
     var y = d3.scaleLinear()
       .domain(d3.extent(data10, function(d) { return +d.value; }))
       .range([ height, 0 ]);
-   // svg.append("g")
-     // .call(d3.axisLeft(y));
+    svg.append("g")
+      .call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(".0s")));
 
     
   
@@ -353,13 +388,13 @@ dropShadowFilter.append('svg:feBlend')
 
       .attr("fill", "none")
       .attr("stroke", "grey")
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 0.5)
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.value) })
             .curve(d3.curveNatural)
-        )
-        .style("filter", "url(#drop-shadow)");
+        );
+       // .style("filter", "url(#drop-shadow)");
   
 // Add the line
       var path = svg.append("path")
@@ -372,13 +407,13 @@ dropShadowFilter.append('svg:feBlend')
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.value) })
             .curve(d3.curveNatural)
-        )
-        .style("filter", "url(#drop-shadow)");
+        );
+       // .style("filter", "url(#drop-shadow)");
     
     var curtain = svg.append('rect')
  .attr('x', -1 * width)
  .attr('y', -1 * height)
- .attr('height', height)
+ .attr('height', height+20)
  .attr('width', width-2)
  .attr('class', 'curtain')
  .attr('transform', 'rotate(180)')
