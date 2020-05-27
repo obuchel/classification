@@ -99,8 +99,11 @@ var data3=[];
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=[];
                 
-                data0.map(function(d,i){ids.push(d.id.toString().substring(3))});
-          // console.log(ids);
+                data0.map(function(d,i){if (d.id.toString().length>3) {ids.push(d.id.toString().substr(3)) }else 
+                                                                     {ids.push(d.id.toString())}
+                                                                     
+                                                                     });
+           console.log(ids);
         fetch('counties.json').then(res => res.json()) 
 .then(data => {  
  var data2={"type":"FeatureCollection"};
@@ -108,7 +111,7 @@ var data3=[];
             
             for (var i=0; i<data["features"].length; i++) {
                 data["features"][i]["id"]=data["features"][i]["properties"]["GEOID"].toString();
-                 if (data["features"][i]["properties"]["STATEFP"]!="72") {
+                // if (data["features"][i]["properties"]["STATEFP"]!="72") {
                 if (ids.indexOf(data["features"][i]["properties"]["GEOID"])>-1) {
                       data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["c"];
                     data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["max"];
@@ -120,10 +123,10 @@ var data3=[];
                     data["features"][i]["properties"]["max"]=0;
                      data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
                 }
-                if (data["features"][i]["id"]!="630") {
+               // if (data["features"][i]["id"]!="630") {
                 data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":[Number(data["features"][i]["properties"]["INTPTLON"]),Number(data["features"][i]["properties"]["INTPTLAT"])]},"properties":data["features"][i]["properties"]});
-                }
-                 }
+            //    }
+                // }
             }
             
             
@@ -269,7 +272,17 @@ if (e.features[0].properties["c"]=="yellow") {
     } else {
     var num=e.features[0].id.toString();
     }
-  fetch('classification/data_counties_840'+num+'.json').then(res => res.json()) 
+    
+    if (["630","16","316","580","850"].indexOf(num)>-1) {
+        
+        var url='classification/data_counties_'+num+'.json';
+    } else {
+        
+        var url='classification/data_counties_840'+num+'.json';
+    }
+    
+    
+  fetch(url).then(res => res.json()) 
 .then(data7 => {      
         draw_plot(data7,color);
 
