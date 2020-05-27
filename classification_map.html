@@ -86,17 +86,22 @@ var data3=[];
          //  console.log(ids);
         fetch('counties.json').then(res => res.json()) 
 .then(data => {  
- 
+ var data2={"type":"FeatureCollection"};
+    data2["features"]=[];        
+            
             for (var i=0; i<data["features"].length; i++) {
                 data["features"][i]["id"]=data["features"][i]["properties"]["GEOID"].toString();
                 if (ids.indexOf(data["features"][i]["properties"]["GEOID"])>-1) {
                       data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["c"];
                     data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["max"];
+                     data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["max"]+1);
                 data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["GEOID"])]["c"]];
                 } else {
 
                     data["features"][i]["properties"]["v"]=-1;
                 }
+                
+                data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":[Number(data["features"][i]["properties"]["INTPTLON"]),Number(data["features"][i]["properties"]["INTPTLAT"])]},"properties":data["features"][i]["properties"]});
             }
             
             
@@ -149,7 +154,10 @@ type: 'geojson',
 'data': data    
 });
     
-   
+   map.addSource('ethnicity2', {
+type: 'geojson',
+'data': data2    
+});
       map.addLayer({
 'id': 'place_data0',
 'type': 'fill',
@@ -170,6 +178,23 @@ stops: arr
 },
 'filter': ['==', '$type', 'Polygon']
 });  
+    
+    
+     map.addLayer({
+'id': 'population',
+'type': 'circle',
+'source': 'ethnicity2',
+//'source-layer': 'sf2010',
+'paint': {
+    'circle-radius':['get', 'max1'],
+  'circle-stroke-color': '#000000',
+    'circle-stroke-width': 0.5,
+ //   'fill-outline-color': 'black',
+  //  'circle-stroke-width': 0.5,
+'circle-color': "red",
+     'circle-opacity': 0.7
+}
+});    
     
 map.on('click', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();
@@ -217,11 +242,11 @@ popup=new mapboxgl.Popup()
 .setHTML(htm)
 .addTo(map);
       
-    document.getElementsByClassName("mapboxgl-popup-close-button")[0].on('click', function(e) {
-         alert(e);
+   /* document.getElementsByClassName("mapboxgl-popup-close-button")[0].on('click', function(e) {
+       //  alert(e);
 
 turn_off();
- });
+ });*/
       
       
       
@@ -243,79 +268,14 @@ turn_off();
     
         
     
-    
-function change_map(e){
-    
-    map.removeLayer('population');
-    map.removeSource('ethnicity');
-       // map2.removeLayer('places');
-    //map2.removeLayer('place_data');
-    map2.removeLayer('population');
-    map2.removeSource('ethnicity');
-    
-  var data2={}
-  data2["type"]="FeatureCollection";
-  data2["features"]=[];
-    
-for (var i=0; i<data0["features"].length; i++) {
-    
-    if (data0["features"][i]["properties"]["com1"]==document.getElementById("mySelect").value) {
-    data2["features"].push(data0["features"][i]);
-    }
-}    
-    
-    
-    map.addSource('ethnicity', {
-type: 'geojson',
-'data': data2   
-});
-    
-    
-    map.addLayer({
-'id': 'population',
-'type': 'circle',
-'source': 'ethnicity',
-//'source-layer': 'sf2010',
-'paint': {
-    'circle-radius':2,
-         //   'circle-stroke-color': "black",//['get', 'com1_color'],
-   // 'circle-stroke-width':0.5,
-'circle-color': ['get', 'com0_color'],
-     'circle-opacity': 0.7
-}
-});
-    
-    map2.addSource('ethnicity', {
-type: 'geojson',
 
-'data': data2   
-});
-    
-
-    
-     map2.addLayer({
-'id': 'population',
-'type': 'circle',
-'source': 'ethnicity',
-//'source-layer': 'sf2010',
-'paint': {
-    'circle-radius':2,
- // 'circle-stroke-color': "black",//['get', 'com0_color'],
-  //  'circle-stroke-width': 0.5,
-'circle-color': ['get', 'com0_color'],
-     'circle-opacity': 0.7
-}
-});
-    
-    
-    
-}    
     
 function draw_plot(data,color) {
     document.getElementById("plot").style.visibility="visible";
    document.getElementById("features").style.visibility="visible";
     //console.log(data);
    // console.log(data["dates"][0].split("/"));
+    //"original_values", time, dates
     var data0=[];
     
     for (var i=0; i<data["dates"].length; i++) {
@@ -324,8 +284,14 @@ function draw_plot(data,color) {
         data0.push(temp);
     }
     
-
+ var data10=[];
     
+    for (var i=1; i<data["time"].length; i++) {
+        
+        var temp={"date":new Date(2020,Number(data["time"][i].split("/")[0])-1,Number(data["time"][i].split("/")[1])),"value":data["original_values"][i]};
+        data10.push(temp);
+    }
+   // console.log(data10);
     var margin = {top: 10, right: 15, bottom: 20, left: 15},
     width = 250 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
@@ -367,7 +333,7 @@ dropShadowFilter.append('svg:feBlend')
     
     // Add X axis --> it is a date format
     var x = d3.scaleTime()
-      .domain(d3.extent(data0, function(d) { return d.date; }))
+      .domain(d3.extent(data10, function(d) { return d.date; }))
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -375,12 +341,27 @@ dropShadowFilter.append('svg:feBlend')
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain(d3.extent(data0, function(d) { return +d.value; }))
+      .domain(d3.extent(data10, function(d) { return +d.value; }))
       .range([ height, 0 ]);
    // svg.append("g")
      // .call(d3.axisLeft(y));
 
-    // Add the line
+    
+  
+      var path1 = svg.append("path")
+      .datum(data10)
+
+      .attr("fill", "none")
+      .attr("stroke", "grey")
+      .attr("stroke-width", 1.5)
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.date) })
+        .y(function(d) { return y(d.value) })
+            .curve(d3.curveNatural)
+        )
+        .style("filter", "url(#drop-shadow)");
+  
+// Add the line
       var path = svg.append("path")
       .datum(data0)
 
@@ -393,9 +374,6 @@ dropShadowFilter.append('svg:feBlend')
             .curve(d3.curveNatural)
         )
         .style("filter", "url(#drop-shadow)");
-  
-    
-
     
     var curtain = svg.append('rect')
  .attr('x', -1 * width)
@@ -419,15 +397,7 @@ dropShadowFilter.append('svg:feBlend')
         .style("font-size", "12px") 
        //.style("text-decoration", "underline")  
         .text("Last two weeks: "+data["max_14"]+" Total: "+data["max"]);
-            
-    
-    
-    
-    
-    
-    
-    
-            
+             
     }
     
    
