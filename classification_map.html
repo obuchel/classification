@@ -138,7 +138,8 @@ zoom: 3,
 center: [-82.447303,37.753574]
 });
             
-map.addControl(new mapboxgl.NavigationControl(), 'top-left');            
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
+            map.addControl(new mapboxgl.FullscreenControl());
 map.on('load', function() {    
 
         var layers = [
