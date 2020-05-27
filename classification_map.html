@@ -143,10 +143,10 @@ map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 map.on('load', function() {    
 
         var layers = [
-          '0-0.1 <img width="18px" height="18px" src="green.png"> - Regions where COVID-19 is under control',
-          '0.1-0.39 <img width="18px" height="18px" src="yellow.png"> - Regions where new COVID-19 is almost under control',
-          '0.4-0.8 <img width="18px" height="18px" src="orange.png"> - Regions where new COVID-19 cases are high, but falling or constant',
-          '0.8-1 <img width="18px" height="18px" src="red.png"> - Regions where new COVID-19 cases are high and spreading rapidly'
+          '<img width="20px" height="20px" src="green.png"> - Regions where COVID-19 is under control',
+          '<img width="20px" height="20px" src="yellow.png"> - Regions where new COVID-19 is almost under control',
+          '<img width="20px" height="20px" src="orange.png"> - Regions where new COVID-19 cases are high, but falling or constant',
+          '<img width="20px" height="20px" src="red.png"> - Regions where new COVID-19 cases are high and spreading rapidly'
         ];
 
         var colors = [
@@ -378,7 +378,7 @@ dropShadowFilter.append('svg:feBlend')
     // Add Y axis
     var y = d3.scaleLinear()
       .domain(d3.extent(data10, function(d) { return +d.value; }))
-      .range([ height, 0 ]);
+      .range([ height, -10]);
     svg.append("g")
       .call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(".0s")));
 
