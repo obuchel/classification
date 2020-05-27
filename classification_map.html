@@ -328,7 +328,7 @@ function draw_plot(data,color) {
         data10.push(temp);
     }
    // console.log(data10);
-    var margin = {top: 20, right: 15, bottom: 20, left: 25},
+    var margin = {top: 25, right: 20, bottom: 20, left: 35},
     width = 250 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
     
@@ -428,7 +428,7 @@ dropShadowFilter.append('svg:feBlend')
             
             svg.append("text")
         .attr("x", (width / 2))             
-        .attr("y", 20)
+        .attr("y", 15)
         .attr("text-anchor", "middle")  
         .style("font-size", "12px") 
        //.style("text-decoration", "underline")  
