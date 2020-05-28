@@ -1,5 +1,9 @@
+import json
+
 import numpy as np
 import pandas as pd
+
+output_directory = '/Users/olgabuchel/Downloads/DeckSample/classification_project'
 
 kkeys=[]
 arr=[]
@@ -61,6 +65,8 @@ tim.pop(0)
 ind4=0
 aar=[]
 aar1=[]
+
+
 for name in e_dataframe1.columns[3:]:
     y50=e_dataframe1[name][len(e_dataframe1[name])-20:]
     y5=[y-e_dataframe1[name][len(e_dataframe1[name])-21] for y in y50]
@@ -160,7 +166,7 @@ for name in e_dataframe1.columns[3:]:
                   plt.title(name)
             if name=="Ventura, California, US":
               print(np.mean(v[len(v)-10:]),v[len(v)-10:],color,ratio)
-            with open('/Users/olgabuchel/Downloads/DeckSample/classification_project/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
+            with open(output_directory + '/classification/data_counties_' + str(ids[recs.index(name)]["UID"]) + '.json', 'w') as outfile:
                 json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":v},outfile)
             aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
             aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5))})
@@ -169,16 +175,16 @@ for name in e_dataframe1.columns[3:]:
             #print(name,y3)
             ratio=0
             color="green"
-            with open('/Users/olgabuchel/Downloads/DeckSample/classification_project/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
+            with open(output_directory + str(ids[recs.index(name)]["UID"]) + '.json', 'w') as outfile:
                 json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":v},outfile)
             aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
             aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5))})
             ind4+=1
 
-with open('/Users/olgabuchel/Downloads/DeckSample/classification_project/classification/data_counties.json', 'w') as outfile:
+with open('%s/classification/data_counties.json' % output_directory, 'w') as outfile:
     json.dump(aar,outfile)
 
-with open('/Users/olgabuchel/Downloads/DeckSample/classification_project/classification/classification_ids_counties2.json', 'w') as outfile:
+with open('%s/classification/classification_ids_counties2.json' % output_directory, 'w') as outfile:
     json.dump(aar1,outfile)
 
 
