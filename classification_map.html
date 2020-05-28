@@ -38,7 +38,7 @@ height:35% !important;
   overflow: auto;
   border-radius: 3px;
   width: 20%; 
-height:25% !important;
+height:26% !important;
 
 }
     
@@ -57,7 +57,7 @@ height:25% !important;
        /* height: 80px;*/
         margin-bottom: 20px;
         width: 25%;
-         height:25% !important;
+         height:26% !important;
       /*   z-index:100000000;*/
         
       }
@@ -147,10 +147,10 @@ map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 map.on('load', function() {    
 
         var layers = [
-          '<img width="20px" height="20px" src="green.png"> - Daily new cases under control',
-          '<img width="20px" height="20px" src="yellow.png"> - Daily new cases almost under control',
-          '<img width="20px" height="20px" src="orange.png"> - Daily new cases are high, but falling or constant',
-          '<img width="20px" height="20px" src="red.png"> - Daily new cases are high and spreading rapidly'
+          '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
+          '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
+          '<img width="20px" height="20px" src="orange.png"> : Daily new cases are high, but falling or constant',
+          '<img width="20px" height="20px" src="red.png"> : Daily new cases are high and spreading rapidly'
         ];
 
         var colors = [
@@ -326,12 +326,16 @@ function draw_plot(data,color) {
     //console.log(data);
    // console.log(data["dates"][0].split("/"));
     //"original_values", time, dates
-    var data0=[];
+    var data110=[];
     
     for (var i=0; i<data["dates"].length; i++) {
-        
-        var temp={"date":new Date(2020,Number(data["dates"][i].split("/")[0])-1,Number(data["dates"][i].split("/")[1])),"value":data["value"][i]};
-        data0.push(temp);
+        if (data["value"][i]>=0){
+            var val=data["value"][i];
+        } else {
+            var val=0;
+        }
+        var temp={"date":new Date(2020,Number(data["dates"][i].split("/")[0])-1,Number(data["dates"][i].split("/")[1])),"value":val};
+        data110.push(temp);
     }
     
  var data10=[];
@@ -345,7 +349,7 @@ function draw_plot(data,color) {
         var temp={"date":new Date(2020,Number(data["time"][i].split("/")[0])-1,Number(data["time"][i].split("/")[1])),"value":val};
         data10.push(temp);
     }
-   // console.log(data10);
+   console.log(data110.map(function(d){ return d.value}),data10.map(function(d){ return d.value}));
     var margin = {top: 25, right: 20, bottom: 20, left: 35},
     width = 250 - margin.left - margin.right,
     height = window.innerHeight*0.3 - margin.top - margin.bottom;
@@ -398,7 +402,7 @@ dropShadowFilter.append('svg:feBlend')
       .domain([0,d3.max(data10, function(d) { return +d.value; })])
       .range([ height, 0]);
     svg.append("g")
-      .call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(".0s")));
+      .call(d3.axisLeft(y).ticks(5));
 
     
   
@@ -417,7 +421,7 @@ dropShadowFilter.append('svg:feBlend')
   
 // Add the line
       var path = svg.append("path")
-      .datum(data0)
+      .datum(data110)
 
       .attr("fill", "none")
       .attr("stroke", color)
@@ -425,7 +429,7 @@ dropShadowFilter.append('svg:feBlend')
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.value) })
-            .curve(d3.curveNatural)
+           // .curve(d3.curveNatural)
         );
        // .style("filter", "url(#drop-shadow)");
     
@@ -444,13 +448,21 @@ dropShadowFilter.append('svg:feBlend')
  .attr('x', -2 * width)
             
             
-            svg.append("text")
+        svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 1)
+        .attr("text-anchor", "middle")  
+        .style("font-size", "16px") 
+       //.style("text-decoration", "underline")  
+        .text("Last two weeks: "+data["max_14"]);
+    
+      svg.append("text")
         .attr("x", (width / 2))             
         .attr("y", 15)
         .attr("text-anchor", "middle")  
-        .style("font-size", "12px") 
+        .style("font-size", "16px") 
        //.style("text-decoration", "underline")  
-        .text("Last two weeks: "+data["max_14"]+" Total: "+data["max"]);
+        .text("Total: "+data["max"]);
     
    /* console.log(d3.selectAll(".tick").each(function(d) {
         
