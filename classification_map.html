@@ -104,7 +104,7 @@ var data3=[];
                                                                      {ids.push(d.id.toString())}
                                                                      
                                                                      });
-           console.log(ids);
+           //console.log(ids);
         fetch('counties.json').then(res => res.json()) 
 .then(data => {  
  var data2={"type":"FeatureCollection"};
@@ -392,7 +392,7 @@ dropShadowFilter.append('svg:feBlend')
     // Add Y axis
     var y = d3.scaleLinear()
       .domain(d3.extent(data10, function(d) { return +d.value; }))
-      .range([ height, -10]);
+      .range([ height, 0]);
     svg.append("g")
       .call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(".0s")));
 
