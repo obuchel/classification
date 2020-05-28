@@ -1,5 +1,3 @@
-
-
 import statistics 
 import json
 import urllib.request
@@ -67,7 +65,6 @@ aar1=[]
 for name in e_dataframe1.columns[3:]:
     y50=e_dataframe1[name][len(e_dataframe1[name])-20:]
     y5=[y-e_dataframe1[name][len(e_dataframe1[name])-21] for y in y50]
-    #print(max(y5))
     y=e_dataframe1[name]
     v=[]
     ind3=0
@@ -116,9 +113,6 @@ for name in e_dataframe1.columns[3:]:
         start.append(0)
     threshold=1     
     if len(start)>0:
-        #if name=="Ventura, California, US":
-        #  print(v,y,v[len(v)-10:],np.mean(v[len(v)-10:]),name)
-        #print(v[len(v)-10:],np.mean(v[len(v)-10]),name)
         max0=np.max(y3)
         min0=np.min(ys)
         if max0>0:
