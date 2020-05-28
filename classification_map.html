@@ -69,6 +69,10 @@ height:26.5% !important;
         margin-right: 5px;
           font-size: 18% !important;
       }
+    .mapbox-improve-map {
+    display: none;
+}
+    .mapboxgl-ctrl-compass { display: none; }
 </style>
 </head>
 <body>
@@ -139,6 +143,7 @@ var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v10',
 zoom: 3,
+    attributionControl: false,
 center: [-82.447303,37.753574]
 });
             
