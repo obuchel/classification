@@ -12,20 +12,20 @@
 
 <style>
 	body { margin: 0; padding: 0;}
-	#map { position: absolute; top: 0;  width: 98%; height:90%;}
+	#map { position: absolute; top: 0;  width: 98%; height:100%;}
   
-#plot {  width: 260px; height:260px !important;background-color: #F0F0F0; visibility:hidden}
+#plot {  width: 20%; height:35% !important;background-color: #F0F0F0; visibility:hidden; /*z-index:100000000;*/}
 .map-overlay {
   position: absolute;
   bottom: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.8);
   margin-right: 20px;
-
+/*z-index:100000000;*/
   overflow: auto;
   border-radius: 3px;
-  width: 260px; 
-height:260px !important;
+  width: 20%; 
+height:35% !important;
 
 }
     .map-overlay1 {
@@ -37,8 +37,8 @@ height:260px !important;
 
   overflow: auto;
   border-radius: 3px;
-  width: 260px; 
-height:310px !important;
+  width: 20%; 
+height:25% !important;
 
 }
     
@@ -53,20 +53,21 @@ height:310px !important;
      #legend {
         padding: 10px;
        /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);*/
-        line-height: 18px;
+        line-height: 15px;
        /* height: 80px;*/
         margin-bottom: 20px;
-        width: 230px;
-         height:310px !important;
+        width: 25%;
+         height:25% !important;
+      /*   z-index:100000000;*/
         
       }
       .legend-key {
         display: inline-block;
-        border-radius: 20%;
+
         width: 10px;
         height: 10px;
         margin-right: 5px;
-          font-size: 90% !important;
+          font-size: 20% !important;
       }
 </style>
 </head>
@@ -146,10 +147,10 @@ map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 map.on('load', function() {    
 
         var layers = [
-          '<img width="20px" height="20px" src="green.png"> - Regions where COVID-19 is under control',
-          '<img width="20px" height="20px" src="yellow.png"> - Regions where new COVID-19 is almost under control',
-          '<img width="20px" height="20px" src="orange.png"> - Regions where new COVID-19 cases are high, but falling or constant',
-          '<img width="20px" height="20px" src="red.png"> - Regions where new COVID-19 cases are high and spreading rapidly'
+          '<img width="20px" height="20px" src="green.png"> - Daily new cases under control',
+          '<img width="20px" height="20px" src="yellow.png"> - Daily new cases almost under control',
+          '<img width="20px" height="20px" src="orange.png"> - Daily new cases are high, but falling or constant',
+          '<img width="20px" height="20px" src="red.png"> - Daily new cases are high and spreading rapidly'
         ];
 
         var colors = [
@@ -343,7 +344,7 @@ function draw_plot(data,color) {
    // console.log(data10);
     var margin = {top: 25, right: 20, bottom: 20, left: 35},
     width = 250 - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom;
+    height = window.innerHeight*0.3 - margin.top - margin.bottom;
     
     var svg = d3.select("#plot")
   .append("svg")
@@ -446,6 +447,12 @@ dropShadowFilter.append('svg:feBlend')
         .style("font-size", "12px") 
        //.style("text-decoration", "underline")  
         .text("Last two weeks: "+data["max_14"]+" Total: "+data["max"]);
+    
+   /* console.log(d3.selectAll(".tick").each(function(d) {
+        
+        console.log(d3.select(d)._groups);
+       
+    }));*/
              
     }
     
