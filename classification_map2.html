@@ -152,7 +152,9 @@ map.on('load', function() {
 
           var value = document.createElement('span');
           value.innerHTML = layer;
+            if (color!="") {
           item.appendChild(key);
+            }
           item.appendChild(value);
           legend.appendChild(item);
         }
