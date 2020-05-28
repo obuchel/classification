@@ -12,7 +12,10 @@
 <style>
 	body { margin: 0; padding: 0; }
 	#map { position: absolute; top: 0;  width: 98%; height:95%;}
-
+.mapboxgl-ctrl-compass { display: none !important; }
+    .mapbox-improve-map {
+    display: none !important;
+}
 .map-overlay {
   position: absolute;
   bottom: 0;
@@ -111,6 +114,7 @@ var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v9',
 zoom: 3,
+     attributionControl: false,
 center: [-82.447303,37.753574]
 });
          
