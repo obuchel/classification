@@ -349,7 +349,7 @@ function draw_plot(data,color) {
         var temp={"date":new Date(2020,Number(data["time"][i].split("/")[0])-1,Number(data["time"][i].split("/")[1])),"value":val};
         data10.push(temp);
     }
-   console.log(data110.map(function(d){ return d.value}),data10.map(function(d){ return d.value}));
+   //console.log(data110.map(function(d){ return d.value}),data10.map(function(d){ return d.value}));
     var margin = {top: 25, right: 20, bottom: 20, left: 35},
     width = 250 - margin.left - margin.right,
     height = window.innerHeight*0.3 - margin.top - margin.bottom;
@@ -408,14 +408,13 @@ dropShadowFilter.append('svg:feBlend')
   
       var path1 = svg.append("path")
       .datum(data10)
-
       .attr("fill", "none")
       .attr("stroke", "grey")
       .attr("stroke-width", 0.5)
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.value) })
-            .curve(d3.curveNatural)
+            //.curve(d3.curveNatural)
         );
        // .style("filter", "url(#drop-shadow)");
   
