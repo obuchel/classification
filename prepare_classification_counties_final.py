@@ -1,23 +1,9 @@
-
-
-import statistics 
-import json
-import urllib.request
-from ast import literal_eval
-import csv
-import pandas as pd  
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-import scipy.cluster.hierarchy as hr
+import pandas as pd
+
 kkeys=[]
 arr=[]
 nnn=7
-import matplotlib.pyplot as plt
-
-my_ids={}
-with open('my_ids.json', 'r') as json_file:
-  my_ids=json.load(json_file)
 
 def second_smallest(numbers):
     m1, m2 = int(), int()
