@@ -25,18 +25,15 @@ def best_fit_slope(xs,ys):
          ((np.mean(xs)**2) - np.mean(xs**2)))
     return m
 
-# Use canned CSV file, so we can compare results.
-# Original:
-#   data=pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
+# Use canned CSV file, so we can compare results to earlier runs of the script.
+use_canned_file = True
 
-# data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv')
-data=pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
-# remove more recent values, example data goes up to "5/22/20"
-data = data.iloc[:, :133]
-# print(data.tail())
-assert data.columns[-1] == '5/22/20'
-# import sys
-# sys.exit(0)
+if use_canned_file:
+    data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv')
+    assert data.columns[-1] == '5/27/20'
+else:
+    # Original:
+    data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
 
 e_dataframe=data.set_index("Combined_Key")
 ids=data[["UID", "Combined_Key"]].to_dict('records')
