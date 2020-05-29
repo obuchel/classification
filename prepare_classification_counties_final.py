@@ -60,16 +60,17 @@ aar = []
 aar1 = []
 counties = e_dataframe1.columns[3:]
 for name in counties:
-    num_rows = len(e_dataframe1[name])
-    y50 = e_dataframe1[name][num_rows - 20:]
-    y5 = [y - e_dataframe1[name][num_rows - 21] for y in y50]
+    values = e_dataframe1[name]
+    num_rows = len(values)
+    y50 = values[num_rows - 20:]
+    y5 = [y - values[num_rows - 21] for y in y50]
     # print(max(y5))
-    y = e_dataframe1[name]
+    y = values
     v = []
     ind3 = 0
-    for e in e_dataframe1[name]:
+    for e in values:
         if ind3 < num_rows - 2:
-            v.append(int(e_dataframe1[name][ind3 + 1]) - int(e))
+            v.append(int(values[ind3 + 1]) - int(e))
         else:
             v.append(v[len(v) - 1])
         ind3 += 1
