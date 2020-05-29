@@ -72,15 +72,8 @@ def compute_original_values(values):
         ind3 += 1
     return result
 
-for name in counties:
-    values = e_dataframe1[name]
-    num_rows = len(values)
-    y50 = values[num_rows - 20:]
-    y5 = [y - values[num_rows - 21] for y in y50]
-    # print(max(y5))
-    y = values
-    original_values = compute_original_values(values)
-    x = e_dataframe1[e_dataframe1.columns[0]]
+
+def interpolate(y):
     ind = 0
     y1 = []
     for el in y:
@@ -94,6 +87,19 @@ for name in counties:
             y0 = (int(el) - int(y[ind - 1])) / 2
             y1.append(y0)
         ind += 1
+    return y1
+
+
+for name in counties:
+    values = e_dataframe1[name]
+    num_rows = len(values)
+    y50 = values[num_rows - 20:]
+    y5 = [y - values[num_rows - 21] for y in y50]
+    # print(max(y5))
+    y = values
+    original_values = compute_original_values(values)
+    x = e_dataframe1[e_dataframe1.columns[0]]
+    y1 = interpolate(y)
     x2 = x[9:]
     tim2 = tim[4 : len(tim) - 5]
     y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=10).mean()['a'].to_list()[9:]
