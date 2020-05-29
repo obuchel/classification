@@ -8,7 +8,7 @@ output_directory = 'output'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
 # Use canned CSV file, so we can compare results to earlier runs of the script.
-use_canned_file = True
+use_canned_file = False
 
 if use_canned_file:
     data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv')
