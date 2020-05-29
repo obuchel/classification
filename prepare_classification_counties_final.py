@@ -23,22 +23,34 @@ recs = data["Combined_Key"].to_list()
 
 e_dataframe0 = e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
 e_dataframe1 = e_dataframe0.transpose()
-dats=list(e_dataframe1.index)
-#print(dats)
-dats2=[]
-decimals=[]
-elapsed_days=[]
-ind=22
-for el in dats:
-    dats2.append(ind)
-    dec = 2020 + (ind / 366)
-    elapsed_days.append(ind - 20)
-    decimals.append(dec)
-    ind += 1
 
-e_dataframe1.insert(0, "Day_Year", dats2, True)
-e_dataframe1.insert(0, "Decimals", decimals, True)
-e_dataframe1.insert(0, "Elapsed_days", elapsed_days, True)
+
+def add_day_columns(df):
+    """Add columns Elapsed_days, Decimals, Day_Year to df."""
+    dats = list(df.index)
+    # print(dats)
+    dats2 = []
+    decimals = []
+    elapsed_days = []
+    ind = 22
+    for el in dats:
+        dats2.append(ind)
+        dec = 2020 + (ind / 366)
+        elapsed_days.append(ind - 20)
+        decimals.append(dec)
+        ind += 1
+    df.insert(0, "Day_Year", dats2, True)
+    df.insert(0, "Decimals", decimals, True)
+    df.insert(0, "Elapsed_days", elapsed_days, True)
+
+
+add_day_columns(e_dataframe1)
+
+if False:
+    # show intermediate result and abortthe script right here
+    print(e_dataframe1.iloc[10:, :5])
+    import sys
+    sys.exit(0)
 
 tim = list(e_dataframe0.columns)
 tim.pop(0)
