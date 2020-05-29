@@ -119,23 +119,24 @@ for name in counties:
         min0 = np.min(ys)
         if max0 > 0:
             ratio = y3[len(y3) - 1] / max0
+            recent_mean = int(np.mean(original_values[len(original_values) - 10:]))
             if ratio >= 0.79:
-                if int(np.mean(original_values[len(original_values) - 10 :])) >= threshold:
+                if recent_mean >= threshold:
                     color = "red"
                 else:
                     color = "green"
             elif ratio <= 0.1:
-                if int(np.mean(original_values[len(original_values) - 10 :])) >= threshold:
+                if recent_mean >= threshold:
                     color = "yellow"
                 else:
                     color = "green"
             elif ratio >= 0.4 and ratio < 0.79:
-                if int(np.mean(original_values[len(original_values) - 10 :])) >= threshold:
+                if recent_mean >= threshold:
                     color = "orange"
                 else:
                     color = "green"
             elif ratio > 0.1 and ratio < 0.4:
-                if int(np.mean(original_values[len(original_values) - 10 :])) >= threshold:
+                if recent_mean >= threshold:
                     color = "yellow"
                 else:
                   color="green"
