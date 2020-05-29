@@ -66,8 +66,6 @@ tim.pop(0)
 ind4=0
 aar=[]
 aar1=[]
-
-
 for name in e_dataframe1.columns[3:]:
     y50=e_dataframe1[name][len(e_dataframe1[name])-20:]
     y5=[y-e_dataframe1[name][len(e_dataframe1[name])-21] for y in y50]
@@ -97,17 +95,7 @@ for name in e_dataframe1.columns[3:]:
         ind +=1
     x2=x[9:]
     tim2=tim[4:len(tim)-5]
-    print(tim2)
-    '''
-    y3=[]
-    ind1=0
-    for el in y1:
-        if ind1>=5 and ind1<=len(y1)-5:
-            y3.append(np.mean(y1[ind1-5:ind1+5]))      
-        ind1 +=1
-    '''
     y3=pd.DataFrame(y1,columns=["a"]).rolling(window=10).mean()['a'].to_list()[9:]
-    print(y3)
     ys=y3[len(y3)-24:]
     xs=x[len(x)-29:len(x)-5] #last 24 days
     ind2=0
@@ -120,9 +108,6 @@ for name in e_dataframe1.columns[3:]:
         start.append(0)
     threshold=1     
     if len(start)>0:
-        #if name=="Ventura, California, US":
-        #  print(v,y,v[len(v)-10:],np.mean(v[len(v)-10:]),name)
-        #print(v[len(v)-10:],np.mean(v[len(v)-10]),name)
         max0=np.max(y3)
         min0=np.min(ys)
         if max0>0:
@@ -130,62 +115,44 @@ for name in e_dataframe1.columns[3:]:
             if  ratio>=0.79:
                 if int(np.mean(v[len(v)-10:]))>=threshold:  
                   color="red"
-                  plt.title(name)
                 else:
                   color="green"
-                  plt.title(name)
             elif ratio<=0.1:
                 if int(np.mean(v[len(v)-10:]))>=threshold:
-                    ratio=ratio
-                    #print(name,v)
-                    plt.title(name)
                     color="yellow"
-                    plt.plot(x2,y3,color="yellow")
                 else:
-                    ratio=ratio
-                    plt.title(name)
                     color="green"
-                    plt.plot(x2,y3,color="green")
             elif ratio>=0.4 and ratio<0.79:
                 if int(np.mean(v[len(v)-10:]))>=threshold:
-                  plt.plot(x2,y3,color="orange")
                   color="orange"
-                  plt.title(name)
                 else:
-                  plt.plot(x2,y3,color="green")
                   color="green"
-                  plt.title(name)
-                #plt.savefig("classification_3days/7days_counties/"+name+"_orange.png")
             elif ratio>0.1 and ratio<0.4:
                 if int(np.mean(v[len(v)-10:]))>=threshold:
-                  plt.plot(x2,y3,color="yellow")
                   color="yellow"
-                  plt.title(name)
                 else:
                   color="green"
-                  plt.plot(x2,y3,color="green")
-                  plt.title(name)
-            if name=="Ventura, California, US":
-              print(np.mean(v[len(v)-10:]),v[len(v)-10:],color,ratio)
-            with open(output_directory + '/classification/data_counties_' + str(ids[recs.index(name)]["UID"]) + '.json', 'w') as outfile:
+            with open('classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
                 json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":v},outfile)
-            aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
+            #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
             aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5))})
             ind4+=1
         else:
             #print(name,y3)
             ratio=0
             color="green"
-            with open(output_directory + '/classification/data_counties_' + str(ids[recs.index(name)]["UID"]) + '.json', 'w') as outfile:
+            with open('classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
                 json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":v},outfile)
-            aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
+            #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
             aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5))})
             ind4+=1
 
-with open('%s/classification/data_counties.json' % output_directory, 'w') as outfile:
-    json.dump(aar,outfile)
 
-with open('%s/classification/classification_ids_counties2.json' % output_directory, 'w') as outfile:
+#with open('classification/data_counties.json', 'w') as outfile:
+#    json.dump(aar,outfile)
+
+#this file is used by the map
+with open('classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1,outfile)
 
 
