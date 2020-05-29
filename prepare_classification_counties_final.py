@@ -66,13 +66,13 @@ for name in counties:
     y5 = [y - values[num_rows - 21] for y in y50]
     # print(max(y5))
     y = values
-    v = []
+    original_values = []
     ind3 = 0
     for e in values:
         if ind3 < num_rows - 2:
-            v.append(int(values[ind3 + 1]) - int(e))
+            original_values.append(int(values[ind3 + 1]) - int(e))
         else:
-            v.append(v[len(v) - 1])
+            original_values.append(original_values[len(original_values) - 1])
         ind3 += 1
     x = e_dataframe1[e_dataframe1.columns[0]]
     ind = 0
@@ -108,27 +108,27 @@ for name in counties:
         if max0 > 0:
             ratio = y3[len(y3) - 1] / max0
             if ratio >= 0.79:
-                if int(np.mean(v[len(v) - 10 :])) >= threshold:
+                if int(np.mean(original_values[len(original_values) - 10 :])) >= threshold:
                     color = "red"
                 else:
                     color = "green"
             elif ratio <= 0.1:
-                if int(np.mean(v[len(v) - 10 :])) >= threshold:
+                if int(np.mean(original_values[len(original_values) - 10 :])) >= threshold:
                     color = "yellow"
                 else:
                     color = "green"
             elif ratio >= 0.4 and ratio < 0.79:
-                if int(np.mean(v[len(v) - 10 :])) >= threshold:
+                if int(np.mean(original_values[len(original_values) - 10 :])) >= threshold:
                     color = "orange"
                 else:
                     color = "green"
             elif ratio > 0.1 and ratio < 0.4:
-                if int(np.mean(v[len(v) - 10 :])) >= threshold:
+                if int(np.mean(original_values[len(original_values) - 10 :])) >= threshold:
                     color = "yellow"
                 else:
                   color="green"
             with open('classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
-                json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":v},outfile)
+                json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
             #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
             aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5))})
             ind4+=1
@@ -137,7 +137,7 @@ for name in counties:
             ratio=0
             color="green"
             with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
-                json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":v},outfile)
+                json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
             #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
             aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5))})
             ind4+=1
