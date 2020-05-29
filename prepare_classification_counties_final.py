@@ -7,21 +7,6 @@ import os
 output_directory = 'output'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
-def second_smallest(numbers):
-    m1, m2 = int(), int()
-    for x in numbers:
-        if int(x) <= int(m1):
-            m1, m2 = int(x), int(m1)
-        elif int(x) < int(m2):
-            m2 = int(x)
-    return m2
-
-
-def best_fit_slope(xs, ys):
-    m = ((np.mean(xs) * np.mean(ys)) - np.mean(xs * ys)) / ((np.mean(xs) ** 2) - np.mean(xs ** 2))
-    return m
-
-
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = True
 
@@ -36,9 +21,8 @@ e_dataframe = data.set_index("Combined_Key")
 ids = data[["UID", "Combined_Key"]].to_dict('records')
 recs = data["Combined_Key"].to_list()
 
-e_dataframe0=e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
-e_dataframe11=e_dataframe0.transpose()
-e_dataframe1=e_dataframe11
+e_dataframe0 = e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
+e_dataframe1 = e_dataframe0.transpose()
 dats=list(e_dataframe1.index)
 #print(dats)
 dats2=[]
