@@ -2,16 +2,10 @@ import json
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import os
 
 output_directory = 'output'
 os.makedirs(output_directory + '/classification', exist_ok=True)
-
-kkeys = []
-arr = []
-nnn = 7
-
 
 def second_smallest(numbers):
     m1, m2 = int(), int()
@@ -47,7 +41,6 @@ e_dataframe11=e_dataframe0.transpose()
 e_dataframe1=e_dataframe11
 dats=list(e_dataframe1.index)
 #print(dats)
-#dats=kkeys[1:]
 dats2=[]
 decimals=[]
 elapsed_days=[]
