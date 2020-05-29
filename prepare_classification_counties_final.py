@@ -68,7 +68,7 @@ def compute_original_values(values):
         if ind3 < num_rows - 2:
             result.append(int(values[ind3 + 1]) - int(e))
         else:
-            result.append(result[len(result) - 1])
+            result.append(result[-1])
         ind3 += 1
     return result
 
@@ -118,18 +118,18 @@ def classify(ratio, recent_mean, threshold):
 for name in counties:
     values = e_dataframe1[name]
     num_rows = len(values)
-    y50 = values[num_rows - 20:]
-    y5 = [y - values[num_rows - 21] for y in y50]
+    y50 = values[-20:]
+    y5 = [y - values[-21] for y in y50]
     # print(max(y5))
     y = values
     original_values = compute_original_values(values)
     x = e_dataframe1[e_dataframe1.columns[0]]
     y1 = interpolate(y)
     x2 = x[9:]
-    tim2 = tim[4 : len(tim) - 5]
+    tim2 = tim[4 : -5]
     y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=10).mean()['a'].to_list()[9:]
-    ys = y3[len(y3) - 24 :]
-    xs = x[len(x) - 29 : len(x) - 5]  # last 24 days
+    ys = y3[-24:]
+    xs = x[-29:-5]  # last 24 days
     ind2 = 0
     start = []
     start2 = []
@@ -143,8 +143,8 @@ for name in counties:
         max0 = np.max(y3)
         min0 = np.min(ys)
         if max0 > 0:
-            ratio = y3[len(y3) - 1] / max0
-            recent_mean = int(np.mean(original_values[len(original_values) - 10:]))
+            ratio = y3[-1] / max0
+            recent_mean = int(np.mean(original_values[-10:]))
             color = classify(ratio, recent_mean, threshold)
             with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
                 json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
