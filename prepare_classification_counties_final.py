@@ -58,7 +58,8 @@ tim.pop(0)
 ind4 = 0
 aar = []
 aar1 = []
-for name in e_dataframe1.columns[3:]:
+counties = e_dataframe1.columns[3:]
+for name in counties:
     y50 = e_dataframe1[name][len(e_dataframe1[name]) - 20 :]
     y5 = [y - e_dataframe1[name][len(e_dataframe1[name]) - 21] for y in y50]
     # print(max(y5))
