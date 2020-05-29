@@ -90,6 +90,31 @@ def interpolate(y):
     return y1
 
 
+def classify(ratio, recent_mean, threshold):
+    color = None
+    if ratio >= 0.79:
+        if recent_mean >= threshold:
+            color = "red"
+        else:
+            color = "green"
+    elif ratio <= 0.1:
+        if recent_mean >= threshold:
+            color = "yellow"
+        else:
+            color = "green"
+    elif ratio >= 0.4 and ratio < 0.79:
+        if recent_mean >= threshold:
+            color = "orange"
+        else:
+            color = "green"
+    elif ratio > 0.1 and ratio < 0.4:
+        if recent_mean >= threshold:
+            color = "yellow"
+        else:
+            color = "green"
+    assert color is not None
+    return color
+
 for name in counties:
     values = e_dataframe1[name]
     num_rows = len(values)
@@ -120,27 +145,8 @@ for name in counties:
         if max0 > 0:
             ratio = y3[len(y3) - 1] / max0
             recent_mean = int(np.mean(original_values[len(original_values) - 10:]))
-            if ratio >= 0.79:
-                if recent_mean >= threshold:
-                    color = "red"
-                else:
-                    color = "green"
-            elif ratio <= 0.1:
-                if recent_mean >= threshold:
-                    color = "yellow"
-                else:
-                    color = "green"
-            elif ratio >= 0.4 and ratio < 0.79:
-                if recent_mean >= threshold:
-                    color = "orange"
-                else:
-                    color = "green"
-            elif ratio > 0.1 and ratio < 0.4:
-                if recent_mean >= threshold:
-                    color = "yellow"
-                else:
-                  color="green"
-            with open('classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
+            color = classify(ratio, recent_mean, threshold)
+            with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
                 json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
             #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
             aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5))})
