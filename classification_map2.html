@@ -12,7 +12,10 @@
 <style>
 	body { margin: 0; padding: 0; }
 	#map { position: absolute; top: 0;  width: 98%; height:95%;}
-
+.mapboxgl-ctrl-compass { display: none !important; }
+    .mapbox-improve-map {
+    display: none !important;
+}
 .map-overlay {
   position: absolute;
   bottom: 0;
@@ -36,7 +39,7 @@ height:35% !important;
   overflow: auto;
   border-radius: 3px;
   width: 20%; 
-height:26% !important;
+height:24% !important;
 
 }
     
@@ -55,7 +58,7 @@ height:26% !important;
        /* height: 80px;*/
         margin-bottom: 20px;
         width: 25%;
-         height:26% !important;
+         height:24% !important;
       /*   z-index:100000000;*/
         
       }
@@ -106,11 +109,12 @@ var data3=[];
             }
             var hoveredStateId = null;
 
-	mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJmOWQ2MzQxNmE0M2Y3YmVjNzA2NmM2MGQzYTIwYmQ3OCJ9.psxJSN8q9n2-HfFGoIUNJA';
+	mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjamhqZTZsOWkwN25iM2Fxd282N2FlZDVqIn0.bkOU5gAio8eKnmKHlntJsA';
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v9',
 zoom: 3,
+     attributionControl: false,
 center: [-82.447303,37.753574]
 });
          
@@ -152,7 +156,9 @@ map.on('load', function() {
 
           var value = document.createElement('span');
           value.innerHTML = layer;
+            if (i!=0) {
           item.appendChild(key);
+            }
           item.appendChild(value);
           legend.appendChild(item);
         }
