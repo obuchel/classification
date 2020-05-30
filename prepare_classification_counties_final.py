@@ -12,11 +12,11 @@ use_canned_file = False
 
 if use_canned_file:
     data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv')
-    assert data.columns[-1] == '5/27/20'
+    assert data.columns[-1] == '5/29/20'
 else:
     # Original:
     data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
-
+#print(data)
 e_dataframe = data.set_index("Combined_Key")
 ids = data[["UID", "Combined_Key"]].to_dict('records')
 recs = data["Combined_Key"].to_list()
