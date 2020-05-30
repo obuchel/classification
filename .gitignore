@@ -1,8 +1,5 @@
 # .gitignore for this project
 
-# Default directory for the generated JSON files
-output/*
-
 # Saved output from an earlier run
 golden_master
 
