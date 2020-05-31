@@ -119,9 +119,10 @@ center: [-82.447303,37.753574]
 });
          
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');       
+            map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
 map.on('load', function() {    
 
-   map.addControl(new mapboxgl.FullscreenControl());
+  
 fetch('states.json').then(res => res.json()) 
 .then(data8 => {   
      // define layer names
@@ -165,7 +166,22 @@ fetch('states.json').then(res => res.json())
           legend.appendChild(item);
         }
     
+     var value3 = document.createElement('span');
+    value3.innerHTML = "&nbsp;";
+    var item3 = document.createElement('div');
+     item3.appendChild(value3);
+          legend.appendChild(item3);
     
+    
+        var value2 = document.createElement('span');
+   
+
+    value2.innerHTML = "Date of reporting: "+data0[0]["date"];
+     value2.style.textAlign="center !important";
+    value2.style.margin="auto";
+    var item2 = document.createElement('div');
+     item2.appendChild(value2);
+          legend.appendChild(item2);
     
     
     
