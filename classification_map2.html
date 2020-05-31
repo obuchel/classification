@@ -121,7 +121,9 @@ center: [-82.447303,37.753574]
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');       
 map.on('load', function() {    
 
-    
+   map.addControl(new mapboxgl.FullscreenControl());
+fetch('states.json').then(res => res.json()) 
+.then(data8 => {   
      // define layer names
         var layers = [
             '<b>New cases in the past 2 weeks:</b>',
@@ -173,7 +175,10 @@ type: 'geojson',
 'data': data    
 });
     
-
+    map.addSource('states', {
+type: 'geojson',
+'data': data8    
+});
       
       map.addLayer({
 'id': 'place_data0',
@@ -202,6 +207,20 @@ stops: arr2
 },
 'filter': ['==', '$type', 'Polygon']
 });  
+    
+     map.addLayer({
+'id': 'states',
+'type': 'line',
+'source': 'states',
+'layout': {
+'line-join': 'round',
+'line-cap': 'round'
+},
+'paint': {
+'line-color': '#000000',
+'line-width': 1
+}
+});    
     
 map.on('mousemove', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();
@@ -269,7 +288,7 @@ map.on('mouseleave', 'places', function() {
 popup.remove();
 });*/
       });
-      
+           });
      });
 /*
 var map2 = new mapboxgl.Map({
