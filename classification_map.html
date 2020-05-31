@@ -38,7 +38,7 @@ height:35% !important;
   overflow: auto;
   border-radius: 3px;
   width: 27%; 
-height:28% !important;
+height:28.5% !important;
 
 }
     
@@ -57,7 +57,7 @@ height:28% !important;
        /* height: 80px;*/
         margin-bottom: 20px;
         width: 27%;
-         height:28% !important;
+         height:28.5% !important;
       /*   z-index:100000000;*/
         
       }
@@ -138,7 +138,7 @@ var data3=[];
 
             var hoveredStateId = null;
 //pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjamhqZTZsOWkwN25iM2Fxd282N2FlZDVqIn0.bkOU5gAio8eKnmKHlntJsA
-	mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJmOWQ2MzQxNmE0M2Y3YmVjNzA2NmM2MGQzYTIwYmQ3OCJ9.psxJSN8q9n2-HfFGoIUNJA';
+	mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjamhqZTZsOWkwN25iM2Fxd282N2FlZDVqIn0.bkOU5gAio8eKnmKHlntJsA';
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v10',
@@ -148,7 +148,7 @@ center: [-82.447303,37.753574]
 });
      
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
-map.addControl(new mapboxgl.FullscreenControl());
+map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
 fetch('states.json').then(res => res.json()) 
 .then(data8 => {             
 
@@ -196,6 +196,23 @@ var item = document.createElement('div');
      item.appendChild(value);
           legend.appendChild(item);
     
+    
+     var value3 = document.createElement('span');
+    value3.innerHTML = "&nbsp;";
+    var item3 = document.createElement('div');
+     item3.appendChild(value3);
+          legend.appendChild(item3);
+    
+    
+        var value2 = document.createElement('span');
+   
+
+    value2.innerHTML = "Date of reporting: "+data0[0]["date"];
+     value2.style.textAlign="center !important";
+    value2.style.margin="auto";
+    var item2 = document.createElement('div');
+     item2.appendChild(value2);
+          legend.appendChild(item2);
     
 map.addSource('ethnicity', {
 type: 'geojson',
@@ -381,7 +398,7 @@ function draw_plot(data,color) {
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
-
+d3.select(".map-overlay").attr("height",Number(height)+" !important");
     var defs = svg.append("defs");
 
 
@@ -471,17 +488,17 @@ dropShadowFilter.append('svg:feBlend')
         .attr("x", (width / 2))             
         .attr("y", 1)
         .attr("text-anchor", "middle")  
-        .style("font-size", "16px") 
+        .style("font-size", "14px") 
        //.style("text-decoration", "underline")  
-        .text("Last two weeks: "+data["max_14"]);
+        .text("Last two weeks: "+d3.format(',')(data["max_14"]));
     
       svg.append("text")
         .attr("x", (width / 2))             
         .attr("y", 15)
         .attr("text-anchor", "middle")  
-        .style("font-size", "16px") 
+        .style("font-size", "14px") 
        //.style("text-decoration", "underline")  
-        .text("Total: "+data["max"]);
+        .text("Total: "+d3.format(',')(data["max"]));
     
    /* console.log(d3.selectAll(".tick").each(function(d) {
         

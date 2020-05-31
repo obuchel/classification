@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import os
 
+date_of_analysis='5/30/20'
 output_directory = 'output'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
@@ -12,7 +13,7 @@ use_canned_file = False
 
 if use_canned_file:
     data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv')
-    assert data.columns[-1] == '5/29/20'
+    assert data.columns[-1] == date_of_analysis
 else:
     # Original:
     data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
@@ -159,7 +160,7 @@ for name in counties:
 
 # with open('classification/data_counties.json', 'w') as outfile:
 #    json.dump(aar,outfile)
-
+aar1[0]["date"]=date_of_analysis
 # this file is used by the map
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
