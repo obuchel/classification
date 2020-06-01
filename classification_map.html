@@ -162,11 +162,12 @@ fetch('states.json').then(res => res.json())
     
 map.on('load', function() {    
 
+
         var layers = [
           '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
           '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
-          '<img width="20px" height="20px" src="orange.png"> : Daily new cases are high, but falling or constant',
-          '<img width="20px" height="20px" src="red.png"> : Daily new cases are high and spreading rapidly'
+          '<img width="20px" height="20px" src="orange.png"> : Daily new cases are falling or constant',
+          '<img width="20px" height="20px" src="red.png"> : Daily new cases are increasing'
         ];
 
         var colors = [
@@ -485,11 +486,11 @@ var item = document.createElement('div');
         
     function change_colors(){
         
-         var layers = [
+     var layers = [
           '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
           '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
-          '<img width="20px" height="20px" src="orange.png"> : Daily new cases are high, but falling or constant',
-          '<img width="20px" height="20px" src="red.png"> : Daily new cases are high and spreading rapidly'
+          '<img width="20px" height="20px" src="orange.png"> : Daily new cases are falling or constant',
+          '<img width="20px" height="20px" src="red.png"> : Daily new cases are increasing'
         ];
 
         var colors = [
@@ -505,8 +506,8 @@ var item = document.createElement('div');
      var layers1 = [
           '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
           '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
-          '<img width="20px" height="20px" src="orange.png"> : Daily new cases are high, but falling or constant',
-          '<img width="20px" height="20px" src="red.png"> : Daily new cases are high and spreading rapidly'
+          '<img width="20px" height="20px" src="orange.png"> : Daily new cases are falling or constant',
+          '<img width="20px" height="20px" src="red.png"> : Daily new cases are increasing'
         ];
 
         var colors1 = [
