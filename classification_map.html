@@ -485,7 +485,9 @@ var item = document.createElement('div');
     
         
     function change_colors(){
-        
+         if (typeof popup=="object") popup.remove();
+            document.getElementById("plot").style.visibility="hidden";
+   document.getElementById("features").style.visibility="hidden";
      var layers = [
           '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
           '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
