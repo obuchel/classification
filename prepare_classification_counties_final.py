@@ -3,6 +3,7 @@ import json
 import numpy as np
 import pandas as pd
 import os
+from prep_canada_data import stage_latest
 
 date_of_analysis='6/1/20'
 output_directory = 'output'
@@ -22,8 +23,14 @@ e_dataframe = data.set_index("Combined_Key")
 ids = data[["UID", "Combined_Key"]].to_dict('records')
 recs = data["Combined_Key"].to_list()
 
+# stage latest Canada HR-level data for later processing
+latest_ca_df = stage_latest()
+assert latest_ca_df.index.names == ['Combined_Key']
+
 e_dataframe0 = e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
 e_dataframe1 = e_dataframe0.transpose()
+
+
 
 
 def add_day_columns(df):
