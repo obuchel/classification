@@ -1,5 +1,6 @@
 # .gitignore for this project
-
+# N.B. normally this OS-specific rule should be in the global .gitignore
+.DS_Store
 # Saved output from an earlier run
 golden_master
 
