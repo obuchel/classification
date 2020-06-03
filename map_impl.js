@@ -1,3 +1,10 @@
+// Use local files, except when useS3=true
+var base_url = "";
+var use_s3 = !!window.location.search.match("useS3=true");
+if (use_s3) {
+   base_url = "https://ecv-county-maps.s3.amazonaws.com/"
+}
+
 var popup;
  var layerM;
     var map;
@@ -11,7 +18,7 @@ var comms=["All",0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 1
 var data3=[];    
 
     var data0=[];
-            fetch('output/classification/classification_ids_counties2.json').then(res => res.json()) 
+            fetch(base_url + 'output/classification/classification_ids_counties2.json').then(res => res.json())
 .then(data0 => { 
              // console.log(data0);  
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
@@ -22,7 +29,7 @@ var data3=[];
                                                                      
                                                                      });
            //console.log(ids);
-        fetch('counties.json').then(res => res.json()) 
+        fetch(base_url + 'data/geo/counties.json').then(res => res.json())
 .then(data => {  
  var data2={"type":"FeatureCollection"};
     data2["features"]=[];        
@@ -67,7 +74,7 @@ center: [-82.447303,37.753574]
             
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
-fetch('states.json').then(res => res.json()) 
+fetch(base_url + 'states.json').then(res => res.json())
 .then(data8 => {             
 
     
@@ -300,7 +307,7 @@ if (e.features[0].properties["c"]=="yellow") {
     }
     
     
-  fetch(url).then(res => res.json()) 
+  fetch(base_url + url).then(res => res.json())
 .then(data7 => {    
 
       
