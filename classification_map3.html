@@ -88,11 +88,11 @@ height:28% !important;
      <div class="map-overlay1" id="legend"></div>
 <script>
 
-var base_url = 'https://ecv-county-maps.s3.amazonaws.com/';
-// On localhost, use local files, except when useS3=true
+// Use local files, except when useS3=true
+var base_url = "";
 var use_s3 = !!window.location.search.match("useS3=true");
-if (window.location.href.match("localhost:8000") && !use_s3) {
-    base_url = "";
+if (use_s3) {
+   base_url = "https://ecv-county-maps.s3.amazonaws.com/"
 }
 
 var popup;
