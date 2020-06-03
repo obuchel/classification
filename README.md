@@ -18,21 +18,12 @@ This creates a local environment with all necessary packages installed.
 
 ## Web site setup and data flow
 
-fetch('counties.json')
- 
- if (["630","16","316","580","850"].indexOf(num)>-1) {
-    
-    var url='classification/data_counties_'+num+'.json';
-} else {
-    
-    var url='classification/data_counties_840'+num+'.json';
-}
-fetch(url)
-```
+The page <https://www.endcoronavirus.org/us-counties> is hosted by SquareSpace.
+It embeds <https://obuchel.github.io/classification/classification_map.html> in an IFrame.
 
 ### classification/classification_ids_counties2.json
 
-Has records like 
+Contains the county-by-county classification with records like 
 ```json
 {
     "n": "Cuming, Nebraska, US",
@@ -114,13 +105,9 @@ My interpretation for the fields:
 The script `prepare_classification_counties_final.py` is used to write the JSON files for the website.
 Just like with the JavaScript on the web page, you can look for `open()` in the python file.
 
-### my_ids.json
-
-This looks unused.
-
 ### Reading CSSEGISandData
  
-https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
+https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv
 
 
 ### Writing: 'data_counties_'+str(ids[recs.index(name)]["UID"])+'.json'
@@ -159,6 +146,6 @@ This is a list of records like this:
     "max": int(max(y5))
 }
 ```
-presumably one entry per county.
+with one entry per county.
 This file is apparently included in the github repository
 as classification/classification_ids_counties2.json.
