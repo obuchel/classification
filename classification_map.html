@@ -152,6 +152,11 @@ zoom: 3,
 center: [-82.447303,37.753574]
 });
      
+        
+
+            
+            
+            
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
 fetch('states.json').then(res => res.json()) 
@@ -161,8 +166,18 @@ fetch('states.json').then(res => res.json())
 
     
 map.on('load', function() {    
-
-
+/*
+var layers10 = map.getStyle().layers;    
+        var firstSymbolId;
+for (var i = 0; i < layers10.length; i++) {
+if (layers10[i].id == 'water') {
+firstSymbolId = layers10[i].id;
+break;
+}
+}
+    
+    console.log(map.getStyle().layers);
+    */
         var layers = [
           '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
           '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
@@ -280,7 +295,7 @@ type: 'geojson',
 'data': data2    
 });
     
-    
+   // alert(firstSymbolId);
     
 layerM=map.addLayer({
 'id': 'place_data0',
@@ -291,7 +306,8 @@ layerM=map.addLayer({
 property: "v",
 stops: arr
 },
-'fill-outline-color': 'black',
+//'fill-outline-color': 'hsl(0,0,84%)',
+    'fill-outline-color': 'black',
 'fill-opacity': [
 'case',
 ['boolean', ['feature-state', 'hover'], false],
@@ -300,6 +316,7 @@ stops: arr
 ]
 },
 'filter': ['==', '$type', 'Polygon']
+    
 });  
     
     
@@ -327,7 +344,7 @@ stops: arr
 'line-color': '#000000',
 'line-width': 1
 }
-});    
+});   
 map.on('click', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();
 
