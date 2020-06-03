@@ -6,7 +6,7 @@ import os
 from prep_canada_data import stage_latest
 
 date_of_analysis='6/2/20'
-output_directory = 'output_canada'
+output_directory = 'output'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
 # Use canned CSV file, so we can compare results to earlier runs of the script.
