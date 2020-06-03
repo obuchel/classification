@@ -1,0 +1,28 @@
+<h1>Interactive Maps</h1>
+
+<ul>
+    <li>
+        <a href="classification_map.html">classification_map.html</a>
+        (<a href="classification_map.html?useS3=true">use S3</a>)
+    </li>
+
+    <li>
+        <a href="classification_map2.html">classification_map2.html</a>
+        (<a href="classification_map2.html?useS3=true">use S3</a>)
+    </li>
+
+    <li>
+        <a href="classification_map3.html">classification_map3.html</a>
+        (<a href="classification_map3.html?useS3=true">use S3</a>)
+    </li>
+</ul>
+
+<h1>Testing locally</h1>
+
+<pre>
+    $ python -m http.server
+
+</pre>
+Then open <a href="http://localhost:8000/">http://localhost:8000</a>.
+<p>When you test locally (on localhost:8000), data will be served from the local machine.
+If you want to test with data from S3, append the parameter <tt>?useS3=true</tt> to the URL.</p>
