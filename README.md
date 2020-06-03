@@ -7,15 +7,16 @@ Created by: Olha Buchel from the New England Complex Systems Institute
 
 Code to generate the interactive maps at  <https://www.endcoronavirus.org/us-counties>
 
+## Installation
+
+You can install dependencies (e.g. pandas, ansible, boto3)  for this project by using [pipenv](https://pipenv.pypa.io/en/latest/).
+
+    $ pipenv install
+    $ pipenv shell
+    
+This creates a local environment with all necessary packages installed.
+
 ## Web site setup and data flow
-
-The page <https://www.endcoronavirus.org/us-counties> is hosted by SquareSpace.
-It embeds <https://obuchel.github.io/classification/classification_map.html> in an IFrame.
-
-In the source code of that HTML page you find several data sources
-
-```js
-fetch('classification/classification_ids_counties2.json')
 
 fetch('counties.json')
  
