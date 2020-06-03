@@ -5,8 +5,8 @@ import pandas as pd
 import os
 from prep_canada_data import stage_latest
 
-date_of_analysis='6/1/20'
-output_directory = 'output'
+date_of_analysis='6/2/20'
+output_directory = 'output_canada'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
 # Use canned CSV file, so we can compare results to earlier runs of the script.
@@ -18,18 +18,20 @@ if use_canned_file:
 else:
     # Original:
     data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
-#print(data)
+    
 e_dataframe = data.set_index("Combined_Key")
 ids = data[["UID", "Combined_Key"]].to_dict('records')
 recs = data["Combined_Key"].to_list()
 
 # stage latest Canada HR-level data for later processing
 latest_ca_df = stage_latest()
+#print(latest_ca_df)
 assert latest_ca_df.index.names == ['Combined_Key']
+print(latest_ca_df)
 
 e_dataframe0 = e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
 e_dataframe1 = e_dataframe0.transpose()
-
+print(e_dataframe0)
 
 
 
