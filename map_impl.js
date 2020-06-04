@@ -50,14 +50,14 @@ var data3=[];
                // if (data["features"][i]["id"]!="630") {
                 data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
                } else {
-                 /*   var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"][0]);
+                    var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"][0]);
 
             var center = turf.centerOfMass(polygon);
                 //console.log(center["geometry"]["coordinates"]);
 
                // if (data["features"][i]["id"]!="630") {
                 data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
-                  // console.log(data["features"][i]["geometry"]["coordinates"][0]);*/
+                  // console.log(data["features"][i]["geometry"]["coordinates"][0]);
                }
                 // }
             }
