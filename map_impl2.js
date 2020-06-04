@@ -22,6 +22,10 @@ var data3=[];
                 } else {
                   //  console.log(data["features"][i]["properties"]);
                     data["features"][i]["properties"]["v"]=-1;
+                    
+                    
+                    
+                    
                 }
             }
             var hoveredStateId = null;
@@ -174,7 +178,7 @@ coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 hoveredStateId = e.features[0].id;    
 popup=new mapboxgl.Popup()
 .setLngLat(e.lngLat)
-.setHTML(e.features[0].properties.NAMELSAD+" "+e.features[0].properties.v)
+.setHTML(e.features[0].properties.NAME+" "+e.features[0].properties.v)
 .addTo(map);
 
    // console.log(e.features[0].properties);

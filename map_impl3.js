@@ -38,9 +38,24 @@ var data3=[];
                     data["features"][i]["properties"]["max"]=0;
                      data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
                 }
+                  if (data["features"][i]["geometry"]["type"]=="Polygon"){
+         var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"]);
+
+            var center = turf.centerOfMass(polygon);
+                //console.log(center["geometry"]["coordinates"]);
+
                // if (data["features"][i]["id"]!="630") {
-                data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":[Number(data["features"][i]["properties"]["INTPTLON"]),Number(data["features"][i]["properties"]["INTPTLAT"])]},"properties":data["features"][i]["properties"]});
-            //    }
+                data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
+               } else {
+                    var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"][0]);
+
+            var center = turf.centerOfMass(polygon);
+                //console.log(center["geometry"]["coordinates"]);
+
+               // if (data["features"][i]["id"]!="630") {
+                data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
+                  // console.log(data["features"][i]["geometry"]["coordinates"][0]);
+               }
                 // }
             }
             

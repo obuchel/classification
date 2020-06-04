@@ -41,12 +41,32 @@ var data3=[];
                     data["features"][i]["properties"]["max"]=0;
                      data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
                 }
+                if (data["features"][i]["geometry"]["type"]=="Polygon"){
+         var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"]);
+
+            var center = turf.centerOfMass(polygon);
+                //console.log(center["geometry"]["coordinates"]);
+
                // if (data["features"][i]["id"]!="630") {
-                data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":[Number(data["features"][i]["properties"]["INTPTLON"]),Number(data["features"][i]["properties"]["INTPTLAT"])]},"properties":data["features"][i]["properties"]});
-            //    }
+                data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
+               } else {
+                    var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"][0]);
+
+            var center = turf.centerOfMass(polygon);
+                //console.log(center["geometry"]["coordinates"]);
+
+               // if (data["features"][i]["id"]!="630") {
+                data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
+                  // console.log(data["features"][i]["geometry"]["coordinates"][0]);
+               }
                 // }
             }
             
+            
+           // var polygon = turf.polygon([[[-81, 41], [-88, 36], [-84, 31], [-80, 33], [-77, 39], [-81, 41]]]);
+
+          //  var center = turf.centerOfMass(polygon);
+
             
 
             var hoveredStateId = null;
@@ -264,7 +284,7 @@ map.on('click', 'place_data0', function(e) {
 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 }
     
-     var htm=e.features[0].properties.NAMELSAD+": "+e.features[0].properties.max+"<br>";
+     var htm=e.features[0].properties.NAME+": "+e.features[0].properties.max+"<br>";
     
     hoveredStateId = e.features[0].id;    
     var lats=e.lngLat;
