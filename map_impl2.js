@@ -11,7 +11,7 @@ var data3=[];
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=data0.map(function(d){return d.id.toString().substring(3)});
          //  console.log(ids);
-        fetch('counties1.json').then(res => res.json()) 
+        fetch('counties.json').then(res => res.json()) 
 .then(data => {  
  
             for (var i=0; i<data["features"].length; i++) {
