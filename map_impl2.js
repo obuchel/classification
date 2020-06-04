@@ -11,7 +11,7 @@ var data3=[];
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=data0.map(function(d){return d.id.toString().substring(3)});
          //  console.log(ids);
-        fetch('counties4.json').then(res => res.json()) 
+        fetch('counties5.json').then(res => res.json()) 
 .then(data => {  
  
             for (var i=0; i<data["features"].length; i++) {
@@ -44,7 +44,7 @@ center: [-82.447303,37.753574]
 map.on('load', function() {    
 
   
-fetch('states4.json').then(res => res.json()) 
+fetch('states5.json').then(res => res.json()) 
 .then(data8 => {   
      // define layer names
         var layers = [
