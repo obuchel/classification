@@ -1,5 +1,5 @@
 province,country,id,value,color,Change,value_old,color_old
-"""Korea"," South""",95,0.033081783,green,,0.041067041,green
+"""Korea"," South""",95,0.033081783,green,yellow,0.041067041,green
 ,Afghanistan,30,1,red,,0.979708722,red
 ,Albania,3,0.483568075,orange,green,0.469483568,orange
 ,Algeria,1,0.953362256,red,,0.952472002,red
@@ -32,7 +32,7 @@ Australian Capital Territory,Australia,mixed_77,0,green,,0,green
 ,Botswana,181,0.631578947,orange,,0,green
 ,Brazil,20,0.779605351,orange,red,0.940086802,red
 ,Brunei,22,0,green,,0,green
-,Bulgaria,21,0.563526361,orange,yellow,0.623163354,orange
+,Bulgaria,21,0.563526361,orange,green,0.623163354,orange
 ,Burkina Faso,209,0.216545012,yellow,green,0.272506083,yellow
 ,Burma,17,0.205555556,yellow,,0.985,red
 ,Burundi,28,1,red,,0.210526316,yellow
@@ -149,7 +149,7 @@ Saint Pierre and Miquelon,France,232,0,green,,0,green
 ,Iran,83,0.691829145,orange,red,0.565981997,orange
 ,Iraq,87,0.939810427,red,,1,red
 ,Ireland,50,0.136455273,yellow,,0.189966016,yellow
-,Israel,84,0.025300601,green,,0.034819639,green
+,Israel,84,0.025300601,green,yellow,0.034819639,green
 ,Italy,85,0.00782979,green,yellow,0.098445504,green
 ,Jamaica,89,0.162895928,yellow,green,0.140271493,yellow
 ,Japan,88,0.082915605,green,yellow,0.1247432,yellow
@@ -158,10 +158,10 @@ Saint Pierre and Miquelon,France,232,0,green,,0,green
 ,Kenya,91,1,red,,0.959578207,red
 ,Kosovo,kos_1,0.1,green,,0.1,green
 ,Kuwait,96,0.957710908,red,,1,red
-,Kyrgyzstan,92,0.995176849,red,yellow,0.807823129,red
+,Kyrgyzstan,92,0.995176849,red,,0.807823129,red
 ,Laos,98,0,green,,0,green
 ,Latvia,100,0.271794872,yellow,green,0.305982906,yellow
-,Lebanon,99,0.749116608,orange,,0.427561837,orange
+,Lebanon,99,0.749116608,orange,green,0.427561837,orange
 ,Liberia,103,0.587301587,orange,,0.507936508,orange
 ,Libya,106,0.235294118,yellow,,0.029411765,green
 ,Liechtenstein,105,0,green,,0,green
@@ -223,11 +223,11 @@ Sint Maarten,Netherlands,dutch_155,0.024691358,green,,0.024691358,green
 ,Somalia,186,0.774224806,orange,,0.96195122,red
 ,South Africa,179,0.974855156,red,,1,red
 ,Spain,187,0.14844185,yellow,,0.246193429,yellow
-,Sri Lanka,25,0.439735099,orange,green,0.401324503,orange
+,Sri Lanka,25,0.439735099,orange,red,0.401324503,orange
 ,Sudan,189,0.984379694,red,,0.907367668,red
 ,Suriname,157,0.142857143,yellow,,0,green
 ,Sweden,190,0.834092544,red,,0.830975785,red
-,Switzerland,192,0.028483625,green,yellow,0.038574443,green
+,Switzerland,192,0.028483625,green,,0.038574443,green
 ,Syria,191,0.575,orange,green,0.6,orange
 ,Taiwan*,245,0.005333333,green,,0,green
 ,Tanzania,204,0,green,,0.054104478,green
@@ -258,7 +258,7 @@ Puerto Rico,US,173,0.957219251,red,,0.738636364,orange
 Virgin Islands,US,216,0,green,,0.044444444,green
 Georgia,US,67,0.727813041,orange,red,0.655452972,orange
 Guam,US,72,0.192592593,yellow,green,0.059259259,green
-North Dakota,US,mixed_10,0.971859986,red,,0.95256167,red
+North Dakota,US,mixed_10,0.971859986,red,yellow,0.95256167,red
 Michigan,US,mixed_12,0.382199304,yellow,,0.339974551,yellow
 Maine,US,mixed_13,1,red,yellow,0.869001297,red
 Ohio,US,mixed_16,0.677234165,orange,red,0.682464757,orange
@@ -283,7 +283,7 @@ District of Columbia,US,mixed_35,0.688719899,orange,red,0.682636248,orange
 Maryland,US,mixed_36,0.927775197,red,,0.82438458,red
 Delaware,US,mixed_37,0.81006259,red,,0.792007703,red
 New Jersey,US,mixed_38,0.314332834,yellow,,0.32120683,yellow
-Connecticut,US,mixed_39,0.500769116,orange,red,0.528109959,orange
+Connecticut,US,mixed_39,0.500769116,orange,yellow,0.528109959,orange
 Rhode Island,US,mixed_40,0.516563945,orange,red,0.518618387,orange
 Washington,US,mixed_4,0.387110318,yellow,red,0.445785662,orange
 Massachusetts,US,mixed_41,0.464627434,orange,red,0.4861558,orange
@@ -308,7 +308,7 @@ Tennessee,US,mixed_63,0.619669876,orange,red,0.607290234,orange
 West Virginia,US,mixed_64,0.794486216,orange,,0.468671679,orange
 Indiana,US,mixed_65,0.743073231,orange,red,0.720456694,orange
 Montana,US,mixed_7,0.087719298,green,,0.055137845,green
-,Uzbekistan,211,0.465760322,orange,yellow,0.444612286,orange
+,Uzbekistan,211,0.465760322,orange,red,0.444612286,orange
 ,Venezuela,213,1,red,,1,red
 ,Vietnam,215,0.313043478,yellow,green,0.27826087,yellow
 ,West Bank and Gaza,,0.251308901,yellow,,0.031413613,green
