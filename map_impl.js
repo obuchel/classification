@@ -22,7 +22,7 @@ var data3=[];
                                                                      
                                                                      });
            //console.log(ids);
-        fetch('counties.json').then(res => res.json()) 
+        fetch('counties1.json').then(res => res.json()) 
 .then(data => {  
  var data2={"type":"FeatureCollection"};
     data2["features"]=[];        
