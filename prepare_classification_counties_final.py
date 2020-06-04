@@ -5,7 +5,7 @@ import pandas as pd
 import os
 from prep_canada_data import stage_latest
 
-date_of_analysis='6/2/20'
+date_of_analysis='6/3/20'
 output_directory = 'output'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
