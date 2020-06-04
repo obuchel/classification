@@ -11,7 +11,7 @@ var data3=[];
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=data0.map(function(d){return d.id.toString().substring(3)});
          //  console.log(ids);
-        fetch('counties.json').then(res => res.json()) 
+        fetch('counties4.json').then(res => res.json()) 
 .then(data => {  
  
             for (var i=0; i<data["features"].length; i++) {
@@ -144,7 +144,7 @@ stops: arr2
 },
 'filter': ['==', '$type', 'Polygon']
 });  
-    
+    /*
      map.addLayer({
 'id': 'states',
 'type': 'line',
@@ -157,7 +157,7 @@ stops: arr2
 'line-color': '#000000',
 'line-width': 1
 }
-});    
+});    */
     
 map.on('mousemove', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();

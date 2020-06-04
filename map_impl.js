@@ -22,7 +22,7 @@ var data3=[];
                                                                      
                                                                      });
            //console.log(ids);
-        fetch('counties.json').then(res => res.json()) 
+        fetch('counties4.json').then(res => res.json()) 
 .then(data => {  
  var data2={"type":"FeatureCollection"};
     data2["features"]=[];        
@@ -50,14 +50,14 @@ var data3=[];
                // if (data["features"][i]["id"]!="630") {
                 data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
                } else {
-                    var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"][0]);
+                 /*   var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"][0]);
 
             var center = turf.centerOfMass(polygon);
                 //console.log(center["geometry"]["coordinates"]);
 
                // if (data["features"][i]["id"]!="630") {
                 data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
-                  // console.log(data["features"][i]["geometry"]["coordinates"][0]);
+                  // console.log(data["features"][i]["geometry"]["coordinates"][0]);*/
                }
                 // }
             }
@@ -259,7 +259,7 @@ stops: arr
 'circle-color': "grey",
      'circle-opacity': 0.1
 }
-});    
+});    /*
      map.addLayer({
 'id': 'states',
 'type': 'line',
@@ -272,7 +272,7 @@ stops: arr
 'line-color': '#000000',
 'line-width': 1
 }
-});   
+});   */
 map.on('click', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();
 
