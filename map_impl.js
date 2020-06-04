@@ -22,7 +22,7 @@ var data3=[];
                                                                      
                                                                      });
            //console.log(ids);
-        fetch('counties4.json').then(res => res.json()) 
+        fetch('counties5.json').then(res => res.json()) 
 .then(data => {  
  var data2={"type":"FeatureCollection"};
     data2["features"]=[];        
@@ -87,7 +87,7 @@ center: [-82.447303,37.753574]
             
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
-fetch('states4.json').then(res => res.json()) 
+fetch('states5.json').then(res => res.json()) 
 .then(data8 => {             
 
     
