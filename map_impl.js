@@ -87,7 +87,7 @@ center: [-82.447303,37.753574]
             
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
-fetch('states.json').then(res => res.json()) 
+fetch('states4.json').then(res => res.json()) 
 .then(data8 => {             
 
     
@@ -259,7 +259,7 @@ stops: arr
 'circle-color': "grey",
      'circle-opacity': 0.1
 }
-});    /*
+});    
      map.addLayer({
 'id': 'states',
 'type': 'line',
@@ -272,7 +272,7 @@ stops: arr
 'line-color': '#000000',
 'line-width': 1
 }
-});   */
+});   
 map.on('click', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();
 

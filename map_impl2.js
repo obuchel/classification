@@ -44,7 +44,7 @@ center: [-82.447303,37.753574]
 map.on('load', function() {    
 
   
-fetch('states.json').then(res => res.json()) 
+fetch('states4.json').then(res => res.json()) 
 .then(data8 => {   
      // define layer names
         var layers = [
@@ -144,7 +144,7 @@ stops: arr2
 },
 'filter': ['==', '$type', 'Polygon']
 });  
-    /*
+    
      map.addLayer({
 'id': 'states',
 'type': 'line',
@@ -157,7 +157,7 @@ stops: arr2
 'line-color': '#000000',
 'line-width': 1
 }
-});    */
+});    
     
 map.on('mousemove', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();
