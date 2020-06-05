@@ -71,7 +71,7 @@ var data3=[];
 
             var hoveredStateId = null;
 //pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjamhqZTZsOWkwN25iM2Fxd282N2FlZDVqIn0.bkOU5gAio8eKnmKHlntJsA
-  mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjamhqZTZsOWkwN25iM2Fxd282N2FlZDVqIn0.bkOU5gAio8eKnmKHlntJsA';
+  mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjanlrY3diNzIwZDdxM25uN2owN2c5ZHpiIn0.XzMbcbHF6H42u0Uxo1L8lg';
 map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v10',
