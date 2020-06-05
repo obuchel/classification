@@ -1,3 +1,4 @@
+
 import json
 
 import numpy as np
@@ -5,7 +6,7 @@ import pandas as pd
 import os
 from prep_canada_data import stage_latest
 
-date_of_analysis='6/2/20'
+date_of_analysis='6/3/20'
 output_directory = 'output_canada'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
@@ -22,19 +23,23 @@ else:
 e_dataframe = data.set_index("Combined_Key")
 ids = data[["UID", "Combined_Key"]].to_dict('records')
 recs = data["Combined_Key"].to_list()
+print(ids)
+print(recs)
+
 
 # stage latest Canada HR-level data for later processing
 latest_ca_df = stage_latest()
 #print(latest_ca_df)
 assert latest_ca_df.index.names == ['Combined_Key']
-print(latest_ca_df)
 
 e_dataframe0 = latest_ca_df
 #e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
 e_dataframe1 = e_dataframe0.transpose()
+print(e_dataframe0)
+compression_opts = dict(method='zip',archive_name='canadian_data.csv')  
+e_dataframe0.to_csv("canadian_data.csv", sep=',', header=True,encoding='utf-8')  
 
-
-
+'''
 
 def add_day_columns(df):
     """Add columns Elapsed_days, Decimals, Day_Year to df."""
@@ -173,3 +178,4 @@ aar1[0]["date"]=date_of_analysis
 # this file is used by the map
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
+'''
