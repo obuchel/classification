@@ -26,5 +26,6 @@
             - "*"
           allowed_methods:
             - GET
+            - HEAD
   - debug:
       msg: "Finished setting up S3 bucket {{ bucket_name }} in region {{ aws_region }}."
