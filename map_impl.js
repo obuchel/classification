@@ -131,19 +131,23 @@ var item = document.createElement('div');
    // Switch color schemes for accessibility
 
 
-var item0 = document.createElement('select');
-    item0.setAttribute("id", "mySelect");
-          legend.appendChild(item0);
+var item0 = document.createElement('div');
+    item0.innerHTML='Color schemes: <input type="radio" id="default" name="mySelect" value="scheme1" checked><label for="default">Default</label> <input type="radio" id="access" name="mySelect" value="scheme2"><label for="access">Accessible</label>';
+
+    legend.appendChild(item0);
+    
+/*
+x.setAttribute("type", "radio");
     
      var x = document.createElement("LABEL");
-  var t = document.createTextNode("Switch color schemes for accessibility:");
+  var t = document.createTextNode("Color schemes:");
   x.setAttribute("for", "mySelect");
   x.appendChild(t);
   document.getElementById("legend").insertBefore(x,document.getElementById("mySelect"));
+    */
     
-    
-        // get reference to select element
-var sel = document.getElementById('mySelect');
+  /*      // get reference to select element
+var sel = document.getElementsByName('mySelect');
 
 // create new option element
 var opt = document.createElement('option');
@@ -168,9 +172,15 @@ opt1.value = 'scheme2';
 
 // add opt to end of select box (sel)
 sel1.appendChild(opt1);     
+    */
     
-    
-   document.getElementById('mySelect').addEventListener("change",change_colors);
+   var y=document.getElementsByName('mySelect');
+       for (var i=0; i<y.length; i++){
+           y[i].addEventListener("change",change_colors);
+       }
+       
+       
+       
         for (i = 0; i < layers.length; i++) {
           var layer = layers[i];
           var color = colors[i];
@@ -179,6 +189,7 @@ sel1.appendChild(opt1);
           var key = document.createElement('span');
           key.className = 'legend-key';
           key.style.backgroundColor = color;
+            key.style.borderStyle = "ridge";
 
           var value = document.createElement('span');
           value.innerHTML = layer;
@@ -192,7 +203,7 @@ var item = document.createElement('div');
     
     // item.className = 'legend-div';
      item.appendChild(value);
-          legend.appendChild(item);
+        //  legend.appendChild(item);
     
     /*
      var value3 = document.createElement('span');
@@ -203,7 +214,7 @@ var item = document.createElement('div');
     */
     
     var value2 = document.createElement('span');
-    value2.innerHTML = "Date of reporting: "+data0[0]["date"];
+    value2.innerHTML = "Updated: "+data0[0]["date"];
      value2.style.textAlign="center !important";
     value2.style.margin="auto";
     var item2 = document.createElement('div');
@@ -247,7 +258,7 @@ stops: arr
     
 });  
     
-    
+    /*
      map.addLayer({
 'id': 'population',
 'type': 'circle',
@@ -259,7 +270,7 @@ stops: arr
 'circle-color': "grey",
      'circle-opacity': 0.1
 }
-});    
+});    */
      map.addLayer({
 'id': 'states',
 'type': 'line',
@@ -272,7 +283,7 @@ stops: arr
 'line-color': '#000000',
 'line-width': 1
 }
-});   
+},"");   
 map.on('click', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();
 
@@ -471,15 +482,20 @@ var item = document.createElement('div');
             all[i].innerHTML="";
         }
         
-        
-        
-        
-    if (document.getElementById("mySelect").value=="scheme2") {
+       /* 
+        if(document.getElementById('gender_Male').checked) {
+  //Male radio button is checked
+}else if(document.getElementById('gender_Female').checked) {
+  //Female radio button is checked
+}*/
+     if(document.getElementById('access').checked) {   
+    //if (document.getElementById("mySelect").value=="scheme2") {
 
  for (var i=0; i<all.length; i++) {
             var key = document.createElement('span');
           key.className = 'legend-key';
           key.style.backgroundColor = colors1[i];
+      key.style.borderStyle = "ridge";
 
           var value = document.createElement('span');
           value.innerHTML = layers1[i];
@@ -522,7 +538,7 @@ var item = document.createElement('div');
             var key = document.createElement('span');
           key.className = 'legend-key';
           key.style.backgroundColor = colors[i];
-
+ key.style.borderStyle = "ridge";
           var value = document.createElement('span');
           value.innerHTML = layers[i];
           all[i].appendChild(key);
