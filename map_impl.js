@@ -132,7 +132,7 @@ var item = document.createElement('div');
 
 
 var item0 = document.createElement('div');
-    item0.innerHTML='Color schemes: <input type="radio" id="default" name="mySelect" value="scheme1" checked><label for="default">Default</label> <input type="radio" id="access" name="mySelect" value="scheme2"><label for="access">Accessible</label>';
+    item0.innerHTML='Color schemes: <input type="radio" id="default" name="mySelect" value="scheme1" checked><label for="default">Default</label> <br><input type="radio" id="access" name="mySelect" value="scheme2"><label for="access">Accessible</label>';
 
     legend.appendChild(item0);
     
