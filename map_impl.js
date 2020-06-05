@@ -334,8 +334,9 @@ if (e.features[0].properties["c"]=="yellow") {
   fetch(url).then(res => res.json()) 
 .then(data7 => {    
 
-      
-       if (document.getElementById("mySelect").value=="scheme1") {
+  
+
+       if (document.getElementById("default").checked==true) {
 
         draw_plot(data7,color);
            
