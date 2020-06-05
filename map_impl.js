@@ -214,7 +214,7 @@ var item = document.createElement('div');
     */
     
     var value2 = document.createElement('span');
-    value2.innerHTML = "Updated: "+data0[0]["date"];
+    value2.innerHTML = "<br>Updated: "+data0[0]["date"];
      value2.style.textAlign="center !important";
     value2.style.margin="auto";
     var item2 = document.createElement('div');
@@ -308,9 +308,10 @@ if (e.features[0].properties["c"]=="yellow") {
  var color="#800026";
 } else 
 
-
 {
-    var color=e.features[0].properties["c"];
+    var color="#fd8d3c";
+    //e.features[0].properties["c"];
+    console.log(color);
 }
 
     document.getElementById("plot").innerHTML="";
@@ -341,7 +342,9 @@ if (e.features[0].properties["c"]=="yellow") {
         draw_plot(data7,color);
            
        } else {
+           //console.log(arr);
            
+           //console.log(color);
            for (var i=0; i<arr.length; i++) {
                if (arr[i][1]==color) {
                     draw_plot(data7,arr20[i][1]);
@@ -607,6 +610,9 @@ stops: arr2
 
     
 function draw_plot(data,color) {
+    
+    
+    console.log(color);
     document.getElementById("plot").style.visibility="visible";
    document.getElementById("features").style.visibility="visible";
     //console.log(data);
