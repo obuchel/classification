@@ -97,7 +97,7 @@ fetch('states5.json').then(res => res.json())
         var value2 = document.createElement('span');
    
 
-    value2.innerHTML = "Date of reporting: "+data0[0]["date"];
+    value2.innerHTML = "Updated: "+data0[0]["date"];
      value2.style.textAlign="center !important";
     value2.style.margin="auto";
     var item2 = document.createElement('div');
