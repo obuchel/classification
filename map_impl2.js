@@ -77,10 +77,11 @@ fetch('states5.json').then(res => res.json())
           var key = document.createElement('span');
           key.className = 'legend-key';
           key.style.backgroundColor = color;
-
+            
+ key.style.borderStyle = "ridge";
           var value = document.createElement('span');
           value.innerHTML = layer;
-            if (i!=0) {
+            if (i!=0 && color !="") {
           item.appendChild(key);
             }
           item.appendChild(value);
