@@ -13,12 +13,11 @@
   - name: Upload state and county boundaries
     s3_sync:
       bucket: "{{ bucket_name }}"
-      file_root: ../data/geo
-      key_prefix: data/geo
+      file_root: ..
       file_change_strategy: date_size
       permission: public-read
       cache_control: "public, max-age=604800"
-      include: "*.json"
+      include: "counties5.json,states5.json"
       region: "{{ aws_region }}"
   - name: Upload county classification data
     s3_sync:
