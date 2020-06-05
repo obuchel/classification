@@ -1,3 +1,14 @@
+var base_url = "";
+var found = window.location.search.match(/s3bucket=(?<bucket>.*)/);
+if (found) {
+    var bucket = found.groups.bucket;
+    // TODO: make the AWS region variable
+    base_url = "https://" + bucket + ".s3.us-east-2.amazonaws.com/";
+}
+var fetch_json = function (url) {
+    return fetch(base_url + url)
+};
+
 var popup;
  var layerM;
     var map;
@@ -11,7 +22,7 @@ var comms=["All",0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 1
 var data3=[];    
 
     var data0=[];
-            fetch('output/classification/classification_ids_counties2.json').then(res => res.json()) 
+            fetch_json('output/classification/classification_ids_counties2.json').then(res => res.json())
 .then(data0 => { 
              // console.log(data0);  
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
@@ -22,7 +33,7 @@ var data3=[];
                                                                      
                                                                      });
            //console.log(ids);
-        fetch('counties5.json').then(res => res.json()) 
+        fetch_json('counties5.json').then(res => res.json())
 .then(data => {  
  var data2={"type":"FeatureCollection"};
     data2["features"]=[];        
@@ -87,7 +98,7 @@ center: [-82.447303,37.753574]
             
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
-fetch('states5.json').then(res => res.json()) 
+fetch_json('states5.json').then(res => res.json())
 .then(data8 => {             
 
     
@@ -332,7 +343,7 @@ if (e.features[0].properties["c"]=="yellow") {
     }
     
     
-  fetch(url).then(res => res.json()) 
+  fetch_json(url).then(res => res.json())
 .then(data7 => {    
 
   
