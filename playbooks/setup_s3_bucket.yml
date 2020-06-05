@@ -1,0 +1,30 @@
+---
+# Set up a S3 bucket with public access and CORS permissions,
+# upload county and state boundaries (all json files from data/geo).
+# This expects your AWS credentials in the AWS_ACCESS_KEY and AWS_SECRET_KEY
+# environment variables.
+
+- name: Setup S3 Bucket
+  hosts: localhost
+  gather_facts: False
+  vars_files:
+    - settings.yml
+  tasks:
+  - name: Create the bucket
+    aws_s3:
+      bucket: "{{ bucket_name }}"
+      mode: create
+      permission: public-read
+      region: "{{ aws_region }}"
+
+  - name: Set up CORS
+    aws_s3_cors:
+      name: "{{ bucket_name }}"
+      state: present
+      rules:
+        - allowed_origins:
+            - "*"
+          allowed_methods:
+            - GET
+  - debug:
+      msg: "Finished setting up S3 bucket {{ bucket_name }} in region {{ aws_region }}."

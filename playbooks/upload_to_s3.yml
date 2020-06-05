@@ -1,0 +1,34 @@
+---
+# Upload county classification data (all json files from output/classification)
+# to the S3 bucket.
+# This expects your AWS credentials in the AWS_ACCESS_KEY and AWS_SECRET_KEY
+# environment variables.
+
+- name: Upload classifcation data to S3 Bucket
+  hosts: localhost
+  gather_facts: False
+  vars_files:
+    - settings.yml
+  tasks:
+  - name: Upload state and county boundaries
+    s3_sync:
+      bucket: "{{ bucket_name }}"
+      file_root: ../data/geo
+      key_prefix: data/geo
+      file_change_strategy: date_size
+      permission: public-read
+      cache_control: "public, max-age=604800"
+      include: "*.json"
+      region: "{{ aws_region }}"
+  - name: Upload county classification data
+    s3_sync:
+      bucket: "{{ bucket_name }}"
+      file_root: ../output/classification
+      key_prefix: output/classification
+      file_change_strategy: date_size
+      permission: public-read
+      cache_control: "public, max-age=3600"
+      include: "*.json"
+      region: "{{ aws_region }}"
+  - debug:
+      msg: "Data uploaded to S3 bucket {{ bucket_name }} in region {{ aws_region }}"
