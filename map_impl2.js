@@ -39,8 +39,8 @@ zoom: 3,
 center: [-82.447303,37.753574]
 });
          
-      map.addControl(new mapboxgl.NavigationControl(), 'top-left');       
-            map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');       
+map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
 map.on('load', function() {    
 
   
@@ -48,14 +48,14 @@ fetch('states5.json').then(res => res.json())
 .then(data8 => {   
      // define layer names
         var layers = [
-            '<b>New cases in the past 2 weeks:</b>',
+            '<b>New cases past 14 days:</b>',
             ' ',
-             'no new cases',
-          '1-20 new cases',
-          '21-200 new cases',
-          '201-1,000 new cases',
-          '1,001-20,000 new cases',
-            '20,000-30,000 new cases'
+             'None',
+          '1-20',
+          '21-200',
+          '201-1,000',
+          '1,001-20,000',
+            '20,000-30,000'
         ];
 
         var colors = [
