@@ -107,10 +107,10 @@ break;
     console.log(map.getStyle().layers);
     */
         var layers = [
-          '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
-          '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
-          '<img width="20px" height="20px" src="orange.png"> : Daily new cases falling or constant',
-          '<img width="20px" height="20px" src="red.png"> : Daily new cases increasing'
+          '<img width="20px" height="20px" src="green.png"> : New cases under control',
+          '<img width="20px" height="20px" src="yellow.png"> : New cases almost under control',
+          '<img width="20px" height="20px" src="orange.png"> : New cases falling or constant',
+          '<img width="20px" height="20px" src="red.png"> : New cases increasing'
         ];
 
         var colors = [
@@ -132,7 +132,7 @@ var item = document.createElement('div');
 
 
 var item0 = document.createElement('div');
-    item0.innerHTML='Colors: <input type="radio" id="default" name="mySelect" value="scheme1" checked><label for="default">Default</label> <br><input type="radio" id="access" name="mySelect" value="scheme2"><label for="access">Other</label>';
+    item0.innerHTML='Colors: <input type="radio" id="default" name="mySelect" value="scheme1" checked><label for="default">Default</label> <input type="radio" id="access" name="mySelect" value="scheme2"><label for="access">Other</label>';
 
     legend.appendChild(item0);
     
