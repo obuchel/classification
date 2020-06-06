@@ -1,4 +1,7 @@
 
+
+
+
 import json
 
 import numpy as np
@@ -6,25 +9,43 @@ import pandas as pd
 import os
 from prep_canada_data import stage_latest
 
-date_of_analysis='6/3/20'
+date_of_analysis='6/4/20'
 output_directory = 'output_canada'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
-
+'''
 if use_canned_file:
     data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv')
     assert data.columns[-1] == date_of_analysis
 else:
     # Original:
     data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
+'''
+dates=["25-01-2020","26-01-2020","27-01-2020","28-01-2020","29-01-2020","30-01-2020","31-01-2020"]
+for x in range(2,7):
+    if x<10:
+        x="0"+str(x)
+    for y in range(1,32):
+        if y<10:
+            y="0"+str(y)
+        if str(y)+"-"+str(x)+"-"+"2020" not in ["30-02-2020","31-02-2020","31-04-2020"]:    
+            dates.append(str(y)+"-"+str(x)+"-"+"2020")
+dates0=dates[:len(dates)-27]        
+
+
+data={}
+with open('canadian_keys.json', 'r') as outfile:
+    data=json.load(outfile)
     
-e_dataframe = data.set_index("Combined_Key")
-ids = data[["UID", "Combined_Key"]].to_dict('records')
-recs = data["Combined_Key"].to_list()
-print(ids)
-print(recs)
+#e_dataframe = data.set_index("Combined_Key")
+ids = list(data.values())[1:]
+recs = list(data.keys())[1:]
+#data["Combined_Key"].to_list()
+#canadian_keys.json
+#print(ids)
+#print(recs)
 
 
 # stage latest Canada HR-level data for later processing
@@ -34,12 +55,16 @@ assert latest_ca_df.index.names == ['Combined_Key']
 
 e_dataframe0 = latest_ca_df
 #e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
-e_dataframe1 = e_dataframe0.transpose()
-print(e_dataframe0)
-compression_opts = dict(method='zip',archive_name='canadian_data.csv')  
-e_dataframe0.to_csv("canadian_data.csv", sep=',', header=True,encoding='utf-8')  
+#print(e_dataframe0.columns.tolist())
+df = e_dataframe0.reindex(columns=dates0)
+e_dataframe1 = df.transpose()
 
-'''
+#print(df)
+
+#compression_opts = dict(method='zip',archive_name='canadian_data.csv')  
+#e_dataframe0.to_csv("canadian_data.csv", sep=',', header=True,encoding='utf-8')  
+
+
 
 def add_day_columns(df):
     """Add columns Elapsed_days, Decimals, Day_Year to df."""
@@ -58,7 +83,7 @@ def add_day_columns(df):
     df.insert(0, "Day_Year", dats2, True)
     df.insert(0, "Decimals", decimals, True)
     df.insert(0, "Elapsed_days", elapsed_days, True)
-
+    print(df)
 
 add_day_columns(e_dataframe1)
 
@@ -68,13 +93,14 @@ if False:
     import sys
     sys.exit(0)
 
-tim = list(e_dataframe0.columns)
-tim.pop(0)
+tim = dates#list(e_dataframe0.columns)
+#tim.pop(0)
 
 ind4 = 0
 aar = []
 aar1 = []
 counties = e_dataframe1.columns[3:]
+#print(counties)
 
 def compute_original_values(values):
     result = []
@@ -131,7 +157,10 @@ def classify(ratio, recent_mean, threshold):
     return color
 
 for name in counties:
-    values = e_dataframe1[name]
+    values = e_dataframe1[name].cumsum()
+    print(values)
+    
+
     num_rows = len(values)
     y50 = values[-20:]
     y5 = [y - values[-21] for y in y50]
@@ -165,10 +194,11 @@ for name in counties:
             #print(name,y3)
             ratio=0
             color="green"
-        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
-            json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
-        #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
-        aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5))})
+        if name in recs:    
+            with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)])+'.json', 'w') as outfile:
+                json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
+            #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
+            aar1.append({"n":name,"id":ids[recs.index(name)],"v":ratio,"c":color,"max":int(max(y5))})
         ind4+=1
 
 
@@ -176,6 +206,7 @@ for name in counties:
 #    json.dump(aar,outfile)
 aar1[0]["date"]=date_of_analysis
 # this file is used by the map
-with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
+with open(output_directory + '/classification/classification_ids_provinces2.json', 'w') as outfile:
     json.dump(aar1, outfile)
-'''
+
+
