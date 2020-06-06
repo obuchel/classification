@@ -108,7 +108,7 @@ break;
     */
         var layers = [
           '<img width="20px" height="20px" src="green.png"> : New cases under control',
-          '<img width="20px" height="20px" src="yellow.png"> : New cases almost under control',
+          '<img width="20px" height="20px" src="yellow.png"> : New cases almost controlled',
           '<img width="20px" height="20px" src="orange.png"> : New cases falling or constant',
           '<img width="20px" height="20px" src="red.png"> : New cases increasing'
         ];
@@ -449,10 +449,10 @@ var item = document.createElement('div');
             document.getElementById("plot").style.visibility="hidden";
    document.getElementById("features").style.visibility="hidden";
      var layers = [
-          '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
-          '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
-          '<img width="20px" height="20px" src="orange.png"> : Daily new cases falling or constant',
-          '<img width="20px" height="20px" src="red.png"> : Daily new cases increasing'
+          '<img width="20px" height="20px" src="green.png"> : New cases under control',
+          '<img width="20px" height="20px" src="yellow.png"> : New cases almost controlled',
+          '<img width="20px" height="20px" src="orange.png"> : New cases falling or constant',
+          '<img width="20px" height="20px" src="red.png"> : New cases increasing'
         ];
 
         var colors = [
@@ -466,10 +466,10 @@ var item = document.createElement('div');
        /* 
          var arr20=[[-1, '#000000'],[0, '#2166ac'],[0.1, '#fddbc7'],[0.4, '#f4a582'],[0.8, '#d6604d'],[1, '#b2182b']]; */
      var layers1 = [
-          '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
-          '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
-          '<img width="20px" height="20px" src="orange.png"> : Daily new cases falling or constant',
-          '<img width="20px" height="20px" src="red.png"> : Daily new cases increasing'
+          '<img width="20px" height="20px" src="green.png"> : New cases under control',
+          '<img width="20px" height="20px" src="yellow.png"> : New cases almost controlled',
+          '<img width="20px" height="20px" src="orange.png"> : New cases falling or constant',
+          '<img width="20px" height="20px" src="red.png"> : New cases increasing'
         ];
 
         var colors1 = [
