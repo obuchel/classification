@@ -1,0 +1,314 @@
+province,country,id,Yaneer,value,Our_classification,
+,Antigua and Barbuda,0,green,0.1,green,
+,West Bank and Gaza,,green,0.17105263157894700,yellow,X
+,Barbados,10,green,0.0,green,
+,Latvia,100,green,0.10344827586206900,yellow,X (boundary)
+,Algeria,1,red,0.6192513368983960,orange,
+,Belarus,101,red,0.8828405491024290,red,
+,Lithuania,102,green,0.102,yellow,X (boundary)
+,Liberia,103,green,1.1333333333333300,red,X
+,Slovakia,104,green,0.022222222222222200,green,
+,Liechtenstein,105,green,0.0,green,
+,Libya,106,red,1.0066666666666700,red,
+,Madagascar,107,red,0.9400000000000000,red,
+,Mongolia,109,green,0.5166666666666670,orange,X
+,North Macedonia,111,red,1.0046052631578900,red,
+,Mali,112,red,0.9712500000000000,red,
+,Morocco,113,red,0.25775401069518700,yellow,X
+,Mauritius,114,green,0.016666666666666700,green,
+,Mauritania,115,red,1.005,red,
+,Malta,116,green,0.07500000000000000,green,
+,Oman,117,red,1.0000730994152000,red,
+,Maldives,118,red,0.7918181818181820,red,
+,Mexico,119,green,0.0,green,
+,Bahamas,12,green,0.1,green,
+,Malaysia,120,red,0.38727810650887600,yellow,X
+,Mozambique,121,red,0.9571428571428570,red,
+,Niger,125,green,0.03333333333333330,green,
+,Belgium,128,yellow,0.09763585038814400,green,X
+"""Korea"," South""",95,green,0.017135325131810200,green,
+,Bangladesh,13,red,1.0004155730533700,red,
+,Andorra,132,green,0.30689655172413800,yellow,X
+,Luxembourg,135,green,0.020987654320987700,green,
+,Monaco,137,green,0.03333333333333330,green,
+,Montenegro,139,green,0.0,green,
+,Belize,14,green,0.1,green,
+,Bosnia and Herzegovina,15,green,0.36836734693877600,yellow,X
+,Nigeria,152,red,0.9525936599423630,red,
+,Norway,154,green,0.05138339920948620,green,
+,Nepal,155,red,1.0014423076923100,red,
+,Suriname,157,green,1.1214285714285700,red,
+,Nicaragua,158,red,0.4325301204819280,orange,
+,New Zealand,159,green,0.0,green,
+,Bolivia,16,red,0.9455197132616490,red,
+,Paraguay,160,green,0.4693181818181820,orange,
+,Peru,161,red,0.07253653936822250,green,
+,Pakistan,162,red,1.0000324464633400,red,
+,Poland,163,red,0.7960659898477160,red,
+,Panama,164,red,0.9861323155216290,red,
+,Portugal,165,red,0.35780456852791900,yellow,X
+,Papua New Guinea,166,green,0,green,
+,Guinea-Bissau,167,yellow,0.31842105263157900,yellow,
+,Qatar,168,red,0.9486928104575160,red,
+,Romania,170,red,0.436027397260274,orange,
+,Moldova,171,red,0.9610526315789470,red,
+,Philippines,172,red,0.9595673876871880,red,
+Puerto Rico,US,173,red,0.991732283464567,red,
+,Russia,174,red,0.36459028550241000,yellow,X
+,Rwanda,175,green,0.775,orange,X
+,Saudi Arabia,176,red,0.7062183235867450,orange,
+,Saint Kitts and Nevis,177,green,0,green,
+,Seychelles,178,green,0,green,
+,South Africa,179,red,1.000190943807970,red,
+,Benin,18,green,0.21666666666666700,yellow,X
+,Senegal,182,red,0.9575757575757580,red,
+,Slovenia,183,green,0.02,green,
+,Singapore,185,red,0.49283405172413800,orange,
+,Somalia,186,red,0.911320754716981,red,
+,Spain,187,yellow,0.05307219662058370,green,X
+,Saint Lucia,188,green,0.1,green,
+,Sudan,189,red,0.852,red,
+,Sweden,190,red,0.9197674418604650,red,
+,Syria,191,green,0.050000000000000000,green,
+,Switzerland,192,green,0.015366972477064200,green,
+,Trinidad and Tobago,193,green,0.014285714285714300,green,
+,Thailand,194,green,0.0430327868852459,green,
+,Togo,198,green,0.5111111111111110,orange,
+,Tunisia,200,green,0.09473684210526320,green,
+,Azerbaijan,2,red,1.0018987341772200,red,
+,Brazil,20,green,0.0,green,
+,Turkey,201,red,0.20466455839168700,yellow,X
+,Tanzania,204,green,0.0,green,
+,Uganda,205,red,0.9666666666666670,red,
+,Ukraine,207,red,0.39906832298136600,yellow,X
+,Burkina Faso,209,green,0.2475,yellow,
+,Uruguay,210,green,0.17272727272727300,yellow,X
+,Bulgaria,21,green,0.3078947368421050,yellow,X
+,Uzbekistan,211,red,0.6843434343434340,orange,
+,Saint Vincent and the Grenadines,212,green,0.8,red,X
+,Venezuela,213,red,0.9967391304347830,red,
+,Vietnam,215,green,0.009090909090909090,green,
+Virgin Islands,US,216,green,0.05,green,
+,Namibia,217,green,0.35,yellow,X
+,Eswatini,220,green,0.48125,orange,X
+,Brunei,22,green,0.0,green,
+,Zambia,222,green,0.17033898305084700,yellow,X
+,Zimbabwe,223,red,0.9,red,
+,Indonesia,224,red,0.9042105263157890,red,
+,United Arab Emirates,227,red,0.7168229777256740,orange,
+,Timor-Leste,228,green,0.0,green,
+,San Marino,234,green,0.084375,green,
+,Serbia,237,yellow,0.11851851851851900,yellow,
+,Holy See,238,green,0,green,
+,Cambodia,24,green,0.0125,green,
+,Taiwan*,245,green,0.011111111111111100,green,
+,Sri Lanka,25,red,0.6672131147540980,orange,
+,Congo (Brazzaville),26,red,0.6625,orange,
+,Congo (Kinshasa),27,red,0.9551851851851850,red,
+Tibet,China,29,green,0,green,
+Qinghai,China,29,green,0.0,green,
+Inner Mongolia,China,29,green,0.04285714285714290,green,
+Jilin,China,29,green,0.0,green,
+Xinjiang,China,29,green,0.0,green,
+Gansu,China,29,green,0.0,green,
+Hong Kong,China,29,green,0.0811111111111111,green,
+Heilongjiang,China,29,green,0.006060606060606060,green,
+Shaanxi,China,29,green,0.0071428571428571400,green,
+Zhejiang,China,29,green,0.0,green,
+Shanxi,China,29,green,0.0,green,
+Ningxia,China,29,green,0.0,green,
+Hebei,China,29,green,0.0,green,
+Macau,China,29,green,0.0,green,
+Yunnan,China,29,green,0.0,green,
+Guizhou,China,29,green,0.0,green,
+Beijing,China,29,green,0.005,green,
+Fujian,China,29,green,0.0029411764705882400,green,
+Jiangsu,China,29,green,0.0,green,
+Anhui,China,29,green,0.0,green,
+Liaoning,China,29,green,0.0,green,
+Guangxi,China,29,green,0.0,green,
+Shandong,China,29,green,0.014285714285714300,green,
+Guangdong,China,29,green,0.010975609756097600,green,
+Jiangxi,China,29,green,-0.008620689655172410,green,
+Hubei,China,29,green,0.0,green,
+Tianjin,China,29,green,0.0,green,
+Hainan,China,29,green,0.0,green,
+Hunan,China,29,green,0.0,green,
+Henan,China,29,green,0.0,green,
+Sichuan,China,29,green,0.056000000000000000,green,
+Chongqing,China,29,green,0.0,green,
+Shanghai,China,29,green,0.0325,green,
+,Albania,3,red,0.8214285714285710,red,
+,Afghanistan,30,red,0.9750714285714290,red,
+,Bhutan,31,green,1.025,red,X
+,Chile,32,green,0.0,green,
+,Cameroon,34,red,0.8394849785407730,red,
+,Chad,35,green,0.4589285714285710,orange,X
+,Colombia,37,red,0.06640530759951750,green,
+,Costa Rica,38,red,1.032,red,
+,Central African Republic,39,red,1.005921052631580,red,
+,Cuba,40,green,0.31634615384615400,yellow,X
+,Armenia,4,red,0.9927230046948360,red,
+,Cape Verde,41,green,0,green,
+,Cyprus,43,green,0.06363636363636360,green,
+,Djibouti,45,red,0.950925925925926,red,
+,Dominica,46,green,0.2,yellow,X
+,Dominican Republic,47,red,0.8929166666666670,red,
+,Ecuador,48,red,0.2200228832951950,yellow,X
+,Egypt,49,red,0.9862468931234470,red,
+,Angola,5,green,0.5166666666666670,orange,X
+,Ireland,50,yellow,0.04539170506912440,green,
+,Equatorial Guinea,51,red,0.536734693877551,orange,
+,Estonia,52,green,0.11967213114754100,yellow,
+,Eritrea,53,green,0.0,green,
+,El Salvador,54,red,0.8994186046511630,red,
+,Ethiopia,55,red,1.0083333333333300,red,
+,Austria,56,yellow,0.03689986282578880,green,X?
+,Czechia,57,yellow,0.16763636363636400,yellow,
+,Finland,59,yellow,0.19379310344827600,yellow,
+,Fiji,60,green,0.0,green,
+,Gambia,65,green,0.1,green,
+,Gabon,66,red,0.7545871559633030,orange,
+Georgia,US,67,red,0.7286951501154730,orange,
+,Georgia,geo_67,green,0.42058823529411800,orange,
+,Ghana,68,red,0.6336569579288030,orange,
+,Grenada,69,green,0.0,green,
+,Argentina,7,red,0.9708984375000000,red,
+,Germany,71,yellow,0.06537540619120920,green,X
+Guam,US,72,green,0.17500000000000000,yellow,X
+,Greece,73,green,0.0808139534883721,green,
+,Guatemala,74,red,0.9439922480620160,red,
+,Guinea,75,red,0.9127906976744190,red,
+,Guyana,76,green,0.4666666666666670,orange,X
+,Haiti,77,red,0.8993975903614460,red,
+,Honduras,78,red,0.704126213592233,orange,
+,Croatia,79,green,0.004285714285714290,green,
+,Hungary,80,green,0.2,yellow,X
+,Iceland,81,green,0.0020833333333333300,green,
+,India,82,red,0.9781560368553310,red,
+,Iran,83,red,0.9247480013903370,red,
+,Israel,84,yellow,0.13160535117056900,yellow,
+,Italy,85,yellow,0.06497354497354500,green,X
+,Cote d'Ivoire,86,red,1.004945054945060,red,
+,Iraq,87,red,1.0009278350515500,red,
+,Japan,88,green,0.002302631578947370,green,
+,Jamaica,89,green,0.12954545454545500,yellow,X
+,Jordan,90,green,0.21666666666666700,yellow,X
+,Bahrain,9,red,1.0013953488372100,red,
+,Kenya,91,red,0.976605504587156,red,
+,Kyrgyzstan,92,red,0.9404255319148940,red,
+,Kuwait,96,red,0.8233475479744140,red,
+,Kazakhstan,97,red,0.8845403899721450,red,
+,Laos,98,green,0.0,green,
+,Lebanon,99,red,0.5767857142857140,orange,
+Diamond Princess,Cruise Ship,cruise,green,0.0,green,
+,Diamond Princess,cruise,green,0.0,green,
+Faroe Islands,Denmark,den_44,green,0.0,green,
+Greenland,Denmark,den_45,green,0,green,
+,Denmark,den_46,yellow,0.13894389438943900,yellow,
+Aruba,Netherlands,dutch_153,green,0.0,green,
+Curacao,Netherlands,dutch_154,green,0,green,
+Sint Maarten,Netherlands,dutch_155,green,0.0,green,
+,Netherlands,dutch_156,yellow,0.13494525547445300,yellow,
+French Guiana,France,fr_64,red,0.8083333333333330,red,
+French Polynesia,France,fr_65,green,0.0,green,
+Guadeloupe,France,fr_66,green,0.04285714285714290,green,
+Mayotte,France,fr_67,red,0.829245283018868,red,
+New Caledonia,France,fr_68,green,0.2,yellow,
+Reunion,France,fr_69,green,0.0891304347826087,green,
+Saint Barthelemy,France,fr_70,green,0,green,
+St Martin,France,fr_71,green,0.05,green,
+Martinique,France,fr_72,green,0.05555555555555560,green,
+,France,fr_73,yellow,0.09005892025212390,green,X
+North Dakota,US,mixed_10,yellow,0.43082191780821900,orange,X
+Manitoba,Canada,mixed_11,green,0.05,green,
+Michigan,US,mixed_12,red,0.21225720026791700,yellow,X
+Maine,US,mixed_13,red,0.7326530612244900,orange,
+Quebec,Canada,mixed_14,red,0.33883541867180000,yellow,X
+New Brunswick,Canada,mixed_15,green,0.19285714285714300,yellow,X
+Ohio,US,mixed_16,red,0.5792464878671780,orange,
+New Hampshire,US,mixed_17,red,0.7388297872340430,orange,
+New York,US,mixed_18,yellow,0.12197830578512400,yellow,
+Vermont,US,mixed_19,green,0.15263157894736800,yellow,X
+Pennsylvania,US,mixed_20,red,0.359942638623327,yellow,X
+Minnesota,US,mixed_2,red,0.671549295774648,orange,
+Arizona,US,mixed_21,red,1.0010899182561300,red,
+California,US,mixed_22,red,0.9796353166986560,red,
+New Mexico,US,mixed_23,red,0.881547619047619,red,
+Texas,US,mixed_24,red,0.9953835709436530,red,
+Alaska,US,mixed_25,green,0.8653846153846150,red,X
+Louisiana,US,mixed_27,red,0.26280962491153600,yellow,X
+Mississippi,US,mixed_28,red,0.8785060975609760,red,
+Alabama,US,mixed_29,red,0.7372141372141370,orange,
+Florida,US,mixed_30,red,0.806735057983943,red,
+Ontario,Canada,mixed_3,red,0.5392911010558070,orange,
+South Carolina,US,mixed_32,red,1.0011945392491500,red,
+North Carolina,US,mixed_33,red,1.0011046511627900,red,
+Virginia,US,mixed_34,red,0.8257561436672970,red,
+District of Columbia,US,mixed_35,red,0.42081218274111700,orange,
+Maryland,US,mixed_36,red,0.8099442379182160,red,
+Delaware,US,mixed_37,red,0.3342995169082130,yellow,X
+New Jersey,US,mixed_38,red,0.19794843360133100,yellow,X
+Connecticut,US,mixed_39,red,0.21494538232373400,yellow,X
+Rhode Island,US,mixed_40,red,0.2980719794344470,yellow,X
+Washington,US,mixed_4,red,0.5671218487394960,orange,
+Massachusetts,US,mixed_41,red,0.3641193903471630,yellow,X
+Oregon,US,mixed_42,red,0.7881944444444440,orange,
+Newfoundland and Labrador,Canada,mixed_44,green,0.00625,green,
+Nova Scotia,Canada,mixed_45,green,0.016176470588235300,green,
+Northwest Territories,Canada,mixed_46,green,0,green,
+Hawaii,US,mixed_47,green,0.07592592592592590,green,
+Prince Edward Island,Canada,mixed_48,green,0.0,green,
+Utah,US,mixed_49,red,1.0034883720930200,red,
+Wyoming,US,mixed_50,green,0.3391304347826090,yellow,X
+British Columbia,Canada,mixed_5,green,0.1291044776119400,yellow,X
+Nevada,US,mixed_51,red,0.7930921052631580,yellow,X (boundary)
+Colorado,US,mixed_52,red,0.5429097605893190,orange,
+South Dakota,US,mixed_53,red,0.5089743589743590,orange,
+Nebraska,US,mixed_54,red,0.6099531615925060,orange,
+Kansas,US,mixed_55,red,0.35366666666666700,yellow,X
+Oklahoma,US,mixed_56,red,0.6805785123966940,orange,
+Iowa,US,mixed_57,red,0.5939047619047620,orange,
+Missouri,US,mixed_58,red,0.7379921259842520,orange,
+Wisconsin,US,mixed_59,red,0.8495841995842000,red,
+Idaho,US,mixed_6,red,0.48225806451612900,orange,
+Illinois,US,mixed_60,red,0.47351109381082100,orange,
+Kentucky,US,mixed_61,red,0.9437500000000000,red,
+Arkansas,US,mixed_62,red,0.9969135802469140,red,
+Tennessee,US,mixed_63,red,0.9003937007874020,red,
+West Virginia,US,mixed_64,red,0.6420454545454550,orange,
+Indiana,US,mixed_65,red,0.6288937409024750,orange,
+Western Australia,Australia,mixed_66,green,0.09285714285714290,green,
+Northern Territory,Australia,mixed_67,green,0.0,green,
+South Australia,Australia,mixed_68,green,0.0,green,
+Queensland,Australia,mixed_69,green,0.005769230769230770,green,
+Montana,US,mixed_7,green,0.32105263157894700,yellow,X
+New South Wales,Australia,mixed_70,green,0.012576687116564400,green,
+Victoria,Australia,mixed_72,green,0.08405797101449280,green,
+Tasmania,Australia,mixed_73,green,0.0,green,
+Australian Capital Territory,Australia,mixed_77,green,0.0,green,
+Alberta,Canada,mixed_8,yellow,0.075,green,X
+Saskatchewan,Canada,mixed_9,green,0.07941176470588240,green,
+Bermuda,United Kingdom,uk_206,green,0.05,green,
+Cayman Islands,United Kingdom,uk_207,green,0.6375,orange,X
+Channel Islands,United Kingdom,uk_208,green,0.0062500000000000000,green,
+Gibraltar,United Kingdom,uk_209,green,0.2642857142857140,yellow,X
+Guernsey,United Kingdom,uk_210,green,0,green,
+Isle of Man,United Kingdom,uk_211,green,0.0,green,
+Jersey,United Kingdom,uk_212,green,0,green,
+Montserrat,United Kingdom,uk_213,green,0,green,
+,United Kingdom,uk_214,red,0.31490872210953300,yellow,X
+Yukon,Canada,mixed_26,green,0,green,
+,Botswana,181,green,0.5,orange,X
+,Burundi,28,green,1.05,red,X
+,Sierra Leone,184,red,0.5551724137931030,orange,
+,Malawi,22,red,1.0266666666666700,red,
+Falkland Islands (Malvinas),United Kingdom,61,green,0,green,
+Saint Pierre and Miquelon,France,232,green,0,green,
+,Western Sahara,236,green,0,green,
+,Sao Tome and Principe,199,red,0.24782608695652200,yellow,X
+,Yemen,221,red,0.984090909090909,red,
+,Burma,17,green,0.3333333333333330,yellow,X
+Anguilla,United Kingdom,127,green,0,green,
+British Virgin Islands,United Kingdom,214,green,0,green,
+Turks and Caicos Islands,United Kingdom,235,green,0,green,
