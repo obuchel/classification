@@ -159,11 +159,9 @@ def classify(ratio, recent_mean, threshold):
 for name in counties:
     values = e_dataframe1[name].cumsum()
     print(name,list(values))
-    
-
     num_rows = len(values)
-    y50 = values[-20:]
-    y5 = [y - values[-21] for y in y50]
+    y50 = values[-14:]
+    y5 = [y - values[-15] for y in y50]
     # print(max(y5))
     y = values
     original_values = compute_original_values(values)
