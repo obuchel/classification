@@ -104,30 +104,34 @@ var data3=[];
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=[];
                 
-                data0.map(function(d,i){if (d.id.toString().length>3) {ids.push(d.id.toString().substr(3)) }else 
-                                                                     {ids.push(d.id.toString())}
-                                                                     
-                                                                     });
-           //console.log(ids);
-        fetch('all_canada_hr.json').then(res => res.json()) 
+                data0.map(function(d,i){ids.push(d.id.toString())});
+          // console.log(ids);
+        fetch('all_canada_hr9.json').then(res => res.json()) 
 .then(data => {  
+            
+           // console.log(data);
  var data2={"type":"FeatureCollection"};
     data2["features"]=[];        
             
             for (var i=0; i<data["features"].length; i++) {
                 data["features"][i]["id"]=data["features"][i]["properties"]["HR_UID"].toString();
+               
                 // if (data["features"][i]["properties"]["STATEFP"]!="72") {
                 if (ids.indexOf(data["features"][i]["properties"]["HR_UID"])>-1) {
+                     data["features"][i]["properties"]["NAME"]=data0[ids.indexOf(data["features"][i]["properties"]["HR_UID"])]["n"];
+                    
                       data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["HR_UID"])]["c"];
                     data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["HR_UID"])]["max"];
                      data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["HR_UID"])]["max"]+1)*0.5;
                 data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["HR_UID"])]["c"]];
                 } else {
-
+                   console.log( data["features"][i]);
                     data["features"][i]["properties"]["v"]=-1;
                     data["features"][i]["properties"]["max"]=0;
                      data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
                 }
+                
+                
                 if (data["features"][i]["geometry"]["type"]=="Polygon"){
          var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"]);
 
@@ -136,7 +140,9 @@ var data3=[];
 
                // if (data["features"][i]["id"]!="630") {
                 data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
-               } else {
+               } 
+                
+                else {
                     var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"][0]);
 
             var center = turf.centerOfMass(polygon);
@@ -146,6 +152,8 @@ var data3=[];
                 data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
                   // console.log(data["features"][i]["geometry"]["coordinates"][0]);
                }
+               
+               
                 // }
             }
             
@@ -154,8 +162,8 @@ var data3=[];
 
           //  var center = turf.centerOfMass(polygon);
 
-            
-console.log(data);
+  console.log(data);          
+console.log(data2);
             var hoveredStateId = null;
 //pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjamhqZTZsOWkwN25iM2Fxd282N2FlZDVqIn0.bkOU5gAio8eKnmKHlntJsA
   mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjanlrY3diNzIwZDdxM25uN2owN2c5ZHpiIn0.XzMbcbHF6H42u0Uxo1L8lg';
@@ -164,7 +172,7 @@ container: 'map',
 style: 'mapbox://styles/mapbox/light-v10',
 zoom: 3,
     attributionControl: false,
-center: [-82.447303,37.753574]
+center: [-87.447303,48.753574]
 });
      
         
@@ -174,7 +182,7 @@ center: [-82.447303,37.753574]
             
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
-fetch('states5.json').then(res => res.json()) 
+fetch('all_canada_hr9P.json').then(res => res.json()) 
 .then(data8 => {             
 
     
@@ -219,7 +227,7 @@ var item = document.createElement('div');
 
 
 var item0 = document.createElement('div');
-    item0.innerHTML='Colors: <input type="radio" id="default" name="mySelect" value="scheme1" checked><label for="default">Default</label> <br><input type="radio" id="access" name="mySelect" value="scheme2"><label for="access">Other</label>';
+    item0.innerHTML='Colors: <input type="radio" id="default" name="mySelect" value="scheme1" checked><label for="default">Default</label> <input type="radio" id="access" name="mySelect" value="scheme2"><label for="access">Other</label>';
 
     legend.appendChild(item0);
     
@@ -290,7 +298,7 @@ var item = document.createElement('div');
     
     // item.className = 'legend-div';
      item.appendChild(value);
-        //  legend.appendChild(item);
+      legend.appendChild(item);
     
     /*
      var value3 = document.createElement('span');
@@ -312,6 +320,8 @@ map.addSource('ethnicity', {
 type: 'geojson',
 'data': data    
 });
+    
+    
     map.addSource('states', {
 type: 'geojson',
 'data': data8    
@@ -345,7 +355,7 @@ stops: arr
     
 });  
     
-    /*
+    
      map.addLayer({
 'id': 'population',
 'type': 'circle',
@@ -357,7 +367,7 @@ stops: arr
 'circle-color': "grey",
      'circle-opacity': 0.1
 }
-});    */
+});    
      map.addLayer({
 'id': 'states',
 'type': 'line',
@@ -372,6 +382,8 @@ stops: arr
 }
 },"");   
 map.on('click', 'place_data0', function(e) {
+    console.log(e.features[0]["properties"]);
+    
     if (typeof popup=="object") popup.remove();
 
    
@@ -398,25 +410,25 @@ if (e.features[0].properties["c"]=="yellow") {
 {
     var color="#fd8d3c";
     //e.features[0].properties["c"];
-    console.log(color);
+    //console.log(color);
 }
 
     document.getElementById("plot").innerHTML="";
     
     if (e.features[0].id.toString().length==4){
-        var num="0"+e.features[0].id.toString();
+        var num=e.features[0].id.toString();
         
     } else {
     var num=e.features[0].id.toString();
     }
     
-    if (["630","16","316","580","850"].indexOf(num)>-1) {
+   /* if (["630","16","316","580","850"].indexOf(num)>-1) {
         
-        var url='output/classification/data_counties_'+num+'.json';
-    } else {
+        var url='output_canada/classification/data_counties_'+num+'.json';
+    } else {*/
         
-        var url='output/classification/data_counties_840'+num+'.json';
-    }
+        var url='output_canada/classification/data_counties_'+num+'.json';
+  // }
     
     
   fetch(url).then(res => res.json()) 
@@ -699,10 +711,10 @@ stops: arr2
 function draw_plot(data,color) {
     
     
-    console.log(color);
+   // console.log(color);
     document.getElementById("plot").style.visibility="visible";
    document.getElementById("features").style.visibility="visible";
-    //console.log(data);
+   // console.log(data);
    // console.log(data["dates"][0].split("/"));
     //"original_values", time, dates
     var data110=[];
@@ -710,11 +722,14 @@ function draw_plot(data,color) {
     for (var i=0; i<data["dates"].length; i++) {
         if (data["value"][i]>=0){
             var val=data["value"][i];
-        } else {
-            var val=0;
-        }
-        var temp={"date":new Date(2020,Number(data["dates"][i].split("/")[0])-1,Number(data["dates"][i].split("/")[1])),"value":val};
+            
+            
+            var temp={"date":new Date(2020,Number(data["dates"][i].split("-")[1])-2,Number(data["dates"][i].split("-")[0])),"value":val};
         data110.push(temp);
+        } else {
+            //var val=0;
+        }
+        
     }
     
  var data10=[];
@@ -722,11 +737,12 @@ function draw_plot(data,color) {
     for (var i=1; i<data["time"].length; i++) {
         if (data["original_values"][i]>=0){
             var val=data["original_values"][i];
+            var temp={"date":new Date(2020,Number(data["time"][i].split("-")[1])-2,Number(data["time"][i].split("-")[0])),"value":val};
+        data10.push(temp);
         } else {
             var val=0;
         }
-        var temp={"date":new Date(2020,Number(data["time"][i].split("/")[0])-1,Number(data["time"][i].split("/")[1])),"value":val};
-        data10.push(temp);
+        
     }
    //console.log(data110.map(function(d){ return d.value}),data10.map(function(d){ return d.value}));
     var margin = {top: 25, right: 20, bottom: 20, left: 35},
