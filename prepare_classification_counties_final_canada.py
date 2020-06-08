@@ -9,7 +9,7 @@ import pandas as pd
 import os
 from prep_canada_data import stage_latest
 
-date_of_analysis='6/4/20'
+date_of_analysis='6/5/20'
 output_directory = 'output_canada'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
@@ -158,7 +158,7 @@ def classify(ratio, recent_mean, threshold):
 
 for name in counties:
     values = e_dataframe1[name].cumsum()
-    print(values)
+    print(name,list(values))
     
 
     num_rows = len(values)
