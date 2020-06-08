@@ -3,7 +3,7 @@ import json
 import numpy as np
 import pandas as pd
 import os
-from prep_canada_data import stage_latest
+#from prep_canada_data import stage_latest
 
 date_of_analysis='6/7/20'
 output_directory = 'output'
@@ -24,10 +24,10 @@ ids = data[["UID", "Combined_Key"]].to_dict('records')
 recs = data["Combined_Key"].to_list()
 
 # stage latest Canada HR-level data for later processing
-latest_ca_df = stage_latest()
+#latest_ca_df = stage_latest()
 #print(latest_ca_df)
-assert latest_ca_df.index.names == ['Combined_Key']
-print(latest_ca_df)
+#assert latest_ca_df.index.names == ['Combined_Key']
+#print(latest_ca_df)
 
 e_dataframe0 = e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
 e_dataframe1 = e_dataframe0.transpose()
@@ -128,8 +128,8 @@ def classify(ratio, recent_mean, threshold):
 for name in counties:
     values = e_dataframe1[name]
     num_rows = len(values)
-    y50 = values[-20:]
-    y5 = [y - values[-21] for y in y50]
+    y50 = values[-14:]
+    y5 = [y - values[-15] for y in y50]
     # print(max(y5))
     y = values
     original_values = compute_original_values(values)
