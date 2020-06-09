@@ -169,7 +169,8 @@ for name in counties:
     y1 = interpolate(y)
     x2 = x[9:]
     tim2 = tim[4 : -5]
-    y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=10).mean()['a'].to_list()[9:]
+    print(pd.DataFrame(y1, columns=["a"]).rolling(window=7).mean()['a'].to_list())
+    y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=7).mean()['a'].to_list()[6:]
     ys = y3[-24:]
     xs = x[-29:-5]  # last 24 days
     ind2 = 0
