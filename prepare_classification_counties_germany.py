@@ -87,12 +87,10 @@ if __name__ == '__main__':
             #print(BZ2_CSV_LineReader(bz2_csv_filename).readlines()[0])
             with open(bz2_csv_filename) as file1:
                 data=json.load(file1)#bz2.decompress(file1)
-                #print(data[0])
                 for row in data[0]["features"]:
                     #print(row)
                     list(row["attributes"].values())[10]=list(row["attributes"].values())[10].split(" ")[0].replace(",","")
                     all_rows.append(list(row["attributes"].values()))
-                    #print(row["attributes"].values())
                 kkeys=list(data[0]["features"][0]["attributes"].keys())
                 print(kkeys)
             df = pd.DataFrame(all_rows, columns=kkeys)
@@ -100,8 +98,8 @@ if __name__ == '__main__':
             df['AnzahlFall']=pd.to_numeric(df["AnzahlFall"])
             df0=df.groupby(['Landkreis','Bundesland','Datenstand',kkeys[9]])['AnzahlFall'].sum().reset_index()
             main_df2=pd.concat([main_df2,df0])
-            #main_df=main_df2
-            #print(main_df2.groupby(['Landkreis','Bundesland','Datenstand',kkeys[9]])['AnzahlFall'].sum().reset_index())
+
 main_df3=pd.concat([main_df,main_df2])
 df4=main_df3.groupby(['Landkreis','Bundesland','Datenstand',kkeys[9]])['AnzahlFall'].sum().reset_index()
+print(main_df3)
 print(df4.transpose())
