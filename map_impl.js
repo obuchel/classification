@@ -86,7 +86,7 @@ center: [-82.447303,37.753574]
             
             
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
-map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
+map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
 fetch('states5.json').then(res => res.json()) 
 .then(data8 => {             
 
