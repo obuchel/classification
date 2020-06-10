@@ -311,7 +311,7 @@ if (e.features[0].properties["c"]=="yellow") {
 {
     var color="#fd8d3c";
     //e.features[0].properties["c"];
-    console.log(color);
+    //console.log(color);
 }
 
     document.getElementById("plot").innerHTML="";
@@ -612,7 +612,7 @@ stops: arr2
 function draw_plot(data,color) {
     
     
-    console.log(color);
+    console.log(data);
     document.getElementById("plot").style.visibility="visible";
    document.getElementById("features").style.visibility="visible";
     //console.log(data);
