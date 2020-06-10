@@ -114,6 +114,7 @@ var data3=[];
     data2["features"]=[];        
             
             for (var i=0; i<data["features"].length; i++) {
+                console.log(data["features"][i]["properties"]);
                 data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
                
                 // if (data["features"][i]["properties"]["STATEFP"]!="72") {
