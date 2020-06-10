@@ -9,7 +9,7 @@ import pandas as pd
 import os
 from prep_canada_data import stage_latest
 
-date_of_analysis='6/8/20'
+date_of_analysis='6/9/20'
 output_directory = 'output_canada'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
@@ -54,11 +54,13 @@ latest_ca_df = stage_latest()
 assert latest_ca_df.index.names == ['Combined_Key']
 
 e_dataframe0 = latest_ca_df
+print(e_dataframe0)
 #e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
 #print(e_dataframe0.columns.tolist())
 df = e_dataframe0.reindex(columns=dates0)
+print(df)
 e_dataframe1 = df.transpose()
-
+print(e_dataframe1)
 #print(df)
 
 #compression_opts = dict(method='zip',archive_name='canadian_data.csv')  
