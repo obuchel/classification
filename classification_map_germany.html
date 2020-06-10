@@ -184,8 +184,8 @@ center: [-87.447303,48.753574]
             
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
-fetch('all_canada_hr9P.json').then(res => res.json()) 
-.then(data8 => {             
+//fetch('all_canada_hr9P.json').then(res => res.json()) 
+//.then(data8 => {             
 
     
 
@@ -323,7 +323,7 @@ type: 'geojson',
 'data': data    
 });
     
-    
+    /*
     map.addSource('states', {
 type: 'geojson',
 'data': data8    
@@ -331,7 +331,7 @@ type: 'geojson',
    map.addSource('ethnicity2', {
 type: 'geojson',
 'data': data2    
-});
+});*/
     
    // alert(firstSymbolId);
     
@@ -369,7 +369,7 @@ stops: arr
 'circle-color': "grey",
      'circle-opacity': 0.1
 }
-});    
+});    /*
      map.addLayer({
 'id': 'states',
 'type': 'line',
@@ -382,7 +382,7 @@ stops: arr
 'line-color': '#000000',
 'line-width': 1
 }
-},"");   
+},"");  */ 
 map.on('click', 'place_data0', function(e) {
     console.log(e.features[0]["properties"]);
     
@@ -472,7 +472,7 @@ turn_off();
       
       
       
-      });  
+   //   });  
       
   });
 
