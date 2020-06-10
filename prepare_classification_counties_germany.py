@@ -1,5 +1,4 @@
 
-
 import urllib.request as urllib2
 import bz2
 import pandas as pd
@@ -72,49 +71,44 @@ if __name__ == '__main__':
                     #print(kkeys)
                     #Bundesland         Landkreis Altersgruppe Geschlecht  ...            Meldedatum IdLandkreis
                     try:
-                        row[0]=row[2]+", "+row[1]
+                        row[0]=row[kkeys.index("Bundesland")]+", "+row[kkeys.index("Landkreis")]
                         #row[kkeys.index("Datenstand")]=row[kkeys.index("Datenstand")].split(" ")[0].replace(",","")
-                        row[kkeys.index("Datenstand")]=bz2_csv_filename.split("-")[0]+"-"+bz2_csv_filename.split("-")[1]+"-"+bz2_csv_filename.split("-")[2]
+                        row[kkeys.index("Datenstand")]=el.split("-")[2]+"-"+el.split("-")[1]+"-"+el.split("-")[0]
                         all_rows.append(row)
                     except:
-                        print(row)
+                        #print(kkeys,row)
                         continue
                 else:
                     kkeys=row
                 ind+=1
             kkeys[0]="Combined_Key"    
-            #kkeys.append("Combined_key")
             df = pd.DataFrame(all_rows, columns=kkeys)
-            #print(df)
             df['AnzahlFall']=pd.to_numeric(df["AnzahlFall"])
-            df.loc[:,'Datenstand'] = bz2_csv_filename.split("-")[0]+"-"+bz2_csv_filename.split("-")[1]+"-"+bz2_csv_filename.split("-")[2]
+            #df.loc[:,'Datenstand'] = el.split("-")[0]+"-"+el.split("-")[1]+"-"+el.split("-")[2]
+            #print(df)
             df0=df.groupby(['Combined_Key','Datenstand'])['AnzahlFall'].sum().reset_index()
             main_df=pd.concat([main_df,df0])
-            #print(main_df.groupby(['Landkreis','Bundesland','Datenstand',kkeys[9]])['AnzahlFall'].sum().reset_index())
         elif ".json" in el:
             bz2_csv_filename = '/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/'+el
             all_rows=[]
             kkeys1=[]
             ind=0
-            #print(BZ2_CSV_LineReader(bz2_csv_filename).readlines()[0])
             with open(bz2_csv_filename) as file1:
                 data=json.load(file1)
                 for row in data[0]["features"]:
+                    if ind==0:
+                        kkeys1=list(data[0]["features"][0]["attributes"].keys())
+                        kkeys1[0]="Combined_Key"
+                    ind+=1    
                     arr=list(row["attributes"].values())
                     try:
-                        arr[0]=arr[2]+", "+arr[1]
-                        arr[kkeys1.index("Datenstand")]=bz2_csv_filename.split("-")[0]+"-"+bz2_csv_filename.split("-")[1]+"-"+bz2_csv_filename.split("-")[2]
-                        #arr[kkeys1.index("Datenstand")].split(" ")[0].replace(",","").replace(", 00:00 Uhr","")
+                        arr[0]=arr[kkeys1.index("Bundesland")]+", "+arr[kkeys1.index("Landkreis")]
+                        arr[kkeys1.index("Datenstand")]=el.split("-")[2]+"-"+el.split("-")[1]+"-"+el.split("-")[0]
                         all_rows.append(arr)
                     except:
-                        #print(arr)
+                        print(kkeys1,arr)
                         continue
-                    #print(len(list(row["attributes"].values())))
-                kkeys1=list(data[0]["features"][0]["attributes"].keys())
-                kkeys1[0]="Combined_Key"
             df = pd.DataFrame(all_rows, columns=kkeys1)
-            df.loc[:,'Datenstand'] = bz2_csv_filename.split("-")[0]+"-"+bz2_csv_filename.split("-")[1]+"-"+bz2_csv_filename.split("-")[2]
-            #print(df)
             df['AnzahlFall']=pd.to_numeric(df["AnzahlFall"])
             df0=df.groupby(['Combined_Key','Datenstand'])['AnzahlFall'].sum().reset_index()
             main_df2=pd.concat([main_df2,df0])
@@ -122,11 +116,10 @@ if __name__ == '__main__':
 main_df3=pd.concat([main_df,main_df2])
 df4=main_df3.groupby(['Combined_Key','Datenstand'])['AnzahlFall'].sum().reset_index()
 print(df4.columns)
-#df4["Datenstand"]=df4["Datenstand"]#.astype('datetime64[ns]')
 df4.set_index('Datenstand')
 pivoted_table=df4.pivot(index='Combined_Key', columns='Datenstand', values='AnzahlFall')
 print(pivoted_table)
-
+print(pivoted_table.columns)
 
 '''
 DatetimeIndex(['2020-01-04', '2020-02-04', '2020-03-04', '2020-03-27',
