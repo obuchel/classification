@@ -116,7 +116,12 @@ var data3=[];
             for (var i=0; i<data["features"].length; i++) {
                 //console.log(data["features"][i]["properties"]);
                 if (typeof data["features"][i]["properties"]["cca_2"]!="undefined") {
+                    if (data["features"][i]["properties"]["cca_2"].toString().substr(0)!=="0") {
                 data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
+                    } else {
+                        
+                     data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString().substr(1,len(data["features"][i]["properties"]["cca_2"].toString()));   
+                    }
                 } else {
                     data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"];
                     
