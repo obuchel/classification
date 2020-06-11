@@ -309,27 +309,27 @@ for name in counties:
         start.append(0)
     #print(start)    
     threshold = 1
-    if len(start) > 0:
-        max0 = np.max(y3)
-        min0 = np.min(ys)
-        #print(original_values)
-        if max0 > 0:
-            ratio = y3[-1] / max0
-            recent_mean = int(np.mean(original_values[-10:]))
-            color = classify(ratio, recent_mean, threshold)
-        else:
+    #if len(start) > 0:
+    max0 = np.max(y3)
+    min0 = np.min(ys)
+    #print(original_values)
+    if max0 > 0:
+        ratio = y3[-1] / max0
+        recent_mean = int(np.mean(original_values[-10:]))
+        color = classify(ratio, recent_mean, threshold)
+    else:
             #print(name,y3)                                                                                                                                                         
-            ratio=0
-            color="green"
-        if name in recs:
+        ratio=0
+        color="green"
+    if name in recs:
             #print(name,color)
-            with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)])+'.json', 'w') as outfile:
-                json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values": original_values},outfile)
+        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)])+'.json', 'w') as outfile:
+            json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values": original_values},outfile)
             #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})                
-            aar1.append({"n":name,"id":ids[recs.index(name)],"v":ratio,"c":color,"max":int(max(y5))})
-        else:
-            print("not"+name,color)
-        ind4+=1
+        aar1.append({"n":name,"id":ids[recs.index(name)],"v":ratio,"c":color,"max":int(max(y5))})
+    else:
+        print("not"+name,color)
+    ind4+=1
 
 
 # with open('classification/data_counties.json', 'w') as outfile:                                                                                                                   
