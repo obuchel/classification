@@ -105,7 +105,7 @@ var data3=[];
                 var ids=[];
                 
                 data0.map(function(d,i){ids.push(d.id.toString())});
-          // console.log(ids);
+          console.log(ids);
         fetch('landkreise-in-germany.json').then(res => res.json()) 
 .then(data => {  
             
@@ -132,7 +132,7 @@ var data3=[];
                      data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["max"]+1)*0.5;
                 data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["c"]];
                 } else {
-                   console.log( data["features"][i]["properties"]["name_2"]);
+                   //console.log( data["features"][i]["properties"]["name_2"]);
                     data["features"][i]["properties"]["v"]=-1;
                     data["features"][i]["properties"]["max"]=0;
                      data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
