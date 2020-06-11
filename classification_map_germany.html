@@ -115,8 +115,12 @@ var data3=[];
             
             for (var i=0; i<data["features"].length; i++) {
                 //console.log(data["features"][i]["properties"]);
-                
+                if (typeof data["features"][i]["properties"]["cca_2"]!="undefined") {
                 data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
+                } else {
+                    data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"];
+                    
+                }
                 // if (data["features"][i]["properties"]["STATEFP"]!="72") {
                 if (ids.indexOf(data["features"][i]["properties"]["cca_2"])>-1) {
                   //  data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
