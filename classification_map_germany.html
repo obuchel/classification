@@ -120,6 +120,7 @@ var data3=[];
                 // if (data["features"][i]["properties"]["STATEFP"]!="72") {
                 if (ids.indexOf(data["features"][i]["properties"]["cca_2"])>-1) {
                   //  data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
+                    
                      data["features"][i]["properties"]["NAME"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["n"];
                     
                       data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["c"];
@@ -127,7 +128,7 @@ var data3=[];
                      data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["max"]+1)*0.5;
                 data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["c"]];
                 } else {
-                 //  console.log( data["features"][i]);
+                   console.log( data["features"][i]);
                     data["features"][i]["properties"]["v"]=-1;
                     data["features"][i]["properties"]["max"]=0;
                      data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
