@@ -127,7 +127,7 @@ var data3=[];
                     
                 }
                 // if (data["features"][i]["properties"]["STATEFP"]!="72") {
-                if (ids.indexOf(data["features"][i]["properties"]["cca_2"])>-1) {
+                if (ids.indexOf(data["features"][i]["properties"]["id"])>-1) {
                   //  data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
                     
                      data["features"][i]["properties"]["NAME"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["n"];
