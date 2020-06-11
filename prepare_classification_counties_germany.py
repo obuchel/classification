@@ -30,7 +30,7 @@ filename0 = "/Users/olgabuchel/Downloads/2020-rki-archive-master/data/2_parsed/d
 with open(filename0, 'r') as file:
     print(json.load(file)[0])
 '''
-print(onlyfiles)
+#print(onlyfiles)
 
 
 
@@ -120,7 +120,8 @@ if __name__ == '__main__':
                         arr[kkeys1.index("Datenstand")]=el.split("-")[2]+"-"+el.split("-")[1]+"-"+el.split("-")[0]
                         all_rows.append(arr)
                     except:
-                        print(kkeys1,arr)
+                        print("missed")
+                        #print(kkeys1,arr)
                         continue
             df = pd.DataFrame(all_rows, columns=kkeys1)
             df['AnzahlFall']=pd.to_numeric(df["AnzahlFall"])
@@ -148,14 +149,14 @@ DatetimeIndex(['2020-01-04', '2020-02-04', '2020-03-04', '2020-03-27',
 
 '''
 
-dates=[]#["25-01-2020","26-01-2020","27-01-2020","28-01-2020","29-01-2020","30-01-2020","31-01-2020"]
-for x in range(2,7):
+dates=["27-03-2020","28-03-2020","29-03-2020","30-03-2020","31-03-2020"]
+for x in range(4,7):
     if x<10:
         x="0"+str(x)
     for y in range(1,32):
         if y<10:
             y="0"+str(y)
-        if str(y)+"-"+str(x)+"-"+"2020" not in ["01-02-2020","02-02-2020","03-02-2020","04-02-2020","30-02-2020","31-02-2020","31-04-2020"]:    
+        if str(y)+"-"+str(x)+"-"+"2020" not in ["31-04-2020"]:    
             dates.append(str(y)+"-"+str(x)+"-"+"2020")
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 
@@ -302,7 +303,7 @@ for name in counties:
         max0 = np.max(y3)
         min0 = np.min(ys)
         #print(original_values)
-        if max0 > 0 and int(np.mean(original_values[-10:]))>threshold:
+        if max0 > 0:
             ratio = y3[-1] / max0
             recent_mean = int(np.mean(original_values[-10:]))
             color = classify(ratio, recent_mean, threshold)
@@ -311,11 +312,13 @@ for name in counties:
             ratio=0
             color="green"
         if name in recs:
-            print(name,tim2,y3,original_values,ids[recs.index(name)])
+            print(name,color)
             with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)])+'.json', 'w') as outfile:
                 json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values": original_values},outfile)
             #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})                
             aar1.append({"n":name,"id":ids[recs.index(name)],"v":ratio,"c":color,"max":int(max(y5))})
+        else:
+            print(name,color)
         ind4+=1
 
 
