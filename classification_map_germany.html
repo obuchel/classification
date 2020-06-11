@@ -116,7 +116,7 @@ var data3=[];
             for (var i=0; i<data["features"].length; i++) {
                 //console.log(data["features"][i]["properties"]);
                 
-                data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"];
+                data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
                 // if (data["features"][i]["properties"]["STATEFP"]!="72") {
                 if (ids.indexOf(data["features"][i]["properties"]["cca_2"])>-1) {
                   //  data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
