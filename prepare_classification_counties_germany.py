@@ -336,6 +336,6 @@ for name in counties:
 #    json.dump(aar,outfile)                                                                                                                                                         
 #aar1[0]["Datenstand"]=date_of_analysis
 # this file is used by the map
-#print(recs,ids)
+print(recs,ids)
 with open(output_directory + '/classification/classification_ids_provinces2.json', 'w') as outfile:
     json.dump(aar1, outfile)    
