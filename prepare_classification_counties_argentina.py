@@ -203,7 +203,7 @@ for name in counties:
         print(ids.index(name))
         print(ids[ids.index(name)])
         with open(output_directory + '/classification/data_counties_'+str(ids[ids.index(name)])+'.json', 'w') as outfile:
-            json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3[3:],"time":tim,"original_values": original_values},outfile)
+            json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3[3:],"time":tim[1:],"original_values": original_values[1:]},outfile)
             #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})                
         aar1.append({"n":name,"id":ids[ids.index(name)],"v":ratio,"c":color,"max":int(max(y5))})
     else:
