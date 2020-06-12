@@ -730,11 +730,11 @@ function draw_plot(data,color) {
  var data10=[];
     
     for (var i=1; i<data["time"].length; i++) {
-        if (data["original_values"][i]>=0){
+       // if (data["original_values"][i]>=0){
             var val=data["original_values"][i];
-        } else {
+     /*   } else {
             var val=0;
-        }
+        }*/
         var temp={"date":new Date(2020,Number(data["time"][i].split("/")[1])-1,Number(data["time"][i].split("/")[2])),"value":val};
         data10.push(temp);
     }
