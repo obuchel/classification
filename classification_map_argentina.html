@@ -420,13 +420,17 @@ if (e.features[0].properties["c"]=="yellow") {
     var num=e.features[0].id.toString();
     }
     
-   /* if (["630","16","316","580","850"].indexOf(num)>-1) {
+   if (num.toString().length==1) {
+        
+        var url='output_argentina/classification/data_counties_0'+num+'.json';
+    } else if (num.toString().length==2) {
+        
+        var url='output_argentina/classification/data_counties_00'+num+'.json';
+    }
+    else {
         
         var url='output_argentina/classification/data_counties_'+num+'.json';
-    } else {*/
-        
-        var url='output_argentina/classification/data_counties_'+num+'.json';
-    //}
+    }
     
     
   fetch(url).then(res => res.json()) 
@@ -738,9 +742,9 @@ function draw_plot(data,color) {
         var temp={"date":new Date(2020,Number(data["time"][i].split("-")[1])-1,Number(data["time"][i].split("-")[2])),"value":val};
         data10.push(temp);
     }
-   console.log(data110);
+  // console.log(data110);
     
-    console.log(data10);
+    //console.log(data10);
     
     
     var margin = {top: 25, right: 20, bottom: 20, left: 35},
