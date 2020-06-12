@@ -392,7 +392,7 @@ map.on('click', 'place_data0', function(e) {
 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 }
     
-     var htm=e.features[0].properties.NAME+": "+e.features[0].properties.max+"<br>";
+     var htm=e.features[0].properties.NAME_2+","+e.features[0].properties.NAME_1+": "+e.features[0].properties.max+"<br>";
     
     hoveredStateId = e.features[0].id;    
     var lats=e.lngLat;
