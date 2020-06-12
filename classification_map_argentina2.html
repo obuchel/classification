@@ -275,45 +275,64 @@ sel1.appendChild(opt1);
        
        
        
+       var layers = [
+            '<b>New cases past 14 days:</b>',
+            ' ',
+             'None',
+          '1-20',
+          '21-200',
+          '201-1,000',
+          '1,001-20,000',
+            '20,000-30,000'
+        ];
+
+        var colors = [
+            '',
+                '',
+                '#6A8A88',
+          '#1a9850',
+          '#ffffb2',
+          '#fd8d3c',
+          '#bd0026',
+          '#800026'
+        ];
+
+        // create legend
         for (i = 0; i < layers.length; i++) {
           var layer = layers[i];
           var color = colors[i];
           var item = document.createElement('div');
-            item.className = 'legend-div';
           var key = document.createElement('span');
           key.className = 'legend-key';
           key.style.backgroundColor = color;
-            key.style.borderStyle = "ridge";
-
+            
+ key.style.borderStyle = "ridge";
           var value = document.createElement('span');
           value.innerHTML = layer;
+            if (i!=0 && color !="") {
           item.appendChild(key);
+            }
           item.appendChild(value);
           legend.appendChild(item);
         }
-  var value = document.createElement('span');
-          value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fill="none" stroke="black"/></svg> <svg width="10" height="10">  <circle cx="5" cy="5" r="4.5" fill="none" stroke="black"/></svg> <svg width="15" height="15"><circle cx="7.5" cy="7.5" r="7" fill="none" stroke="black"/></svg> - Numbers of cases past 14 days';
-var item = document.createElement('div');
     
-    // item.className = 'legend-div';
-     item.appendChild(value);
-        //  legend.appendChild(item);
-    
-    /*
      var value3 = document.createElement('span');
     value3.innerHTML = "&nbsp;";
     var item3 = document.createElement('div');
      item3.appendChild(value3);
           legend.appendChild(item3);
-    */
     
-    var value2 = document.createElement('span');
-    value2.innerHTML = "<br>Updated: "+data0[0]["date"];
+    
+        var value2 = document.createElement('span');
+   
+
+    value2.innerHTML = "Updated: "+data0[0]["date"];
      value2.style.textAlign="center !important";
     value2.style.margin="auto";
     var item2 = document.createElement('div');
      item2.appendChild(value2);
           legend.appendChild(item2);
+    
     
 map.addSource('ethnicity', {
 type: 'geojson',
