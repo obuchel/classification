@@ -420,13 +420,13 @@ if (e.features[0].properties["c"]=="yellow") {
     var num=e.features[0].id.toString();
     }
     
-    if (["630","16","316","580","850"].indexOf(num)>-1) {
+   /* if (["630","16","316","580","850"].indexOf(num)>-1) {
         
         var url='output_argentina/classification/data_counties_'+num+'.json';
-    } else {
+    } else {*/
         
-        var url='output_argentina/classification/data_counties_840'+num+'.json';
-    }
+        var url='output_argentina/classification/data_counties_'+num+'.json';
+    //}
     
     
   fetch(url).then(res => res.json()) 
