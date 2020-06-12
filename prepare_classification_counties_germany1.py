@@ -8,8 +8,8 @@ import os
 from os import listdir
 from os.path import isfile, join
 import json
-onlyfiles = [f for f in listdir('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/') if isfile(join('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/', f))]
-#['2020-06-09-07-31_api_raw.json','2020-06-10-02-31_api_raw.json']
+#onlyfiles = [f for f in listdir('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/') if isfile(join('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/', f))]
+onlyfiles = ['2020-06-10-02-31_api_raw.json']
 date_of_analysis='6/9/20'
 
 output_directory = 'output_germany'
@@ -116,8 +116,9 @@ if __name__ == '__main__':
                     arr=list(row["attributes"].values())
                     try:
                         if arr[kkeys1.index("Bundesland")]+", "+arr[kkeys1.index("Landkreis")] not in list(lk_keys.keys()):
-                            lk_keys[arr[kkeys1.index("Bundesland")]+", "+arr[kkeys1.index("Landkreis")]]=str(arr[kkeys1.index("IdLandkreis")])
-                        arr[0]=arr[kkeys1.index("Bundesland")]+", "+arr[kkeys1.index("Landkreis")]
+                            lk_keys[arr[kkeys1.index("Bundesland")]]=str(arr[kkeys1.index("IdLandkreis")]) #+", "+arr[kkeys1.index("Landkreis")]
+                        arr[0]=arr[kkeys1.index("Bundesland")] #+", "+arr[kkeys1.index("Landkreis")]
+                        print(arr[kkeys1.index("Datenstand")])
                         arr[kkeys1.index("Datenstand")]=str(arr[kkeys1.index("Datenstand")]).split(".")[0]+"-"+str(arr[kkeys1.index("Datenstand")]).split(".")[1]+"-2020"
                         all_rows.append(arr)
                     except:
@@ -276,7 +277,6 @@ def classify(ratio, recent_mean, threshold):
 sums=[]
 for name in counties:
     values0 = e_dataframe1[name].fillna(0).tolist()
-    #print(name,list(values))
     values=[]
     ind10=0
     sums.append(int(np.max(values0)))
@@ -290,14 +290,12 @@ for name in counties:
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-15] for y in y50]
-    # print(max(y5))                                                                                                                                                                
     y = values
     original_values = compute_original_values(values)
     x = e_dataframe1[e_dataframe1.columns[0]]
     y1 = interpolate(y)
     x2 = x[9:]
     tim2 = tim[4 : -5]
-    #print(pd.DataFrame(y1, columns=["a"]).rolling(window=7).mean()['a'].to_list())
     y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=3).mean()['a'].to_list()[6:]
     ys = y3[-24:]
     xs = x[-29:-5]  # last 24 days                                                                                                                                                   
@@ -327,7 +325,6 @@ for name in counties:
             #print(name,color)
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)])+'.json', 'w') as outfile:
             json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values": original_values},outfile)
-            #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})                
         aar1.append({"n":name,"id":ids[recs.index(name)],"v":ratio,"c":color,"max":int(max(y5))})
     else:
         print("not"+name,color)
