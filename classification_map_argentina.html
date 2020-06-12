@@ -112,7 +112,7 @@ var data3=[];
                 
                 data0.map(function(d,i){
                     
-           ids.push(d.id);
+           ids.push(Number(d.id));
          });
            console.log(ids);
         fetch('ARG_adm2.json').then(res => res.json()) 
