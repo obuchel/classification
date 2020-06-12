@@ -8,6 +8,9 @@ import os
 from os import listdir
 from os.path import isfile, join
 import json
+from datetime import datetime
+import matplotlib.pyplot as plt
+
 onlyfiles = [f for f in listdir('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/') if isfile(join('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/', f))]
 date_of_analysis='6/9/20'
 
@@ -78,14 +81,16 @@ if __name__ == '__main__':
             ind=0
             for row in BZ2_CSV_LineReader(bz2_csv_filename).readlines():
                 if ind>0:
-                    if row[kkeys.index("Bundesland")]+", "+row[kkeys.index("Landkreis")] not in list(lk_keys.keys()):
-                        lk_keys[row[kkeys.index("Bundesland")]+", "+row[kkeys.index("Landkreis")]]=str(row[kkeys.index("IdLandkreis")])
+                    if row[kkeys.index("Bundesland")] not in list(lk_keys.keys()):#+", "+row[kkeys.index("Landkreis")]
+                        lk_keys[row[kkeys.index("Bundesland")]]=str(row[kkeys.index("IdLandkreis")]) #+", "+row[kkeys.index("Landkreis")]
                     #print(kkeys)
                     #Bundesland         Landkreis Altersgruppe Geschlecht  ...            Meldedatum IdLandkreis
                     try:
-                        row[0]=row[kkeys.index("Bundesland")]+", "+row[kkeys.index("Landkreis")]
+                        dd=str(row[kkeys.index("Meldedatum")]).replace("T00:00:00.000Z","").split("-")
+                        row[0]=row[kkeys.index("Bundesland")]#+", "+row[kkeys.index("Landkreis")]
                         #row[kkeys.index("Datenstand")]=row[kkeys.index("Datenstand")].split(" ")[0].replace(",","")
-                        row[kkeys.index("Datenstand")]=el.split("-")[2]+"-"+el.split("-")[1]+"-"+el.split("-")[0]
+                        row[kkeys.index("Datenstand")]=dd[2]+"-"+el.split("-")[1]+"-"+el.split("-")[0]
+                        print(row[kkeys.index("Datenstand")])
                         all_rows.append(row)
                     except:
                         #print(kkeys,row)
@@ -115,9 +120,12 @@ if __name__ == '__main__':
                     arr=list(row["attributes"].values())
                     try:
                         if arr[kkeys1.index("Bundesland")]+", "+arr[kkeys1.index("Landkreis")] not in list(lk_keys.keys()):
-                            lk_keys[arr[kkeys1.index("Bundesland")]+", "+arr[kkeys1.index("Landkreis")]]=str(arr[kkeys1.index("IdLandkreis")])
-                        arr[0]=arr[kkeys1.index("Bundesland")]+", "+arr[kkeys1.index("Landkreis")]
-                        arr[kkeys1.index("Datenstand")]=el.split("-")[2]+"-"+el.split("-")[1]+"-"+el.split("-")[0]
+                            lk_keys[arr[kkeys1.index("Bundesland")]]=str(arr[kkeys1.index("IdLandkreis")])#+", "+arr[kkeys1.index("Landkreis")]
+                        arr[0]=arr[kkeys1.index("Bundesland")]#+", "+arr[kkeys1.index("Landkreis")]
+                        #dd=str(arr[kkeys1.index("Meldedatum")])
+                        arr2=str(datetime.fromtimestamp(int(row["attributes"]["Meldedatum"])/1000)).replace(" 20:00:00","").split("-")
+                        arr[kkeys1.index("Datenstand")]=arr2[2]+"-"+arr2[1]+"-"+arr2[0]
+                        print(arr[kkeys1.index("Datenstand")])
                         all_rows.append(arr)
                     except:
                         print("missed")
@@ -197,14 +205,14 @@ def add_day_columns(df):
     df.insert(0, "Day_Year", dats2, True)
     df.insert(0, "Decimals", decimals, True)
     df.insert(0, "Elapsed_days", elapsed_days, True)
-    print(df)
+    #print(df)
 
 add_day_columns(e_dataframe1)
 
 
 if False:
     # show intermediate result and abortthe script right here                                                                                                                        
-    print(e_dataframe1.iloc[10:, :5])
+    #print(e_dataframe1.iloc[10:, :5])
     import sys
     sys.exit(0)
 
@@ -250,6 +258,7 @@ def classify(ratio, recent_mean, threshold):
     if ratio >= 0.79:
         if recent_mean >= threshold:
             color = "red"
+             
         else:
             color = "green"
     elif ratio <= 0.1:
@@ -284,7 +293,7 @@ for name in counties:
         else:
             values.append(en)
         ind10+=1
-    print(values)    
+    #print(values)    
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-15] for y in y50]
@@ -293,10 +302,10 @@ for name in counties:
     original_values = compute_original_values(values)
     x = e_dataframe1[e_dataframe1.columns[0]]
     y1 = interpolate(y)
-    x2 = x[9:]
+    x2 = x[6:]
     tim2 = tim[4 : -5]
     #print(pd.DataFrame(y1, columns=["a"]).rolling(window=7).mean()['a'].to_list())
-    y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=3).mean()['a'].to_list()[6:]
+    y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=7).mean()['a'].to_list()[6:]
     ys = y3[-24:]
     xs = x[-29:-5]  # last 24 days                                                                                                                                                   
     ind2 = 0
@@ -323,6 +332,9 @@ for name in counties:
         color="green"
     if name in recs:
             #print(name,color)
+        plt.title(name)
+        plt.plot(x2,y3,color=color)
+        plt.show()
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)])+'.json', 'w') as outfile:
             json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values": original_values},outfile)
             #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})                
