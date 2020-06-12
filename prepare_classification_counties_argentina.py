@@ -1,4 +1,3 @@
-
 import numpy as np
 import urllib.request as urllib2
 import bz2
@@ -14,7 +13,7 @@ import matplotlib.pyplot as plt
 onlyfiles = [f for f in listdir('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/') if isfile(join('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/', f))]
 date_of_analysis='6/9/20'
 
-output_directory = 'output_germany'
+output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 url='/Users/olgabuchel/Downloads/Covid19Casos.csv'
 all_data=[]
@@ -26,25 +25,30 @@ with open(url, 'r', encoding='utf-16', newline='') as csvfile:
     for line in lines:
         if ind>0:
             all_data.append(line)
-            if line[len(line)-4] not in list(lists.keys()):
-                lists[line[len(line)-4]]=line[5]+", "+line[6]
+            if line[5]+", "+line[6] not in list(lists.values()):
+                if line[len(line)-2]=="0":
+                    lists[line[len(line)-2]+"_"+str(ind)]=line[5]+", "+line[6]
+                else:
+                    lists[line[len(line)-2]]=line[5]+", "+line[6]
         else:
             kkeys=line
         ind+=1
-
+print(lists.keys())
 '''
 ['id_evento_caso', 'sexo', 'edad', 'edad_años_meses', 'residencia_pais_nombre', 'residencia_provincia_nombre', 'residencia_departamento_nombre', 'carga_provincia_nombre', 'fecha_inicio_sintomas', 'fecha_apertura', 'sepi_apertura', 'fecha_internacion', 'cuidado_intensivo', 'fecha_cui_intensivo', 'fallecido', 'fecha_fallecimiento', 'asistencia_respiratoria_mecanica', 'carga_provincia_id', 'origen_financiamiento', 'Clasificacion', 'clasificacion_resumen', 'residencia_provincia_id', 'fecha_diagnostico', 'residencia_departamento_id', 'ultima_actualizacion']
 ['672064', 'M', '52', 'Años', 'Argentina', 'Buenos Aires', 'Florencio Varela', 'Buenos Aires', '2020-05-29', '', '44', '', 'NO', '', 'NO', '', 'NO', '06', 'Público', 'Caso Descartado', 'Descartado', '06', '2020-06-01', '274', '2020-06-08']
 '''
 
+id='residencia_departamento_id' #'residencia_provincia_id'
+
 e_dataframe0=pd.DataFrame(all_data,columns=kkeys)
 #print(e_dataframe0['fecha_diagnostico'])
 #print(e_dataframe0['fecha_apertura'])
 #print(e_dataframe0['sepi_apertura'])
-
-df4=e_dataframe0[['residencia_provincia_id','residencia_pais_nombre', 'residencia_provincia_nombre','residencia_departamento_nombre', 'carga_provincia_nombre','fecha_diagnostico','fecha_apertura','fecha_inicio_sintomas']]
-#print(e_dataframe0)
-df0=df4.groupby(['residencia_provincia_id','fecha_apertura']).count().reset_index()#name="count")
+#print(e_dataframe0['residencia_departamento_id'])
+df4=e_dataframe0[[id,'residencia_pais_nombre', 'residencia_provincia_nombre','residencia_departamento_nombre', 'carga_provincia_nombre','fecha_diagnostico','fecha_apertura','fecha_inicio_sintomas']]
+print(df4)
+df0=df4.groupby([id,'fecha_apertura']).count().reset_index()#name="count")
 #df0['ID1'] = range(1, len(df0.index)+1)
 df2=df0
 #.set_index(['fecha_apertura'])
@@ -52,12 +56,12 @@ df2=df0
 df3=df2.drop(['residencia_provincia_nombre','residencia_departamento_nombre', 'carga_provincia_nombre','fecha_diagnostico','fecha_inicio_sintomas'], axis=1)
 #print(df3,df3.columns)
 #idx = pd.MultiIndex.from_arrays([df0['ID1'],[df0['residencia_provincia_id'],df0['residencia_pais_nombre'],df0['residencia_provincia_nombre'],df0['fecha_apertura'],df0['count']]])
-pivoted_table=pd.pivot_table(data=df3,index='residencia_provincia_id', columns='fecha_apertura', values='residencia_pais_nombre',margins=False, dropna=False) #aggfunc={'residencia_pais_nombre':'sum'}
+pivoted_table=pd.pivot_table(data=df3,index=id, columns='fecha_apertura', values='residencia_pais_nombre',margins=False, dropna=False) #aggfunc={'residencia_pais_nombre':'sum'}
 e_dataframe1=pivoted_table.transpose()
 ids = list(lists.keys())
-#print(ids)
+print(ids)
 recs = list(lists.values())
-#print(recs)
+print(recs)
 
 def add_day_columns(df):
     """Add columns Elapsed_days, Decimals, Day_Year to df."""
@@ -153,6 +157,7 @@ def classify(ratio, recent_mean, threshold):
 
 for name in counties:
     values = e_dataframe1[name].fillna(0).cumsum().tolist()
+    print(values)
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-15] for y in y50]
@@ -194,3 +199,22 @@ for name in counties:
         plt.plot(x2,y3,color=color)
         plt.savefig(name+".png")
         plt.show()
+        print(name)
+        print(ids.index(name))
+        print(ids[ids.index(name)])
+        with open(output_directory + '/classification/data_counties_'+str(ids[ids.index(name)])+'.json', 'w') as outfile:
+            json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values": original_values},outfile)
+            #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})                
+        aar1.append({"n":name,"id":ids[ids.index(name)],"v":ratio,"c":color,"max":int(max(y5))})
+    else:
+        print("not"+name,color)
+    ind4+=1
+
+
+# with open('classification/data_counties.json', 'w') as outfile:                                                                                                                   
+#    json.dump(aar,outfile)                                                                                                                                                         
+#aar1[0]["Datenstand"]=date_of_analysis
+# this file is used by the map
+print(recs,ids)
+with open(output_directory + '/classification/classification_ids_provinces2.json', 'w') as outfile:
+    json.dump(aar1, outfile)    
