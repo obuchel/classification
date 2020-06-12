@@ -110,11 +110,11 @@ var data3=[];
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=[];
                 
-                data0.map(function(d,i){if (d.id.toString().length>3) {ids.push(d.id.toString().substr(3)) }else 
-                                                                     {ids.push(d.id.toString())}
-                                                                     
-                                                                     });
-           //console.log(ids);
+                data0.map(function(d,i){
+                    
+           ids.push(d.id.toString());
+         });
+           console.log(ids);
         fetch('ARG_adm2.json').then(res => res.json()) 
 .then(data => {  
  var data2={"type":"FeatureCollection"};
@@ -122,6 +122,8 @@ var data3=[];
             
             for (var i=0; i<data["features"].length; i++) {
                 data["features"][i]["id"]=data["features"][i]["properties"]["ID_2"].toString();
+                
+                console.log(data["features"][i]["id"]);
                 // if (data["features"][i]["properties"]["STATEFP"]!="72") {
                 if (ids.indexOf(data["features"][i]["properties"]["ID_2"])>-1) {
                       data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["ID_2"])]["c"];
