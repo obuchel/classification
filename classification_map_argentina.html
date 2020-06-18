@@ -95,7 +95,44 @@ height:28% !important;
  var layerM;
     var map;
         
-
+var k_keys={'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Coronel de Marina Leonardo Rosales',
+'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, General Sarmiento',
+'Buenos Aires, 9 de Julio':'Buenos Aires, Nueve de Julio',
+'Buenos Aires, San Fernando':'Buenos Aires, San Fernando (1)',
+'Buenos Aires, 25 de Mayo':'Buenos Aires, Veinticinco de Mayo',
+'C\u00f3rdoba, R\u00edo Cuarto':'Córdoba, Rió Cuarto',
+'C\u00f3rdoba, R\u00edo Primero':'Córdoba, Rió Primero',
+'C\u00f3rdoba, R\u00edo Seco':'Córdoba, Rió Seco',
+'C\u00f3rdoba, R\u00edo Segundo':'Córdoba, Rió Segundo',
+'Chaco, 12 de Octubre':'Chaco, Doce de Octubre',
+'Chaco, 9 de Julio':'Chaco, Nueve de Julio',
+'Chaco, 1\u00ba de Mayo':'Chaco, Primero de Mayo',
+'Chaco, 25 de Mayo':'Chaco, Veinticinco de Mayo',
+'Chubut, R\u00edo Senguer':'Chubut, Rió Senguer',
+'Entre R\u00edos, Islas del Ibicuy':'Entre Ríos, Isla',
+'La Rioja, General Angel V. Pe\u00f1aloza':'La Rioja, General Angel Vicente Peñaloza',
+'La Rioja, General Juan F. Quiroga':'La Rioja, General Juan Facundo Quiroga',
+'Misiones, Libertador Grl. San Mart\u00edn':'Misiones, Libertador General San Martín',
+'Misiones, 25 de Mayo':'Misiones, Veinticinco de Mayo',
+'R\u00edo Negro, 25 de Mayo':'Río Negro, Veinticinco de Mayo',
+'Salta, Grl. Jos\u00e9 de San Mart\u00edn':'Salta, General José de San Martín',
+'Salta, La Caldera':'Salta, La Candelaria',
+'San Juan, Ull\u00fam':'San Juan, Ullum',
+'San Juan, 25 de Mayo':'San Juan, Veinticinco de Mayo',
+'Santa Cruz, R\u00edo Chico':'Santa Cruz, Rió Chico',
+'Santa Fe, 9 de Julio':'Santa Fe, Nueve de Julio',
+'Santiago del Estero, Juan F. Ibarra':'Santiago del Estero, Juan Felipe Ibarra',
+'Santiago del Estero, R\u00edo Hondo':'Santiago del Estero, Rió Hondo',
+'Tierra del Fuego, R\u00edo Grande':'Tierra del Fuego, Rió Grande',
+'Tucum\u00e1n, Juan Bautista Alberdi':'Tucumán, Juan B. Alberdi',
+//'Tucumán, Río Chico':'Tucumán, Rió Chico'
+'Tucum\u00e1n, R\u00edo Chico':'Tucumán, Rió Chico',
+'Entre R\u00edos, Islas del Ibicuy':'Entre Ríos, Islas del Ibicuy',
+'Buenos Aires, Florentino Ameghino': 'Buenos Aires, Ameghino',
+'Salta, La Caldera': 'Salta, La Caldera',
+'Jujuy, Dr. Manuel Belgrano':'Jujuy, Capital',
+            'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, Capitán Sarmiento'
+};
     
 var arr=[[-1, '#000000'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']];   
     var arr20=[[-1, '#000000'],[0, '#2166ac'],[0.1, '#fddbc7'],[0.4, '#f4a582'],[0.8, '#d6604d'],[1, '#b2182b']]; 
@@ -111,10 +148,17 @@ var data3=[];
                 var ids=[];
                 var names=[];
                 data0.map(function(d,i){
+                     //console.log("- "+d.n);
+                if (d3.keys(k_keys).indexOf(d.n)>-1) {
+                    console.log(d.n, k_keys[d.n]);
+                    names.push(k_keys[d.n].toLowerCase());     
+                    
+                }   else {
               names.push(d.n.toLowerCase());      
+                }
            ids.push(d.id);
          });
-           //console.log(ids);
+          // console.log(names);
         fetch('ARG_adm2.json').then(res => res.json()) 
 .then(data => {  
  var data2={"type":"FeatureCollection"};
@@ -125,7 +169,7 @@ var data3=[];
                 data["features"][i]["id"]=data0[names.indexOf(data["features"][i]["properties"]["NAME_1"].toLowerCase()+", "+data["features"][i]["properties"]["NAME_2"].toLowerCase())].id;
                 
             } else {
-                console.log(data["features"][i]["properties"]["NAME_1"]+", "+data["features"][i]["properties"]["NAME_2"]);
+              //  console.log(data["features"][i]["properties"]["NAME_1"]+", "+data["features"][i]["properties"]["NAME_2"]);
                 data["features"][i]["id"]=data["features"][i]["properties"]["ID_2"].toString();
             }
                 //console.log(data["features"][i]["id"]);
@@ -401,7 +445,7 @@ coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 }
     
      var htm=e.features[0].properties.NAME_2+", "+e.features[0].properties.NAME_1+": "+e.features[0].properties.max+"<br>";
-    
+    console.log(e.features[0].properties);
     hoveredStateId = e.features[0].id;    
     var lats=e.lngLat;
     
