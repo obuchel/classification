@@ -1,4 +1,10 @@
 
+
+
+
+
+
+
 import numpy as np
 import urllib.request as urllib2
 import bz2
@@ -16,21 +22,24 @@ date_of_analysis='6/9/20'
 
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
-url='/Users/olgabuchel/Downloads/Covid19Casos.csv'
+url='/Users/olgabuchel/Downloads/Covid19Casos-2.csv'
 all_data=[]
 kkeys=[]
 lists={}
-with open(url, 'r', encoding='utf-16', newline='') as csvfile:
+with open(url, 'r', encoding='utf-8', newline='') as csvfile:
     lines = csv.reader(csvfile, delimiter = ',', quotechar = '"')
     ind=0
     for line in lines:
         if ind>0:
-            all_data.append(line)
+            #print(line[len(line)-5])
+            if line[len(line)-5]=="Confirmado" and line[len(line)-3]!="":
+                all_data.append(line)
             if line[5]+", "+line[6] not in list(lists.values()):
                 #if line[len(line)-4]+"_"+line[len(line)-2]=="0":
+                #lists[line[len(line)-4]+"_"+line[len(line)-2]]=line[5]+", "+line[6]
                 lists[line[len(line)-4]+"_"+line[len(line)-2]]=line[5]+", "+line[6]
                 #else:
-                print(lists[line[len(line)-4]+"_"+line[len(line)-2]],line[5]+", "+line[6])
+                #print(lists[line[len(line)-4]+"_"+line[len(line)-2]],line[5]+", "+line[6])
         else:
             kkeys=line
         ind+=1
@@ -41,25 +50,34 @@ print(lists)
 '''
 
 id='residencia_departamento_id' #'residencia_provincia_id'
+idds=[]
+for el in all_data:
+    idds.append(list(lists.keys())[list(lists.values()).index(el[5]+", "+el[6])])
+print(idds)
+
 
 e_dataframe0=pd.DataFrame(all_data,columns=kkeys)
-e_dataframe0['idd']=e_dataframe0["residencia_provincia_id"].astype(str).add('_').add(e_dataframe0[id]).astype(str)
+df=pd.DataFrame(idds,columns=["idd"])
+e_dataframe0["idd"]=df['idd']
+#e_dataframe0["residencia_provincia_id"].astype(str).add('_').add(e_dataframe0[id]).astype(str)
 #print(e_dataframe0['fecha_diagnostico'])
 #print(e_dataframe0['fecha_apertura'])
 #print(e_dataframe0['sepi_apertura'])
 #print(e_dataframe0['residencia_departamento_id'])
 df4=e_dataframe0[['idd','residencia_pais_nombre', 'residencia_provincia_nombre','residencia_departamento_nombre', 'carga_provincia_nombre','fecha_diagnostico','fecha_apertura','fecha_inicio_sintomas']]
 print(df4)
-df0=df4.groupby(['idd','fecha_apertura']).count().reset_index()#name="count")
+df0=df4.groupby(['idd','fecha_diagnostico']).count().reset_index()#name="count")
+print(df0)
 #df0['ID1'] = range(1, len(df0.index)+1)
 df2=df0
 #.set_index(['fecha_apertura'])
 #print(df2)
-df3=df2.drop(['residencia_provincia_nombre','residencia_departamento_nombre', 'carga_provincia_nombre','fecha_diagnostico','fecha_inicio_sintomas'], axis=1)
-#print(df3,df3.columns)
+df3=df2.drop(['residencia_provincia_nombre','residencia_departamento_nombre', 'carga_provincia_nombre','fecha_apertura','fecha_inicio_sintomas'], axis=1)
+print(df2['fecha_diagnostico'])
 #idx = pd.MultiIndex.from_arrays([df0['ID1'],[df0['residencia_provincia_id'],df0['residencia_pais_nombre'],df0['residencia_provincia_nombre'],df0['fecha_apertura'],df0['count']]])
-pivoted_table=pd.pivot_table(data=df3,index='idd', columns='fecha_apertura', values='residencia_pais_nombre',margins=False, dropna=False) #aggfunc={'residencia_pais_nombre':'sum'}
+pivoted_table=pd.pivot_table(data=df3,index='idd', columns='fecha_diagnostico', values='residencia_pais_nombre',margins=False, dropna=False) #aggfunc={'residencia_pais_nombre':'sum'}
 e_dataframe1=pivoted_table.transpose()
+print(e_dataframe1)
 ids = list(lists.keys())
 print(ids)
 recs = list(lists.values())
@@ -159,7 +177,8 @@ def classify(ratio, recent_mean, threshold):
 
 for name in counties:
     values = e_dataframe1[name].fillna(0).cumsum().tolist()
-    #print(name)
+    if name=="120":
+        print(values)
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-15] for y in y50]

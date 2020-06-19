@@ -170,7 +170,7 @@ var data3=[];
                 
             } else {
               //  console.log(data["features"][i]["properties"]["NAME_1"]+", "+data["features"][i]["properties"]["NAME_2"]);
-                data["features"][i]["id"]=data["features"][i]["properties"]["ID_2"].toString();
+                data["features"][i]["id"]=data["features"][i]["properties"]["ID_2"].toString()+"_";
             }
                 //console.log(data["features"][i]["id"]);
                 // if (data["features"][i]["properties"]["STATEFP"]!="72") {
@@ -361,7 +361,7 @@ var item = document.createElement('div');
     */
     
     var value2 = document.createElement('span');
-    value2.innerHTML = "<br>Updated: "+data0[0]["date"];
+   // value2.innerHTML = "<br>Updated: "+data0[0]["date"];
      value2.style.textAlign="center !important";
     value2.style.margin="auto";
     var item2 = document.createElement('div');
