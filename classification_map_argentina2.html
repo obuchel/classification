@@ -96,11 +96,51 @@ height:28% !important;
     var map;
         
 
+var k_keys={'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Coronel de Marina Leonardo Rosales',
+'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, General Sarmiento',
+'Buenos Aires, 9 de Julio':'Buenos Aires, Nueve de Julio',
+'Buenos Aires, San Fernando':'Buenos Aires, San Fernando (1)',
+'Buenos Aires, 25 de Mayo':'Buenos Aires, Veinticinco de Mayo',
+'C\u00f3rdoba, R\u00edo Cuarto':'Córdoba, Rió Cuarto',
+'C\u00f3rdoba, R\u00edo Primero':'Córdoba, Rió Primero',
+'C\u00f3rdoba, R\u00edo Seco':'Córdoba, Rió Seco',
+'C\u00f3rdoba, R\u00edo Segundo':'Córdoba, Rió Segundo',
+'Chaco, 12 de Octubre':'Chaco, Doce de Octubre',
+'Chaco, 9 de Julio':'Chaco, Nueve de Julio',
+'Chaco, 1\u00ba de Mayo':'Chaco, Primero de Mayo',
+'Chaco, 25 de Mayo':'Chaco, Veinticinco de Mayo',
+'Chubut, R\u00edo Senguer':'Chubut, Rió Senguer',
+'Entre R\u00edos, Islas del Ibicuy':'Entre Ríos, Isla',
+'La Rioja, General Angel V. Pe\u00f1aloza':'La Rioja, General Angel Vicente Peñaloza',
+'La Rioja, General Juan F. Quiroga':'La Rioja, General Juan Facundo Quiroga',
+'Misiones, Libertador Grl. San Mart\u00edn':'Misiones, Libertador General San Martín',
+'Misiones, 25 de Mayo':'Misiones, Veinticinco de Mayo',
+'R\u00edo Negro, 25 de Mayo':'Río Negro, Veinticinco de Mayo',
+'Salta, Grl. Jos\u00e9 de San Mart\u00edn':'Salta, General José de San Martín',
+'Salta, La Caldera':'Salta, La Candelaria',
+'San Juan, Ull\u00fam':'San Juan, Ullum',
+'San Juan, 25 de Mayo':'San Juan, Veinticinco de Mayo',
+'Santa Cruz, R\u00edo Chico':'Santa Cruz, Rió Chico',
+'Santa Fe, 9 de Julio':'Santa Fe, Nueve de Julio',
+'Santiago del Estero, Juan F. Ibarra':'Santiago del Estero, Juan Felipe Ibarra',
+'Santiago del Estero, R\u00edo Hondo':'Santiago del Estero, Rió Hondo',
+'Tierra del Fuego, R\u00edo Grande':'Tierra del Fuego, Rió Grande',
+'Tucum\u00e1n, Juan Bautista Alberdi':'Tucumán, Juan B. Alberdi',
+//'Tucumán, Río Chico':'Tucumán, Rió Chico'
+'Tucum\u00e1n, R\u00edo Chico':'Tucumán, Rió Chico',
+'Entre R\u00edos, Islas del Ibicuy':'Entre Ríos, Islas del Ibicuy',
+'Buenos Aires, Florentino Ameghino': 'Buenos Aires, Ameghino',
+'Salta, La Caldera': 'Salta, La Calderia',
+'Jujuy, Dr. Manuel Belgrano':'Jujuy, Capital',
+'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, General Sarmiento'
+            
+};
     
-var arr=[[-1, '#000000'],[1, '#1a9850'],[20, '#ffffb2'],[200, '#fd8d3c'],[1000, '#fc4e2a'],[20000, '#bd0026'],[30000, '#800026']];   
-var arr2=[[1, 0.1], [100, 0.2],[200, 0.7],[500, 1],[1000, 1],[2000, 1],[2500, 1],[3000, 1],[50000, 1]];  
+var arr=[[-1, '#000000'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']];   
+    var arr20=[[-1, '#000000'],[0, '#2166ac'],[0.1, '#fddbc7'],[0.4, '#f4a582'],[0.8, '#d6604d'],[1, '#b2182b']]; 
+     var arr2=[[1, 0.1], [100, 0.2],[200, 0.7],[500, 1],[1000, 1],[2000, 1],[2500, 1],[3000, 1],[50000, 1]];  
 var comms=["All",0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21];  
-var data3=[];       
+var data3=[];    
 
     var data0=[];
             fetch('output_argentina/classification/classification_ids_provinces2.json').then(res => res.json()) 
@@ -108,27 +148,41 @@ var data3=[];
              // console.log(data0);  
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=[];
-                
+                var names=[];
                 data0.map(function(d,i){
+                     //console.log("- "+d.n);
+                if (d3.keys(k_keys).indexOf(d.n)>-1) {
+                   // console.log(d.n, k_keys[d.n]);
+                    names.push(k_keys[d.n].toLowerCase());     
                     
-           ids.push(Number(d.id));
+                }   else {
+              names.push(d.n.toLowerCase());      
+                }
+           ids.push(d.id);
          });
-           console.log(ids);
+                //console.log(ids);
         fetch('ARG_adm2.json').then(res => res.json()) 
 .then(data => {  
  var data2={"type":"FeatureCollection"};
     data2["features"]=[];        
             
             for (var i=0; i<data["features"].length; i++) {
-                data["features"][i]["id"]=data["features"][i]["properties"]["ID_2"].toString();
+       
+                if (names.indexOf(data["features"][i]["properties"]["NAME_1"].toLowerCase()+", "+data["features"][i]["properties"]["NAME_2"].toLowerCase())>-1) {
+                data["features"][i]["id"]=data0[names.indexOf(data["features"][i]["properties"]["NAME_1"].toLowerCase()+", "+data["features"][i]["properties"]["NAME_2"].toLowerCase())].id;
                 
-                console.log(data["features"][i]["id"]);
-                // if (data["features"][i]["properties"]["STATEFP"]!="72") {
-                if (ids.indexOf(data["features"][i]["properties"]["ID_2"])>-1) {
-                      data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["ID_2"])]["c"];
-                    data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["ID_2"])]["max"];
-                     data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["ID_2"])]["max"]+1)*0.5;
-                data["features"][i]["properties"]["v"]=data0[ids.indexOf(data["features"][i]["properties"]["ID_2"])]["max"];
+            } else {
+               //console.log(data["features"][i]["properties"]["NAME_1"]+", "+data["features"][i]["properties"]["NAME_2"]);
+                data["features"][i]["id"]=data["features"][i]["properties"]["ID_2"].toString();
+            }
+                
+                //console.log( data["features"][i]["id"]);
+                if (ids.indexOf(data["features"][i]["properties"]["id"])>-1) {
+                    console.log("yes");
+                      data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["id"])]["c"];
+                    data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["id"])]["max"];
+                     data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["id"])]["max"]+1)*0.5;
+                data["features"][i]["properties"]["v"]=data0[ids.indexOf(data["features"][i]["properties"]["id"])]["max"];
                 } else {
 
                     data["features"][i]["properties"]["v"]=-1;
