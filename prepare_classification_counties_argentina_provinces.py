@@ -1,9 +1,5 @@
 
 
-
-
-
-
 import numpy as np
 import urllib.request as urllib2
 import bz2
@@ -17,10 +13,11 @@ import csv
 import unicodecsv
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
-
+from datetime import datetime
+#import datetime
 
 onlyfiles = [f for f in listdir('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/') if isfile(join('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/', f))]
-date_of_analysis='6/9/20'
+date_of_analysis='6/16/20'
 
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -28,15 +25,24 @@ url='/Users/olgabuchel/Downloads/Covid19Casos-2.csv'
 all_data=[]
 kkeys=[]
 lists={}
+diffs=[]
 with open(url, 'r', encoding='utf-8', newline='') as csvfile:
     lines = csv.reader(csvfile, delimiter = ',', quotechar = '"')
     ind=0
     for line in lines:
         if ind>0:
-            #all_data.append(line)
-            print(line)
-            if line[len(line)-5]=="Confirmado":
-                all_data.append(line)            
+            if line[len(line)-5]=="Confirmado" and line[len(line)-3]!="":
+                all_data.append(line)
+                try:
+                    d1=line[9].split("-")
+                    d2=line[len(line)-3].split("-")
+                    #print(line[9],line[len(line)-3])                
+                    diffs0=datetime(int(d2[0]),int(d2[1])-1,int(d2[2])-1)-datetime(int(d1[0]),int(d1[1])-1,int(d1[2])-1)
+                    diffs.append(int(divmod(diffs0.total_seconds(), 86400)[0]))
+                    if int(divmod(diffs0.total_seconds(), 86400)[0])>50:
+                        print(d2,d1)
+                except:
+                    continue
             if line[5] not in list(lists.values()):
                 #if line[len(line)-4]+"_"+line[len(line)-2]=="0":
                 #lists[line[len(line)-4]+"_"+line[len(line)-2]]=line[5]+", "+line[6]
@@ -46,7 +52,9 @@ with open(url, 'r', encoding='utf-8', newline='') as csvfile:
         else:
             kkeys=line
         ind+=1
-print(len(all_data))
+#print(diffs)
+plt.hist(diffs, bins = 50)
+plt.show()
 '''
 ['id_evento_caso', 'sexo', 'edad', 'edad_años_meses', 'residencia_pais_nombre', 'residencia_provincia_nombre', 'residencia_departamento_nombre', 'carga_provincia_nombre', 'fecha_inicio_sintomas', 'fecha_apertura', 'sepi_apertura', 'fecha_internacion', 'cuidado_intensivo', 'fecha_cui_intensivo', 'fallecido', 'fecha_fallecimiento', 'asistencia_respiratoria_mecanica', 'carga_provincia_id', 'origen_financiamiento', 'Clasificacion', 'clasificacion_resumen', 'residencia_provincia_id', 'fecha_diagnostico', 'residencia_departamento_id', 'ultima_actualizacion']
 ['672064', 'M', '52', 'Años', 'Argentina', 'Buenos Aires', 'Florencio Varela', 'Buenos Aires', '2020-05-29', '', '44', '', 'NO', '', 'NO', '', 'NO', '06', 'Público', 'Caso Descartado', 'Descartado', '06', '2020-06-01', '274', '2020-06-08']
@@ -69,15 +77,15 @@ e_dataframe0["idd"]=df['idd']
 #print(e_dataframe0['residencia_departamento_id'])
 df4=e_dataframe0[['idd','residencia_pais_nombre', 'residencia_provincia_nombre','residencia_departamento_nombre', 'carga_provincia_nombre','fecha_diagnostico','fecha_apertura','fecha_inicio_sintomas']]
 print(df4)
-df0=df4.groupby(['idd','fecha_apertura']).count().reset_index()#name="count")
+df0=df4.groupby(['idd','fecha_diagnostico']).count().reset_index()#name="count")
 #df0['ID1'] = range(1, len(df0.index)+1)
 df2=df0
 #.set_index(['fecha_apertura'])
 #print(df2)
-df3=df2.drop(['residencia_provincia_nombre','residencia_departamento_nombre', 'carga_provincia_nombre','fecha_diagnostico','fecha_inicio_sintomas'], axis=1)
+df3=df2.drop(['residencia_provincia_nombre','residencia_departamento_nombre', 'carga_provincia_nombre','fecha_inicio_sintomas','fecha_apertura'], axis=1)
 #print(df3,df3.columns)
 #idx = pd.MultiIndex.from_arrays([df0['ID1'],[df0['residencia_provincia_id'],df0['residencia_pais_nombre'],df0['residencia_provincia_nombre'],df0['fecha_apertura'],df0['count']]])
-pivoted_table=pd.pivot_table(data=df3,index='idd', columns='fecha_apertura', values='residencia_pais_nombre',margins=False, dropna=False) #aggfunc={'residencia_pais_nombre':'sum'}
+pivoted_table=pd.pivot_table(data=df3,index='idd', columns='fecha_diagnostico', values='residencia_pais_nombre',margins=False, dropna=False) #aggfunc={'residencia_pais_nombre':'sum'}
 e_dataframe1=pivoted_table.transpose()
 ids = list(lists.keys())
 print(ids)
@@ -181,6 +189,7 @@ i=0
 styles=['solid','dashdot','dotted','dashed','solid','dashdot','dotted','dashed','solid','dashdot','dotted','dashed','solid','dashdot','dotted','dashed','solid','dashdot','dotted','dashed','solid','dashdot','dotted','dashed']
 for name in counties:
     values = e_dataframe1[name].fillna(0).cumsum().tolist()
+    print(lists[name], values)
     if name=="120":
         print(values)
     num_rows = len(values)

@@ -98,7 +98,7 @@ height:28% !important;
 var k_keys={'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Coronel de Marina Leonardo Rosales',
 'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, General Sarmiento',
 'Buenos Aires, 9 de Julio':'Buenos Aires, Nueve de Julio',
-'Buenos Aires, San Fernando':'Buenos Aires, San Fernando (1)',
+'Buenos Aires, San Fernando':'Buenos Aires, San Fernando',
 'Buenos Aires, 25 de Mayo':'Buenos Aires, Veinticinco de Mayo',
 'C\u00f3rdoba, R\u00edo Cuarto':'Córdoba, Rió Cuarto',
 'C\u00f3rdoba, R\u00edo Primero':'Córdoba, Rió Primero',
@@ -131,7 +131,20 @@ var k_keys={'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Coronel 
 'Buenos Aires, Florentino Ameghino': 'Buenos Aires, Ameghino',
 'Salta, La Caldera': 'Salta, La Caldera',
 'Jujuy, Dr. Manuel Belgrano':'Jujuy, Capital',
-            'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, Capitán Sarmiento'
+'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, Capitán Sarmiento',
+'CABA, COMUNA 1':'Ciudad de Buenos Aires, COMUNA 1',
+'CABA, COMUNA 2':'Ciudad de Buenos Aires, COMUNA 2',        
+'CABA, COMUNA 3':'Ciudad de Buenos Aires, COMUNA 3',     
+'CABA, COMUNA 4':'Ciudad de Buenos Aires, COMUNA 4',     
+'CABA, COMUNA 5':'Ciudad de Buenos Aires, COMUNA 5',  
+ 'CABA, COMUNA 6':'Ciudad de Buenos Aires, COMUNA 6',        
+  'CABA, COMUNA 7':'Ciudad de Buenos Aires, COMUNA 7',  
+ 'CABA, COMUNA 8':'Ciudad de Buenos Aires, COMUNA 8',  
+   'CABA, COMUNA 9':'Ciudad de Buenos Aires, COMUNA 9',  
+     'CABA, COMUNA 10':'Ciudad de Buenos Aires, COMUNA 10', 
+             'CABA, COMUNA 11':'Ciudad de Buenos Aires, COMUNA 11',  'CABA, COMUNA 12':'Ciudad de Buenos Aires, COMUNA 12', 
+ 'CABA, COMUNA 13':'Ciudad de Buenos Aires, COMUNA 13',   
+ 'CABA, COMUNA 14':'Ciudad de Buenos Aires, COMUNA 14'
 };
     
 var arr=[[-1, '#000000'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']];   
@@ -159,7 +172,7 @@ var data3=[];
            ids.push(d.id);
          });
           // console.log(names);
-        fetch('ARG_adm2.json').then(res => res.json()) 
+        fetch('ARG_adm3.json').then(res => res.json()) 
 .then(data => {  
  var data2={"type":"FeatureCollection"};
     data2["features"]=[];        
@@ -350,7 +363,7 @@ var item = document.createElement('div');
     
     // item.className = 'legend-div';
      item.appendChild(value);
-        //  legend.appendChild(item);
+          legend.appendChild(item);
     
     /*
      var value3 = document.createElement('span');
@@ -372,10 +385,10 @@ map.addSource('ethnicity', {
 type: 'geojson',
 'data': data    
 });
-  /*  map.addSource('states', {
+   map.addSource('states', {
 type: 'geojson',
-'data': data8    
-});*/
+'data': 'ARG_states.json'
+});
    map.addSource('ethnicity2', {
 type: 'geojson',
 'data': data2    
@@ -405,7 +418,7 @@ stops: arr
     
 });  
     
-    /*
+    
      map.addLayer({
 'id': 'population',
 'type': 'circle',
@@ -417,9 +430,9 @@ stops: arr
 'circle-color': "grey",
      'circle-opacity': 0.1
 }
-});    */
+});    
     
-    /*
+    
      map.addLayer({
 'id': 'states',
 'type': 'line',
@@ -432,7 +445,7 @@ stops: arr
 'line-color': '#000000',
 'line-width': 1
 }
-},"");  */ 
+},"");  
 map.on('click', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();
 
