@@ -1,12 +1,11 @@
-
 import json
 data0={}
-with open("ARG_adm2.json", "r") as read_file:
+with open("../ARG_adm4.json", "r") as read_file:
     data=json.load(read_file)
     data0=data
 #'properties': {'ID_0': 12, 'ISO': 'ARG', 'NAME_0': 'Argentina', 'ID_1': 24, 'NAME_1': 'Tucumán', 'ID_2': 502, 'NAME_2': 'Trancas', 'TYPE_2': 'Departamento', 'ENGTYPE_2': 'Department', 'NL_NAME_2': '', 'VARNAME_2': ''}
 
-with open("converter3.geojson", "r") as read_file:
+with open("communas.json", "r") as read_file:
     data2=json.load(read_file)
     for el in data2["features"]:
         #{'BARRIOS': 'BELGRANO - COLEGIALES - NUÑEZ', 'PERIMETRO': 26198.8269533, 'AREA': 14713213.1821, 'COMUNAS': 13.0, 'ID': 15, 'OBJETO': 'LIMITE COMUNAL'}

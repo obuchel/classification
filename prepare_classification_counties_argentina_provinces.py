@@ -21,15 +21,17 @@ date_of_analysis='6/16/20'
 
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
-url='/Users/olgabuchel/Downloads/Covid19Casos-2.csv'
+#https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv
+url='Covid19Casos.csv'#'/Users/olgabuchel/Downloads/Covid19Casos-2.csv'
 all_data=[]
 kkeys=[]
 lists={}
 diffs=[]
-with open(url, 'r', encoding='utf-8', newline='') as csvfile:
+with open(url, 'r',  encoding='utf-16', newline='') as csvfile: #encoding='utf-16', 
     lines = csv.reader(csvfile, delimiter = ',', quotechar = '"')
     ind=0
     for line in lines:
+        print(line)
         if ind>0:
             if line[len(line)-5]=="Confirmado" and line[len(line)-3]!="":
                 all_data.append(line)
