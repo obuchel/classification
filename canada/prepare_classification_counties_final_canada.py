@@ -9,7 +9,11 @@ import pandas as pd
 import os
 from prep_canada_data import stage_latest
 
+<<<<<<< HEAD
 date_of_analysis='6/20/20'
+=======
+date_of_analysis='6/19/20'
+>>>>>>> 78c18e17230951576ec3775f38adc6fd2dd422b8
 output_directory = 'output_canada'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
