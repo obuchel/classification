@@ -1,14 +1,7 @@
-<<<<<<< HEAD
+
 #https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv
-=======
 
 
-
-
-
-
-
->>>>>>> 78c18e17230951576ec3775f38adc6fd2dd422b8
 import numpy as np
 import urllib.request as urllib2
 import bz2
@@ -26,19 +19,18 @@ date_of_analysis='6/9/20'
 
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
-<<<<<<< HEAD
-url='Covid19Casos.csv'
+
+url='../Covid19Casos.csv'
 all_data=[]
 kkeys=[]
 lists={}
-with open(url, 'r', encoding='utf-16', newline='') as csvfile:
-=======
+#with open(url, 'r', encoding='utf-16', newline='') as csvfile:
 url='/Users/olgabuchel/Downloads/Covid19Casos-2.csv'
 all_data=[]
 kkeys=[]
 lists={}
 with open(url, 'r', encoding='utf-8', newline='') as csvfile:
->>>>>>> 78c18e17230951576ec3775f38adc6fd2dd422b8
+
     lines = csv.reader(csvfile, delimiter = ',', quotechar = '"')
     ind=0
     for line in lines:
