@@ -31,7 +31,7 @@
   border-radius: 3px;
   width: 20%; 
 height:35% !important;
-      right:30%;
+      right:29%;
 }
     .map-overlay1 {
   position: absolute;
@@ -44,7 +44,7 @@ height:35% !important;
   border-radius: 3px;
   width: 30%; 
 height:28% !important;
-      right:30%;
+      right:29%;
 }
     
     #features {
@@ -63,7 +63,7 @@ height:28% !important;
         margin-bottom: 20px;
         width: 30%;
          height:28% !important;
-         right:15%;
+         right:25%;
       /*   z-index:100000000;*/
         
       }
@@ -85,10 +85,10 @@ height:28% !important;
     }
     
     #example1_wrapper{
-        width:20% !important;
+        width:15% !important;
         float:right;
-        margin-right:10%;
-         height: 190px !important;
+        margin-right:15%;
+ 
     }
     .alert1 {
 color: #800026;
@@ -117,7 +117,7 @@ color: darkseagreen;
     <div id="plot"></div>
     </div>
      <div class="map-overlay1" id="legend"></div>
-    <table id="example1" class="hover" style="width:20% !important; height: 190px !important;  margin-right:10%;"></table>
+    <table id="example1" class="hover" style="width:15% !important;   margin-right:15%;"></table>
 <script>
     
     var popup;
@@ -293,7 +293,7 @@ map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
 
     $(document).ready(function() {
     $('#example1').DataTable( {
-         scrollY:        '80vh',
+         scrollY:        '70vh',
         scrollCollapse: true,
         paging:         false,
          "columnDefs": [
@@ -306,7 +306,7 @@ map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
         data: htm,
         columns: [
             { title: "County" },
-            { title: "Number of cases" },
+            { title: "# of cases" },
             { title: "Color" }
             
         ],
@@ -546,17 +546,17 @@ stops: arr
 },"");  
 map.on('click', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();
-
-   
+//d3.select("#map-overlay1").style("visibility","hidden");
+   //
  hoveredStateId = null;
-
+//d3.select("#map-overlay1").style("visibility","visible");
     var coordinates = e.features[0].geometry.coordinates[0][0].slice();
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 }
     
      var htm=e.features[0].properties.NAME_2+", "+e.features[0].properties.NAME_1+": "+e.features[0].properties.max+"<br>";
-    console.log(e.features[0].properties);
+    //console.log(e.features[0].properties);
     hoveredStateId = e.features[0].id;    
     var lats=e.lngLat;
     
@@ -566,12 +566,15 @@ if (e.features[0].properties["c"]=="yellow") {
  var color="#1a9850";
 } else if (e.features[0].properties["c"]=="red") {
  var color="#800026";
-} else 
+} else if (e.features[0].properties["c"]=="orange") 
 
 {
     var color="#fd8d3c";
     //e.features[0].properties["c"];
     //console.log(color);
+} else {
+   // d3.select("#map-overlay1").style("visibility","hidden");
+    
 }
 //console.log(e.features[0]["properties"]["id"]);
     document.getElementById("plot").innerHTML="";
@@ -583,6 +586,7 @@ if (e.features[0].properties["c"]=="yellow") {
     var num=e.features[0]["properties"]["id"];
     //}
     
+    if (typeof num!="undefined") {
    if (num.toString().length==1) {
         
         var url='output_argentina/classification/data_counties_00'+num+'.json';
@@ -598,7 +602,8 @@ if (e.features[0].properties["c"]=="yellow") {
         var url='output_argentina/classification/data_counties_'+num+'.json';
     }
     
-    
+    d3.select("#map-overlay1").style("visibility","visible");
+        d3.select("#map-overlay").style("visibility","visible");
   fetch(url).then(res => res.json()) 
 .then(data7 => {    
 
@@ -639,6 +644,13 @@ turn_off();
       
       
       });  
+        
+    } else {
+        
+        
+        d3.select("#map-overlay1").style("visibility","hidden");
+        d3.select("#map-overlay").style("visibility","hidden");
+    }
       
   });
 map.on('click', 'place_data09', function(e) {
