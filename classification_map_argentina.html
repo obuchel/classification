@@ -174,7 +174,9 @@ var k_keys={'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Coronel 
              'CABA, COMUNA 11':'Ciudad de Buenos Aires, COMUNA 11',  'CABA, COMUNA 12':'Ciudad de Buenos Aires, COMUNA 12', 
  'CABA, COMUNA 13':'Ciudad de Buenos Aires, COMUNA 13',   
  'CABA, COMUNA 14':'Ciudad de Buenos Aires, COMUNA 14',
-            'CABA, COMUNA 15':'Ciudad de Buenos Aires, COMUNA 15'
+            'CABA, COMUNA 15':'Ciudad de Buenos Aires, COMUNA 15',
+          //  'Buenos Aires, General Sarmiento': 'Buenos Aires, San Miguel'
+            'Buenos Aires, San Miguel': 'Buenos Aires, General Sarmiento'
 };
     
 var arr=[[-1, 'darkseagreen'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']];   
@@ -548,6 +550,7 @@ map.on('click', 'place_data0', function(e) {
     if (typeof popup=="object") popup.remove();
 //d3.select("#map-overlay1").style("visibility","hidden");
    //
+console.log(e.features[0].properties);
  hoveredStateId = null;
 //d3.select("#map-overlay1").style("visibility","visible");
     var coordinates = e.features[0].geometry.coordinates[0][0].slice();
