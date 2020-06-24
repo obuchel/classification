@@ -15,7 +15,7 @@ import csv
 import unicodecsv
 import matplotlib.pyplot as plt
 onlyfiles = [f for f in listdir('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/') if isfile(join('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/', f))]
-date_of_analysis='6/23/20'
+date_of_analysis='6/24/20'
 
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -240,6 +240,6 @@ for name in counties:
 #    json.dump(aar,outfile)                                                                                                                                                         
 #aar1[0]["Datenstand"]=date_of_analysis
 # this file is used by the map
-print(len(recs))
+aar1[0]["date"]=date_of_analysis
 with open(output_directory + '/classification/classification_ids_provinces2.json', 'w') as outfile:
     json.dump(aar1, outfile)    
