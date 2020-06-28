@@ -82,8 +82,8 @@ if __name__ == '__main__':
             ind=0
             for row in BZ2_CSV_LineReader(bz2_csv_filename).readlines():
                 if ind>0:
-                    if row[kkeys.index("Bundesland")] not in list(lk_keys.keys()):#+", "+row[kkeys.index("Landkreis")]
-                        lk_keys[row[kkeys.index("Bundesland")]]=str(row[kkeys.index("IdLandkreis")]) #+", "+row[kkeys.index("Landkreis")]
+                    if row[kkeys.index("Bundesland")]+", "+row[kkeys.index("Landkreis")] not in list(lk_keys.keys()):#+", "+row[kkeys.index("Landkreis")]
+                        lk_keys[row[kkeys.index("Bundesland")]+", "+row[kkeys.index("Landkreis")]]=str(row[kkeys.index("IdLandkreis")]) #+", "+row[kkeys.index("Landkreis")]
                     #print(kkeys)
                     #Bundesland         Landkreis Altersgruppe Geschlecht  ...            Meldedatum IdLandkreis
                     try:
@@ -99,12 +99,16 @@ if __name__ == '__main__':
                 else:
                     kkeys=row
                 ind+=1
+                
             kkeys[0]="Combined_Key"    
             df = pd.DataFrame(all_rows, columns=kkeys)
+            print(df)
             df['AnzahlFall']=pd.to_numeric(df["AnzahlFall"])
             #df.loc[:,'Datenstand'] = el.split("-")[0]+"-"+el.split("-")[1]+"-"+el.split("-")[2]
             #print(df)
-            df0=df.groupby(['Combined_Key','Datenstand'])['AnzahlFall'].sum().reset_index()
+            df0=df.groupby(['Combined_Key','Datenstand']).count().reset_index()
+            print(df0)
+            #['AnzahlFall'].sum().reset_index()
             main_df=pd.concat([main_df,df0])
         elif ".json" in el:
             bz2_csv_filename = '/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/'+el
@@ -121,18 +125,19 @@ if __name__ == '__main__':
                     arr=list(row["attributes"].values())
                     try:
                         if arr[kkeys1.index("Bundesland")]+", "+arr[kkeys1.index("Landkreis")] not in list(lk_keys.keys()):
-                            lk_keys[arr[kkeys1.index("Bundesland")]]=str(arr[kkeys1.index("IdLandkreis")])#+", "+arr[kkeys1.index("Landkreis")]
-                        arr[0]=arr[kkeys1.index("Bundesland")]#+", "+arr[kkeys1.index("Landkreis")]
+                            lk_keys[arr[kkeys1.index("Bundesland")+", "+arr[kkeys1.index("Landkreis")]]]=str(arr[kkeys1.index("IdLandkreis")])#+", "+arr[kkeys1.index("Landkreis")]
+                        arr[0]=arr[kkeys1.index("Bundesland")+", "+arr[kkeys1.index("Landkreis")]]
                         #dd=str(arr[kkeys1.index("Meldedatum")])
                         arr2=str(datetime.fromtimestamp(int(row["attributes"]["Meldedatum"])/1000)).replace(" 20:00:00","").split("-")
                         arr[kkeys1.index("Datenstand")]=arr2[2]+"-"+arr2[1]+"-"+arr2[0]
                         print(arr[kkeys1.index("Datenstand")])
                         all_rows.append(arr)
                     except:
-                        print("missed")
+                        #print("missed")
                         #print(kkeys1,arr)
                         continue
             df = pd.DataFrame(all_rows, columns=kkeys1)
+            print(df)
             df['AnzahlFall']=pd.to_numeric(df["AnzahlFall"])
             df0=df.groupby(['Combined_Key','Datenstand'])['AnzahlFall'].sum().reset_index()
             main_df2=pd.concat([main_df2,df0])
