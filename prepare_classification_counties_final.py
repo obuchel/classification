@@ -7,7 +7,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 
-date_of_analysis='6/27/20'
+date_of_analysis='6/28/20'
 
 
 output_directory = 'output'
