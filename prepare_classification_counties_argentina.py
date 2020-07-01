@@ -1,8 +1,4 @@
-
-
 #https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv
-
-
 import numpy as np
 import urllib.request as urllib2
 import bz2
@@ -16,12 +12,12 @@ import csv
 import unicodecsv
 import matplotlib.pyplot as plt
 onlyfiles = [f for f in listdir('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/') if isfile(join('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/', f))]
-date_of_analysis='6/30/20'
+date_of_analysis='7/1/20'
 
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
-url='../Covid19Casos.csv.2'
+url='../Covid19Casos.csv'
 all_data=[]
 kkeys=[]
 lists={}
