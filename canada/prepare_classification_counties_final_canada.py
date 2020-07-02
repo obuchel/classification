@@ -10,7 +10,7 @@ import os
 from prep_canada_data import stage_latest
 
 
-date_of_analysis='6/30/20'
+date_of_analysis='7/1/20'
 
 output_directory = 'output_canada'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -26,13 +26,13 @@ else:
     data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
 '''
 dates=["25-01-2020","26-01-2020","27-01-2020","28-01-2020","29-01-2020","30-01-2020","31-01-2020"]
-for x in range(2,7):
+for x in range(2,8):
     if x<10:
         x="0"+str(x)
     for y in range(1,32):
         if y<10:
             y="0"+str(y)
-        if str(y)+"-"+str(x)+"-"+"2020" not in ["30-02-2020","31-02-2020","31-04-2020"]:    
+        if str(y)+"-"+str(x)+"-"+"2020" not in ["30-02-2020","31-02-2020","31-04-2020","31-06-2020"]:    
             dates.append(str(y)+"-"+str(x)+"-"+"2020")
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]        
 
