@@ -8,7 +8,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 
-date_of_analysis='6/30/20'
+date_of_analysis='7/1/20'
 
 
 output_directory = 'output'
@@ -60,6 +60,8 @@ def add_day_columns(df):
 
 
 add_day_columns(e_dataframe1)
+#print(e_dataframe1)
+
 
 if False:
     # show intermediate result and abortthe script right here
@@ -135,7 +137,6 @@ for name in counties:
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-15] for y in y50]
-    # print(max(y5))
     y = values
     original_values = compute_original_values(values)
     x = e_dataframe1[e_dataframe1.columns[0]]
