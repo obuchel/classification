@@ -122,7 +122,7 @@ color: darkseagreen;
  var layerM;
     var map;
         
-var k_keys={'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Coronel de Marina Leonardo Rosales',
+var k_keys={/*'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Coronel de Marina Leonardo Rosales',
 'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, General Sarmiento',
 'Buenos Aires, 9 de Julio':'Buenos Aires, Nueve de Julio',
 'Buenos Aires, San Fernando':'Buenos Aires, San Fernando',
@@ -158,23 +158,23 @@ var k_keys={'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Coronel 
 'Buenos Aires, Florentino Ameghino': 'Buenos Aires, Ameghino',
 'Salta, La Caldera': 'Salta, La Caldera',
 'Jujuy, Dr. Manuel Belgrano':'Jujuy, Capital',
-'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, Capitán Sarmiento',
-'CABA, COMUNA 1':'Ciudad de Buenos Aires, COMUNA 1',
-'CABA, COMUNA 2':'Ciudad de Buenos Aires, COMUNA 2',        
-'CABA, COMUNA 3':'Ciudad de Buenos Aires, COMUNA 3',     
-'CABA, COMUNA 4':'Ciudad de Buenos Aires, COMUNA 4',     
-'CABA, COMUNA 5':'Ciudad de Buenos Aires, COMUNA 5',  
- 'CABA, COMUNA 6':'Ciudad de Buenos Aires, COMUNA 6',        
-  'CABA, COMUNA 7':'Ciudad de Buenos Aires, COMUNA 7',  
- 'CABA, COMUNA 8':'Ciudad de Buenos Aires, COMUNA 8',  
-   'CABA, COMUNA 9':'Ciudad de Buenos Aires, COMUNA 9',  
-     'CABA, COMUNA 10':'Ciudad de Buenos Aires, COMUNA 10', 
-             'CABA, COMUNA 11':'Ciudad de Buenos Aires, COMUNA 11',  'CABA, COMUNA 12':'Ciudad de Buenos Aires, COMUNA 12', 
- 'CABA, COMUNA 13':'Ciudad de Buenos Aires, COMUNA 13',   
- 'CABA, COMUNA 14':'Ciudad de Buenos Aires, COMUNA 14',
-            'CABA, COMUNA 15':'Ciudad de Buenos Aires, COMUNA 15',
+'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, Capitán Sarmiento',*/
+'CABA, COMUNA 1':'Ciudad Autónoma de Buenos Aires, COMUNA 1',
+'CABA, COMUNA 2':'Ciudad Autónoma de Buenos Aires, COMUNA 2',        
+'CABA, COMUNA 3':'Ciudad Autónoma de Buenos Aires, COMUNA 3',     
+'CABA, COMUNA 4':'Ciudad Autónoma de Buenos Aires, COMUNA 4',     
+'CABA, COMUNA 5':'Ciudad Autónoma de Buenos Aires, COMUNA 5',  
+ 'CABA, COMUNA 6':'Ciudad Autónoma de Buenos Aires, COMUNA 6',        
+  'CABA, COMUNA 7':'Ciudad Autónoma de Buenos Aires, COMUNA 7',  
+ 'CABA, COMUNA 8':'Ciudad Autónoma de Buenos Aires, COMUNA 8',  
+   'CABA, COMUNA 9':'Ciudad Autónoma de Buenos Aires, COMUNA 9',  
+     'CABA, COMUNA 10':'Ciudad Autónoma de Buenos Aires, COMUNA 10', 
+             'CABA, COMUNA 11':'Ciudad Autónoma de Buenos Aires, COMUNA 11',  'CABA, COMUNA 12':'Ciudad Autónoma de Buenos Aires, COMUNA 12', 
+ 'CABA, COMUNA 13':'Ciudad Autónoma de Buenos Aires, COMUNA 13',   
+ 'CABA, COMUNA 14':'Ciudad Autónoma de Buenos Aires, COMUNA 14',
+            'CABA, COMUNA 15':'Ciudad Autónoma de Buenos Aires, COMUNA 15',
           //  'Buenos Aires, General Sarmiento': 'Buenos Aires, San Miguel'
-            'Buenos Aires, San Miguel': 'Buenos Aires, General Sarmiento'
+            'Buenos Aires, San Miguel': 'Buenos Aires, San Miguel'
 };
     
 var arr=[[-1, 'darkseagreen'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']];   
@@ -201,7 +201,7 @@ var data3=[];
                 }
            ids.push(d.id);
          });
-          // console.log(names);
+           console.log(names);
         fetch('ArgentinaCountisAndProvinces.json').then(res => res.json()) 
 .then(data => {  
  var data2={"type":"FeatureCollection"};
@@ -211,15 +211,17 @@ var data3=[];
             for (var i=0; i<data["features"].length; i++) {
                 
             /*    console.log(data["features"][i]["properties"]["sag"].toLowerCase().replace("IDE ","")+", "+data["features"][i]["properties"]["nam"].toLowerCase());*/
-                if (names.indexOf(data["features"][i]["properties"]["NAME_1"].toLowerCase()+", "+data["features"][i]["properties"]["NAME_2"].toLowerCase())>-1) {
+                
+                console.log(data["features"][i]["properties"]["nam_2"].toLowerCase()+", "+data["features"][i]["properties"]["nam"].toLowerCase());
+                if (names.indexOf(data["features"][i]["properties"]["nam_2"].toLowerCase()+", "+data["features"][i]["properties"]["nam"].toLowerCase())>-1) {
                     
                 
                     
-                data["features"][i]["id"]=data0[names.indexOf(data["features"][i]["properties"]["NAME_1"].toLowerCase()+", "+data["features"][i]["properties"]["NAME_2"].toLowerCase())].id;
+                data["features"][i]["id"]=data0[names.indexOf(data["features"][i]["properties"]["nam_2"].toLowerCase()+", "+data["features"][i]["properties"]["nam"].toLowerCase())].id;
                 
             } else {
               //  console.log(data["features"][i]["properties"]["NAME_1"]+", "+data["features"][i]["properties"]["NAME_2"]);
-                data["features"][i]["id"]=data["features"][i]["properties"]["ID_2"].toString()+"_";
+                data["features"][i]["id"]=data["features"][i]["properties"]["gid"].toString()+"_";
             }
                 //console.log(data["features"][i]["id"]);
                 // if (data["features"][i]["properties"]["STATEFP"]!="72") {
@@ -232,7 +234,7 @@ var data3=[];
                      data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["id"])]["max"]+1)*0.5;
                 data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["id"])]["c"]];
                     
-                    htm.push([data["features"][i]["properties"]["NAME_2"]+", "+data["features"][i]["properties"]["NAME_1"],data["features"][i]["properties"]["max"],data0[ids.indexOf(data["features"][i]["id"])]["c"]]);
+                    htm.push([data["features"][i]["properties"]["nam_2"]+", "+data["features"][i]["properties"]["nam"],data["features"][i]["properties"]["max"],data0[ids.indexOf(data["features"][i]["id"])]["c"]]);
                 } else {
                     
                     data["features"][i]["properties"]["v"]=-1;
@@ -240,7 +242,7 @@ var data3=[];
                      data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
                     
                     
-                    htm.push([data["features"][i]["properties"]["NAME_2"]+", "+data["features"][i]["properties"]["NAME_1"],data["features"][i]["properties"]["max"],"dark green"]);
+                    htm.push([data["features"][i]["properties"]["nam_2"]+", "+data["features"][i]["properties"]["nam"],data["features"][i]["properties"]["max"],"dark green"]);
                 }
                 if (data["features"][i]["geometry"]["type"]=="Polygon"){
          var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"]);
