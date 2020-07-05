@@ -4,8 +4,8 @@ var popup;
         
 
     
-var arr=[[-1, '#000000'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.79, '#bd0026'],[1, '#800026']];   
-    var arr20=[[-1, '#000000'],[0, '#2166ac'],[0.1, '#fddbc7'],[0.4, '#f4a582'],[0.79, '#d6604d'],[1, '#b2182b']]; 
+var arr=[[-1, 'darkseagreen'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.79, '#bd0026'],[1, '#800026']];   
+    var arr20=[[-1, 'navy'],[0, '#2166ac'],[0.1, '#fddbc7'],[0.4, '#f4a582'],[0.79, '#d6604d'],[1, '#b2182b']]; 
      var arr2=[[1, 0.1], [100, 0.2],[200, 0.7],[500, 1],[1000, 1],[2000, 1],[2500, 1],[3000, 1],[50000, 1]];  
 var comms=["All",0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21];  
 var data3=[];    
@@ -14,7 +14,7 @@ var data3=[];
             fetch('output/classification/classification_ids_counties2.json').then(res => res.json()) 
 .then(data0 => { 
              // console.log(data0);  
-         var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
+         var cols={"darkgreen":-1,"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=[];
                 
                 data0.map(function(d,i){if (d.id.toString().length>3) {ids.push(d.id.toString().substr(3)) }else 
@@ -107,6 +107,7 @@ break;
     console.log(map.getStyle().layers);
     */
         var layers = [
+            ' : No Cases',
           '<img width="20px" height="20px" src="green.png"> : New cases under control',
           '<img width="20px" height="20px" src="yellow.png"> : New cases almost controlled',
           '<img width="20px" height="20px" src="orange.png"> : New cases falling or constant',
@@ -114,6 +115,8 @@ break;
         ];
 
         var colors = [
+            
+            'darkseagreen',
           '#1a9850',
           '#ffffb2',
           '#fd8d3c',
@@ -312,7 +315,7 @@ if (e.features[0].properties["c"]=="yellow") {
 } else 
 
 {
-    var color="#fd8d3c";
+    var color="darkseagreen";
     //e.features[0].properties["c"];
     //console.log(color);
 }
@@ -452,6 +455,8 @@ var item = document.createElement('div');
             document.getElementById("plot").style.visibility="hidden";
    document.getElementById("features").style.visibility="hidden";
      var layers = [
+         
+         ' : No cases',
           '<img width="20px" height="20px" src="green.png"> : New cases under control',
           '<img width="20px" height="20px" src="yellow.png"> : New cases almost controlled',
           '<img width="20px" height="20px" src="orange.png"> : New cases falling or constant',
@@ -459,6 +464,7 @@ var item = document.createElement('div');
         ];
 
         var colors = [
+                   'darkseagreen',
           '#1a9850',
           '#ffffb2',
           '#fd8d3c',
@@ -469,6 +475,7 @@ var item = document.createElement('div');
        /* 
          var arr20=[[-1, '#000000'],[0, '#2166ac'],[0.1, '#fddbc7'],[0.4, '#f4a582'],[0.8, '#d6604d'],[1, '#b2182b']]; */
      var layers1 = [
+                ' : No cases',
           '<img width="20px" height="20px" src="green.png"> : New cases under control',
           '<img width="20px" height="20px" src="yellow.png"> : New cases almost controlled',
           '<img width="20px" height="20px" src="orange.png"> : New cases falling or constant',
@@ -476,6 +483,7 @@ var item = document.createElement('div');
         ];
 
         var colors1 = [
+            'navy',
           '#2166ac',
           '#fddbc7',
           '#f4a582',
