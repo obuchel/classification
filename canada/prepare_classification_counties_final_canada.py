@@ -93,7 +93,7 @@ add_day_columns(e_dataframe1)
 
 if False:
     # show intermediate result and abortthe script right here
-    print(e_dataframe1.iloc[10:, :5])
+    #print(e_dataframe1.iloc[10:, :5])
     import sys
     sys.exit(0)
 
@@ -144,11 +144,12 @@ def classify(ratio, recent_mean, threshold):
             color = "green"
     elif ratio <= 0.1:
         if recent_mean >= threshold:
-            color = "yellow"
+            color = "green"
         else:
             color = "green"
     elif ratio >= 0.4 and ratio < 0.79:
-        if recent_mean >= threshold:
+        if recent_mean > threshold:
+            #print(recent_mean,threshold)
             color = "orange"
         else:
             color = "green"
@@ -162,7 +163,7 @@ def classify(ratio, recent_mean, threshold):
 
 for name in counties:
     values = e_dataframe1[name].cumsum()
-    print(name,list(values))
+    #print(name,list(values))
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-15] for y in y50]
@@ -173,7 +174,7 @@ for name in counties:
     y1 = interpolate(y)
     x2 = x[9:]
     tim2 = tim[4 : -5]
-    print(pd.DataFrame(y1, columns=["a"]).rolling(window=7).mean()['a'].to_list())
+    #print(pd.DataFrame(y1, columns=["a"]).rolling(window=7).mean()['a'].to_list())
     y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=7).mean()['a'].to_list()[6:]
     ys = y3[-24:]
     xs = x[-29:-5]  # last 24 days
