@@ -108,22 +108,22 @@ def interpolate(y):
 def classify(ratio, recent_mean, threshold):
     color = None
     if ratio >= 0.79:
-        if recent_mean > threshold:
+        if recent_mean >= threshold:
             color = "red"
         else:
             color = "green"
     elif ratio <= 0.1:
-        if recent_mean > threshold:
+        if recent_mean >= threshold:
             color = "yellow"
         else:
             color = "green"
     elif ratio >= 0.4 and ratio < 0.79:
-        if recent_mean > threshold:
+        if recent_mean >= threshold:
             color = "orange"
         else:
             color = "green"
     elif ratio > 0.1 and ratio < 0.4:
-        if recent_mean > threshold:
+        if recent_mean >= threshold:
             color = "yellow"
         else:
             color = "green"
@@ -161,10 +161,10 @@ for name in counties:
             ratio = y3[-1] / max0
             recent_mean = int(np.mean(original_values[-15:]))
             recent_mean0 += recent_mean
-            if recent_mean > threshold:
-                color = classify(ratio, recent_mean, threshold)
-            else:
-                color = "green"
+            #if recent_mean > threshold:
+            color = classify(ratio, recent_mean, threshold)
+            #else:
+            #    color = "green"
         else:
             #print(name,y3)
             ratio=0
