@@ -79,10 +79,11 @@ def compute_original_values(values):
     result = []
     ind3 = 0
     for e in values:
-        if ind3 < num_rows - 2:
+        if ind3 < num_rows - 1:
             result.append(int(values[ind3 + 1]) - int(e))
         else:
-            result.append(result[-1])
+            print("")
+            #result.append(result[-1])
         ind3 += 1
     return result
 
@@ -133,7 +134,7 @@ for name in counties:
     values = e_dataframe1[name]
     num_rows = len(values)
     y50 = values[-14:]
-    y5 = [y - values[-15] for y in y50]
+    y5 = [y - values[-14] for y in y50]
     y = values
     original_values = compute_original_values(values)
     x = e_dataframe1[e_dataframe1.columns[0]]
@@ -168,8 +169,10 @@ for name in counties:
             #print(name,y3)
             ratio=0
             color="green"
+
+        print(y5,original_values)    
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
-            json.dump({"dates":tim2,"max_14":int(max(y5)),"max":recent_mean0,"value":y3,"time":tim,"original_values":original_values},outfile)
+            json.dump({"dates":tim2,"max_14": int(max(y5)),"max":recent_mean0,"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
         aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":recent_mean0})
         ind4+=1

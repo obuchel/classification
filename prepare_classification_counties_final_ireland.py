@@ -129,7 +129,7 @@ for name in counties:
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-15] for y in y50]
-    # print(max(y5))
+    print(y5)
     y = values
     original_values = compute_original_values(values)
     x = e_dataframe1[e_dataframe1.columns[0]]
