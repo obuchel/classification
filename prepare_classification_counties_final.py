@@ -157,7 +157,7 @@ for name in counties:
         min0 = np.min(ys)
         if max0 > 0:
             ratio = y3[-1] / max0
-            recent_mean = int(np.mean(original_values[-11:]))
+            recent_mean = int(np.mean(original_values[-14:]))
             if recent_mean > threshold:
                 color = classify(ratio, recent_mean, threshold)
             else:
