@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import json
 
 import numpy as np
@@ -140,26 +134,25 @@ def interpolate(y):
 def classify(ratio, recent_mean, threshold):
     color = None
     if ratio >= 0.79:
-        #if recent_mean >= threshold:
-        color = "red"
-        #else:
-        #color = "green"
+        if recent_mean > threshold:
+            color = "red"
+        else:
+            color = "green"
     elif ratio <= 0.1:
-        if recent_mean >= threshold:
+        if recent_mean > threshold:
             color = "yellow"
         else:
             color = "green"
     elif ratio >= 0.4 and ratio < 0.79:
-        #if recent_mean > threshold:
-            #print(recent_mean,threshold)
-        color = "orange"
-        #else:
-        #    color = "green"
+        if recent_mean > threshold:
+            color = "orange"
+        else:
+            color = "green"
     elif ratio > 0.1 and ratio < 0.4:
-        #if recent_mean > threshold:
-        color = "yellow"
-        #else:
-        #    color = "green"
+        if recent_mean > threshold:
+            color = "yellow"
+        else:
+            color = "green"
     assert color is not None
     return color
 
