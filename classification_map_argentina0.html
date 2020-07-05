@@ -122,19 +122,20 @@ color: darkseagreen;
  var layerM;
     var map;
         
-var k_keys={/*'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Coronel de Marina Leonardo Rosales',
+var k_keys={'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Coronel de Marina Leonardo Rosales',
 'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, General Sarmiento',
-'Buenos Aires, 9 de Julio':'Buenos Aires, Nueve de Julio',
+'Buenos Aires, 9 de Julio':'Buenos Aires, 9 de Julio',
 'Buenos Aires, San Fernando':'Buenos Aires, San Fernando',
-'Buenos Aires, 25 de Mayo':'Buenos Aires, Veinticinco de Mayo',
+'Buenos Aires, 25 de Mayo':'Buenos Aires, 25 de Mayo',
 'C\u00f3rdoba, R\u00edo Cuarto':'Córdoba, Rió Cuarto',
 'C\u00f3rdoba, R\u00edo Primero':'Córdoba, Rió Primero',
 'C\u00f3rdoba, R\u00edo Seco':'Córdoba, Rió Seco',
 'C\u00f3rdoba, R\u00edo Segundo':'Córdoba, Rió Segundo',
 'Chaco, 12 de Octubre':'Chaco, Doce de Octubre',
-'Chaco, 9 de Julio':'Chaco, Nueve de Julio',
-'Chaco, 1\u00ba de Mayo':'Chaco, Primero de Mayo',
-'Chaco, 25 de Mayo':'Chaco, Veinticinco de Mayo',
+'Chaco, 9 de Julio':'Chaco, 9 de Julio',
+'Chaco, 1\u00ba de Mayo':'Chaco, 1ro de Mayo',
+'Chaco, 25 de Mayo':'Chaco, 25 de Mayo',
+'Chaco, Mayor Luis J. Fontana':'Chaco, Mayor Luis Jorge Fontana',            
 'Chubut, R\u00edo Senguer':'Chubut, Rió Senguer',
 'Entre R\u00edos, Islas del Ibicuy':'Entre Ríos, Isla',
 'La Rioja, General Angel V. Pe\u00f1aloza':'La Rioja, General Angel Vicente Peñaloza',
@@ -145,20 +146,26 @@ var k_keys={/*'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Corone
 'Salta, Grl. Jos\u00e9 de San Mart\u00edn':'Salta, General José de San Martín',
 'Salta, La Caldera':'Salta, La Candelaria',
 'San Juan, Ull\u00fam':'San Juan, Ullum',
-'San Juan, 25 de Mayo':'San Juan, Veinticinco de Mayo',
+'San Juan, 25 de Mayo':'San Juan, 25 de Mayo',
 'Santa Cruz, R\u00edo Chico':'Santa Cruz, Rió Chico',
-'Santa Fe, 9 de Julio':'Santa Fe, Nueve de Julio',
-'Santiago del Estero, Juan F. Ibarra':'Santiago del Estero, Juan Felipe Ibarra',
+'Santa Fe, 9 de Julio':'Santa Fe, 9 de Julio',
+'Santiago del Estero, Juan F. Ibarra':'Santiago del Estero, Juan F. Ibarra',
 'Santiago del Estero, R\u00edo Hondo':'Santiago del Estero, Rió Hondo',
+            'Santiago del Estero, Capital':'Santiago del Estero, Santiago del Estero Capital',
 'Tierra del Fuego, R\u00edo Grande':'Tierra del Fuego, Rió Grande',
+            'Formosa, Laishi':'Formosa, Laishí',
 'Tucum\u00e1n, Juan Bautista Alberdi':'Tucumán, Juan B. Alberdi',
-//'Tucumán, Río Chico':'Tucumán, Rió Chico'
-'Tucum\u00e1n, R\u00edo Chico':'Tucumán, Rió Chico',
+//'Tucumán, Río Chico':'Tucumán, Rió Chico',
+'Tucum\u00e1n, Capital':'Tucumán, Tucumán Capital',           
+'Tucum\u00e1n, R\u00edo Chico':'Tucumán, Río Chico',
 'Entre R\u00edos, Islas del Ibicuy':'Entre Ríos, Islas del Ibicuy',
 'Buenos Aires, Florentino Ameghino': 'Buenos Aires, Ameghino',
 'Salta, La Caldera': 'Salta, La Caldera',
-'Jujuy, Dr. Manuel Belgrano':'Jujuy, Capital',
-'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, Capitán Sarmiento',*/
+            'Salta, Capital': 'Salta, Salta Capital',
+'Misiones, Capital':'Misiones, Misiones Capital',     
+            'Corrientes, Capital':'Corrientes, Corrientes Capital',   
+'Corrientes, Mercedes':'Corrientes, Curuzú Cuatiá',            
+'Buenos Aires, Capit\u00e1n Sarmiento':'Buenos Aires, Capitán Sarmiento',
 'CABA, COMUNA 1':'Ciudad Autónoma de Buenos Aires, COMUNA 1',
 'CABA, COMUNA 2':'Ciudad Autónoma de Buenos Aires, COMUNA 2',        
 'CABA, COMUNA 3':'Ciudad Autónoma de Buenos Aires, COMUNA 3',     
@@ -558,7 +565,7 @@ console.log(e.features[0].properties);
 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 }
     
-     var htm=e.features[0].properties.NAME_2+", "+e.features[0].properties.NAME_1+": "+e.features[0].properties.max+"<br>";
+     var htm=e.features[0].properties.nam_2+", "+e.features[0].properties.nam+": "+e.features[0].properties.max+"<br>";
     //console.log(e.features[0].properties);
     hoveredStateId = e.features[0].id;    
     var lats=e.lngLat;
@@ -667,7 +674,7 @@ map.on('click', 'place_data09', function(e) {
 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 }
     
-     var htm=e.features[0].properties.NAME_2+", "+e.features[0].properties.NAME_1+": "+e.features[0].properties.max+"<br>";
+     var htm=e.features[0].properties.nam_2+", "+e.features[0].properties.nam+": "+e.features[0].properties.max+"<br>";
     console.log(e.features[0].properties);
     hoveredStateId = e.features[0].id;    
     var lats=e.lngLat;
