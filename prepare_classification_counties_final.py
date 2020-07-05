@@ -168,7 +168,7 @@ for name in counties:
         else:
             #print(name,y3)
             ratio=0
-            color="green"
+            color="darkgreen"
 
         print(name,color,ratio,recent_mean0,int(max(y5)))    
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
