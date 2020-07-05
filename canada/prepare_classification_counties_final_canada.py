@@ -2,6 +2,7 @@
 
 
 
+
 import json
 
 import numpy as np
@@ -138,26 +139,26 @@ def interpolate(y):
 def classify(ratio, recent_mean, threshold):
     color = None
     if ratio >= 0.79:
-        if recent_mean >= threshold:
-            color = "red"
-        else:
-            color = "green"
+        #if recent_mean >= threshold:
+        color = "red"
+        #else:
+        #color = "green"
     elif ratio <= 0.1:
-        if recent_mean >= threshold:
-            color = "green"
-        else:
-            color = "green"
+        #if recent_mean > threshold:
+        color = "green"
+        #else:
+        #color = "green"
     elif ratio >= 0.4 and ratio < 0.79:
-        if recent_mean > threshold:
+        #if recent_mean > threshold:
             #print(recent_mean,threshold)
-            color = "orange"
-        else:
-            color = "green"
+        color = "orange"
+        #else:
+        #    color = "green"
     elif ratio > 0.1 and ratio < 0.4:
-        if recent_mean >= threshold:
-            color = "yellow"
-        else:
-            color = "green"
+        #if recent_mean > threshold:
+        color = "yellow"
+        #else:
+        #    color = "green"
     assert color is not None
     return color
 
@@ -193,7 +194,10 @@ for name in counties:
         if max0 > 0:
             ratio = y3[-1] / max0
             recent_mean = int(np.mean(original_values[-10:]))
-            color = classify(ratio, recent_mean, threshold)
+            if recent_mean>threshold:
+                color = classify(ratio, recent_mean, threshold)
+            else:
+                color="green"
         else:
             #print(name,y3)
             ratio=0
