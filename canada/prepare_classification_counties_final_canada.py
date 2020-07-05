@@ -3,6 +3,7 @@
 
 
 
+
 import json
 
 import numpy as np
@@ -194,10 +195,11 @@ for name in counties:
         if max0 > 0:
             ratio = y3[-1] / max0
             recent_mean = int(np.mean(original_values[-10:]))
-            if recent_mean>threshold:
-                color = classify(ratio, recent_mean, threshold)
-            else:
-                color="green"
+            #if recent_mean:
+            print(recent_mean,threshold,name,ratio)
+            color = classify(ratio, recent_mean, threshold)
+            #else:
+            #    color="green"
         else:
             #print(name,y3)
             ratio=0
