@@ -1,3 +1,7 @@
+#https://data.mesaaz.gov/Fire-and-Medical/Daily-COVID-19-Cases-by-Zip-Code/bcxg-q9nz/data
+
+
+
 import json
 
 import numpy as np
@@ -5,7 +9,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 
-date_of_analysis='7/4/20'
+date_of_analysis='7/6/20'
 
 
 output_directory = 'output_arizona'
@@ -76,7 +80,8 @@ if False:
     import sys
     sys.exit(0)
 
-tim = list(e_dataframe0.columns)
+tim = list(data.dates.unique())
+print(tim)
 tim.pop(0)
 
 ind4 = 0
@@ -141,6 +146,7 @@ def classify(ratio, recent_mean, threshold):
     return color
 
 for name in counties:
+    name0=name[1]
     values = e_dataframe1[name]
     #print(values)
     
@@ -180,14 +186,16 @@ for name in counties:
         else:
             #print(name,y3)
             ratio=0
-            color="darkgreen"
+            color="darkseagreen"
 
-        print(name,color,ratio,recent_mean0,int(max(y5)))
-        
-        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["Combined_Key"])+'.json', 'w') as outfile:
-            json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y5)-min(y5)),"value":y3,"time":tim,"original_values":original_values},outfile)
-        #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
-        aar1.append({"n":name,"id":ids[recs.index(name)]["Combined_Key"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
+        #print(ids[recs.index(name0)]["Combined_Key"])#,name0,color,ratio,recent_mean0,int(max(y5)),str(ids[recs.index(name)]["Combined_Key"]))
+        try:        
+            with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name0)]["Combined_Key"]).replace(" ","_")+'.json', 'w') as outfile:
+                json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
+                #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
+            aar1.append({"n":name,"id":ids[recs.index(name0)]["Combined_Key"].replace(" ","_"),"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
+        except:
+            continue
         ind4+=1
 
 

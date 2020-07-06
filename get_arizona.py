@@ -1,6 +1,6 @@
 import json
 
-with open('Arizona Zip Code.json', 'r') as outfile:
+with open('/Users/olgabuchel/Downloads/Daily COVID-19 Cases by Zip Code.geojson', 'r') as outfile:
     data=json.load(outfile)
     da={"type":"FeatureCollection"}
     da["features"]=[]
