@@ -198,7 +198,7 @@ zoom: 6
         //console.log(all_entries);
         var vals=[];
 for (var u=0; u<data["features"].length; u++) {
-    console.log(data["features"][u]["properties"]);
+    //console.log(data["features"][u]["properties"]);
     if (all_entries.map(function(f){return f.id}).indexOf(data["features"][u]["properties"]["zip_code"])>-1) {
     data["features"][u]["properties"]["value"]=cols[all_entries[all_entries.map(function(f){return f.id}).indexOf(data["features"][u]["properties"]["zip_code"])]["c"]];
         
@@ -333,7 +333,7 @@ var item = document.createElement('div');
    
     // item.className = 'legend-div';
      item.appendChild(value);
-     legend.appendChild(item);
+    // legend.appendChild(item);
     
      var value2 = document.createElement('span');
     value2.innerHTML = "<br>Updated: "+all_entries[0]["date"];
@@ -367,7 +367,7 @@ stops: arr
 }
 //'filter': ['==', '$type', 'MultiPolygon']      
 });
-    
+  /*  
  map.addLayer({
 'id': 'population',
 'type': 'circle',
@@ -379,7 +379,7 @@ stops: arr
 'circle-color': "grey",
      'circle-opacity': 0.1
 }
-});
+});*/
 map.on('click', 'place_data',function(e,i){
     
   //  console.log(e.features[0]);
