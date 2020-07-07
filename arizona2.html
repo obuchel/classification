@@ -107,8 +107,8 @@ Postcode: "85356"
 map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/dark-v8',
-center: [-110.926389,32.221667],
-zoom: 7
+center: [-110.54,33.99],
+zoom: 6
 });  
         
 fetch('Arizona Zip Code1.json').then(res => res.json()) //ne_10m_admin_1_states_provinces102
@@ -232,6 +232,14 @@ map.on('load', function() {
           item.appendChild(value);
           legend.appendChild(item);
         }
+    
+    var value2 = document.createElement('span');
+    value2.innerHTML = "<br>Updated: "+all_entries[0]["date"];
+     value2.style.textAlign="center !important";
+    value2.style.margin="auto";
+    var item2 = document.createElement('div');
+     item2.appendChild(value2);
+          legend.appendChild(item2);
    // console.log(data);
 var layer=map.addSource('places', {
 'type': 'geojson',
