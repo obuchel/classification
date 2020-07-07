@@ -262,12 +262,18 @@ stops: arr
     
 
 map.on('click', 'place_data',function(e,i){
-    
+    var htm="";
   //  console.log(e.features[0]);
-    
+    if (e.features[0].properties.value!=-1) {
+        
+       htm += "Last two weeks: "+e.features[0].properties.change +"  <br> Total: "+e.features[0].properties.value;
+        } else {
+        
+        htm += "Last two weeks: "+e.features[0].properties.change;
+        }
 new mapboxgl.Popup()
 .setLngLat(e.lngLat)
-.setHTML(e.features[0].properties.change +" +"+e.features[0].properties.value)
+.setHTML(htm)
 .addTo(map);
 });
  
