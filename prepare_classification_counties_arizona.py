@@ -1,3 +1,4 @@
+#https://data.mesaaz.gov/api/views/bcxg-q9nz/rows.csv?accessType=DOWNLOAD
 #https://data.mesaaz.gov/Fire-and-Medical/Daily-COVID-19-Cases-by-Zip-Code/bcxg-q9nz/data
 
 
@@ -9,7 +10,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 
-date_of_analysis='7/6/20'
+date_of_analysis='7/7/20'
 
 
 output_directory = 'output_arizona'
