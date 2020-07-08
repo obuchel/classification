@@ -1,3 +1,4 @@
+
 #https://www.arcgis.com/sharing/rest/content/items/b5e7488e117749c19881cce45db13f7e/data
 #https://data.mesaaz.gov/Fire-and-Medical/Daily-COVID-19-Cases-by-Zip-Code/bcxg-q9nz/data
 import json
@@ -217,7 +218,7 @@ for name in counties:
 # with open('classification/data_counties.json', 'w') as outfile:
 #    json.dump(aar,outfile)
 print(aar1)
-#aar1[0]["date"]=date_of_analysis
+aar1[0]["date"]=date_of_analysis
 # this file is used by the map
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
