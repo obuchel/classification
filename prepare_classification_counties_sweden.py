@@ -8,7 +8,7 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 #from prep_canada_data import stage_latest
-date_of_analysis='7/7/20'
+date_of_analysis='7/8/20'
 df = pd.read_excel(r'/Users/olgabuchel/Downloads/Folkhalsomyndigheten_Covid19.xlsx', sheetname='Antal per dag region')
 print(df)
 df["dates"]=[str(l).split("T")[0] for l in list(df.Statistikdatum.unique())]
@@ -153,7 +153,7 @@ def classify(ratio, recent_mean, threshold):
 
 for name in counties:
     name0=name[1]
-    values = e_dataframe1[name][:-2].cumsum()
+    values = e_dataframe1[name].cumsum()
     #print(values)        
     num_rows = len(values)
     y50 = values[-14:]
