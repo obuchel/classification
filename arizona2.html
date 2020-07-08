@@ -138,7 +138,7 @@ for (var u=0; u<data["features"].length; u++) {
         data["features"][u]["properties"]["change"]=all_entries[all_entries.map(function(f){return f.id}).indexOf(data["features"][u]["properties"]["zip_code"])]["max"];
         } else {
           data["features"][u]["properties"]["value"]=-1;  
-             data["features"][u]["properties"]["change"]=0;  
+             data["features"][u]["properties"]["change"]=-1;  
         }
     vals.push(data["features"][u]["properties"]["value"]);
    // console.log(data["features"][u]["properties"]["value"]);

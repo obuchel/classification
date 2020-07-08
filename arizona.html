@@ -159,8 +159,8 @@ width: 10px;
     var map
     var data2={"type":"FeatureCollection"};
     data2["features"]=[];  
-    var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1,'darkseagreen':-1};
-        var arr=[[-1, 'darkseagreen'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.79, '#bd0026'],[1, '#800026']];   
+    var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1,'black':-1};
+        var arr=[[-1, 'black'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.79, '#bd0026'],[1, '#800026']];   
 //d3.csv("ddPCR_per_state.csv",function(err,da) {
            
             /*
@@ -214,7 +214,7 @@ for (var u=0; u<data["features"].length; u++) {
             
             data["features"][u]["properties"]["value1"]=1;
               data["features"][u]["properties"]["value2"]="Data suppressed"
-             data["features"][u]["properties"]["color"]="darkseagreen";  
+             data["features"][u]["properties"]["color"]="black";  
         }
     vals.push(data["features"][u]["properties"]["value"]);
     var i=u;
@@ -303,7 +303,7 @@ map.on('load', function() {
         ];
    // [0, '#1a9850'],[0.1, '#ffffb2'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']]; 
         var colors = [
-            'darkseagreen',
+            'black',
           arr[1][1],
           arr[2][1],
           arr[3][1],
@@ -402,7 +402,7 @@ new mapboxgl.Popup()
 } else 
 
 {
-    var color="darkseagreen";
+    var color="black";
     //e.features[0].properties["c"];
     //console.log(color);
 }
