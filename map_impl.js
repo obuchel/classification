@@ -312,7 +312,9 @@ if (e.features[0].properties["c"]=="yellow") {
  var color="#1a9850";
 } else if (e.features[0].properties["c"]=="red") {
  var color="#800026";
-} else 
+} else if (e.features[0].properties["c"]=="orange") {
+ var color="#fd8d3c";
+}else 
 
 {
     var color="darkseagreen";
