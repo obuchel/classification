@@ -1,21 +1,12 @@
 #https://data.mesaaz.gov/api/views/bcxg-q9nz/rows.csv?accessType=DOWNLOAD
 #https://data.mesaaz.gov/Fire-and-Medical/Daily-COVID-19-Cases-by-Zip-Code/bcxg-q9nz/data
-
-
-
 import json
-
 import numpy as np
 import pandas as pd
 import os
-#from prep_canada_data import stage_latest
-
 date_of_analysis='7/8/20'
-
-
 output_directory = 'output_arizona'
 os.makedirs(output_directory + '/classification', exist_ok=True)
-
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
 data = pd.read_csv('/Users/olgabuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code.csv')
