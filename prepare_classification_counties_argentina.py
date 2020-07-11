@@ -1,4 +1,5 @@
 
+
 #https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv
 import numpy as np
 import urllib.request as urllib2
@@ -18,7 +19,7 @@ date_of_analysis='7/11/20'
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
-url='../Covid19Casos.csv.2'
+url='../Covid19Casos.csv.3'
 all_data=[]
 kkeys=[]
 lists={}
