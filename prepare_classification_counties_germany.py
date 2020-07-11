@@ -88,10 +88,12 @@ if __name__ == '__main__':
                     #Bundesland         Landkreis Altersgruppe Geschlecht  ...            Meldedatum IdLandkreis
                     try:
                         dd=str(row[kkeys.index("Meldedatum")]).replace("T00:00:00.000Z","").split("-")
-                        row[0]=row[kkeys.index("Bundesland")]#+", "+row[kkeys.index("Landkreis")]
+                        print(dd)
+                        row[0]=row[kkeys.index("Bundesland")+", "+row[kkeys.index("Landkreis")]]
                         #row[kkeys.index("Datenstand")]=row[kkeys.index("Datenstand")].split(" ")[0].replace(",","")
                         row[kkeys.index("Datenstand")]=dd[2]+"-"+el.split("-")[1]+"-"+el.split("-")[0]
                         print(row[kkeys.index("Datenstand")])
+                        print(row)           
                         all_rows.append(row)
                     except:
                         #print(kkeys,row)
