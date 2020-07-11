@@ -88,12 +88,12 @@ if __name__ == '__main__':
                     #Bundesland         Landkreis Altersgruppe Geschlecht  ...            Meldedatum IdLandkreis
                     try:
                         dd=str(row[kkeys.index("Meldedatum")]).replace("T00:00:00.000Z","").split("-")
-                        print(dd)
+                        #print(dd)
                         row[0]=row[kkeys.index("Bundesland")+", "+row[kkeys.index("Landkreis")]]
                         #row[kkeys.index("Datenstand")]=row[kkeys.index("Datenstand")].split(" ")[0].replace(",","")
                         row[kkeys.index("Datenstand")]=dd[2]+"-"+el.split("-")[1]+"-"+el.split("-")[0]
-                        print(row[kkeys.index("Datenstand")])
-                        print(row)           
+                        #print(row[kkeys.index("Datenstand")])
+                        #print(row)           
                         all_rows.append(row)
                     except:
                         #print(kkeys,row)
@@ -104,12 +104,12 @@ if __name__ == '__main__':
                 
             kkeys[0]="Combined_Key"    
             df = pd.DataFrame(all_rows, columns=kkeys)
-            print(df)
+            #print(df)
             df['AnzahlFall']=pd.to_numeric(df["AnzahlFall"])
             #df.loc[:,'Datenstand'] = el.split("-")[0]+"-"+el.split("-")[1]+"-"+el.split("-")[2]
-            #print(df)
+            print(df)
             df0=df.groupby(['Combined_Key','Datenstand']).count().reset_index()
-            print(df0)
+            #print(df0)
             #['AnzahlFall'].sum().reset_index()
             main_df=pd.concat([main_df,df0])
         elif ".json" in el:
@@ -119,6 +119,7 @@ if __name__ == '__main__':
             ind=0
             with open(bz2_csv_filename) as file1:
                 data=json.load(file1)
+                print(data)
                 for row in data[0]["features"]:
                     if ind==0:
                         kkeys1=list(data[0]["features"][0]["attributes"].keys())
@@ -149,6 +150,7 @@ df4=main_df3.groupby(['Combined_Key','Datenstand'])['AnzahlFall'].sum().reset_in
 print(df4.columns)
 df4.set_index('Datenstand')
 pivoted_table=df4.pivot(index='Combined_Key', columns='Datenstand', values='AnzahlFall')
+
 #print(pivoted_table)
 #print(pivoted_table.columns)
 
@@ -180,7 +182,8 @@ dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 #print(e_dataframe0)
 #e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
 #print(e_dataframe0.columns.tolist())
-e_dataframe1 = pivoted_table.reindex(columns=dates0).transpose()#.set_index('Datenstand')
+e_dataframe1 = pivoted_table.reindex(columns=dates0)#.transpose()#.set_index('Datenstand')
+print(e_dataframe1,main_df3)
 #print(df8)
 #print(lk_keys)
 data=lk_keys
@@ -290,8 +293,9 @@ def classify(ratio, recent_mean, threshold):
 
 
 for name in counties:
+    
     values0 = e_dataframe1[name].fillna(0).tolist()
-    #print(name,list(values))
+    print(name,list(values))
     values=[]
     ind10=0
     print(int(np.max(values0)))
@@ -338,8 +342,9 @@ for name in counties:
             #print(name,y3)                                                                                                                                                         
         ratio=0
         color="green"
+    print(name)    
     if name in recs:
-            #print(name,color)
+        print(name,color)
         plt.title(name)
         plt.plot(x2,y3,color=color)
         plt.show()
@@ -356,6 +361,7 @@ for name in counties:
 #    json.dump(aar,outfile)                                                                                                                                                         
 #aar1[0]["Datenstand"]=date_of_analysis
 # this file is used by the map
-print(recs,ids)
+#print(recs,ids)
+print(aar1)
 with open(output_directory + '/classification/classification_ids_provinces2.json', 'w') as outfile:
     json.dump(aar1, outfile)    
