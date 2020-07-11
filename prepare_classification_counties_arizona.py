@@ -4,12 +4,12 @@ import json
 import numpy as np
 import pandas as pd
 import os
-date_of_analysis='7/8/20'
+date_of_analysis='7/9/20'
 output_directory = 'output_arizona'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
-data = pd.read_csv('/Users/olgabuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code.csv')
+data = pd.read_csv('/Users/olgabuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code_1.csv')
 data["dates"]=data.apply(lambda row: str(row.Date).split(" ")[0], axis=1)
 data["Combined_Key"]=data["Zip Code"]
 df=data#pd.pivot_table(data,index=["dates"],columns='Combined_Key',values=["Confirmed Cases Count"],aggfunc=np.sum)
