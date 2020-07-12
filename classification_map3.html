@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>COVID TRENDS</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css" rel="stylesheet" />
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js" integrity="sha256-LHLWSn9RC2p119R1eT2pO3Om+Ir2G0kTZOJmWQ2//pw=" crossorigin="anonymous"></script>
+    <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+    <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
+    x  <script src='https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js'></script>
+
+<style>
+	body { margin: 0; padding: 0;}
+	#map { position: absolute; top: 0;  width: 70%; height:100%;}
+  
+#plot {  background-color: #F0F0F0; visibility:hidden; /*z-index:100000000;*/}
+.map-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 20px;
+/*z-index:100000000;*/
+  overflow: auto;
+  border-radius: 3px;
+  width: 20%; 
+height:35% !important;
+      right:29%;
+}
+    .map-overlay1 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 20px;
+
+  overflow: auto;
+  border-radius: 3px;
+  width: 30%; 
+height:28% !important;
+      right:29%;
+}
+    
+    #features {
+  top: 0;
+  height: 100px;
+  margin-top: 20px;
+  width: 250px;
+        visibility:hidden
+}
+    
+     #legend {
+        padding: 10px;
+       /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);*/
+        line-height: 15px;
+       /* height: 80px;*/
+        margin-bottom: 20px;
+        width: 30%;
+         height:28% !important;
+         right:30%;
+      /*   z-index:100000000;*/
+        
+      }
+      .legend-key {
+        display: inline-block;
+
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+          /*font-size: 12% !important;*/
+      }
+    .mapbox-improve-map {
+    display: none !important;
+}
+    
+    .mapboxgl-ctrl mapboxgl-ctrl-group {
+         visibility: visible !important;
+        
+    }
+    
+    #example1_wrapper{
+        width:25% !important;
+        float:right;
+        margin-right:5%;
+ 
+    }
+    .alert1 {
+color: #800026;
+}
+    .alert2 {
+ color: #fed976;
+}
+    .alert3 {
+color: #fd8d3c;
+}
+    .alert4 {
+ color: #1a9850;
+}
+    .alert5 {
+color: darkseagreen;
+}
+/* .mapboxgl-ctrl-compass { display: none !important; }*/
+</style>
+</head>
+<body>
+<div id="map"></div>
+    <div class="map-overlay" id="features">
+    <div id="plot"></div>
+    </div>
+     <div class="map-overlay1" id="legend"></div>
+      <table id="example1" class="hover" style="width:25% !important;   margin-right:5%;"></table>
+<script src="map_impl3.js"></script>
+</body>
+</html>
