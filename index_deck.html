@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>deck.gl HexagonLayer demo</title>
+  
+  
+  <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css'>
+
+      <link rel="stylesheet" href="./style.css">
+
+  
+</head>
+
+<body>
+
+  <div id="control-panel">
+  <div>
+    <label>Radius</label>
+    <input id="radius" type="range" min="1000" max="20000" step="1000" value="1000"></input>
+    <span id="radius-value"></span>
+  </div>
+  <div>
+    <label>Coverage</label>
+    <input id="coverage" type="range" min="0" max="1" step="0.1" value="1"></input>
+    <span id="coverage-value"></span>
+  </div>
+  <div>
+    <label>Upper Percentile</label>
+    <input id="upperPercentile" type="range" min="90" max="100" step="1" value="100"></input>
+    <span id="upperPercentile-value"></span>
+  </div>
+</div>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+<script src='https://unpkg.com/deck.gl@~7.0.0/dist.min.js'></script>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+
+  
+
+    <script  src="script.js"></script>
+
+
+
+
+</body>
+
+</html>
