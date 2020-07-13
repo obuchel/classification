@@ -43,8 +43,10 @@ function renderLayer () {
     elevationRange: [0, 1000],
     elevationScale: 250,
     extruded: true,
+    pickable: true,  
     getPosition: d => [Number(d.lng), Number(d.lat)],
     opacity: 1,
+    onClick: (event) => { console.log(event); return true; },  
     ...options
   });
 

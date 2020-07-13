@@ -17,14 +17,16 @@ print(df[list(df.columns)[2]])
 print(df[list(df.columns)[4]])
 print(df[list(df.columns)[5]])
 df2=df.groupby([list(df.columns)[1],list(df.columns)[2],list(df.columns)[4],list(df.columns)[5]]).count().reset_index()
-print(df2)
-print(pd.pivot_table(df2,index=[list(df.columns)[2]],columns=list(df.columns)[1],values=["OBJECTID"],aggfunc=np.sum)) 
+#print(df2)
+df4=pd.pivot_table(df2,index=[list(df.columns)[2]],columns=list(df.columns)[1],values=["OBJECTID"],aggfunc=np.sum)
 
 '''
 df["dates"]=[str(l).split("T")[0] for l in list(df.Statistikdatum.unique())]
-output_directory = 'output_sweden'
-os.makedirs(output_directory + '/classification', exist_ok=True)
 '''
+
+output_directory = 'output_israel'
+os.makedirs(output_directory + '/classification', exist_ok=True)
+
 
 
 '''
@@ -37,6 +39,7 @@ df=data#pd.pivot_table(data,index=["dates"],columns='Combined_Key',values=["Conf
 df4=df.fillna(0)
 print(df4)
 
+
 Index(['Statistikdatum', 'Totalt_antal_fall', 'Blekinge', 'Dalarna', 'Gotland',
        'Gävleborg', 'Halland', 'Jämtland_Härjedalen', 'Jönköping', 'Kalmar',
        'Kronoberg', 'Norrbotten', 'Skåne', 'Stockholm', 'Sörmland', 'Uppsala',
@@ -46,15 +49,22 @@ Index(['Statistikdatum', 'Totalt_antal_fall', 'Blekinge', 'Dalarna', 'Gotland',
 '''
 
 
-'''
-e_dataframe0=df.transpose()
 
+e_dataframe0=df2
+'''
 #pd.pivot_table(data,index=["dates"],columns='Combined_Key',values=["Confirmed Cases Count"],aggfunc=np.sum)    
 
 #e_dataframe = df4.set_index("Combined_Key")
 ids = list(df.columns)[2:-1]
 #data[["Combined_Key","Primary City"]].to_dict('records')
-recs = list(df.columns)[2:-1]
+'''
+ids = list(df4.columns)[3:]
+#list(df2.Place.unique())  
+recs = list(df4.columns)[3:]
+#list(df2.Place.unique())
+
+#print(df2.index)
+
 
 # stage latest Canada HR-level data for later processing
 #latest_ca_df = stage_latest()
@@ -63,7 +73,7 @@ recs = list(df.columns)[2:-1]
 #print(latest_ca_df)
 
 #e_dataframe0 = e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
-e_dataframe1 = df
+e_dataframe1 = df4
 #pd.pivot_table(df4,index=["dates"],columns='Combined_Key',values=["Confirmed Cases Count"],aggfunc=np.sum).fillna(0)
 #print(e_dataframe1)
 #print(ids)
@@ -99,14 +109,14 @@ if False:
     import sys
     sys.exit(0)
 
-tim = list(df.dates)
-#print(tim)
+tim = list(df[list(df.columns)[2]].unique())
+print(tim)
 tim.pop(0)
 
 ind4 = 0
 aar = []
 aar1 = []
-counties = ids
+counties = list(df4.columns)[3:]
 print(counties)
 #e_dataframe1.columns[3:]
 
@@ -166,24 +176,31 @@ def classify(ratio, recent_mean, threshold):
     assert color is not None
     return color
 
+print(df4.columns)
 for name in counties:
     name0=name[1]
-    values = e_dataframe1[name].cumsum()
+    #print(name)
+    values = e_dataframe1[name].fillna(0).cumsum()
     #print(values)        
+    
     num_rows = len(values)
-    y50 = values[-14:]
+    y50 = values[-12:]
     #print(y50)
-    y5 = [y - values[len(values)-14] for y in y50]
+    y5 = [y - values[len(values)-12] for y in y50]
     y = values
     original_values = compute_original_values(values)
+    #print(original_values)
+    
     x = e_dataframe1[e_dataframe1.columns[0]]
     y1 = interpolate(y)
-    x2 = x[9:]
-    tim2 = tim[4 : -5]
+    print(x,y1)
+    
+    x2 = x[6:]
+    tim2 = tim[3 : -4]
     #print(tim2)
-    y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=10).mean()['a'].to_list()[9:]
-    ys = y3[-24:]
-    xs = x[-29:-5]  # last 24 days
+    y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=7).mean()['a'].to_list()[6:]
+    ys = y3[-12:]
+    xs = x[-9:-4]  # last 24 days
     ind2 = 0
     start = []
     start2 = []
@@ -210,16 +227,16 @@ for name in counties:
             ratio=0
             color="darkseagreen"
 
-        print(ids[recs.index(name)],color,ratio,recent_mean0,int(max(y5)))#,str(ids[recs.index(name)]["Combined_Key"]))
+        print(name[1],color,ratio,recent_mean0,int(max(y5)))#,str(ids[recs.index(name)]["Combined_Key"]))
         print(y5)
         print(y3)
         print(y)
         
-        plt.title(name)                                                                                                                                           
+        plt.title(name[1])                                                                                                                                           
         plt.plot(x2,y3,color=color)                                                                                                                                      
-        plt.savefig(name+".png")                                                                                                                                         
+        plt.savefig(name[1]+".png")                                                                                                                                         
         plt.show()          
-        
+        '''
         try:        
             with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)])+'.json', 'w') as outfile:
                 json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
