@@ -104,7 +104,15 @@ var data3=[];
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=[];
                 
-                data0.map(function(d,i){ids.push(d.id.toString())});
+                data0.map(function(d,i){
+                    if (d.id.length==4) {
+                        
+                       ids.push("0"+d.id.toString())  
+                    }
+else {
+                    ids.push(d.id.toString())
+}
+                });
           console.log(ids);
         fetch('landkreise-in-germany.json').then(res => res.json()) 
 .then(data => {  
@@ -116,34 +124,36 @@ var data3=[];
             for (var i=0; i<data["features"].length; i++) {
                 //console.log(data["features"][i]["properties"]);
                 if (typeof data["features"][i]["properties"]["cca_2"]!="undefined") {
-                    if (data["features"][i]["properties"]["cca_2"].toString().substr(0)!=="0") {
+                  //  if (data["features"][i]["properties"]["cca_2"].toString().substr(0)!=="0") {
                 data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
-                    } else {
+                 /*   } else {
                         
-                     data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString().substr(1,len(data["features"][i]["properties"]["cca_2"].toString()));   
-                    }
+                     data["features"][i]["id"]="0"+data["features"][i]["properties"]["cca_2"].toString();   
+                    }*/
                 } else {
                     data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"];
                     
                 }
                 // if (data["features"][i]["properties"]["STATEFP"]!="72") {
-                if (ids.indexOf(data["features"][i]["properties"]["id"])>-1) {
+                if (ids.indexOf(data["features"][i]["properties"]["cca_2"])>-1) {
                   //  data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
                     
                      data["features"][i]["properties"]["NAME"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["n"];
                     
                       data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["c"];
                     data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["max"];
+                    
                      data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["max"]+1)*0.5;
                 data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["c"]];
+                    
                 } else {
-                   //console.log( data["features"][i]["properties"]["id"]);
+                //   console.log( data["features"][i]["properties"]["id"]);
                     data["features"][i]["properties"]["c"]="green";
                     data["features"][i]["properties"]["v"]=0;
                     data["features"][i]["properties"]["max"]=0;
                      data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
                 }
-                
+                console.log(data["features"][i]["properties"]["v"]);
                 
                 if (data["features"][i]["geometry"]["type"]=="Polygon"){
          var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"]);
@@ -176,14 +186,14 @@ var data3=[];
           //  var center = turf.centerOfMass(polygon);
 
   console.log(data);          
-console.log(data2);
+//console.log(data2);
             var hoveredStateId = null;
 //pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjamhqZTZsOWkwN25iM2Fxd282N2FlZDVqIn0.bkOU5gAio8eKnmKHlntJsA
   mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjanlrY3diNzIwZDdxM25uN2owN2c5ZHpiIn0.XzMbcbHF6H42u0Uxo1L8lg';
 map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v10',
-zoom: 3,
+zoom: 5,
     attributionControl: false,
 center: [9,51]
 });
@@ -444,7 +454,7 @@ if (e.features[0].properties["c"]=="yellow") {
         
         var url='output_germany/classification/data_counties_'+num+'.json';
   // }
-    
+   // alert(url);
     
   fetch(url).then(res => res.json()) 
 .then(data7 => {    
@@ -729,7 +739,9 @@ function draw_plot(data,color) {
    // console.log(color);
     document.getElementById("plot").style.visibility="visible";
    document.getElementById("features").style.visibility="visible";
-   // console.log(data);
+ 
+    data["dates"]=["14-03-2020", "15-03-2020", "16-03-2020", "17-03-2020", "18-03-2020", "19-03-2020", "20-03-2020", "21-03-2020", "22-03-2020", "23-03-2020", "24-03-2020", "25-03-2020", "26-03-2020", "27-03-2020", "28-03-2020", "29-03-2020", "30-03-2020", "31-03-2020", "01-04-2020", "02-04-2020", "03-04-2020", "04-04-2020", "05-04-2020", "06-04-2020", "07-04-2020", "08-04-2020", "09-04-2020", "10-04-2020", "11-04-2020", "12-04-2020", "13-04-2020", "14-04-2020", "15-04-2020", "16-04-2020", "17-04-2020", "18-04-2020", "19-04-2020", "20-04-2020", "21-04-2020", "22-04-2020", "23-04-2020", "24-04-2020", "25-04-2020", "26-04-2020", "27-04-2020", "28-04-2020", "29-04-2020", "30-04-2020", "01-05-2020", "02-05-2020", "03-05-2020", "04-05-2020", "05-05-2020", "06-05-2020", "07-05-2020", "08-05-2020", "09-05-2020", "10-05-2020", "11-05-2020", "12-05-2020", "13-05-2020", "14-05-2020", "15-05-2020", "16-05-2020", "17-05-2020", "18-05-2020", "19-05-2020", "20-05-2020", "21-05-2020", "22-05-2020", "23-05-2020", "24-05-2020", "25-05-2020", "26-05-2020", "27-05-2020", "28-05-2020", "29-05-2020", "30-05-2020", "31-05-2020", "01-06-2020", "02-06-2020", "03-06-2020", "04-06-2020", "05-06-2020", "06-06-2020", "07-06-2020", "08-06-2020", "09-06-2020", "10-06-2020", "11-06-2020", "12-06-2020", "13-06-2020", "14-06-2020", "15-06-2020", "16-06-2020", "17-06-2020", "18-06-2020", "19-06-2020", "20-06-2020", "21-06-2020", "22-06-2020", "23-06-2020", "24-06-2020", "25-06-2020", "26-06-2020"];
+       console.log(data);
    // console.log(data["dates"][0].split("/"));
     //"original_values", time, dates
     var data110=[];
@@ -749,10 +761,10 @@ function draw_plot(data,color) {
     
  var data10=[];
     
-    for (var i=1; i<data["time"].length; i++) {
+    for (var i=1; i<data["dates"].length; i++) {
         if (data["original_values"][i]>=0){
             var val=data["original_values"][i];
-            var temp={"date":new Date(2020,Number(data["time"][i].split("-")[1])-1,Number(data["time"][i].split("-")[0])),"value":val};
+            var temp={"date":new Date(2020,Number(data["dates"][i].split("-")[1])-1,Number(data["dates"][i].split("-")[0])),"value":val};
         data10.push(temp);
         } else {
             var val=0;
