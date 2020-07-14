@@ -344,11 +344,11 @@ type: 'geojson',
 'data': data    
 });
     
-    /*
+    
     map.addSource('states', {
 type: 'geojson',
-'data': data8    
-});*/
+'data': 'bundeslander-in-germany.json'    
+});
    map.addSource('ethnicity2', {
 type: 'geojson',
 'data': data2    
@@ -390,7 +390,7 @@ stops: arr
 'circle-color': "grey",
      'circle-opacity': 0.1
 }
-});    /*
+});    
      map.addLayer({
 'id': 'states',
 'type': 'line',
@@ -403,7 +403,7 @@ stops: arr
 'line-color': '#000000',
 'line-width': 1
 }
-},"");  */ 
+},"");  
 map.on('click', 'place_data0', function(e) {
     console.log(e.features[0]["properties"]);
     
