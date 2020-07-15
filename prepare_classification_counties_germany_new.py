@@ -99,11 +99,11 @@ if False:
     sys.exit(0)
 
 
-tim = list(e_dataframe0.columns)
+tim = list(cr["time_iso8601"])
 #[x.replace("0      ","") for x in list(df["date"])]
 #0      
 tim.pop(0)
-print(df['date'])   
+print(tim)   
 
 ind4 = 0
 aar = []
