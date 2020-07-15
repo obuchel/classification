@@ -13,7 +13,7 @@ import json
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-date_of_analysis='7/11/20'
+date_of_analysis='7/13/20'
 
 output_directory = 'output_germany'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -30,7 +30,8 @@ with open('german_names.json', 'r') as outfile:
 #'16077': {'name': 'LK Altenburger Land', 'state': 'Thüringen'
 
 #rename column
-url = 'https://raw.githubusercontent.com/jgehrcke/covid-19-germany-gae/master/cases-rki-by-ags.csv'
+#https://raw.githubusercontent.com/jgehrcke/covid-19-germany-gae/master/cases-rl-crowdsource-by-ags.csv
+url = 'https://raw.githubusercontent.com/jgehrcke/covid-19-germany-gae/master/cases-rl-crowdsource-by-ags.csv'
 #response = urllib2.urlopen(url)
 cr = pd.read_csv(url)
 cr["time_iso8601"]=pd.DataFrame([x.split("T")[0] for x in list(cr["time_iso8601"])])
