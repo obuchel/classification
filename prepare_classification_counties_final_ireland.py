@@ -5,7 +5,7 @@ import numpy as np
 import os
 from datetime import datetime
 import matplotlib.pyplot as plt
-date_of_analysis='07/02/20'
+date_of_analysis='07/14/20'
 output_directory = 'output_ireland'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
@@ -20,9 +20,9 @@ for x in range(4,8):
             dates.append(str(y)+"-"+str(x)+"-"+"2020")
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 #print(dates0)
-data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIrelandOpenData.csv")
+data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland_5.csv")
 print(data)
-data["date"]=[str(x).split(" ")[0] for x in data["TimeStampDate"]]
+data["date"]=[str(x).split(" ")[0] for x in data["TimeStamp"]]
 data2=data.groupby(['CountyName','date'])["ConfirmedCovidCases"].sum().reset_index()
 df4=data2.pivot(index='CountyName', columns='date', values='ConfirmedCovidCases')
 
@@ -30,7 +30,7 @@ e_dataframe0=df4
 e_dataframe1 = df4.transpose()
 #.reindex(columns=dates0).transpose()
 print(e_dataframe1)
-ids = data[["FID","CountyName"]].to_dict('records')
+ids = data[["ORIGID","CountyName"]].to_dict('records')
 recs = data["CountyName"].to_list()
 
 def add_day_columns(df):
@@ -163,11 +163,11 @@ for name in counties:
         plt.title(name)
         plt.plot(x2,y3,color=color)
         plt.show()    
-        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["FID"])+'.json', 'w') as outfile:
+        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["ORIGID"])+'.json', 'w') as outfile:
             json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
         
-        aar1.append({"n":name,"id":ids[recs.index(name)]["FID"],"v":ratio,"c":color,"max":int(max(y5))})
+        aar1.append({"n":name,"id":ids[recs.index(name)]["ORIGID"],"v":ratio,"c":color,"max":int(max(y5))})
         ind4+=1
 
 
