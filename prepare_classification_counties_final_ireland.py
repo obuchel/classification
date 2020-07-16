@@ -23,6 +23,7 @@ dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland_5.csv")
 print(data)
 data["date"]=[str(x).split(" ")[0] for x in data["TimeStamp"]]
+data["FID"]=data["CountyName"]
 data2=data.groupby(['CountyName','date'])["ConfirmedCovidCases"].sum().reset_index()
 df4=data2.pivot(index='CountyName', columns='date', values='ConfirmedCovidCases')
 
@@ -30,7 +31,7 @@ e_dataframe0=df4
 e_dataframe1 = df4.transpose()
 #.reindex(columns=dates0).transpose()
 print(e_dataframe1)
-ids = data[["ORIGID","CountyName"]].to_dict('records')
+ids = data[["FID","CountyName"]].to_dict('records')
 recs = data["CountyName"].to_list()
 
 def add_day_columns(df):
@@ -125,10 +126,14 @@ def classify(ratio, recent_mean, threshold):
     return color
 
 for name in counties:
-    values = e_dataframe1[name]
+    #e_dataframe1[name]=e_dataframe1[name].update(pd.Series([e_dataframe1[name][len(e_dataframe1[name])-16],e_dataframe1[name][len(e_dataframe1[name])-16]], index=[len(e_dataframe1[name])-15, 2]))
+    values=e_dataframe1[name].replace(len(e_dataframe1[name])-15,e_dataframe1[name][len(e_dataframe1[name])-16])
+    #values=e_dataframe1[name]
+    #print(e_dataframe1[name][len(e_dataframe1[name])-15],len(e_dataframe1[name])-15,e_dataframe1[name][len(e_dataframe1[name])-16])
+    print(values)
     num_rows = len(values)
     y50 = values[-14:]
-    y5 = [y - values[-15] for y in y50]
+    y5 = [y - values[-16] for y in y50]
     print(y5)
     y = values
     original_values = compute_original_values(values)
@@ -163,11 +168,11 @@ for name in counties:
         plt.title(name)
         plt.plot(x2,y3,color=color)
         plt.show()    
-        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["ORIGID"])+'.json', 'w') as outfile:
+        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["FID"])+'.json', 'w') as outfile:
             json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
         
-        aar1.append({"n":name,"id":ids[recs.index(name)]["ORIGID"],"v":ratio,"c":color,"max":int(max(y5))})
+        aar1.append({"n":name,"id":ids[recs.index(name)]["FID"],"v":ratio,"c":color,"max":int(max(y5))})
         ind4+=1
 
 
