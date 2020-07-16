@@ -1,6 +1,4 @@
 
-
-
 import numpy as np
 import urllib.request as urllib2
 import bz2

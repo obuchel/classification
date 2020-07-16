@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 import os
 #from prep_canada_data import stage_latest
-
-date_of_analysis='7/14/20'
+#https://cdn.mbta.com/archive/archived_feeds.txt
+date_of_analysis='7/15/20'
 
 
 output_directory = 'output'
