@@ -1,4 +1,5 @@
 
+
 import pandas as pd
 import json
 import numpy as np
@@ -142,7 +143,7 @@ for name in counties:
     print(values)
     num_rows = len(values)
     y50 = values[-14:]
-    y5 = [y - values[-16] for y in y50]
+    y5 = [y - values[-15] for y in y50]
     print(y5)
     y = values
     original_values = compute_original_values(values)
@@ -167,7 +168,7 @@ for name in counties:
         min0 = np.min(ys)
         if max0 > 0:
             ratio = y3[-1] / max0
-            recent_mean = int(np.mean(original_values[-10:]))
+            recent_mean = int(np.mean(original_values[-14:]))
             color = classify(ratio, recent_mean, threshold)
         else:
             #print(name,y3)
