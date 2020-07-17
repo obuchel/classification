@@ -127,7 +127,16 @@ def classify(ratio, recent_mean, threshold):
 
 for name in counties:
     #e_dataframe1[name]=e_dataframe1[name].update(pd.Series([e_dataframe1[name][len(e_dataframe1[name])-16],e_dataframe1[name][len(e_dataframe1[name])-16]], index=[len(e_dataframe1[name])-15, 2]))
-    values=e_dataframe1[name].replace(len(e_dataframe1[name])-15,e_dataframe1[name][len(e_dataframe1[name])-16])
+    values0=[x for x in e_dataframe1[name]]#.replace(len(e_dataframe1[name])-15,e_dataframe1[name][len(e_dataframe1[name])-16])
+    values=[]
+    indd=0
+    for en in values0:
+        if indd==121:
+            en=e_dataframe1[name][len(e_dataframe1[name])-16]
+            values.append(en)
+        else:
+            values.append(en)
+        indd+=1    
     #values=e_dataframe1[name]
     #print(e_dataframe1[name][len(e_dataframe1[name])-15],len(e_dataframe1[name])-15,e_dataframe1[name][len(e_dataframe1[name])-16])
     print(values)
@@ -148,8 +157,8 @@ for name in counties:
     start = []
     start2 = []
     if int(np.max(y)) > 0:
-        vv = [int(x) for x in y.to_list() if x != min(y3)]
-        start.append(y.to_list().index(vv[0]))
+        vv = [int(x) for x in y if x != min(y3)]
+        start.append(y.index(vv[0]))
     else:
         start.append(0)
     threshold = 1
