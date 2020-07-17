@@ -1,5 +1,6 @@
 
 
+
 import pandas as pd
 import json
 import numpy as np
@@ -109,7 +110,7 @@ def classify(ratio, recent_mean, threshold):
         else:
             color = "green"
     elif ratio <= 0.1:
-        if recent_mean >= threshold:
+        if recent_mean > threshold:
             color = "yellow"
         else:
             color = "green"
@@ -140,7 +141,7 @@ for name in counties:
         indd+=1    
     #values=e_dataframe1[name]
     #print(e_dataframe1[name][len(e_dataframe1[name])-15],len(e_dataframe1[name])-15,e_dataframe1[name][len(e_dataframe1[name])-16])
-    print(values)
+    #print(values)
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-15] for y in y50]
@@ -168,7 +169,7 @@ for name in counties:
         min0 = np.min(ys)
         if max0 > 0:
             ratio = y3[-1] / max0
-            recent_mean = int(np.mean(original_values[-14:]))
+            recent_mean = int(np.mean(original_values[-10:]))
             color = classify(ratio, recent_mean, threshold)
         else:
             #print(name,y3)
