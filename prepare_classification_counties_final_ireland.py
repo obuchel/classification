@@ -110,7 +110,7 @@ def classify(ratio, recent_mean, threshold):
         else:
             color = "green"
     elif ratio <= 0.1:
-        if recent_mean > threshold:
+        if recent_mean >= threshold:
             color = "yellow"
         else:
             color = "green"
