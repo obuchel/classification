@@ -1,33 +1,80 @@
-#https://data.mesaaz.gov/api/views/bcxg-q9nz/rows.csv?accessType=DOWNLOAD
-#https://data.mesaaz.gov/Fire-and-Medical/Daily-COVID-19-Cases-by-Zip-Code/bcxg-q9nz/data
 import json
+
 import numpy as np
 import pandas as pd
 import os
-date_of_analysis='7/18/20'
-output_directory = 'output_arizona'
+import seaborn as sns
+
+#Import data from source
+data = pd.read_json('https://data.rivm.nl/covid-19/COVID-19_aantallen_gemeente_cumulatief.json')
+
+
+
+#scratch 
+data.head()
+df1 = data['Date_of_report'].str.contains("2020-04-15") 
+today = data[df1]
+
+#Getting list of dates over which reports have been made:
+dates = data['Date_of_report'].unique()
+
+#scratch
+today['Total_reported']
+
+#scratch, good for visuals
+data.head()
+
+#reformating file to create JHU-style dataframe
+total = today[ ['Province','Municipality_name']]
+total
+for date in dates:
+  day = data[ data['Date_of_report'].str.contains(date) ]
+  reports = day['Total_reported'].to_list()
+  total[date] = reports
+
+#scratch
+print(total)
+
+#scratch; visualizing the increase in cases over time
+days = total.loc[:,'2020-03-13 10:00:00': '2020-06-18 10:00:00']
+sns.heatmap(days)
+#ax.show()
+'''
+#saving to drive
+from google.colab import drive
+
+#saving to drive
+drive.mount('/drive')
+
+#saving to drive
+total.to_csv('/drive/My Drive/Colab Notebooks/Netherlands.csv')
+'''
+
+
+
+
+
+'''
+#from prep_canada_data import stage_latest
+#https://cdn.mbta.com/archive/archived_feeds.txt
+date_of_analysis='7/17/20'
+
+
+output_directory = 'output'
 os.makedirs(output_directory + '/classification', exist_ok=True)
+
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
-data = pd.read_csv('/Users/olgabuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code (6).csv')
-data["dates"]=data.apply(lambda row: str(row.Date).split(" ")[0], axis=1)
-data["Combined_Key"]=data["Zip Code"]
-df=data#pd.pivot_table(data,index=["dates"],columns='Combined_Key',values=["Confirmed Cases Count"],aggfunc=np.sum)
-df4=df.fillna(0)
-print(df4)
-'''
-groupby Date', 'Zip Code', 'Primary City 'Confirmed Cases Count'
-Index(['Row ID', 'Year', 'Month', 'Date', 'Zip Code', 'Primary City',
-       'Confirmed Cases Category', 'Confirmed Cases Count', 'Population',
-       'Population Density', 'Confirmed Case Rate per 100,000 People',
-       'Geometry'],
-      dtype='object')
 
-'''
-
-e_dataframe0=pd.pivot_table(data,index=["dates"],columns='Combined_Key',values=["Confirmed Cases Count"],aggfunc=np.sum)    
-e_dataframe = df4.set_index("Combined_Key")
-ids = data[["Combined_Key","Primary City"]].to_dict('records')
+if use_canned_file:
+    data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv')
+    assert data.columns[-1] == date_of_analysis
+else:
+    # Original:
+    data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
+    
+e_dataframe = data.set_index("Combined_Key")
+ids = data[["UID", "Combined_Key"]].to_dict('records')
 recs = data["Combined_Key"].to_list()
 
 # stage latest Canada HR-level data for later processing
@@ -36,21 +83,20 @@ recs = data["Combined_Key"].to_list()
 #assert latest_ca_df.index.names == ['Combined_Key']
 #print(latest_ca_df)
 
-#e_dataframe0 = e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
-e_dataframe1 = pd.pivot_table(df4,index=["dates"],columns='Combined_Key',values=["Confirmed Cases Count"],aggfunc=np.sum).fillna(0)
-#print(e_dataframe1)
-print(ids)
-#print(recs)
+e_dataframe0 = e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
+e_dataframe1 = e_dataframe0.transpose()
+print(e_dataframe0)
+
 
 
 def add_day_columns(df):
     """Add columns Elapsed_days, Decimals, Day_Year to df."""
     dats = list(df.index)
-    #print(dats)
+    # print(dats)
     dats2 = []
     decimals = []
     elapsed_days = []
-    ind = 106
+    ind = 22
     for el in dats:
         dats2.append(ind)
         dec = 2020 + (ind / 366)
@@ -63,7 +109,7 @@ def add_day_columns(df):
 
 
 add_day_columns(e_dataframe1)
-print(e_dataframe1)
+#print(e_dataframe1)
 
 
 if False:
@@ -72,8 +118,7 @@ if False:
     import sys
     sys.exit(0)
 
-tim = list(data.dates.unique())
-print(tim)
+tim = list(e_dataframe0.columns)
 tim.pop(0)
 
 ind4 = 0
@@ -138,10 +183,7 @@ def classify(ratio, recent_mean, threshold):
     return color
 
 for name in counties:
-    name0=name[1]
     values = e_dataframe1[name]
-    #print(values)
-    
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-14] for y in y50]
@@ -178,16 +220,13 @@ for name in counties:
         else:
             #print(name,y3)
             ratio=0
-            color="darkseagreen"
+            color="darkgreen"
 
-        #print(ids[recs.index(name0)]["Combined_Key"])#,name0,color,ratio,recent_mean0,int(max(y5)),str(ids[recs.index(name)]["Combined_Key"]))
-        try:        
-            with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name0)]["Combined_Key"]).replace(" ","_")+'.json', 'w') as outfile:
-                json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
-                #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
-            aar1.append({"n":name,"id":ids[recs.index(name0)]["Combined_Key"].replace(" ","_"),"v":ratio,"c":color,"max":int(max(y5)-min(y5)),"t":int(max(y))})
-        except:
-            continue
+        print(name,color,ratio,recent_mean0,int(max(y5)))    
+        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
+            json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
+        #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
+        aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
         ind4+=1
 
 
@@ -197,4 +236,4 @@ aar1[0]["date"]=date_of_analysis
 # this file is used by the map
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
-
+'''
