@@ -7,6 +7,19 @@
 #https://imoh.maps.arcgis.com/apps/webappviewer/index.html?id=20ded58639ff4d47a2e2e36af464c36e&locale=he&/
 #/Users/olgabuchel/Downloads/coordinates.csv 
 
+import csv
+
+#create a dictionary of names and coordinates. Coords are in 28 days
+#add coordinates to the historical data
+
+with open('/Users/olgabuchel/Downloads/28_day.csv', 'r') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+    for row in spamreader:
+        print(row[1],row[4],row[5])
+
+        
+
+''''
 import json
 
 import numpy as np
@@ -25,44 +38,13 @@ df2=df.groupby([list(df.columns)[1],list(df.columns)[2],list(df.columns)[4],list
 #print(df2)
 df4=pd.pivot_table(df2,index=[list(df.columns)[2]],columns=list(df.columns)[1],values=["OBJECTID"],aggfunc=np.sum)
 
-'''
-df["dates"]=[str(l).split("T")[0] for l in list(df.Statistikdatum.unique())]
-'''
 
 output_directory = 'output_israel'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
 
-
-'''
-# Use canned CSV file, so we can compare results to earlier runs of the script.
-use_canned_file = False
-data = pd.read_csv('/Users/olgabuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code.csv')
-data["dates"]=data.apply(lambda row: str(row.Date).split(" ")[0], axis=1)
-data["Combined_Key"]=data["Zip Code"]
-df=data#pd.pivot_table(data,index=["dates"],columns='Combined_Key',values=["Confirmed Cases Count"],aggfunc=np.sum)
-df4=df.fillna(0)
-print(df4)
-
-
-Index(['Statistikdatum', 'Totalt_antal_fall', 'Blekinge', 'Dalarna', 'Gotland',
-       'Gävleborg', 'Halland', 'Jämtland_Härjedalen', 'Jönköping', 'Kalmar',
-       'Kronoberg', 'Norrbotten', 'Skåne', 'Stockholm', 'Sörmland', 'Uppsala',
-       'Värmland', 'Västerbotten', 'Västernorrland', 'Västmanland',
-       'Västra_Götaland', 'Örebro', 'Östergötland'],
-      dtype='object')
-'''
-
-
-
 e_dataframe0=df2
-'''
-#pd.pivot_table(data,index=["dates"],columns='Combined_Key',values=["Confirmed Cases Count"],aggfunc=np.sum)    
 
-#e_dataframe = df4.set_index("Combined_Key")
-ids = list(df.columns)[2:-1]
-#data[["Combined_Key","Primary City"]].to_dict('records')
-'''
 ids = list(df4.columns)[3:]
 #list(df2.Place.unique())  
 recs = list(df4.columns)[3:]
@@ -241,7 +223,7 @@ for name in counties:
         plt.plot(x2,y3,color=color)                                                                                                                                      
         plt.savefig(name[1]+".png")                                                                                                                                         
         plt.show()          
-        '''
+        
         try:        
             with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)])+'.json', 'w') as outfile:
                 json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
