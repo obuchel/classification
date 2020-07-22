@@ -8,6 +8,7 @@ import os
 from datetime import datetime
 import matplotlib.pyplot as plt
 date_of_analysis='07/16/20'
+import math
 output_directory = 'output_ireland'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
@@ -86,6 +87,8 @@ def compute_original_values(values):
 
 
 def interpolate(y):
+    if math.isnan(y[len(y)-1])==True:
+        y[len(y)-1]=y[len(y)-2]
     ind = 0
     y1 = []
     for el in y:
@@ -150,6 +153,7 @@ for name in counties:
     original_values = compute_original_values(values)
     x = e_dataframe1[e_dataframe1.columns[0]]
     y1 = interpolate(y)
+    
     x2 = x[9:]
     tim2 = tim[4 : -5]
     y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=10).mean()['a'].to_list()[9:]
