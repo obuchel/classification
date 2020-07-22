@@ -6,19 +6,39 @@
 #	City	Population as of 2018	Number of tests so far	Verified patients discovered so far	Number of recoverers	The growth rate of verified patients in the last 3 days	The number of verified patients added in the last 3 days	Actual morbidity rate ** per 100,000	dates
 #https://imoh.maps.arcgis.com/apps/webappviewer/index.html?id=20ded58639ff4d47a2e2e36af464c36e&locale=he&/
 #/Users/olgabuchel/Downloads/coordinates.csv 
+#prepare_classification_counties_israel2.py
+#'IL': ('Israel', (34.2654333839, 29.5013261988, 35.8363969256, 33.2774264593)),
 
 import csv
-
+import json
+#/Users/olgabuchel/Downloads/gridtest (1).json 
 #create a dictionary of names and coordinates. Coords are in 28 days
 #add coordinates to the historical data
-
+#{'type': 'GeometryCollection', 'geometries': [{'type': 'MultiLineString', 'coordinates':
+ffs={}
+ffs["type"]="FeatureCollection"
+ffs["features"]=[]
+with open('/Users/olgabuchel/Downloads/gridtest (1).json', 'r') as jsonfile:
+    data=json.load(jsonfile)
+    ind=0
+    for item in data["geometries"][0]["coordinates"]:
+        feature={}
+        feature["type"]="Feature"
+        feature["geometry"]={"type":"Polygon","coordinates":[item]}
+        feature["properties"]={"name":"feature_"+str(ind)}
+        #print(feature)
+        ffs["features"].append(feature)
+        ind+=1
+print(ffs)
+with open('grid_israel.json', 'w') as jsonfile:
+    json.dump(ffs,jsonfile)
 coords={}
 with open('/Users/olgabuchel/Downloads/28_day.csv', 'r') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in spamreader:
         if row[1] not in list(coords.keys()):
             coords[row[1]]=[row[4],row[5]]
-print(coords)
+#print(coords)
         
 
 ''''
