@@ -188,9 +188,9 @@ var k_keys={'Buenos Aires, Coronel de Marina L. Rosales':'Buenos Aires, Coronel 
              'CABA, COMUNA 11':'Ciudad Autónoma de Buenos Aires, COMUNA 11',  'CABA, COMUNA 12':'Ciudad Autónoma de Buenos Aires, COMUNA 12', 
  'CABA, COMUNA 13':'Ciudad Autónoma de Buenos Aires, COMUNA 13',   
  'CABA, COMUNA 14':'Ciudad Autónoma de Buenos Aires, COMUNA 14',
-            'CABA, COMUNA 15':'Ciudad Autónoma de Buenos Aires, COMUNA 15',
+            'CABA, COMUNA 15':'Ciudad Autónoma de Buenos Aires, COMUNA 15'
           //  'Buenos Aires, General Sarmiento': 'Buenos Aires, San Miguel'
-            'שוהם': 'שהם'
+          //  'שוהם': 'שהם'
 };
     
 var arr=[[-1, 'darkseagreen'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']];   
@@ -483,7 +483,7 @@ type: 'geojson',
 });
    map.addSource('states', {
 type: 'geojson',
-'data': 'ARG_states.json'
+'data': 'ISR_adm1.json'
 });
    map.addSource('ethnicity2', {
 type: 'geojson',
@@ -688,16 +688,21 @@ coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     hoveredStateId = e.features[0].id;    
     var lats=e.lngLat;
     
+    
+    
+    
 if (e.features[0].properties["c"]=="yellow") {
     var color="#fed976";
 } else if (e.features[0].properties["c"]=="green") {
  var color="#1a9850";
 } else if (e.features[0].properties["c"]=="red") {
  var color="#800026";
-} else 
+} else if (e.features[0].properties["c"]=="orange") {
+ var color="#fd8d3c";
+}else 
 
 {
-    var color="#fd8d3c";
+    var color="#000000";
     //e.features[0].properties["c"];
     //console.log(color);
 }
@@ -1092,7 +1097,14 @@ dropShadowFilter.append('svg:feBlend')
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).ticks(5));
+      .call(d3.axisBottom(x).ticks(5))
+    .selectAll('text')
+                .attr('class', 'x-axisticks');
+var xticks = d3.selectAll('.x-axisticks');
+xticks.attr('class', function (d, i) {
+      i = i;
+      if (i % 2 !== 0) d3.select(this).remove();
+   });
 
     // Add Y axis
     var y = d3.scaleLinear()

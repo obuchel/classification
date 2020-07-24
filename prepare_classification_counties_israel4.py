@@ -136,7 +136,7 @@ def classify(ratio, recent_mean, threshold):
     return color
 
 #print(df4.columns)
-names={'שוהם': 'Shoham','רומת הייב':'Ramat Hovav','ערערה-בנגב':"Ar'ara Banegev",'פרדס חנה-כרכור':'Pardes Hana - Karkur','אלפי מנשה':'Menashe','באקה אל-גרביה':'baka al rarbiya',"ג'ש (גוש חלב)":"Jish (Gush Halav)"}
+names={'שוהם': 'Shoham','רומת הייב':'Ramat Hovav','ערערה-בנגב':"Ar'ara Banegev",'פרדס חנה-כרכור':'Pardes Hana - Karkur','אלפי מנשה':'Menashe','באקה אל-גרביה':'baka al rarbiya',"ג'ש (גוש חלב)":"Jish (Gush Halav)","כוכב יעקב":"Zih'ron Ya'akov","מודיעין עילית":"Hevel Modi'in","תל אביב - יפו":"Tel Aviv - Yafo"}
 print(city_names)
 with open("/Users/olgabuchel/Downloads/israel-municipalities-polygons-master/municipalities.geojson","r") as json_file:
     dd=json.load(json_file)
