@@ -32,7 +32,7 @@ data=pd.read_csv('/Users/olgabuchel/Downloads/IRSL.csv')
 print(data)
 df4=pd.pivot_table(data,index="dates",columns="City",values=["The number of verified patients added in the last 3 days"],aggfunc=np.sum).fillna(0)
 print(df4)
-df4.to_csv('output3.csv', index=True)  
+df4.to_csv('output5.csv', index=True)  
 ''''
 import json
 
