@@ -259,7 +259,7 @@ var data3=[];
                      data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
                     
                      if (data["features"][i]["properties"]["MUN_ENG"]!="undefined") {
-                    htm.push([data["features"][i]["properties"]["nam_2"]+", "+data["features"][i]["properties"]["nam"],data["features"][i]["properties"]["max"],"dark green"]);
+                    htm.push([data["features"][i]["properties"]["MUN_ENG"],data["features"][i]["properties"]["max"],"dark green"]);
                      }
                 }
                 if (data["features"][i]["geometry"]["type"]=="Polygon"){
