@@ -249,16 +249,18 @@ var data3=[];
                     data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["id"])]["max"];
                      data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["id"])]["max"]+1)*0.5;
                 data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["id"])]["c"]];
-                    
+                    if (data["features"][i]["properties"]["MUN_ENG"]!="undefined") {
                     htm.push([data["features"][i]["properties"]["MUN_ENG"],data["features"][i]["properties"]["max"],data0[ids.indexOf(data["features"][i]["id"])]["c"]]);
+                    }
                 } else {
                     
                     data["features"][i]["properties"]["v"]=-1;
                     data["features"][i]["properties"]["max"]=0;
                      data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
                     
-                    
+                     if (data["features"][i]["properties"]["MUN_ENG"]!="undefined") {
                     htm.push([data["features"][i]["properties"]["nam_2"]+", "+data["features"][i]["properties"]["nam"],data["features"][i]["properties"]["max"],"dark green"]);
+                     }
                 }
                 if (data["features"][i]["geometry"]["type"]=="Polygon"){
          var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"]);
@@ -280,7 +282,7 @@ var data3=[];
                }
                 // }
             }
-            console.log(htm);
+           // console.log(htm);
             
            // var polygon = turf.polygon([[[-81, 41], [-88, 36], [-84, 31], [-80, 33], [-77, 39], [-81, 41]]]);
 
