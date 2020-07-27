@@ -117,7 +117,7 @@ color: darkseagreen;
      <div class="map-overlay1" id="legend"></div>
     <table id="example1" class="hover" style="width:25% !important;   margin-right:5%;"></table>
 <script>
-    
+    var llist=[];
     var popup;
  var layerM;
     var map;
@@ -249,7 +249,8 @@ var data3=[];
                     data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["id"])]["max"];
                      data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["id"])]["max"]+1)*0.5;
                 data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["id"])]["c"]];
-                    if (data["features"][i]["properties"]["MUN_ENG"]!="undefined") {
+                    if (llist.indexOf(data["features"][i]["properties"]["MUN_ENG"])==-1) {
+                        llist.push(data["features"][i]["properties"]["MUN_ENG"]);
                     htm.push([data["features"][i]["properties"]["MUN_ENG"],data["features"][i]["properties"]["max"],data0[ids.indexOf(data["features"][i]["id"])]["c"]]);
                     }
                 } else {
@@ -258,7 +259,8 @@ var data3=[];
                     data["features"][i]["properties"]["max"]=0;
                      data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
                     
-                     if (data["features"][i]["properties"]["MUN_ENG"]!="undefined") {
+                     if (llist.indexOf(data["features"][i]["properties"]["MUN_ENG"])==-1) {
+                        llist.push(data["features"][i]["properties"]["MUN_ENG"]);
                     htm.push([data["features"][i]["properties"]["MUN_ENG"],data["features"][i]["properties"]["max"],"dark green"]);
                      }
                 }
