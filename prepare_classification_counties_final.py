@@ -152,7 +152,7 @@ for name in counties:
         start.append(y.to_list().index(vv[0]))
     else:
         start.append(0)
-    threshold = 1
+    threshold = 0
     if len(start) > 0:
         max0 = np.max(y3)
         min0 = np.min(ys)
