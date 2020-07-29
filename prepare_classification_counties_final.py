@@ -113,7 +113,7 @@ def classify(ratio, recent_mean, threshold):
         else:
             color = "green"
     elif ratio <= 0.1:
-        if recent_mean >= threshold:
+        if recent_mean > threshold:
             color = "yellow"
         else:
             color = "green"
@@ -152,7 +152,7 @@ for name in counties:
         start.append(y.to_list().index(vv[0]))
     else:
         start.append(0)
-    threshold = 0
+    threshold = 1
     if len(start) > 0:
         max0 = np.max(y3)
         min0 = np.min(ys)
