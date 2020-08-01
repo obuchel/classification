@@ -19,9 +19,9 @@ import matplotlib.pyplot as plt
 import os
 city_names=pd.read_csv('translate_city_names.csv')
 #print(city_names)
-data=pd.read_csv('output3.csv')
+data=pd.read_csv('output6.csv')
 print(data)
-date_of_analysis='7/9/20' 
+date_of_analysis='7/26/20' 
 '''
 'שוהם': 'שהם'
 df4=pd.pivot_table(df2,index=[list(df.columns)[2]],columns=list(df.columns)[1],values=["OBJECTID"],aggfunc=np.sum)
@@ -138,60 +138,32 @@ def classify(ratio, recent_mean, threshold):
 
 #print(df4.columns)
 names={'שוהם': 'Shoham','רומת הייב':'Ramat Hovav','ערערה-בנגב':"Ar'ara Banegev",'פרדס חנה-כרכור':'Pardes Hana - Karkur','אלפי מנשה':'Menashe','באקה אל-גרביה':'baka al rarbiya',"ג'ש (גוש חלב)":"Jish (Gush Halav)","כוכב יעקב":"Zih'ron Ya'akov","מודיעין עילית":"Hevel Modi'in","תל אביב - יפו":"Tel Aviv - Yafo","שייח’ דנון":'Sheikh Danun',
-'רומת הייב':'Rumat al-Heib',
-'ערערה-בנגב':"Ar'arat an-Naqab",
-'פרדס חנה-כרכור': 'Pardes Hanna-Karkur',
-'צור משה': 'Tsur Moshe',
-"קדימה-צורן": 'Kadima Zoran',
-'(קודייראת א-צאנע(שבט': "Qderat a'Sana",
-'קצר א-סר': "Qasr al-Sir",
-'עפרה':'Ofra',
-'עץ אפרים':'Ets Efraim',
-'עוזייר':'Uzeir',
-'עיילבון':'Eilabun',
-"עין נקובא":'Ein Naqquba',
-'עין קנייא':'Ein Qiniyye',
-"עלי":'Eli',
-'עמנואל':'Emanuel',
-'עספיא':'Isfiya',
+'רומת הייב':'Rumat al-Heib','ערערה-בנגב':"Ar'arat an-Naqab",
+'פרדס חנה-כרכור': 'Pardes Hanna-Karkur','צור משה': 'Tsur Moshe',
+"קדימה-צורן": 'Kadima Zoran','(קודייראת א-צאנע(שבט': "Qderat a'Sana",
+'קצר א-סר': "Qasr al-Sir",'עפרה':'Ofra',
+'עץ אפרים':'Ets Efraim','עוזייר':'Uzeir',
+'עיילבון':'Eilabun',"עין נקובא":'Ein Naqquba',
+'עין קנייא':'Ein Qiniyye',"עלי":'Eli',
+'עמנואל':'Emanuel','עספיא':'Isfiya',
 "(אבו ג‘ווייעד (שבט":"Abu Jwei'ad",
-"(אבו קורינאת (שבט":'Abu Qrenat',
-"(אבו רובייעה (שבט":'Abu Rebiya',
-'(אבו רוקייק (שבט':'Abu Rukik',
-'אבו תלול':'Abu Talul',
-'אבטין':'Ibtin',
-'אום בטין':'Umm Batin',
-'אורנית':'Oranit',
-'אחוזת ברק':'Ahuzat Barak',
-'(אטרש (שבט':'Atrash Tribe',
-'אל סייד':'al-Sayyid',
-'אלון שבות':'Alon Shvut',
-'אלעזר':'Elazar',
-'אלפי מנשה':'',
-'אלקנה':'Elkana',
-'(אעצם (שבט':"A'sam Tribe",
-'אפרת':'Efrat',
-"אריאל":'Ariel',
-'באקה אל-גרביה':'Baqa al-Gharbiyye',
-'ביר הדאג’':'Beit Hadag',
-"בית אל":'Beit El',
-"בית אריה":'Beit Aryeh-Ofarim',
-"בית חשמונאי":'Beit Hashmonai',
-"ביתר עילית":'Beitar Illit',
-'ברכה':'Har Brakha',
-'גבעת אלה':'Givat Ela',
-'גבעת זאב':"Giv'at Ze'ev",
-"דייר אל-אסד":'Dir el-Asad',
-"יהוד":'Yehud',
-"כוכב יעקב":"Kochav Ya'akov",
-"כעביה-טבאש-חג‘אג’רה":"Ka'abiyye-Tabbash-Hajajre",
-'כפר חב“ד':'Kfar Habad',
-"מוקייבלה":'Muqeible',
-'מעלה אדומים':"Ma'ale Adumim",
-'נוף הגליל':'Nof Hagalil',
-'סולם':'Sulam',
-"(סייד (שבט":'AlSayid Tribe',
-'סלמה':'Salama'}
+"(אבו קורינאת (שבט":'Abu Qrenat',"(אבו רובייעה (שבט":'Abu Rebiya',
+'(אבו רוקייק (שבט':'Abu Rukik','אבו תלול':'Abu Talul',
+'אבטין':'Ibtin','אום בטין':'Umm Batin',
+'אורנית':'Oranit','אחוזת ברק':'Ahuzat Barak',
+'(אטרש (שבט':'Atrash Tribe','אל סייד':'al-Sayyid',
+'אלון שבות':'Alon Shvut','אלעזר':'Elazar',
+'אלפי מנשה':'','אלקנה':'Elkana',
+'(אעצם (שבט':"A'sam Tribe",'אפרת':'Efrat',
+"אריאל":'Ariel','באקה אל-גרביה':'Baqa al-Gharbiyye',
+'ביר הדאג’':'Beit Hadag',"בית אל":'Beit El',"בית אריה":'Beit Aryeh-Ofarim',
+"בית חשמונאי":'Beit Hashmonai',"ביתר עילית":'Beitar Illit',
+'ברכה':'Har Brakha','גבעת אלה':'Givat Ela','גבעת זאב':"Giv'at Ze'ev",
+"דייר אל-אסד":'Dir el-Asad',"יהוד":'Yehud',
+"כוכב יעקב":"Kochav Ya'akov","כעביה-טבאש-חג‘אג’רה":"Ka'abiyye-Tabbash-Hajajre",
+'כפר חב“ד':'Kfar Habad',"מוקייבלה":'Muqeible',
+'מעלה אדומים':"Ma'ale Adumim",'נוף הגליל':'Nof Hagalil',
+'סולם':'Sulam',"(סייד (שבט":'AlSayid Tribe','סלמה':'Salama'}
 print(city_names)
 with open("/Users/olgabuchel/Downloads/israel-municipalities-polygons-master/municipalities.geojson","r") as json_file:
     dd=json.load(json_file)
