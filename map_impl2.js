@@ -35,7 +35,7 @@ var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v9',
 zoom: 3,
-     attributionControl: false,
+   //  attributionControl: false,
 center: [-82.447303,37.753574]
 });
          
