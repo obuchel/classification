@@ -1,6 +1,4 @@
 
-
-
 import json
 import pandas as pd
 import numpy as np
@@ -89,16 +87,24 @@ for el in list(data2.columns)[1:]:
     #print(el,data2[el].to_list())
     main_data=data2[el].to_list()
     last_value=main_data[len(main_data)-1]
-    if el in list(all_recs.keys()):
-        arr=[int(x+last_value) for x in all_recs[el]]
-        print(main_data+arr)
-        main_arr[el]=main_data+arr
+    if el in list(all_recs.keys()) or el in list(names.keys()):
+        try:
+            arr=[int(x+last_value) for x in all_recs[el]]
+            #print(main_data+arr)
+            main_arr[el]=main_data+arr
+        except:
+           print("failed "+el)
+           ll=len(all_recs[list(all_recs.keys())[0]])
+           arr0=list(np.zeros(ll))
+           arr=[int(x)+int(last_value) for x in arr0]
+           main_arr[el]=main_data+arr
+           continue
     else:
         ll=len(all_recs[list(all_recs.keys())[0]])
         arr0=list(np.zeros(ll))
-        print(last_value,arr0)
+        #print(last_value,arr0)
         arr=[int(x)+int(last_value) for x in arr0]
-        print(main_data+arr)
+        #print(main_data+arr)
         main_arr[el]=main_data+arr
         #main_arr.append(main_data+arr)
 df=pd.DataFrame(main_arr)
@@ -106,7 +112,7 @@ print(df)
 print(data2.columns)        
 print(len(main_arr))
 df.to_csv (r'output6.csv', index = False, header=True)
-
+print(all_recs.keys())
 
 
     
