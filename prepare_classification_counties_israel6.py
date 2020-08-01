@@ -54,16 +54,18 @@ names={'םהוש': 'Shoham','בייה תמור':'Ramat Hovav','בגנב-הרער
 
 all_recs={}
 all_recs0=[]
+
 for el in list(table1.columns):
     if el in list(names.values()):
         print(list(names.keys())[list(names.values()).index(el)])
         print(table1[el].fillna(0).cumsum().to_list())
         all_recs[list(names.keys())[list(names.values()).index(el)]]=table1[el].fillna(0).cumsum().to_list()
         all_recs0.append(el)
+
 kkeys0={}
 with open("municipalitiesL.geojson","r") as json_file:
     data=json.load(json_file)
-    print(data["features"][0]['properties'])
+    #print(data["features"][0]['properties'])
     #'MUN_HEB': 'דרום השרון', 'MUN_ENG'
     for el in data["features"]:
         if el["properties"]["MUN_ENG"] not in list(kkeys0.keys()):
@@ -71,8 +73,8 @@ with open("municipalitiesL.geojson","r") as json_file:
 for el in list(table1.columns):
     if el in list(kkeys0.keys()) and el not in all_recs0:
         all_recs[kkeys0[el]]=table1[el].fillna(0).cumsum().to_list()
-print(all_recs)        
-print(table1.date)        
+#print(all_recs["תל אביב - יפו"])        
+#print(table1.date)        
 data2=pd.read_csv("output3.csv")
 
 data2.dates2=data2.dates.append(table1.date.dt.date)
@@ -80,8 +82,8 @@ print(data2.dates2.to_string())
 all_dates=[]
 for el in data2.dates2:
     all_dates.append(str(el))
-print(all_dates)
-print(data2)
+#print(all_dates)
+#print(data2)
 main_arr={'dates':all_dates}
 for el in list(data2.columns)[1:]:
     #print(el,data2[el].to_list())
@@ -108,11 +110,11 @@ for el in list(data2.columns)[1:]:
         main_arr[el]=main_data+arr
         #main_arr.append(main_data+arr)
 df=pd.DataFrame(main_arr)
-print(df)
-print(data2.columns)        
-print(len(main_arr))
+#print(df)
+#print(data2.columns)        
+#print(len(main_arr))
 df.to_csv (r'output6.csv', index = False, header=True)
-print(all_recs.keys())
+#print(table1["Tel Aviv - Yafo"])
 
 
     
