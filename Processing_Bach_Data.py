@@ -26,7 +26,7 @@ city_names_dict = city_names.to_dict()['translation']
 
 data_folder = 'Other/*.xlsx'
 files = glob.glob(data_folder)
-print(files)
+print(len(files))
 xls = pd.ExcelFile(files[0])
 names = xls.sheet_names
 df = pd.read_excel(files[0],skiprows=4,sheet_name=names[0]).dropna(axis='columns')
@@ -36,8 +36,8 @@ df.columns = ['City',
 "Verified patients discovered so far",
 "Number of recoverers",
 "The growth rate of verified patients in the last 3 days",
-"The number of verified patients added in the last 3 days",
-"Actual morbidity rate ** per 100,000"]
+              "The number of verified patients added in the last 3 days",
+              "Actual morbidity rate ** per 100,000"]
 
 lst_files = []
 for ind , f in enumerate(files): 
