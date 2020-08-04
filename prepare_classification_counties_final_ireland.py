@@ -7,7 +7,7 @@ import numpy as np
 import os
 from datetime import datetime
 import matplotlib.pyplot as plt
-date_of_analysis='07/26/20'
+date_of_analysis='07/31/20'
 import math
 output_directory = 'output_ireland'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -167,13 +167,13 @@ for name in counties:
         start.append(y.index(vv[0]))
     else:
         start.append(0)
-    threshold = 1
+    threshold = 0
     if len(start) > 0:
         max0 = np.max(y3)
         min0 = np.min(ys)
         if max0 > 0:
             ratio = y3[-1] / max0
-            recent_mean = int(np.mean(original_values[-10:]))
+            recent_mean = int(np.mean(original_values[-14:]))
             color = classify(ratio, recent_mean, threshold)
         else:
             #print(name,y3)
