@@ -12,12 +12,15 @@ import math
 output_directory = 'output_ireland'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 import datetime
-source = requests.get("https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json").json()
+source = requests.get("https://opendata.arcgis.com/datasets/d9be85b30d7748b5b7c09450b8aede63_0.geojson").json()
 print(source)
 dd=[]
 for el in source["features"]:
-    dd.append([el["attributes"]['CountyName'],str(datetime.datetime.fromtimestamp(el["attributes"]['TimeStamp']/1000).isoformat()).split("T")[0].replace("-","/"),el["attributes"]['ConfirmedCovidCases'],el["attributes"]['TimeStamp']])
-#print(dd)
+    #print(el["properties"])
+    dd.append([el["properties"]['CountyName'],el["properties"]['ConfirmedCovidCases'],str(el["properties"]['TimeStamp']).split(" ")[0],el["properties"]['TimeStamp']])
+print(dd)
+
+#str(datetime.datetime.fromtimestamp(el["properties"]['TimeStamp']/1000).isoformat()).split("T")[0].replace("-","/"),
 ddata=pd.DataFrame(dd,columns=['CountyName','date','ConfirmedCovidCases','TimeStamp'])
 
 ddata['date'] =pd.to_datetime(ddata.date)
