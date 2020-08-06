@@ -7,11 +7,12 @@ import numpy as np
 import os
 from datetime import datetime
 import matplotlib.pyplot as plt
-date_of_analysis='08/02/20'
+date_of_analysis='08/03/20'
 import math
 output_directory = 'output_ireland'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 import datetime
+'''
 source = requests.get("https://opendata.arcgis.com/datasets/d9be85b30d7748b5b7c09450b8aede63_0.geojson").json()
 print(source)
 dd=[]
@@ -26,6 +27,8 @@ ddata=pd.DataFrame(dd,columns=['CountyName','date','ConfirmedCovidCases','TimeSt
 ddata['date'] =pd.to_datetime(ddata.date)
 ddata.sort_values(by='date')
 print(ddata)
+'''
+
 #{'OBJECTID': 2000, 'ORIGID': 24, 'CountyName': 'Westmeath', 'PopulationCensus16': 88770, 'TimeStamp': 1589500800000, 'IGEasting': 238362, 'IGNorthing': 255966, 'Lat': 53.5524, 'Long': -7.4219, 'UGI': 'http://data.geohive.ie/resource/county/2ae19629-144c-13a3-e055-000000000001', 'ConfirmedCovidCases': 655, 'PopulationProportionCovidCases': 737.861890278247, 'ConfirmedCovidDeaths': None, 'ConfirmedCovidRecovered': None, 'Shape__Area': 5208705730.30273, 'Shape__Length': 422669.332716032}
 #read json
 #https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json
@@ -125,25 +128,18 @@ def interpolate(y):
 def classify(ratio, recent_mean, threshold):
     color = None
     if ratio >= 0.79:
-        if recent_mean >= threshold:
-            color = "red"
-        else:
-            color = "green"
-    elif ratio <= 0.1:
-        if recent_mean >= threshold:
-            color = "yellow"
-        else:
-            color = "green"
+        #if recent_mean >= threshold:
+        color = "red"
+        #else:
+        
+    elif ratio < 0.01:
+        #if recent_mean >= threshold:
+        color = "green"
     elif ratio >= 0.4 and ratio < 0.79:
-        if recent_mean >= threshold:
-            color = "orange"
-        else:
-            color = "green"
-    elif ratio > 0.1 and ratio < 0.4:
-        if recent_mean >= threshold:
-            color = "yellow"
-        else:
-            color = "green"
+        #if recent_mean >= threshold:
+        color = "orange"
+    elif ratio > 0.01 and ratio < 0.4:
+        color = "yellow"
     assert color is not None
     return color
 
@@ -191,7 +187,11 @@ for name in counties:
         if max0 > 0:
             ratio = y3[-1] / max0
             recent_mean = int(np.mean(original_values[-14:]))
-            color = classify(ratio, recent_mean, threshold)
+            print(recent_mean,ratio)
+            if ratio>0:
+                color = classify(ratio, recent_mean, threshold)
+            else:
+                color = "green"
         else:
             #print(name,y3)
             ratio=0
