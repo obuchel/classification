@@ -132,13 +132,13 @@ def classify(ratio, recent_mean, threshold):
         color = "red"
         #else:
         
-    elif ratio < 0.01:
+    elif ratio < 0.0:
         #if recent_mean >= threshold:
         color = "green"
     elif ratio >= 0.4 and ratio < 0.79:
         #if recent_mean >= threshold:
         color = "orange"
-    elif ratio > 0.01 and ratio < 0.4:
+    elif ratio > 0.0 and ratio < 0.4:
         color = "yellow"
     assert color is not None
     return color
