@@ -132,13 +132,13 @@ def classify(ratio, recent_mean, threshold):
         color = "red"
         #else:
         
-    elif ratio < 0.0:
+    elif ratio < -1:
         #if recent_mean >= threshold:
         color = "green"
     elif ratio >= 0.4 and ratio < 0.79:
         #if recent_mean >= threshold:
         color = "orange"
-    elif ratio > 0.0 and ratio < 0.4:
+    elif ratio > -1 and ratio < 0.4:
         color = "yellow"
     assert color is not None
     return color
@@ -190,8 +190,10 @@ for name in counties:
             print(recent_mean,ratio)
             if ratio>0:
                 color = classify(ratio, recent_mean, threshold)
-            else:
+            elif ratio==0:
                 color = "green"
+            else:
+                color="yellow"
         else:
             #print(name,y3)
             ratio=0
