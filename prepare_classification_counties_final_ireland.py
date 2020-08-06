@@ -188,9 +188,9 @@ for name in counties:
             ratio = y3[-1] / max0
             recent_mean = int(np.mean(original_values[-14:]))
             print(recent_mean,ratio)
-            if ratio>0:
+            if ratio>0 and recent_mean>0:
                 color = classify(ratio, recent_mean, threshold)
-            elif ratio==0:
+            elif ratio==0 and recent_mean==0:
                 color = "green"
             else:
                 color="yellow"
