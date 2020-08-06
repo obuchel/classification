@@ -190,7 +190,7 @@ for name in counties:
             print(recent_mean,ratio)
             if ratio>0 and recent_mean>0:
                 color = classify(ratio, recent_mean, threshold)
-            elif ratio==0 and recent_mean==0 or name=="Longford":
+            elif ratio==0 and recent_mean==0 and name!="Longford":
                 color = "green"
             else:
                 color="yellow"
