@@ -1,5 +1,4 @@
 
-
 #https://www.arcgis.com/sharing/rest/content/items/b5e7488e117749c19881cce45db13f7e/data
 #https://data.mesaaz.gov/Fire-and-Medical/Daily-COVID-19-Cases-by-Zip-Code/bcxg-q9nz/data
 import json
@@ -9,7 +8,7 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 #from prep_canada_data import stage_latest
-date_of_analysis='7/29/20'
+date_of_analysis='8/6/20'
 df = pd.read_excel(r'/Users/olgabuchel/Downloads/Folkhalsomyndigheten_Covid19 (8).xlsx', sheetname='Antal per dag region')
 print(df)
 df["dates"]=[str(l).split("T")[0] for l in list(df.Statistikdatum.unique())]
