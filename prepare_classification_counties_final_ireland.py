@@ -135,10 +135,10 @@ def classify(ratio, recent_mean, threshold):
     elif ratio < -1:
         #if recent_mean >= threshold:
         color = "green"
-    elif ratio >= 0.27 and ratio < 0.79:
+    elif ratio >= 0.22 and ratio < 0.79:
         #if recent_mean >= threshold:
         color = "orange"
-    elif ratio > -1 and ratio < 0.27:
+    elif ratio > -1 and ratio < 0.22:
         color = "yellow"
     assert color is not None
     return color
@@ -165,8 +165,7 @@ for name in counties:
     y = values
     original_values = compute_original_values(values)
     x = e_dataframe1[e_dataframe1.columns[0]]
-    y1 = interpolate(y)
-    
+    y1 = interpolate(y)    
     x2 = x[9:]
     tim2 = tim[4 : -5]
     y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=10).mean()['a'].to_list()[9:]
@@ -187,7 +186,7 @@ for name in counties:
         if max0 > 0:
             ratio = y3[-1] / max0
             recent_mean = int(np.mean(original_values[-14:]))
-            print(recent_mean,ratio)
+            
             if ratio>0 and recent_mean>0:
                 color = classify(ratio, recent_mean, threshold)
             elif ratio==0 and recent_mean==0 and name!="Longford":
@@ -198,7 +197,7 @@ for name in counties:
             #print(name,y3)
             ratio=0
             color="green"
-
+        print(recent_mean,ratio,name,color)
         plt.title(name)
         plt.plot(x2,y3,color=color)
         plt.show()    
