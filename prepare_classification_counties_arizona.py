@@ -4,7 +4,7 @@ import json
 import numpy as np
 import pandas as pd
 import os
-date_of_analysis='8/6/20'
+date_of_analysis='8/9/20'
 output_directory = 'output_arizona'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 # Use canned CSV file, so we can compare results to earlier runs of the script.
