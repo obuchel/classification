@@ -182,29 +182,42 @@ var all_entries={};
 */
     all_entries=[];
     
-    d3.csv("communa.csv",function(data5){
-   console.log(data5);
+    d3.csv("communa.csv",function(data5,i){
+
+       // if (i<=46) {
         all_entries.push(data5);
+            
+    if (i==47) {
+             console.log(all_entries);
+    console.log(data);
         
-        
-         console.log(all_entries);
-    })
-        
-      
-    
-   
-
-        
-    
-    
-
-    	mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJmOWQ2MzQxNmE0M2Y3YmVjNzA2NmM2MGQzYTIwYmQ3OCJ9.psxJSN8q9n2-HfFGoIUNJA';
+        mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJmOWQ2MzQxNmE0M2Y3YmVjNzA2NmM2MGQzYTIwYmQ3OCJ9.psxJSN8q9n2-HfFGoIUNJA';
 map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v8',
 center: [-110.54,33.99],
 zoom: 6
 });
+        
+        
+        
+        
+            }
+        
+         
+    })
+        
+      
+   
+   
+
+        
+    
+    
+
+    	
+    
+    /*
         //console.log(all_entries);
         var vals=[];
 for (var u=0; u<data["features"].length; u++) {
@@ -297,7 +310,7 @@ for (var u=0; u<data["features"].length; u++) {
 
 //['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3']    [2, '#2f4554'],[3, '#61a0a8'],[4, '#d48265'],[7, '#546570']
     
-    
+    /*
     
 map.on('load', function() {
       // var arr=[[-1, 'darkseagreen'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.79, '#bd0026'],[1, '#800026']]; 
@@ -390,6 +403,7 @@ stops: arr
      'circle-opacity': 0.1
 }
 });*/
+    /*
 map.on('click', 'place_data',function(e,i){
     
   //  console.log(e.features[0]);
@@ -442,10 +456,10 @@ new mapboxgl.Popup()
           
            
            
-       });
+       });*/
    // console.log(color);
- });
-    }); 
+ //});
+   // }); 
     
     //}
 });  
