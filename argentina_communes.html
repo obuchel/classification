@@ -158,7 +158,7 @@ width: 10px;
     var data2={"type":"FeatureCollection"};
     data2["features"]=[];  
     var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1,'black':-1};
-        var arr=[[-1, 'black'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.79, '#bd0026'],[1, '#800026']];   
+        var arr=[[9,"#f7fbff"],[20,"#deebf7"],[100,"#c6dbef"],[500,"#9ecae1"],[800,"#6baed6"],[1100,"#4292c6"]];   
 //d3.csv("ddPCR_per_state.csv",function(err,da) {
            
             /*
@@ -183,29 +183,111 @@ var all_entries={};
     all_entries=[];
     
     d3.csv("communa.csv",function(data5,i){
-
+console.log(data5);
        // if (i<=46) {
-        all_entries.push(data5);
-            
-    if (i==47) {
-             console.log(all_entries);
-    console.log(data);
         
-        mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJmOWQ2MzQxNmE0M2Y3YmVjNzA2NmM2MGQzYTIwYmQ3OCJ9.psxJSN8q9n2-HfFGoIUNJA';
+         for (var u=0; u<data["features"].length; u++) {
+            if (data5["BARRIO"]==data["features"][u]["properties"]["barrio"]) {
+            data["features"][u]["properties"]["dif"]=Number(data5["dif"]);
+            data["features"][u]["properties"]["dif2"]=Number(data5["17-Jul"])- Number(data5["3-Jul"])   
+                }
+        }
+            
+        all_entries.push(data5);
+    if (i==47) {
+    //console.log(all_entries);
+    console.log(d3.extent(all_entries.map(function(d){return Number(d["17-Jul"])- Number(d["3-Jul"]) })));
+        
+mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJmOWQ2MzQxNmE0M2Y3YmVjNzA2NmM2MGQzYTIwYmQ3OCJ9.psxJSN8q9n2-HfFGoIUNJA';
 map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v8',
-center: [-110.54,33.99],
-zoom: 6
+center: [-58.383333,-34.6],
+zoom: 11
+});
+map.on('load', function() {
+    
+      var layers = [
+          'Changes in the number of cases during the last two weeks:',
+    ' : 9-20',
+    ' : 20-100',
+    ' : 100-500',
+    ' : 500-800',
+    ' : 800-1100'
+        ];
+   // [0, '#1a9850'],[0.1, '#ffffb2'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']]; 
+        var colors = [
+            '',
+          arr[1][1],
+          arr[2][1],
+          arr[3][1],
+          arr[4][1],
+            arr[5][1]
+        ];
+    
+     // create legend
+        for (i = 0; i < layers.length; i++) {
+          var layer = layers[i];
+          var color = colors[i];
+          var item = document.createElement('div');
+          var key = document.createElement('span');
+          key.className = 'legend-key';
+          key.style.backgroundColor = color;
+
+          var value = document.createElement('span');
+          value.innerHTML = layer;
+          item.appendChild(key);
+          item.appendChild(value);
+          legend.appendChild(item);
+        }
+    
+      var value = document.createElement('span');
+          value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fill="none" stroke="black"/></svg> <svg width="10" height="10">  <circle cx="5" cy="5" r="4.5" fill="none" stroke="black"/></svg> <svg width="15" height="15"><circle cx="7.5" cy="7.5" r="7" fill="none" stroke="black"/></svg> - Numbers of cases past 14 days';
+var item = document.createElement('div');
+    
+   
+    // item.className = 'legend-div';
+    // item.appendChild(value);
+    // legend.appendChild(item);
+    
+     var value2 = document.createElement('span');
+    value2.innerHTML = "<br>Updated: July 17, 2020";
+     value2.style.textAlign="center !important";
+    value2.style.margin="auto";
+    var item2 = document.createElement('div');
+     item2.appendChild(value2);
+          legend.appendChild(item2);
+   // console.log(data);
+map.addSource('places', {
+'type': 'geojson',
+'data': data
+});
+ map.addLayer({
+'id': 'place_data',
+'type': 'fill',
+'source': 'places',
+'paint': {
+'fill-color': {
+property: "dif2",
+stops: arr
+},
+'fill-outline-color': 'black',
+'fill-opacity': 1
+},
+'filter': ['==', '$type', 'Polygon']      
+});
+map.on('click', 'place_data',function(e,i){  
+new mapboxgl.Popup()
+.setLngLat(e.lngLat)
+.setHTML("Barrio: "+e.features[0].properties.barrio +" <br>Last week: "+e.features[0].properties.dif+" <br>Last two weeks: "+e.features[0].properties.dif2)
+.addTo(map);
+});
 });
         
         
         
-        
-            }
-        
-         
-    })
+}
+})
         
       
    
