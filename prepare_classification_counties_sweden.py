@@ -8,8 +8,8 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 #from prep_canada_data import stage_latest
-date_of_analysis='8/9/20'
-df = pd.read_excel(r'/Users/olgabuchel/Downloads/Folkhalsomyndigheten_Covid19 (10).xlsx', sheetname='Antal per dag region')
+date_of_analysis='8/16/20'
+df = pd.read_excel(r'/Users/olgabuchel/Downloads/Folkhalsomyndigheten_Covid19 (8).xlsx', sheetname='Antal per dag region')
 print(df)
 df["dates"]=[str(l).split("T")[0] for l in list(df.Statistikdatum.unique())]
 output_directory = 'output_sweden'
