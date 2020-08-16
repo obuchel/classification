@@ -1,3 +1,4 @@
+
 #https://data.mesaaz.gov/api/views/bcxg-q9nz/rows.csv?accessType=DOWNLOAD
 #https://data.mesaaz.gov/Fire-and-Medical/Daily-COVID-19-Cases-by-Zip-Code/bcxg-q9nz/data
 import json
