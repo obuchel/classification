@@ -1,117 +1,117 @@
 province,country,id,value,color
-,Antigua and Barbuda,0,1,green
-,West Bank and Gaza,,19,green
+,Antigua and Barbuda,0,4,green
+,West Bank and Gaza,,334,red
 ,Barbados,10,3,green
 ,Latvia,100,29,green
-,Algeria,1,187,red
-,Belarus,101,947,red
-,Lithuania,102,50,green
-,Liberia,103,6,green
-,Slovakia,104,54,green
+,Algeria,1,614,red
+,Belarus,101,947,yellow
+,Lithuania,102,50,yellow
+,Liberia,103,22,green
+,Slovakia,104,54,red
 ,Liechtenstein,105,5,green
-,Libya,106,15,red
-,Madagascar,107,40,red
+,Libya,106,318,red
+,Madagascar,107,345,red
 ,Mongolia,109,9,green
-,North Macedonia,111,76,red
-,Mali,112,40,red
-,Morocco,113,187,red
+,North Macedonia,111,161,red
+,Mali,112,40,green
+,Morocco,113,1227,red
 ,Mauritius,114,18,green
-,Mauritania,115,60,red
-,Malta,116,18,green
-,Oman,117,684,red
-,Maldives,118,55,red
+,Mauritania,115,185,yellow
+,Malta,116,41,red
+,Oman,117,1536,yellow
+,Maldives,118,134,red
 ,Mexico,119,2049,green
-,Bahamas,12,2,green
-,Malaysia,120,169,red
-,Mozambique,121,14,red
+,Bahamas,12,49,red
+,Malaysia,120,169,green
+,Mozambique,121,69,red
 ,Niger,125,42,green
-,Belgium,128,1417,yellow
+,Belgium,128,1417,red
 """Korea"," South""",95,569,green
-,Bangladesh,13,2286,red
+,Bangladesh,13,3734,red
 ,Andorra,132,29,green
-,Luxembourg,135,162,green
+,Luxembourg,135,162,red
 ,Monaco,137,3,green
-,Montenegro,139,16,green
-,Belize,14,1,green
-,Bosnia and Herzegovina,15,49,green
-,Nigeria,152,347,red
-,Norway,154,253,green
-,Nepal,155,208,red
-,Suriname,157,7,green
+,Montenegro,139,148,red
+,Belize,14,30,red
+,Bosnia and Herzegovina,15,323,red
+,Nigeria,152,624,red
+,Norway,154,253,red
+,Nepal,155,514,red
+,Suriname,157,88,red
 ,Nicaragua,158,83,red
 ,New Zealand,159,75,green
-,Bolivia,16,558,red
-,Paraguay,160,44,green
-,Peru,161,4242,red
-,Pakistan,162,3082,red
-,Poland,163,394,red
-,Panama,164,393,red
+,Bolivia,16,1597,red
+,Paraguay,160,324,red
+,Peru,161,4242,green
+,Pakistan,162,4576,green
+,Poland,163,723,red
+,Panama,164,1121,red
 ,Portugal,165,788,red
-,Papua New Guinea,166,0,green
-,Guinea-Bissau,167,57,yellow
-,Qatar,168,1836,red
-,Romania,170,365,red
-,Moldova,171,190,red
-,Philippines,172,601,red
-Puerto Rico,US,173,127,red
-,Russia,174,10788,red
-,Rwanda,175,10,green
-,Saudi Arabia,176,2565,red
+,Papua New Guinea,166,16,red
+,Guinea-Bissau,167,57,green
+,Qatar,168,1836,yellow
+,Romania,170,1281,red
+,Moldova,171,367,red
+,Philippines,172,4229,red
+Puerto Rico,US,173,592,red
+,Russia,174,10788,green
+,Rwanda,175,39,red
+,Saudi Arabia,176,4183,red
 ,Saint Kitts and Nevis,177,0,green
-,Seychelles,178,0,green
-,South Africa,179,1833,red
-,Benin,18,24,green
-,Senegal,182,99,red
+,Seychelles,178,7,green
+,South Africa,179,12610,red
+,Benin,18,55,yellow
+,Senegal,182,146,red
 ,Slovenia,183,45,green
 ,Singapore,185,928,red
-,Somalia,186,53,red
-,Spain,187,7812,yellow
+,Somalia,186,53,green
+,Spain,187,7812,green
 ,Saint Lucia,188,1,green
-,Sudan,189,200,red
-,Sweden,190,774,red
-,Syria,191,6,green
-,Switzerland,192,1090,green
-,Trinidad and Tobago,193,7,green
+,Sudan,189,200,yellow
+,Sweden,190,774,green
+,Syria,191,63,red
+,Switzerland,192,1090,yellow
+,Trinidad and Tobago,193,29,red
 ,Thailand,194,122,green
-,Togo,198,18,green
-,Tunisia,200,38,green
-,Azerbaijan,2,237,red
+,Togo,198,18,red
+,Tunisia,200,40,red
+,Azerbaijan,2,552,red
 ,Brazil,20,11250,green
 ,Turkey,201,4427,red
 ,Tanzania,204,26,green
 ,Uganda,205,30,red
-,Ukraine,207,483,red
+,Ukraine,207,483,green
 ,Burkina Faso,209,20,green
-,Uruguay,210,22,green
-,Bulgaria,21,57,green
-,Uzbekistan,211,99,red
-,Saint Vincent and the Grenadines,212,1,green
-,Venezuela,213,92,red
-,Vietnam,215,11,green
-Virgin Islands,US,216,4,green
-,Namibia,217,1,green
-,Eswatini,220,8,green
+,Uruguay,210,22,red
+,Bulgaria,21,246,red
+,Uzbekistan,211,731,red
+,Saint Vincent and the Grenadines,212,2,green
+,Venezuela,213,1012,red
+,Vietnam,215,34,red
+Virgin Islands,US,216,24,red
+,Namibia,217,131,red
+,Eswatini,220,82,red
 ,Brunei,22,7,green
-,Zambia,222,59,green
-,Zimbabwe,223,19,red
-,Indonesia,224,665,red
+,Zambia,222,264,red
+,Zimbabwe,223,178,red
+,Indonesia,224,2033,red
 ,United Arab Emirates,227,853,red
 ,Timor-Leste,228,2,green
 ,San Marino,234,16,green
-,Serbia,237,351,yellow
+,Serbia,237,402,red
 ,Holy See,238,0,green
 ,Cambodia,24,8,green
 ,Taiwan*,245,18,green
-,Sri Lanka,25,61,red
-,Congo (Brazzaville),26,16,red
-,Congo (Kinshasa),27,135,red
+,Sri Lanka,25,61,green
+,Congo (Brazzaville),26,94,red
+,Congo (Kinshasa),27,158,red
 Tibet,China,29,0,green
 Qinghai,China,29,1,green
 Inner Mongolia,China,29,7,green
 Jilin,China,29,6,green
-Xinjiang,China,29,3,green
+Xinjiang,China,29,54,green
 Gansu,China,29,5,green
-Hong Kong,China,29,45,green
+Hong Kong,China,29,155,red
 Heilongjiang,China,29,33,green
 Shaanxi,China,29,14,green
 Zhejiang,China,29,82,green
@@ -121,11 +121,11 @@ Hebei,China,29,15,green
 Macau,China,29,2,green
 Yunnan,China,29,11,green
 Guizhou,China,29,9,green
-Beijing,China,29,20,green
+Beijing,China,29,23,green
 Fujian,China,29,17,green
 Jiangsu,China,29,33,green
 Anhui,China,29,58,green
-Liaoning,China,29,6,green
+Liaoning,China,29,8,green
 Guangxi,China,29,12,green
 Shandong,China,29,28,green
 Guangdong,China,29,82,green
@@ -138,157 +138,157 @@ Henan,China,29,76,green
 Sichuan,China,29,25,green
 Chongqing,China,29,31,green
 Shanghai,China,29,20,green
-,Albania,3,21,red
-,Afghanistan,30,700,red
+,Albania,3,136,red
+,Afghanistan,30,728,yellow
 ,Bhutan,31,2,green
 ,Chile,32,2153,green
-,Cameroon,34,233,red
+,Cameroon,34,375,red
 ,Chad,35,28,green
-,Colombia,37,829,red
-,Costa Rica,38,25,red
-,Central African Republic,39,76,red
-,Cuba,40,52,green
-,Armenia,4,426,red
+,Colombia,37,829,green
+,Costa Rica,38,720,red
+,Central African Republic,39,103,green
+,Cuba,40,54,red
+,Armenia,4,624,red
 ,Cape Verde,41,0,green
 ,Cyprus,43,33,green
-,Djibouti,45,162,red
+,Djibouti,45,162,green
 ,Dominica,46,1,green
-,Dominican Republic,47,360,red
+,Dominican Republic,47,1511,red
 ,Ecuador,48,1748,red
-,Egypt,49,1207,red
-,Angola,5,3,green
+,Egypt,49,1550,yellow
+,Angola,5,56,red
 ,Ireland,50,868,yellow
-,Equatorial Guinea,51,49,red
+,Equatorial Guinea,51,175,green
 ,Estonia,52,61,green
-,Eritrea,53,2,green
-,El Salvador,54,86,red
-,Ethiopia,55,108,red
-,Austria,56,729,yellow
-,Czechia,57,275,yellow
+,Eritrea,53,10,green
+,El Salvador,54,422,red
+,Ethiopia,55,827,red
+,Austria,56,729,red
+,Czechia,57,275,red
 ,Finland,59,145,yellow
 ,Fiji,60,1,green
-,Gambia,65,1,green
-,Gabon,66,109,red
-Georgia,US,67,866,red
-,Georgia,geo_67,17,green
-,Ghana,68,309,red
+,Gambia,65,101,red
+,Gabon,66,143,red
+Georgia,US,67,3753,red
+,Georgia,geo_67,17,red
+,Ghana,68,741,red
 ,Grenada,69,1,green
-,Argentina,7,768,red
-,Germany,71,5847,yellow
-Guam,US,72,6,green
-,Greece,73,86,green
-,Guatemala,74,258,red
+,Argentina,7,6911,red
+,Germany,71,5847,green
+Guam,US,72,10,green
+,Greece,73,183,red
+,Guatemala,74,1243,red
 ,Guinea,75,86,red
-,Guyana,76,3,green
-,Haiti,77,166,red
-,Honduras,78,206,red
-,Croatia,79,70,green
-,Hungary,80,94,green
+,Guyana,76,16,red
+,Haiti,77,198,yellow
+,Honduras,78,862,red
+,Croatia,79,103,red
+,Hungary,80,94,yellow
 ,Iceland,81,72,green
-,India,82,8357,red
+,India,82,9337,green
 ,Iran,83,2877,red
-,Israel,84,598,yellow
-,Italy,85,5670,yellow
-,Cote d'Ivoire,86,91,red
-,Iraq,87,485,red
+,Israel,84,1802,red
+,Italy,85,5670,green
+,Cote d'Ivoire,86,309,red
+,Iraq,87,3429,red
 ,Japan,88,608,green
-,Jamaica,89,22,green
+,Jamaica,89,22,red
 ,Jordan,90,30,green
-,Bahrain,9,430,red
-,Kenya,91,109,red
-,Kyrgyzstan,92,47,red
+,Bahrain,9,554,red
+,Kenya,91,663,red
+,Kyrgyzstan,92,2025,yellow
 ,Kuwait,96,938,red
-,Kazakhstan,97,359,red
+,Kazakhstan,97,3353,red
 ,Laos,98,1,green
-,Lebanon,99,28,red
+,Lebanon,99,300,red
 Diamond Princess,Cruise Ship,cruise,52,green
 ,Diamond Princess,cruise,52,green
-Faroe Islands,Denmark,den_44,12,green
+Faroe Islands,Denmark,den_44,13,red
 Greenland,Denmark,den_45,0,green
-,Denmark,den_46,303,yellow
-Aruba,Netherlands,dutch_153,5,green
+,Denmark,den_46,303,red
+Aruba,Netherlands,dutch_153,85,red
 Curacao,Netherlands,dutch_154,0,green
-Sint Maarten,Netherlands,dutch_155,4,green
-,Netherlands,dutch_156,1096,yellow
-French Guiana,France,fr_64,24,red
-French Polynesia,France,fr_65,2,green
-Guadeloupe,France,fr_66,7,green
-Mayotte,France,fr_67,53,red
+Sint Maarten,Netherlands,dutch_155,13,red
+,Netherlands,dutch_156,1096,green
+French Guiana,France,fr_64,202,red
+French Polynesia,France,fr_65,10,green
+Guadeloupe,France,fr_66,17,red
+Mayotte,France,fr_67,53,green
 New Caledonia,France,fr_68,1,green
-Reunion,France,fr_69,23,green
+Reunion,France,fr_69,23,red
 Saint Barthelemy,France,fr_70,0,green
-St Martin,France,fr_71,2,green
+St Martin,France,fr_71,5,green
 Martinique,France,fr_72,9,green
-,France,fr_73,7298,yellow
-North Dakota,US,mixed_10,73,yellow
-Manitoba,Canada,mixed_11,16,green
+,France,fr_73,7298,red
+North Dakota,US,mixed_10,138,red
+Manitoba,Canada,mixed_11,20,red
 Michigan,US,mixed_12,1493,red
-Maine,US,mixed_13,49,red
-Quebec,Canada,mixed_14,1039,red
+Maine,US,mixed_13,49,green
+Quebec,Canada,mixed_14,1039,yellow
 New Brunswick,Canada,mixed_15,7,green
-Ohio,US,mixed_16,783,red
-New Hampshire,US,mixed_17,94,red
+Ohio,US,mixed_16,1381,red
+New Hampshire,US,mixed_17,94,yellow
 New York,US,mixed_18,9680,yellow
 Vermont,US,mixed_19,38,green
 Pennsylvania,US,mixed_20,1569,red
-Minnesota,US,mixed_2,710,red
-Arizona,US,mixed_21,734,red
-California,US,mixed_22,2605,red
-New Mexico,US,mixed_23,168,red
-Texas,US,mixed_24,1473,red
-Alaska,US,mixed_25,13,green
-Louisiana,US,mixed_27,1413,red
-Mississippi,US,mixed_28,328,red
-Alabama,US,mixed_29,481,red
-Florida,US,mixed_30,1121,red
-Ontario,Canada,mixed_3,663,red
-South Carolina,US,mixed_32,293,red
-North Carolina,US,mixed_33,860,red
-Virginia,US,mixed_34,1058,red
+Minnesota,US,mixed_2,722,red
+Arizona,US,mixed_21,3789,red
+California,US,mixed_22,9707,red
+New Mexico,US,mixed_23,316,red
+Texas,US,mixed_24,10205,red
+Alaska,US,mixed_25,108,red
+Louisiana,US,mixed_27,2188,red
+Mississippi,US,mixed_28,1345,red
+Alabama,US,mixed_29,1890,red
+Florida,US,mixed_30,11678,red
+Ontario,Canada,mixed_3,663,yellow
+South Carolina,US,mixed_32,1916,red
+North Carolina,US,mixed_33,2027,red
+Virginia,US,mixed_34,1118,red
 District of Columbia,US,mixed_35,197,red
 Maryland,US,mixed_36,1076,red
 Delaware,US,mixed_37,207,red
-New Jersey,US,mixed_38,3607,red
-Connecticut,US,mixed_39,1007,red
+New Jersey,US,mixed_38,3607,yellow
+Connecticut,US,mixed_39,1007,yellow
 Rhode Island,US,mixed_40,389,red
-Washington,US,mixed_4,476,red
-Massachusetts,US,mixed_41,2362,red
-Oregon,US,mixed_42,72,red
+Washington,US,mixed_4,897,red
+Massachusetts,US,mixed_41,2362,yellow
+Oregon,US,mixed_42,342,red
 Newfoundland and Labrador,Canada,mixed_44,16,green
 Nova Scotia,Canada,mixed_45,34,green
 Northwest Territories,Canada,mixed_46,0,green
-Hawaii,US,mixed_47,27,green
+Hawaii,US,mixed_47,200,red
 Prince Edward Island,Canada,mixed_48,1,green
-Utah,US,mixed_49,258,red
-Wyoming,US,mixed_50,23,green
-British Columbia,Canada,mixed_5,67,green
-Nevada,US,mixed_51,152,red
-Colorado,US,mixed_52,543,red
+Utah,US,mixed_49,666,red
+Wyoming,US,mixed_50,50,red
+British Columbia,Canada,mixed_5,67,red
+Nevada,US,mixed_51,1133,red
+Colorado,US,mixed_52,569,red
 South Dakota,US,mixed_53,117,red
 Nebraska,US,mixed_54,427,red
-Kansas,US,mixed_55,300,red
-Oklahoma,US,mixed_56,121,red
-Iowa,US,mixed_57,525,red
-Missouri,US,mixed_58,254,red
-Wisconsin,US,mixed_59,481,red
-Idaho,US,mixed_6,93,red
+Kansas,US,mixed_55,466,red
+Oklahoma,US,mixed_56,1034,red
+Iowa,US,mixed_57,571,red
+Missouri,US,mixed_58,1527,red
+Wisconsin,US,mixed_59,917,red
+Idaho,US,mixed_6,543,red
 Illinois,US,mixed_60,2569,red
-Kentucky,US,mixed_61,208,red
-Arkansas,US,mixed_62,243,red
-Tennessee,US,mixed_63,508,red
-West Virginia,US,mixed_64,44,red
-Indiana,US,mixed_65,687,red
+Kentucky,US,mixed_61,614,red
+Arkansas,US,mixed_62,789,red
+Tennessee,US,mixed_63,2389,red
+West Virginia,US,mixed_64,146,red
+Indiana,US,mixed_65,953,red
 Western Australia,Australia,mixed_66,28,green
 Northern Territory,Australia,mixed_67,1,green
 South Australia,Australia,mixed_68,26,green
 Queensland,Australia,mixed_69,52,green
-Montana,US,mixed_7,19,green
+Montana,US,mixed_7,127,red
 New South Wales,Australia,mixed_70,163,green
-Victoria,Australia,mixed_72,69,green
+Victoria,Australia,mixed_72,489,red
 Tasmania,Australia,mixed_73,8,green
 Australian Capital Territory,Australia,mixed_77,7,green
-Alberta,Canada,mixed_8,246,yellow
-Saskatchewan,Canada,mixed_9,17,green
+Alberta,Canada,mixed_8,246,red
+Saskatchewan,Canada,mixed_9,34,red
 Bermuda,United Kingdom,uk_206,4,green
 Cayman Islands,United Kingdom,uk_207,4,green
 Channel Islands,United Kingdom,uk_208,24,green
@@ -297,18 +297,19 @@ Guernsey,United Kingdom,uk_210,0,green
 Isle of Man,United Kingdom,uk_211,14,green
 Jersey,United Kingdom,uk_212,0,green
 Montserrat,United Kingdom,uk_213,0,green
-,United Kingdom,uk_214,5423,red
+,United Kingdom,uk_214,5423,green
 Yukon,Canada,mixed_26,0,green
-,Botswana,181,1,green
-,Burundi,28,2,green
-,Sierra Leone,184,29,red
-,Malawi,22,30,red
+,Botswana,181,41,red
+,Burundi,28,13,green
+,Sierra Leone,184,29,green
+,Malawi,22,100,red
 Falkland Islands (Malvinas),United Kingdom,61,0,green
 Saint Pierre and Miquelon,France,232,0,green
 ,Western Sahara,236,0,green
-,Sao Tome and Principe,199,23,red
-,Yemen,221,22,red
+,Sao Tome and Principe,199,23,green
+,Yemen,221,41,green
 ,Burma,17,9,green
 Anguilla,United Kingdom,127,0,green
 British Virgin Islands,United Kingdom,214,0,green
-Turks and Caicos Islands,United Kingdom,235,0,green
+Turks and Caicos Islands,United Kingdom,235,16,red
+,Comoros,36,9,green

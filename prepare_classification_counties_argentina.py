@@ -19,7 +19,7 @@ date_of_analysis='8/16/20'
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
-url='/Users/olgabuchel/Downloads/Covid19Casos (6).csv'
+url='/Users/olgabuchel/Downloads/Covid19Casos (7).csv'
 all_data=[]
 kkeys=[]
 lists={}
