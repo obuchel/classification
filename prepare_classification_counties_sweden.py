@@ -8,7 +8,7 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 #from prep_canada_data import stage_latest
-date_of_analysis='8/19/20'
+date_of_analysis='8/23/20'
 #xls = pd.ExcelFile('/home/abuchel/Downloads/Folkhalsomyndigheten_Covid19.xlsx')
 df = pd.read_excel(r'/home/abuchel/Downloads/Folkhalsomyndigheten_Covid19.xlsx', sheet_name='Antal per dag region')
 print(df)
