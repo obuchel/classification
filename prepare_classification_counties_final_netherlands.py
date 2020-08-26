@@ -8,10 +8,11 @@ import seaborn as sns
 #Import data from source
 data = pd.read_json('https://data.rivm.nl/covid-19/COVID-19_aantallen_gemeente_cumulatief.json')
 
-
+print(data)
 
 #scratch 
 data.head()
+print(data['Date_of_report'])
 df1 = data['Date_of_report'].str.contains("2020-04-15") 
 today = data[df1]
 
@@ -26,18 +27,31 @@ data.head()
 
 #reformating file to create JHU-style dataframe
 total = today[ ['Province','Municipality_name']]
+total["Combined"]=total["Municipality_name"]+", "+total["Province"]
 total
+
 for date in dates:
   day = data[ data['Date_of_report'].str.contains(date) ]
   reports = day['Total_reported'].to_list()
   total[date] = reports
-total["Combined"]=total["Municipality_name"]+", "+total["Province"]
+#total["Combined"]=total["Municipality_name"]+", "+total["Province"]
 #scratch
 print(total)
 
+kkeys={}
+for el in list(total.columns):
+    if el not in ['Province', 'Municipality_name', 'Combined']:
+        kkeys[el]=str(el).split(" ")[0]
+    else:
+        kkeys[el]=el
+
+print(kkeys)        
+df1=total.rename(columns=kkeys)
+print(df1)
+
 #scratch; visualizing the increase in cases over time
-days = total.loc[:,'2020-03-13 10:00:00': '2020-06-18 10:00:00']
-sns.heatmap(days)
+#days = total.loc[:,'2020-03-13': '2020-06-18']
+#sns.heatmap(days)
 #ax.show()
 '''
 #saving to drive
