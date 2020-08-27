@@ -4,19 +4,15 @@
 <meta charset="utf-8" />
 <title>COVID TRENDS</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css" rel="stylesheet" />
-    
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js" integrity="sha256-LHLWSn9RC2p119R1eT2pO3Om+Ir2G0kTZOJmWQ2//pw=" crossorigin="anonymous"></script>
-    <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js" integrity="sha256-LHLWSn9RC2p119R1eT2pO3Om+Ir2G0kTZOJmWQ2//pw=" crossorigin="anonymous"></script>
+<script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
 <style>
-	body { margin: 0; padding: 0;}
-	#map { position: absolute; top: 0;  width: 98%; height:100%;}
-  
+body { margin: 0; padding: 0;}
+#map { position: absolute; top: 0;  width: 98%; height:100%;}  
 #plot {  background-color: #F0F0F0; visibility:hidden; /*z-index:100000000;*/}
 .map-overlay {
   position: absolute;
@@ -28,45 +24,38 @@
   overflow: auto;
   border-radius: 3px;
   width: 20%; 
-height:35% !important;
-
+  height:35% !important;
 }
-    .map-overlay1 {
+.map-overlay1 {
   position: absolute;
   bottom: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.8);
   margin-right: 20px;
-
   overflow: auto;
   border-radius: 3px;
   width: 30%; 
-height:28% !important;
-
+  height:28% !important;
 }
-    
-    #features {
+#features {
   top: 0;
   height: 100px;
   margin-top: 20px;
   width: 250px;
-        visibility:hidden
+  visibility:hidden
+}    
+#legend {
+  padding: 10px;
+  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);*/
+  line-height: 15px;
+  /* height: 80px;*/
+  margin-bottom: 20px;
+  width: 30%;
+  height:28% !important;
+  /*   z-index:100000000;*/
 }
-    
-     #legend {
-        padding: 10px;
-       /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);*/
-        line-height: 15px;
-       /* height: 80px;*/
-        margin-bottom: 20px;
-        width: 30%;
-         height:28% !important;
-      /*   z-index:100000000;*/
-        
-      }
-      .legend-key {
+.legend-key {
         display: inline-block;
-
         width: 10px;
         height: 10px;
         margin-right: 5px;
@@ -80,199 +69,123 @@ height:28% !important;
 </head>
 <body>
 <div id="map"></div>
-    <div class="map-overlay" id="features">
-    <div id="plot"></div>
-    </div>
-     <div class="map-overlay1" id="legend"></div>
+<div class="map-overlay" id="features">
+<div id="plot"></div>
+</div>
+<div class="map-overlay1" id="legend"></div>
 <script>
-    var popup;
- var layerM;
-    var map;
-        
 
-    
+  var correct_names={"":"Boarnsterhim, Friesland"}  
+var popup;
+var layerM;
+var map;    
 var arr=[[-1, '#000000'],[0, '#1a9850'],[0.1, '#fed976'],[0.4, '#fd8d3c'],[0.8, '#bd0026'],[1, '#800026']];   
-    var arr20=[[-1, '#000000'],[0, '#2166ac'],[0.1, '#fddbc7'],[0.4, '#f4a582'],[0.8, '#d6604d'],[1, '#b2182b']]; 
-     var arr2=[[1, 0.1], [100, 0.2],[200, 0.7],[500, 1],[1000, 1],[2000, 1],[2500, 1],[3000, 1],[50000, 1]];  
+var arr20=[[-1, '#000000'],[0, '#2166ac'],[0.1, '#fddbc7'],[0.4, '#f4a582'],[0.8, '#d6604d'],[1, '#b2182b']]; 
+var arr2=[[1, 0.1], [100, 0.2],[200, 0.7],[500, 1],[1000, 1],[2000, 1],[2500, 1],[3000, 1],[50000, 1]];  
 var comms=["All",0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21];  
 var data3=[];    
-
-    var data0=[];
-            fetch('output_germany/classification/classification_ids_provinces2.json').then(res => res.json()) 
+var data0=[];
+fetch('output_germany/classification/classification_ids_provinces2.json').then(res => res.json()) 
 .then(data0 => { 
-             // console.log(data0);  
-         var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
-                var ids=[];
-                
-                data0.map(function(d,i){
-                    if (d.id.length==4) {
-                        
-                       ids.push("0"+d.id.toString())  
-                    }
-else {
-                    ids.push(d.id.toString())
-}
-                });
-//          console.log(ids);
-        fetch('landkreise-in-germany.json').then(res => res.json()) 
+var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
+var ids=[];
+data0.map(function(d,i){
+    if (d.id.length==4) {   
+         ids.push("0"+d.id.toString())  
+    } else {
+         ids.push(d.id.toString())
+    }
+});
+//    console.log(ids);    
+fetch('landkreise-in-germany.json').then(res => res.json()) 
 .then(data => {  
-            
-           // console.log(data);
- var data2={"type":"FeatureCollection"};
+var data2={"type":"FeatureCollection"};
     data2["features"]=[];        
-            
-            for (var i=0; i<data["features"].length; i++) {
-                //console.log(data["features"][i]["properties"]);
-                if (typeof data["features"][i]["properties"]["cca_2"]!="undefined") {
-                  //  if (data["features"][i]["properties"]["cca_2"].toString().substr(0)!=="0") {
-                data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
-                 /*   } else {
-                        
-                     data["features"][i]["id"]="0"+data["features"][i]["properties"]["cca_2"].toString();   
-                    }*/
-                } else {
-                    data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"];
-                    
-                }
-                // if (data["features"][i]["properties"]["STATEFP"]!="72") {
-                if (ids.indexOf(data["features"][i]["properties"]["cca_2"])>-1) {
-                  //  data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
-                    
-                     data["features"][i]["properties"]["NAME"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["n"];
-                    
-                      data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["c"];
-                    data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["max"];
-                    
-                     data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["max"]+1)*0.5;
-                data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["c"]];
-                    
-                } else {
-                //   console.log( data["features"][i]["properties"]["id"]);
-                    data["features"][i]["properties"]["c"]="green";
-                    data["features"][i]["properties"]["v"]=0;
-                    data["features"][i]["properties"]["max"]=0;
-                     data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
-                }
-                console.log(data["features"][i]["properties"]["v"]);
-                
-                if (data["features"][i]["geometry"]["type"]=="Polygon"){
-         var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"]);
-
-            var center = turf.centerOfMass(polygon);
-                //console.log(center["geometry"]["coordinates"]);
-
-               // if (data["features"][i]["id"]!="630") {
-                data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
-               } 
-                
-                else {
-                    var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"][0]);
-            var center = turf.centerOfMass(polygon);
-                data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
-               }
-            }
-            
-
-
-
-
- var data10=[];
-            fetch('output_netherlands/classification/classification_ids_counties2.json').then(res => res.json()) 
+    for (var i=0; i<data["features"].length; i++) {
+        if (typeof data["features"][i]["properties"]["cca_2"]!="undefined") {
+            data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
+        } else {
+            data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"];        
+        }
+        if (ids.indexOf(data["features"][i]["properties"]["cca_2"])>-1) {
+            data["features"][i]["properties"]["NAME"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["n"];
+            data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["c"];
+            data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["max"];                   
+            data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["max"]+1)*0.5;
+            data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["cca_2"])]["c"]];        
+        } else {
+            data["features"][i]["properties"]["c"]="green";
+            data["features"][i]["properties"]["v"]=0;
+            data["features"][i]["properties"]["max"]=0;
+            data["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
+        }
+        if (data["features"][i]["geometry"]["type"]=="Polygon"){
+        var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"]);
+        var center = turf.centerOfMass(polygon);
+        data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
+        } else {
+        var polygon = turf.polygon(data["features"][i]["geometry"]["coordinates"][0]);
+        var center = turf.centerOfMass(polygon);
+        data2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data["features"][i]["properties"]});
+        }
+}
+var data10=[];
+fetch('output_netherlands/classification/classification_ids_counties2.json').then(res => res.json()) 
 .then(data10 => { 
-             // console.log(data0);  
-         var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
-                var ids10=[];
-    var names=[];
-                data10.map(function(d,i){
-                /*    if (d.id.length==4) {
-                        
-                       ids10.push("0"+d.id.toString())  
-                    }
-else {*/
-                    ids10.push(d.id.toString())
-//}
-		    names.push(d.n);
-                });
-//    console.log(names);
-        fetch('NLD_adm2-1.json').then(res => res.json()) 
+var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
+var ids10=[];
+var names=[];
+data10.map(function(d,i){
+    ids10.push(d.id.toString());
+    names.push(d.n);
+});
+    //    console.log(ids10);
+    
+fetch('NLD_adm2-1.json').then(res => res.json()) 
 .then(data20 => {  
-      
- var data22={"type":"FeatureCollection"};
-    data22["features"]=[];        
-            
-            for (var i=0; i<data20["features"].length; i++) {
-                if (names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])>-1) {
-                data20["features"][i]["id"]=ids10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])];
-	//	console.log(data20["features"][i]["id"]);
-		 } else {
-                    data20["features"][i]["id"]=ids10[0];
-                    
-                 }
-console.log(data20["features"][i]["id"]);
-		
-                // if (data["features"][i]["properties"]["STATEFP"]!="72") {
-                if (names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])>-1) {
-                  //  data["features"][i]["id"]=data["features"][i]["properties"]["cca_2"].toString();
-                    
-                     data20["features"][i]["properties"]["NAME"]=data0[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["n"];
-                    
-                    data20["features"][i]["properties"]["c"]=data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["c"];
-                    data20["features"][i]["properties"]["max"]=data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["max"];
-                    
-                     data20["features"][i]["properties"]["max1"]=Math.log(data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["max"]+1)*0.5;
-                    data20["features"][i]["properties"]["v"]=cols[data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["c"]];
-                    
-                } else {
-                  console.log( data20["features"][i]["properties"]);
-                    data20["features"][i]["properties"]["c"]="green";
-                    data20["features"][i]["properties"]["v"]=0;
-                    data20["features"][i]["properties"]["max"]=0;
-                     data20["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
-                }
-              //  console.log(data20["features"][i]["properties"]["v"]);
-                
-                if (data20["features"][i]["geometry"]["type"]=="Polygon"){
+var data22={"type":"FeatureCollection"};
+data22["features"]=[];        
+for (var i=0; i<data20["features"].length; i++) {
+    if (names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])>-1) {
+        data20["features"][i]["id"]=ids10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])];
+	 data20["features"][i]["properties"]["id"]=ids10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])];
+    } else {
+    }
+    if (names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])>-1) {
+              data20["features"][i]["properties"]["NAME"]=data0[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["n"];      
+              data20["features"][i]["properties"]["c"]=data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["c"];
+              data20["features"][i]["properties"]["max"]=data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["max"];
+              data20["features"][i]["properties"]["max1"]=Math.log(data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["max"]+1)*0.5;
+              data20["features"][i]["properties"]["v"]=cols[data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["c"]];      
+    } else {
+	//console.log(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"]);
+              data20["features"][i]["properties"]["c"]="seagreen";
+              data20["features"][i]["properties"]["v"]=-1;
+              data20["features"][i]["properties"]["max"]=0;
+              data20["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
+    }
+    if (data20["features"][i]["geometry"]["type"]=="Polygon"){
          var polygon = turf.polygon(data20["features"][i]["geometry"]["coordinates"]);
-
-            var center = turf.centerOfMass(polygon);
-                //console.log(center["geometry"]["coordinates"]);
-
-               // if (data["features"][i]["id"]!="630") {
-                data22["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data20["features"][i]["properties"]});
-               } 
-                
-                else {
-            var polygon = turf.polygon(data20["features"][i]["geometry"]["coordinates"][0]);
-            var center = turf.centerOfMass(polygon);
-                data22["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data20["features"][i]["properties"]});
-               }
-            }
-            
-
+         var center = turf.centerOfMass(polygon);
+         data22["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data20["features"][i]["properties"]});
+    } else {
+         var polygon = turf.polygon(data20["features"][i]["geometry"]["coordinates"][0]);
+         var center = turf.centerOfMass(polygon);
+         data22["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":data20["features"][i]["properties"]});
+    }
+}
 mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjanlrY3diNzIwZDdxM25uN2owN2c5ZHpiIn0.XzMbcbHF6H42u0Uxo1L8lg';
 map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v10',
 zoom: 5,
-   // attributionControl: false,
+// attributionControl: false,
 center: [9,51]
 });
-     
-        
-
-            
-            
             
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
-//fetch('all_canada_hr9P.json').then(res => res.json()) 
-//.then(data8 => {             
-
-    
-
-    
 map.on('load', function() {    
-
         var layers = [
           '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
           '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
@@ -287,31 +200,19 @@ map.on('load', function() {
           '#bd0026'
         //  '#800026'
         ];
-    
-    var value = document.createElement('span');
+var value = document.createElement('span');
           value.innerHTML = '<b>Legend</b>:';
 var item = document.createElement('div');
      item.appendChild(value);
           legend.appendChild(item);
-    
-    
    // Switch color schemes for accessibility
-
-
 var item0 = document.createElement('div');
     item0.innerHTML='Colors: <input type="radio" id="default" name="mySelect" value="scheme1" checked><label for="default">Default</label> <input type="radio" id="access" name="mySelect" value="scheme2"><label for="access">Other</label>';
-
     legend.appendChild(item0);
-    
-
-    
    var y=document.getElementsByName('mySelect');
        for (var i=0; i<y.length; i++){
            y[i].addEventListener("change",change_colors);
        }
-       
-       
-       
         for (i = 0; i < layers.length; i++) {
           var layer = layers[i];
           var color = colors[i];
@@ -321,30 +222,24 @@ var item0 = document.createElement('div');
           key.className = 'legend-key';
           key.style.backgroundColor = color;
             key.style.borderStyle = "ridge";
-
           var value = document.createElement('span');
           value.innerHTML = layer;
           item.appendChild(key);
           item.appendChild(value);
           legend.appendChild(item);
         }
-  var value = document.createElement('span');
-          value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fill="none" stroke="black"/></svg> <svg width="10" height="10">  <circle cx="5" cy="5" r="4.5" fill="none" stroke="black"/></svg> <svg width="15" height="15"><circle cx="7.5" cy="7.5" r="7" fill="none" stroke="black"/></svg> - Numbers of cases past 14 days';
+var value = document.createElement('span');
+value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fill="none" stroke="black"/></svg> <svg width="10" height="10">  <circle cx="5" cy="5" r="4.5" fill="none" stroke="black"/></svg> <svg width="15" height="15"><circle cx="7.5" cy="7.5" r="7" fill="none" stroke="black"/></svg> - Numbers of cases past 14 days';
 var item = document.createElement('div');
-    
-    // item.className = 'legend-div';
-     item.appendChild(value);
-      legend.appendChild(item);
-    
-
-    
+ item.appendChild(value);
+ legend.appendChild(item);
     var value2 = document.createElement('span');
-    value2.innerHTML = "<br>Updated: "+data0[0]["date"];
+     value2.innerHTML = "<br>Updated: "+data0[0]["date"];
      value2.style.textAlign="center !important";
-    value2.style.margin="auto";
+     value2.style.margin="auto";
     var item2 = document.createElement('div');
      item2.appendChild(value2);
-          legend.appendChild(item2);
+     legend.appendChild(item2);
     
 map.addSource('ethnicity', {
 type: 'geojson',
@@ -356,16 +251,20 @@ type: 'geojson',
 'data': data20    
 });    
     
- map.addSource('states', {
+map.addSource('states', {
 type: 'geojson',
 'data': 'bundeslander-in-germany.json'    
 });
-   map.addSource('ethnicity2', {
+
+
+map.addSource('states_NL', {
+type: 'geojson',
+'data': 'NLD_adm_states.json'    
+});    
+map.addSource('ethnicity2', {
 type: 'geojson',
 'data': data2    
 });
-    
-   // alert(firstSymbolId);
     
 layerM=map.addLayer({
 'id': 'place_data0',
@@ -376,8 +275,7 @@ layerM=map.addLayer({
 property: "v",
 stops: arr
 },
-//'fill-outline-color': 'hsl(0,0,84%)',
-    'fill-outline-color': 'black',
+'fill-outline-color': 'black',
 'fill-opacity': [
 'case',
 ['boolean', ['feature-state', 'hover'], false],
@@ -386,7 +284,6 @@ stops: arr
 ]
 },
 'filter': ['==', '$type', 'Polygon']
-    
 });
 
 map.addLayer({
@@ -399,7 +296,7 @@ property: "v",
 stops: arr
 },
 //'fill-outline-color': 'hsl(0,0,84%)',
-    'fill-outline-color': 'black',
+'fill-outline-color': 'black',
 'fill-opacity': [
 'case',
 ['boolean', ['feature-state', 'hover'], false],
@@ -408,24 +305,36 @@ stops: arr
 ]
 }    
 });      
-    
-    
-     map.addLayer({
+map.addLayer({
 'id': 'population',
 'type': 'circle',
 'source': 'ethnicity2',
 'paint': {
-    'circle-radius':['get', 'max1'],
-  'circle-stroke-color': '#000000',
-    'circle-stroke-width': 0.5,
+'circle-radius':['get', 'max1'],
+'circle-stroke-color': '#000000',
+'circle-stroke-width': 0.5,
 'circle-color': "grey",
-     'circle-opacity': 0.1
+'circle-opacity': 0.1
 }
 });    
-     map.addLayer({
+map.addLayer({
 'id': 'states',
 'type': 'line',
 'source': 'states',
+'layout': {
+'line-join': 'round',
+'line-cap': 'round'
+},
+'paint': {
+'line-color': '#000000',
+'line-width': 1
+}
+},"");
+
+    map.addLayer({
+'id': 'states_NL',
+'type': 'line',
+'source': 'states_NL',
 'layout': {
 'line-join': 'round',
 'line-cap': 'round'
@@ -453,14 +362,12 @@ if (e.features[0].properties["c"]=="yellow") {
  var color="#800026";
 } else if (e.features[0].properties["c"]=="orange") {
  var color="#fd8d3c";
-} else 
-
-{
+} else {
     var color="#1a9850";
 }
-    document.getElementById("plot").innerHTML="";
-    var num=e.features[0].id.toString();
-        var url='output_germany/classification/data_counties_'+num+'.json';
+document.getElementById("plot").innerHTML="";
+var num=e.features[0].id.toString();
+var url='output_germany/classification/data_counties_'+num+'.json';
   fetch(url).then(res => res.json()) 
 .then(data7 => {    
        if (document.getElementById("default").checked==true) {
@@ -480,9 +387,12 @@ popup=new mapboxgl.Popup()
 });
 
 map.on('click', 'place_data20', function(e) {
+console.log(e.features[0].properties.NAME_2);
+    if (typeof e.features[0].properties.id!="undefined"){
+//console.log(e.features[0]);	
     if (typeof popup=="object") popup.remove();
- hoveredStateId = null;
-    var coordinates = e.features[0].geometry.coordinates[0][0].slice();
+        hoveredStateId = null;
+        var coordinates = e.features[0].geometry.coordinates[0][0].slice();
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 }
@@ -503,8 +413,8 @@ if (e.features[0].properties["c"]=="yellow") {
     var color="#1a9850";
 }
     document.getElementById("plot").innerHTML="";
-    console.log(e.features[0]);
-    var num=e.features[0].id.toString();
+ //   console.log(e.features[0].properties);
+    var num=e.features[0].properties.id.toString();
         var url='output_netherlands/classification/data_counties_'+num+'.json';
   fetch(url).then(res => res.json()) 
 .then(data7 => {    
@@ -521,80 +431,25 @@ popup=new mapboxgl.Popup()
 .setLngLat(lats)
 .setHTML(htm)
 .addTo(map);
-  });
 });
-    
-   
-     });
-      
-     });
+    }    	else {
+	d3.select("#plot").html("");
 
+    }
+});
 
-         });
     
 });
+
 });
-    
-    /*
-    
-    
-     var layers = [
-          '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
-          '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
-          '<img width="20px" height="20px" src="orange.png"> : Daily new cases are high, but falling or constant',
-          '<img width="20px" height="20px" src="red.png"> : Daily new cases are high and spreading rapidly'
-        ];
-
-        var colors = [
-          '#1a9850',
-          '#ffffb2',
-          '#fd8d3c',
-          '#bd0026'
-        //  '#800026'
-        ];
-    
-
-    
-
-
- 
-    
-    
-   document.getElementById('mySelect').addEventListener("change",change_colors);
-        for (i = 0; i < layers.length; i++) {
-          var layer = layers[i];
-          var color = colors[i];
-          var item = document.createElement('div');
-            item.className = 'legend-div';
-          var key = document.createElement('span');
-          key.className = 'legend-key';
-          key.style.backgroundColor = color;
-
-          var value = document.createElement('span');
-          value.innerHTML = layer;
-          item.appendChild(key);
-          item.appendChild(value);
-          legend.appendChild(item);
-        }
-  var value = document.createElement('span');
-          value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fill="none" stroke="black"/></svg> <svg width="10" height="10">  <circle cx="5" cy="5" r="4.5" fill="none" stroke="black"/></svg> <svg width="15" height="15"><circle cx="7.5" cy="7.5" r="7" fill="none" stroke="black"/></svg> - Numbers of cases in the past 2 weeks';
-var item = document.createElement('div');
-    
-     item.className = 'legend-div';
-     item.appendChild(value);
-          legend.appendChild(item);
-    
-    
-    
-    
-    */
-    
-        
-    function change_colors(){
-         if (typeof popup=="object") popup.remove();
-            document.getElementById("plot").style.visibility="hidden";
-   document.getElementById("features").style.visibility="hidden";
-     var layers = [
+});    
+});
+});
+function change_colors(){
+   if (typeof popup=="object") popup.remove();
+       document.getElementById("plot").style.visibility="hidden";
+       document.getElementById("features").style.visibility="hidden";
+       var layers = [
           '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
           '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
           '<img width="20px" height="20px" src="orange.png"> : Daily new cases falling or constant',
@@ -608,9 +463,6 @@ var item = document.createElement('div');
           '#bd0026'
         //  '#800026'
         ];
-        
-       /* 
-         var arr20=[[-1, '#000000'],[0, '#2166ac'],[0.1, '#fddbc7'],[0.4, '#f4a582'],[0.8, '#d6604d'],[1, '#b2182b']]; */
      var layers1 = [
           '<img width="20px" height="20px" src="green.png"> : Daily new cases under control',
           '<img width="20px" height="20px" src="yellow.png"> : Daily new cases almost under control',
@@ -630,17 +482,8 @@ var item = document.createElement('div');
         
         for (var i=0; i<all.length; i++) {
             all[i].innerHTML="";
-        }
-        
-       /* 
-        if(document.getElementById('gender_Male').checked) {
-  //Male radio button is checked
-}else if(document.getElementById('gender_Female').checked) {
-  //Female radio button is checked
-}*/
-     if(document.getElementById('access').checked) {   
-    //if (document.getElementById("mySelect").value=="scheme2") {
-
+        }        
+if(document.getElementById('access').checked) {   
  for (var i=0; i<all.length; i++) {
             var key = document.createElement('span');
           key.className = 'legend-key';
@@ -653,38 +496,12 @@ var item = document.createElement('div');
           all[i].appendChild(value);
          
         }
-        
-        
-        /*
-        
-        for (i = 0; i < layers.length; i++) {
-          var layer = layers[i];
-          var color = colors[i];
-          var item = document.createElement('div');
-            item.className = 'legend-div';
-          var key = document.createElement('span');
-          key.className = 'legend-key';
-          key.style.backgroundColor = color;
-
-          var value = document.createElement('span');
-          value.innerHTML = layer;
-          item.appendChild(key);
-          item.appendChild(value);
-          legend.appendChild(item);
-        }
-        
-        
-        */
-        
-         map.setPaintProperty('place_data0', 'fill-color', {
-                property: 'v',
-                stops: arr20
-                
-            });
-    } else {
-        
-        
-        for (var i=0; i<all.length; i++) {
+ map.setPaintProperty('place_data0', 'fill-color', {
+ property: 'v',
+ stops: arr20
+});
+ } else {
+ for (var i=0; i<all.length; i++) {
             var key = document.createElement('span');
           key.className = 'legend-key';
           key.style.backgroundColor = colors[i];
@@ -697,89 +514,24 @@ var item = document.createElement('div');
         }
          map.setPaintProperty('place_data0', 'fill-color', {
                 property: 'v',
-                stops: arr
-                
-            });
-        
+                stops: arr 
+            });       
     }
-      /*  layerM=map.addLayer({
-'id': 'place_data0',
-'type': 'fill',
-'source': 'ethnicity',
-
-'paint': {
-'fill-color': {
-property: "v",
-stops: arr2
-},
-'fill-outline-color': 'black',
-'fill-opacity': [
-'case',
-['boolean', ['feature-state', 'hover'], false],
-1,
-0.5
-]
-},
-'filter': ['==', '$type', 'Polygon']
-});  
-    
-    
-     map.addLayer({
-'id': 'population',
-'type': 'circle',
-'source': 'ethnicity2',
-'paint': {
-    'circle-radius':['get', 'max1'],
-  'circle-stroke-color': '#000000',
-    'circle-stroke-width': 0.5,
-'circle-color': "grey",
-     'circle-opacity': 0.1
 }
-});    
-     map.addLayer({
-'id': 'states',
-'type': 'line',
-'source': 'states',
-'layout': {
-'line-join': 'round',
-'line-cap': 'round'
-},
-'paint': {
-'line-color': '#000000',
-'line-width': 1
-}
-});    
-*/
-        
-      
-    }
 
     
 function draw_plot(data,color) {
-    
-    
-   // console.log(color);
     document.getElementById("plot").style.visibility="visible";
-   document.getElementById("features").style.visibility="visible";
- 
-   /* data["dates"]=["14-03-2020", "15-03-2020", "16-03-2020", "17-03-2020", "18-03-2020", "19-03-2020", "20-03-2020", "21-03-2020", "22-03-2020", "23-03-2020", "24-03-2020", "25-03-2020", "26-03-2020", "27-03-2020", "28-03-2020", "29-03-2020", "30-03-2020", "31-03-2020", "01-04-2020", "02-04-2020", "03-04-2020", "04-04-2020", "05-04-2020", "06-04-2020", "07-04-2020", "08-04-2020", "09-04-2020", "10-04-2020", "11-04-2020", "12-04-2020", "13-04-2020", "14-04-2020", "15-04-2020", "16-04-2020", "17-04-2020", "18-04-2020", "19-04-2020", "20-04-2020", "21-04-2020", "22-04-2020", "23-04-2020", "24-04-2020", "25-04-2020", "26-04-2020", "27-04-2020", "28-04-2020", "29-04-2020", "30-04-2020", "01-05-2020", "02-05-2020", "03-05-2020", "04-05-2020", "05-05-2020", "06-05-2020", "07-05-2020", "08-05-2020", "09-05-2020", "10-05-2020", "11-05-2020", "12-05-2020", "13-05-2020", "14-05-2020", "15-05-2020", "16-05-2020", "17-05-2020", "18-05-2020", "19-05-2020", "20-05-2020", "21-05-2020", "22-05-2020", "23-05-2020", "24-05-2020", "25-05-2020", "26-05-2020", "27-05-2020", "28-05-2020", "29-05-2020", "30-05-2020", "31-05-2020", "01-06-2020", "02-06-2020", "03-06-2020", "04-06-2020", "05-06-2020", "06-06-2020", "07-06-2020", "08-06-2020", "09-06-2020", "10-06-2020", "11-06-2020", "12-06-2020", "13-06-2020", "14-06-2020", "15-06-2020", "16-06-2020", "17-06-2020", "18-06-2020", "19-06-2020", "20-06-2020", "21-06-2020", "22-06-2020", "23-06-2020", "24-06-2020", "25-06-2020", "26-06-2020","27-06-2020","28-06-2020","29-06-2020","30-06-2020","01-07-2020","02-07-2020","03-07-2020"];*/
-       console.log(data);
-   // console.log(data["dates"][0].split("/"));
-    //"original_values", time, dates
+    document.getElementById("features").style.visibility="visible";
     var data110=[];
-    
     for (var i=0; i<data["dates"].length; i++) {
         if (data["value"][i]>=0){
             var val=data["value"][i];
-            
-            
             var temp={"date":new Date(2020,Number(data["dates"][i].split("-")[1])-1,Number(data["dates"][i].split("-")[2])),"value":val};
         data110.push(temp);
         } else {
-            //var val=0;
-        }
-        
     }
+}
     
  var data10=[];
     
