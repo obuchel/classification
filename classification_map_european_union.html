@@ -139,24 +139,28 @@ data10.map(function(d,i){
     ids10.push(d.id.toString());
     names.push(d.n);
 });
-    //    console.log(ids10);
+   //     console.log(ids10);
     
-fetch('NLD_adm2-1.json').then(res => res.json()) 
+fetch('Gemeentegrenzen_2019.geojson').then(res => res.json()) 
 .then(data20 => {  
 var data22={"type":"FeatureCollection"};
 data22["features"]=[];        
 for (var i=0; i<data20["features"].length; i++) {
-    if (names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])>-1) {
-        data20["features"][i]["id"]=ids10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])];
-	 data20["features"][i]["properties"]["id"]=ids10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])];
+    if (ids10.indexOf(data20["features"][i]["properties"]["Gemeentecode"])>-1) {
+        data20["features"][i]["id"]=data20["features"][i]["properties"]["Gemeentecode"];
+
+	//ids10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])];
+	data20["features"][i]["properties"]["id"]=data20["features"][i]["properties"]["Gemeentecode"];
+	console.log(data20["features"][i]["properties"]["id"]);
     } else {
     }
-    if (names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])>-1) {
-              data20["features"][i]["properties"]["NAME"]=data0[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["n"];      
-              data20["features"][i]["properties"]["c"]=data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["c"];
-              data20["features"][i]["properties"]["max"]=data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["max"];
-              data20["features"][i]["properties"]["max1"]=Math.log(data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["max"]+1)*0.5;
-              data20["features"][i]["properties"]["v"]=cols[data10[names.indexOf(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"])]["c"]];      
+    if (ids10.indexOf(data20["features"][i]["properties"]["Gemeentecode"])>-1) {
+              data20["features"][i]["properties"]["NAME"]=data0[ids10.indexOf(data20["features"][i]["properties"]["Gemeentecode"])]["n"];      
+              data20["features"][i]["properties"]["c"]=data10[ids10.indexOf(data20["features"][i]["properties"]["Gemeentecode"])]["c"];
+              data20["features"][i]["properties"]["max"]=data10[ids10.indexOf(data20["features"][i]["properties"]["Gemeentecode"])]["max"];
+              data20["features"][i]["properties"]["max1"]=Math.log(data10[ids10.indexOf(data20["features"][i]["properties"]["Gemeentecode"])]["max"]+1)*0.5;
+        data20["features"][i]["properties"]["v"]=cols[data10[ids10.indexOf(data20["features"][i]["properties"]["Gemeentecode"])]["c"]];
+	console.log(data20["features"][i]["properties"]["v"]);
     } else {
 	//console.log(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"]);
               data20["features"][i]["properties"]["c"]="seagreen";
@@ -396,7 +400,7 @@ console.log(e.features[0].properties.NAME_2);
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 }
-     var htm=e.features[0].properties.NAME_2+": "+e.features[0].properties.max+"<br>";   
+     var htm=e.features[0].properties.Gemeentenaam+": "+e.features[0].properties.max+"<br>";   
     hoveredStateId = e.features[0].id;    
     var lats=e.lngLat;
 if (e.features[0].properties["c"]=="yellow") {
