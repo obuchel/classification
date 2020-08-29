@@ -44,7 +44,7 @@ else:
 
     
     
-e_dataframe = data.set_index("provincia_iso")
+e_dataframe = total.set_index("provincia_iso")
 ids = data[["provincia_iso"]].to_dict('records')
 recs = data["provincia_iso"].to_list()
 
@@ -155,7 +155,8 @@ def classify(ratio, recent_mean, threshold):
     return color
 
 for name in counties:
-    values = e_dataframe1[name]
+    values = np.cumsum(e_dataframe1[name])
+    print(values.to_list())
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-14] for y in y50]
@@ -198,13 +199,15 @@ for name in counties:
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
             json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
-        aar1.append({"n":name,"id":ids[recs.index(name)]["provincia_iso"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
+        if name==name:
+            aar1.append({"n":name,"id":ids[recs.index(name)]["provincia_iso"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
         ind4+=1
 
 
 # with open('classification/data_counties.json', 'w') as outfile:
 #    json.dump(aar,outfile)
 aar1[0]["date"]=date_of_analysis
+print(aar1)
 # this file is used by the map
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
