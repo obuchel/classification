@@ -4,7 +4,7 @@ import json
 import numpy as np
 import os
 
-date_of_analysis='8/25/20'
+date_of_analysis='8/23/20'
 data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv")
 df1 = data["fecha"].str.contains("2020-04-15")
 today = data[df1]
