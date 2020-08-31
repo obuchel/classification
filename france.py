@@ -1,5 +1,9 @@
 #https://static.data.gouv.fr/resources/donnees-relatives-aux-resultats-des-tests-virologiques-covid-19/20200829-191505/sp-pos-quot-dep-2020-08-29-19h15.csv
 #https://www.data.gouv.fr/fr/datasets/r/406c6a23-e283-4300-9484-54e78c8ae675
+#https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-avec-outre-mer.geojson
+#https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-resultats-des-tests-virologiques-covid-19-france/#_
+#https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-resultats-des-tests-virologiques-covid-19/#_
+
 
 import json
 
@@ -11,22 +15,26 @@ import os
 date_of_analysis='8/28/20'
 
 
-output_directory = 'output'
+output_directory = 'output_france'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
 
 if use_canned_file:
-    data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv')
+    data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv',sep=';', engine='python')
     assert data.columns[-1] == date_of_analysis
 else:
     # Original:
-    data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
-    
-e_dataframe = data.set_index("Combined_Key")
-ids = data[["UID", "Combined_Key"]].to_dict('records')
-recs = data["Combined_Key"].to_list()
+    data = pd.read_csv('https://static.data.gouv.fr/resources/donnees-relatives-aux-resultats-des-tests-virologiques-covid-19/20200830-191504/sp-pos-quot-dep-2020-08-30-19h15.csv',sep=';',engine="python")
+#print(data)
+data["Combined_Key"]=data["dep"]
+df=data.groupby(["Combined_Key","jour"])["P"].sum().reset_index()
+print(df)
+
+e_dataframe = df.set_index("Combined_Key")
+ids = df[["Combined_Key"]].to_dict('records')
+recs = df["Combined_Key"].to_list()
 
 # stage latest Canada HR-level data for later processing
 #latest_ca_df = stage_latest()
@@ -34,11 +42,10 @@ recs = data["Combined_Key"].to_list()
 #assert latest_ca_df.index.names == ['Combined_Key']
 #print(latest_ca_df)
 
-e_dataframe0 = e_dataframe.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
-e_dataframe1 = e_dataframe0.transpose()
+e_dataframe0 = e_dataframe#.drop(columns=['dep'])
+e_dataframe1 = pd.pivot_table(e_dataframe0, values='P', index=['jour'],columns=['Combined_Key'],aggfunc=np.sum)
 print(e_dataframe0)
-
-
+print(e_dataframe1)
 
 def add_day_columns(df):
     """Add columns Elapsed_days, Decimals, Day_Year to df."""
@@ -174,10 +181,10 @@ for name in counties:
             color="darkgreen"
 
         print(name,color,ratio,recent_mean0,int(max(y5)))    
-        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
+        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["Combined_Key"])+'.json', 'w') as outfile:
             json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
-        aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
+        aar1.append({"n":name,"id":ids[recs.index(name)]["Combined_Key"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
         ind4+=1
 
 
@@ -187,3 +194,4 @@ aar1[0]["date"]=date_of_analysis
 # this file is used by the map
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
+
