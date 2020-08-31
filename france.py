@@ -76,14 +76,16 @@ if False:
     import sys
     sys.exit(0)
 
-tim = list(e_dataframe0.columns)
+tim = list(e_dataframe0["jour"].unique())
 tim.pop(0)
-
+print("time")
+print(tim)
 ind4 = 0
 aar = []
 aar1 = []
 counties = e_dataframe1.columns[3:]
-
+print("counties")
+print(counties)
 
 def compute_original_values(values):
     result = []
@@ -141,7 +143,8 @@ def classify(ratio, recent_mean, threshold):
     return color
 
 for name in counties:
-    values = e_dataframe1[name]
+    values = np.cumsum(e_dataframe1[name])
+    #print(values)
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-14] for y in y50]
