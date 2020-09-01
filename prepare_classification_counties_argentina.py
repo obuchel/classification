@@ -14,7 +14,7 @@ import csv
 import unicodecsv
 import matplotlib.pyplot as plt
 #onlyfiles = [f for f in listdir('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/') if isfile(join('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/', f))]
-date_of_analysis='8/30/20'
+date_of_analysis='8/31/20'
 
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)

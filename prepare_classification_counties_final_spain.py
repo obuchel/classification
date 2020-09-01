@@ -3,6 +3,8 @@ import seaborn as sns
 import json
 import numpy as np
 import os
+#https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
+#https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-ccaa-spain_consolidated.csv
 
 date_of_analysis='8/23/20'
 data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv")

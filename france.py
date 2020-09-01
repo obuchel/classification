@@ -12,7 +12,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='8/28/20'
+date_of_analysis='8/31/20'
 
 
 output_directory = 'output_france'
@@ -26,7 +26,7 @@ if use_canned_file:
     assert data.columns[-1] == date_of_analysis
 else:
     # Original:
-    data = pd.read_csv('https://static.data.gouv.fr/resources/donnees-relatives-aux-resultats-des-tests-virologiques-covid-19/20200830-191504/sp-pos-quot-dep-2020-08-30-19h15.csv',sep=';',engine="python")
+    data = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/406c6a23-e283-4300-9484-54e78c8ae675',sep=';',engine="python")
 #print(data)
 data["Combined_Key"]=data["dep"]
 df=data.groupby(["Combined_Key","jour"])["P"].sum().reset_index()
