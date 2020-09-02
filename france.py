@@ -21,28 +21,39 @@ os.makedirs(output_directory + '/classification', exist_ok=True)
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
 
+data0=pd.read_csv("donnees-tests-covid19-labo-quotidien-2020-05-29-19h00.csv",sep=';',engine='python')
+print(data0.columns)
+df2=data0.groupby(["dep","jour"])["nb_pos"].sum().reset_index()
+c1=['2020-05-14','2020-05-15','2020-05-16','2020-05-17','2020-05-18','2020-05-19','2020-05-20','2020-05-21','2020-05-22','2020-05-23','2020-05-24','2020-05-25','2020-05-26','2020-05-27','2020-05-28','2020-05-29']
+df3=df2[np.isin(df2['jour'], c1, invert=True)]
+
+#df3['jour']=df3['jour'].dt.date.to_string().replace("\n1","").replace("\n2","")
+df4=df3.rename(columns={'dep': 'Combined_Key', 'jour':'jour','nb_pos': 'P'})
+#dep;jour;clage_covid;nb_test;nb_pos;nb_test_h;nb_pos_h;nb_test_f;nb_pos_f
+
 if use_canned_file:
     data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv',sep=';', engine='python')
     assert data.columns[-1] == date_of_analysis
 else:
     # Original:
     data = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/406c6a23-e283-4300-9484-54e78c8ae675',sep=';',engine="python")
-#print(data)
+#print(data.columns)
 data["Combined_Key"]=data["dep"]
-df=data.groupby(["Combined_Key","jour"])["P"].sum().reset_index()
-print(df)
+df_=data.groupby(["Combined_Key","jour"])["P"].sum().reset_index()
+df=pd.concat([df4, df_])
+#print(df4.columns,df_.columns,df.columns)
 
 e_dataframe = df.set_index("Combined_Key")
 ids = df[["Combined_Key"]].to_dict('records')
 recs = df["Combined_Key"].to_list()
-
+print(ids)
 # stage latest Canada HR-level data for later processing
 #latest_ca_df = stage_latest()
 #print(latest_ca_df)
 #assert latest_ca_df.index.names == ['Combined_Key']
 #print(latest_ca_df)
 
-e_dataframe0 = e_dataframe#.drop(columns=['dep'])
+e_dataframe0 = e_dataframe#drop(columns=['dep'])
 e_dataframe1 = pd.pivot_table(e_dataframe0, values='P', index=['jour'],columns=['Combined_Key'],aggfunc=np.sum)
 print(e_dataframe0)
 print(e_dataframe1)
@@ -143,7 +154,7 @@ def classify(ratio, recent_mean, threshold):
     return color
 
 for name in counties:
-    values = np.cumsum(e_dataframe1[name])
+    values = np.cumsum(e_dataframe1[name].fillna(0))
     #print(values)
     num_rows = len(values)
     y50 = values[-14:]
@@ -183,9 +194,9 @@ for name in counties:
             ratio=0
             color="darkgreen"
 
-        print(name,color,ratio,recent_mean0,int(max(y5)))    
+        print(name,color,ratio,recent_mean0,values,tim)    
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["Combined_Key"])+'.json', 'w') as outfile:
-            json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
+            json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":np.max(y),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
         aar1.append({"n":name,"id":ids[recs.index(name)]["Combined_Key"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
         ind4+=1

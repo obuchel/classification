@@ -6,7 +6,57 @@ import os
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
 #https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-ccaa-spain_consolidated.csv
 
-date_of_analysis='8/23/20'
+new_keys={'Albacete': 'AB', 'Alicante/Alacant': 'A', 'Almería': 'AL', 'Asturias': 'O', 'Badajoz': 'BA', 'Barcelona': 'B', 'Bizkaia': 'BI', 'Burgos': 'BU', 'Cantabria': 'S', 'Castellón/Castelló': 'CS', 'Ceuta': 'CE', 'Ciudad Real': 'CR', 'Cuenca': 'CU', 'Cáceres': 'CC', 'Cádiz': 'CA', 'Córdoba': 'CO', 'Gipuzkoa': 'SS', 'Girona': 'GI', 'Granada': 'GR', 'Guadalajara': 'GU', 'Huelva': 'H', 'Huesca': 'HU', 'Jaén': 'J', 'León': 'LE', 'Lleida': 'L', 'Lugo': 'LU', 'Madrid': 'M', 'Melilla': 'ML', 'Murcia': 'MU', 'Málaga': 'MA', 'Navarra': 'NA', 'Ourense': 'OR', 'Palencia': 'P', 'Pontevedra': 'PO', 'Salamanca': 'SA', 'Santa Cruz de Tenerife': 'TF', 'Segovia': 'SG', 'Sevilla': 'SE', 'Soria': 'SO', 'Tarragona': 'T', 'Teruel': 'TE', 'Toledo': 'TO', 'Valencia/València': 'V', 'Valladolid': 'VA', 'Zamora': 'ZA', 'Zaragoza': 'Z', 'Araba/Álava': 'VI', 'Ávila': 'AV','Rioja, La':'LO','Palmas, Las':'CN','Balears, Illes':'PM','Coruña, A':'C'}
+#['Albacete' 'Alicante/Alacant' 'Almería' 'Araba/Álava' 'Asturias' 'Ávila''Badajoz' 'Balears, Illes' 'Barcelona' 'Bizkaia' 'Burgos' 'Cáceres''Cádiz' 'Cantabria' 'Castellón/Castelló' 'Ceuta' 'Ciudad Real' 'Córdoba' 'Coruña, A' 'Cuenca' 'Gipuzkoa' 'Girona' 'Granada' 'Guadalajara' 'Huelva' 'Huesca' 'Jaén' 'León' 'Lleida' 'Lugo' 'Madrid' 'Málaga' 'Melilla' 'Murcia' 'Navarra' 'Ourense' 'Palencia' 'Palmas, Las' 'Pontevedra' 'Rioja, La' 'Salamanca' 'Santa Cruz de Tenerife' 'Segovia' 'Sevilla' 'Soria' 'Tarragona' 'Teruel' 'Toledo' 'Valencia/València' 'Valladolid''Zamora' 'Zaragoza']
+
+
+
+#'date', 'province', 'ine_code', 'ccaa', 'new_cases', 'PCR', 'TestAc','activos', 'hospitalized', 'intensive_care', 'deceased','cases_accumulated', 'cases_accumulated_PCR', 'recovered', 'num_casos','num_casos_prueba_pcr', 'num_casos_prueba_test_ac','num_casos_prueba_otras', 'num_casos_prueba_desconocida', 'poblacion','cases_per_cienmil', 'intensive_care_per_1000000','deceassed_per_100000', 'hospitalized_per_100000', 'cases_14days','cases_7days', 'cases_PCR_14days', 'cases_PCR_7days', 'daily_cases','daily_cases_avg7', 'daily_cases_PCR', 'daily_cases_PCR_avg7','daily_deaths', 'daily_deaths_inc', 'daily_deaths_avg3','daily_deaths_avg7', 'deaths_last_week', 'source_name', 'source','comments', 'provincia_iso'
+#date,provincia_iso,new_cases
+
+data2=pd.read_csv("https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-provincias-spain_consolidated.csv")
+data2["provincia_iso"]=data2["province"].map(new_keys)
+data2["Combined_Key"]=data2["provincia_iso"]
+#print(data2["Combined_Key"].unique())
+
+
+df_=data2.fillna(0)
+#.groupby(["Combined_Key","date"])["cases_accumulated_PCR"].sum().reset_index()
+print(df_)
+
+e_dataframe = df_.set_index("Combined_Key")
+ids = df_[["Combined_Key"]].to_dict('records')
+recs = df_["Combined_Key"].to_list()
+
+# stage latest Canada HR-level data for later processing
+#latest_ca_df = stage_latest()
+#print(latest_ca_df)
+#assert latest_ca_df.index.names == ['Combined_Key']
+#print(latest_ca_df)
+
+e_dataframe0 = e_dataframe.fillna(0)#.drop(columns=['dep'])
+e_dataframe1 = pd.pivot_table(e_dataframe0, values='cases_accumulated_PCR', index=['date'],columns=['Combined_Key'],aggfunc=np.sum).fillna(0)
+print(e_dataframe0.columns)
+print(e_dataframe1.columns)
+
+
+
+'''
+df11 = data2["date"].str.contains("2020-04-15")
+today1 = data2[df11]
+dates1=data2["date"].unique()
+total1 = today1[["provincia_iso"]]
+print(total1)
+for date in dates1:
+  day1 = data2[ data2["date"].str.contains(date) ]
+  #print(day1)
+  reports1 = list(day1["new_cases"])
+  total1[date]=reports1
+'''
+#print(total1)
+date_of_analysis='8/31/20'
+
+'''
 data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv")
 df1 = data["fecha"].str.contains("2020-04-15")
 today = data[df1]
@@ -26,6 +76,7 @@ for item in list(total.columns)[1:]:
 print(kkeys)
 total=total.rename(columns=kkeys)
 print(total)
+'''
 output_directory = 'output_spain'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
@@ -45,7 +96,7 @@ else:
 '''
 
     
-    
+'''    
 e_dataframe = total.set_index("provincia_iso")
 ids = data[["provincia_iso"]].to_dict('records')
 recs = data["provincia_iso"].to_list()
@@ -60,7 +111,7 @@ e_dataframe0 = e_dataframe
 #.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
 e_dataframe1 = e_dataframe0.transpose()
 print(e_dataframe0)
-
+'''
 
 
 def add_day_columns(df):
@@ -92,8 +143,8 @@ if False:
     import sys
     sys.exit(0)
 
-tim = list(e_dataframe0.columns)
-tim.pop(0)
+tim =data2["date"].unique().tolist() 
+#tim.pop(0)
 
 ind4 = 0
 aar = []
@@ -155,10 +206,20 @@ def classify(ratio, recent_mean, threshold):
             color = "green"
     assert color is not None
     return color
-
+print(counties)
 for name in counties:
-    values = np.cumsum(e_dataframe1[name])
-    print(values.to_list())
+    values = [e_dataframe1[name].to_list()[0]]
+    ind5=1
+    for z in e_dataframe1[name].to_list()[1:]:
+        if ind5>=1:
+            print(z,len(values)-1)
+            if z<values[len(values)-1]:
+                values.append(values[len(values)-1])
+                print("smaller")
+            else:
+                values.append(z)
+        ind5+=1
+    #print(values.to_list())
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-14] for y in y50]
@@ -174,9 +235,11 @@ for name in counties:
     ind2 = 0
     start = []
     start2 = []
+    print(y)
     if int(np.max(y)) > 0:
-        vv = [int(x) for x in y.to_list() if x != min(y3)]
-        start.append(y.to_list().index(vv[0]))
+        vv = [int(x) for x in y if x != min(y3)]
+        #print(vv)
+        start.append(y.index(vv[0]))
     else:
         start.append(0)
     threshold = 1
@@ -197,12 +260,12 @@ for name in counties:
             ratio=0
             color="darkgreen"
 
-        print(name,color,ratio,recent_mean0,int(max(y5)))    
-        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
-            json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
+        print(name,color,ratio,recent_mean0,values)    
+        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["Combined_Key"])+'.json', 'w') as outfile:
+            json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":np.max(y),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
         if name==name:
-            aar1.append({"n":name,"id":ids[recs.index(name)]["provincia_iso"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
+            aar1.append({"n":name,"id":ids[recs.index(name)]["Combined_Key"],"v":ratio,"c":color,"max":round(np.mean(y5))})
         ind4+=1
 
 
