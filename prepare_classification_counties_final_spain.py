@@ -54,7 +54,7 @@ for date in dates1:
   total1[date]=reports1
 '''
 #print(total1)
-date_of_analysis='8/31/20'
+date_of_analysis='9/1/20'
 
 '''
 data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv")
