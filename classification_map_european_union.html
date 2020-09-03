@@ -210,7 +210,7 @@ dataSp["features"][i]["properties"]["province_iso"]="unknown";
     if (idsSp.indexOf(dataSp["features"][i]["properties"]["province_iso"])>-1) {
               dataSp["features"][i]["properties"]["c"]=dataSp0[idsSp.indexOf(dataSp["features"][i]["properties"]["province_iso"])]["c"];
               dataSp["features"][i]["properties"]["max"]=dataSp0[idsSp.indexOf(dataSp["features"][i]["properties"]["province_iso"])]["max"];
-              dataSp["features"][i]["properties"]["max1"]=Math.log(dataSp0[idsSp.indexOf(dataSp["features"][i]["properties"]["province_iso"])]["max"]+1)*0.5;
+        dataSp["features"][i]["properties"]["max1"]=Math.log(dataSp0[idsSp.indexOf(dataSp["features"][i]["properties"]["province_iso"])]["max"]+1)*0.5;
         dataSp["features"][i]["properties"]["v"]=cols[dataSp0[idsSp.indexOf(dataSp["features"][i]["properties"]["province_iso"])]["c"]];
 
     } else {
@@ -218,7 +218,7 @@ dataSp["features"][i]["properties"]["province_iso"]="unknown";
               dataSp["features"][i]["properties"]["c"]="seagreen";
               dataSp["features"][i]["properties"]["v"]=-1;
               dataSp["features"][i]["properties"]["max"]=0;
-              dataSp["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
+              dataSp["features"][i]["properties"]["max1"]=1;
     }
     if (dataSp["features"][i]["geometry"]["type"]=="Polygon"){
          var polygon = turf.polygon(dataSp["features"][i]["geometry"]["coordinates"]);
