@@ -6,7 +6,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='9/1/20'
+date_of_analysis='9/2/20'
 
 
 output_directory = 'output_netherlands'
@@ -225,7 +225,7 @@ for name in counties:
 
             print(name,color,ratio,recent_mean0,int(max(y5)))    
             with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["Combined_Key"])+'.json', 'w') as outfile:
-                json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y5)-min(y5)),"value":y3,"time":tim,"original_values":original_values},outfile)
+                json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
                 #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
                 aar1.append({"n":kkeys0[name],"id":ids[recs.index(name)]["Combined_Key"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             ind4+=1
