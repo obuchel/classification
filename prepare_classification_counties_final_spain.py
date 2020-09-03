@@ -96,7 +96,7 @@ else:
 e_dataframe = total.set_index("provincia_iso")
 ids = data[["provincia_iso"]].to_dict('records')
 recs = data["provincia_iso"].to_list()
-print(ids)
+#print(ids)
 # stage latest Canada HR-level data for later processing
 #latest_ca_df = stage_latest()
 #print(latest_ca_df)
@@ -106,7 +106,7 @@ print(ids)
 e_dataframe0 = e_dataframe
 #.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
 e_dataframe1 = e_dataframe0.transpose()
-print(e_dataframe1)
+#print(e_dataframe1)
 
 
 
@@ -145,7 +145,7 @@ tim =data2["date"].unique().tolist()
 ind4 = 0
 aar = []
 aar1 = []
-counties = e_dataframe1.columns[3:]
+counties = e_dataframe1.columns[3:].to_list()
 
 
 def compute_original_values(values):
@@ -202,13 +202,17 @@ def classify(ratio, recent_mean, threshold):
             color = "green"
     assert color is not None
     return color
+#counties.append('NA')
+#counties.append('ML')
+#counties.append('CN')
+
 #print(counties)
 for name in counties:
     values = np.cumsum(e_dataframe1[name]).to_list()#[0]]
     #print(name,values)
     last=values[len(values)-1]
     try:
-        print(name,final[name].to_list())
+        #print(name,final[name].to_list())
         kk=np.cumsum(final[name]).to_list()
         for en in kk:
             values.append(en+last)
@@ -228,7 +232,7 @@ for name in counties:
                 values.append(z)
         ind5+=1
     '''
-    print(name,values)
+    #print(name,values)
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-14] for y in y50]
@@ -269,8 +273,8 @@ for name in counties:
             #print(name,y3)
             ratio=0
             color="darkgreen"
-
-        #print(name,color,ratio,recent_mean0,values)    
+        if name=="NA":
+            print(name,color,ratio,recent_mean0,values)    
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
             json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
