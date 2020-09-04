@@ -238,6 +238,13 @@ for name in counties:
         ind5+=1
     '''
     print(name,values)
+    values0=[values[0]]
+    for el in values:
+        if el>values0[len(values0)-1]:
+            values0.append(el)
+        else:
+            values0.append(values0[len(values0)-1])
+    values=values0        
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-14] for y in y50]
