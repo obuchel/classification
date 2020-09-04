@@ -7,7 +7,7 @@ import numpy as np
 import os
 from datetime import datetime
 import matplotlib.pyplot as plt
-date_of_analysis='08/03/20'
+date_of_analysis='09/01/20'
 import math
 output_directory = 'output_ireland'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -33,7 +33,7 @@ print(ddata)
 #read json
 #https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json
 dates=["10-03-2020","11-03-2020","12-03-2020","13-03-2020","14-03-2020","15-03-2020","16-03-2020","17-03-2020","18-03-2020","19-03-2020","20-03-2020","21-03-2020","22-03-2020","23-03-2020","24-03-2020","25-03-2020","26-03-2020","27-03-2020","28-03-2020","29-03-2020","30-03-2020","31-03-2020"]
-for x in range(4,9):
+for x in range(4,10):
     if x<10:
         x="0"+str(x)
     for y in range(1,32):
@@ -43,7 +43,7 @@ for x in range(4,9):
             dates.append(str(y)+"-"+str(x)+"-"+"2020")
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 #print(dates0)
-data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland (9).csv")
+data=pd.read_csv("/home/abuchel/Downloads/Covid19CountyStatisticsHPSCIreland.csv")
 print(data)
 data["date"]=[str(x).split(" ")[0] for x in data["TimeStamp"]]
 data["FID"]=data["CountyName"]
@@ -130,15 +130,14 @@ def classify(ratio, recent_mean, threshold):
     if ratio >= 0.79:
         #if recent_mean >= threshold:
         color = "red"
-        #else:
-        
-    elif ratio < -1:
+        #else:        
+    elif ratio <= 0.05:
         #if recent_mean >= threshold:
         color = "green"
-    elif ratio >= 0.22 and ratio < 0.79:
+    elif ratio >= 0.4 and ratio < 0.79:
         #if recent_mean >= threshold:
         color = "orange"
-    elif ratio > -1 and ratio < 0.22:
+    elif ratio > 0.05 and ratio < 0.4:
         color = "yellow"
     assert color is not None
     return color
@@ -169,6 +168,7 @@ for name in counties:
     x2 = x[9:]
     tim2 = tim[4 : -5]
     y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=10).mean()['a'].to_list()[9:]
+    y3=[x if x>0 else 0 for x in y3]
     ys = y3[-24:]
     xs = x[-29:-5]  # last 24 days
     ind2 = 0
@@ -179,24 +179,21 @@ for name in counties:
         start.append(y.index(vv[0]))
     else:
         start.append(0)
-    threshold = 0
+    threshold = 1
     if len(start) > 0:
         max0 = np.max(y3)
         min0 = np.min(ys)
-        if max0 > 0:
-            ratio = y3[-1] / max0
-            recent_mean = int(np.mean(original_values[-14:]))
-            
-            if ratio>0 and recent_mean>0:
-                color = classify(ratio, recent_mean, threshold)
-            elif ratio==0 and recent_mean==0 and name!="Longford":
-                color = "green"
-            else:
-                color="yellow"
-        else:
-            #print(name,y3)
-            ratio=0
-            color="green"
+        #if max0 > 0:
+        ratio = y3[-1] / max0
+        recent_mean = int(np.mean(original_values[-14:]))   
+        #if ratio>0 and recent_mean>0:
+        color = classify(ratio, recent_mean, threshold)
+        #elif ratio==0 and recent_mean==0:
+        #    color = "green"
+        #else:
+        #print(name,y3)
+        #ratio=0
+        #color="green"
         print(recent_mean,ratio,name,color)
         plt.title(name)
         plt.plot(x2,y3,color=color)
