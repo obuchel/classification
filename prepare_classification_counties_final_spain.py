@@ -17,10 +17,11 @@ new_keys={'Albacete': 'AB', 'Alicante/Alacant': 'A', 'Almería': 'AL', 'Asturias
 #date,provincia_iso,new_cases
 
 data2=pd.read_csv("https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-provincias-spain_consolidated.csv")
+#print(data2)
 data2["provincia_iso"]=data2["province"].map(new_keys)
 data2["Combined_Key"]=data2["provincia_iso"]
 #print(data2["Combined_Key"].unique())
-print(data2)
+#print(data2)
 
 df_=data2.fillna(0)
 #.groupby(["Combined_Key","date"])["cases_accumulated_PCR"].sum().reset_index()
@@ -37,10 +38,10 @@ e_dataframe_ = df_.set_index("Combined_Key")
 #print(latest_ca_df)
 
 e_dataframe0_ = e_dataframe_.fillna(0)#.drop(columns=['dep'])
-e_dataframe1_ = pd.pivot_table(e_dataframe0_, values='new_cases', index=['date'],columns=['Combined_Key'],aggfunc=np.sum).fillna(0)
+e_dataframe1_ = pd.pivot_table(e_dataframe0_, values='cases_accumulated', index=['date'],columns=['Combined_Key'],aggfunc=np.sum).fillna(0)
 #print(e_dataframe0.columns)
 final=e_dataframe1_.iloc[-numb:]
-
+#print(final)
 
 '''
 df11 = data2["date"].str.contains("2020-04-15")
@@ -74,7 +75,7 @@ kkeys={"provincia_iso":"provincia_iso"}
 for item in list(total.columns)[1:]:
     kkeys[item]=item.split("-")[1]+"/"+item.split("-")[2]+"/20"
 
-print(kkeys)
+#print(kkeys)
 total=total.rename(columns=kkeys)
 print(total)
 
@@ -208,16 +209,18 @@ def classify(ratio, recent_mean, threshold):
 #counties.append('ML')
 #counties.append('CN')
 
-#print(counties)
+print("f",final,e_dataframe1_["PM"],e_dataframe1_.columns)
 for name in counties:
     values = np.cumsum(e_dataframe1[name]).to_list()#[0]]
     #print(name,values)
     last=values[len(values)-1]
+    #print(final[name])
     try:
-        #print(name,final[name].to_list())
-        kk=np.cumsum(final[name]).to_list()
+        print(name,final[name].to_list())
+        kk=final[name].to_list()
+        #np.cumsum(final[name]).to_list()
         for en in kk:
-            values.append(en+last)
+            values.append(en)
     except:
         for en in range(1,11):
             values.append(last)
@@ -234,7 +237,7 @@ for name in counties:
                 values.append(z)
         ind5+=1
     '''
-    #print(name,values)
+    print(name,values)
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-14] for y in y50]
@@ -254,7 +257,7 @@ for name in counties:
     #print(y)
     if int(np.max(y)) > 0:
         vv = [int(x) for x in y if x != min(y3)]
-        print(vv)
+        #print(vv)
         start.append(y.index(vv[0]))
     else:
         start.append(0)
