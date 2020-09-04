@@ -20,14 +20,14 @@ import wget
 
 url = 'https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv'
  
-wget.download(url, '../Covid19Casos.csv')
+#wget.download(url, '../Covid19Casos.csv')
 
 
 
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
-url='/home/abuchel/Documents/classification_project/Covid19Casos.csv'
+url='/home/abuchel/Documents/classification_project/Covid19Casos (1).csv'
 all_data=[]
 kkeys=[]
 lists={}

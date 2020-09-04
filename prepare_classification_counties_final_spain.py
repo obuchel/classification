@@ -3,6 +3,8 @@ import seaborn as sns
 import json
 import numpy as np
 import os
+numb=11
+date_of_analysis='9/3/20'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
 #https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-ccaa-spain_consolidated.csv
 
@@ -18,7 +20,7 @@ data2=pd.read_csv("https://raw.githubusercontent.com/montera34/escovid19data/mas
 data2["provincia_iso"]=data2["province"].map(new_keys)
 data2["Combined_Key"]=data2["provincia_iso"]
 #print(data2["Combined_Key"].unique())
-
+print(data2)
 
 df_=data2.fillna(0)
 #.groupby(["Combined_Key","date"])["cases_accumulated_PCR"].sum().reset_index()
@@ -37,7 +39,7 @@ e_dataframe_ = df_.set_index("Combined_Key")
 e_dataframe0_ = e_dataframe_.fillna(0)#.drop(columns=['dep'])
 e_dataframe1_ = pd.pivot_table(e_dataframe0_, values='new_cases', index=['date'],columns=['Combined_Key'],aggfunc=np.sum).fillna(0)
 #print(e_dataframe0.columns)
-final=e_dataframe1_.iloc[-10:]
+final=e_dataframe1_.iloc[-numb:]
 
 
 '''
@@ -53,7 +55,7 @@ for date in dates1:
   total1[date]=reports1
 '''
 #print(total1)
-date_of_analysis='9/1/20'
+
 
 
 data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv")
