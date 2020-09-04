@@ -43,7 +43,7 @@ e_dataframe_ = df_.set_index("Combined_Key")
 #print(latest_ca_df)
 
 e_dataframe0_ = e_dataframe_#.drop(columns=['dep'])
-e_dataframe1_ = pd.pivot_table(e_dataframe0_, values='cases_accumulated', index=['date'],columns=['Combined_Key'],aggfunc=np.sum)
+e_dataframe1_ = pd.pivot_table(e_dataframe0_, values='cases_accumulated_PCR', index=['date'],columns=['Combined_Key'],aggfunc=np.sum)
 #print(e_dataframe0.columns)
 final=e_dataframe1_.iloc[-numb:]
 print(e_dataframe1_['M'])
