@@ -16,6 +16,13 @@ import unicodecsv
 import matplotlib.pyplot as plt
 #onlyfiles = [f for f in listdir('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/') if isfile(join('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/', f))]
 date_of_analysis='9/2/20'
+import wget
+
+url = 'https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv'
+ 
+wget.download(url, '../Covid19Casos.csv')
+
+
 
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
