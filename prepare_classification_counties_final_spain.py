@@ -18,8 +18,13 @@ new_keys={'Albacete': 'AB', 'Alicante/Alacant': 'A', 'Almería': 'AL', 'Asturias
 
 data2=pd.read_csv("https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-provincias-spain_consolidated.csv")
 #print(data2)
+
 data2["provincia_iso"]=data2["province"].map(new_keys)
 data2["Combined_Key"]=data2["provincia_iso"]
+for i in data2[["province","provincia_iso","cases_accumulated_PCR"]].iterrows():
+    print(i[1])
+
+
 #print(data2["Combined_Key"].unique())
 #print(data2)
 
@@ -37,11 +42,11 @@ e_dataframe_ = df_.set_index("Combined_Key")
 #assert latest_ca_df.index.names == ['Combined_Key']
 #print(latest_ca_df)
 
-e_dataframe0_ = e_dataframe_.fillna(0)#.drop(columns=['dep'])
-e_dataframe1_ = pd.pivot_table(e_dataframe0_, values='cases_accumulated', index=['date'],columns=['Combined_Key'],aggfunc=np.sum).fillna(0)
+e_dataframe0_ = e_dataframe_#.drop(columns=['dep'])
+e_dataframe1_ = pd.pivot_table(e_dataframe0_, values='cases_accumulated', index=['date'],columns=['Combined_Key'],aggfunc=np.sum)
 #print(e_dataframe0.columns)
 final=e_dataframe1_.iloc[-numb:]
-#print(final)
+print(e_dataframe1_['M'])
 
 '''
 df11 = data2["date"].str.contains("2020-04-15")
@@ -237,14 +242,15 @@ for name in counties:
                 values.append(z)
         ind5+=1
     '''
-    print(name,values)
+    #print(name,values)
     values0=[values[0]]
     for el in values:
         if el>values0[len(values0)-1]:
             values0.append(el)
         else:
             values0.append(values0[len(values0)-1])
-    values=values0        
+    values=values0
+    print(name,values)
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-14] for y in y50]
