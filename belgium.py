@@ -7,6 +7,9 @@
 #https://epistat.sciensano.be/Data/COVID19BE.xlsx
 #1) group by
 #pivot
+#https://raw.githubusercontent.com/ec-jrc/COVID-19/master/data-by-region/jrc-covid-19-all-days-by-regions.csv
+#https://webcritech.jrc.ec.europa.eu/modellingoutput/cv/eu_cv_region/eu_cv_region_inf.htm
+#DATE PROVINCE REGION AGEGROUP SEX  CASES
 
 
 import json
@@ -18,13 +21,20 @@ import os
 #https://cdn.mbta.com/archive/archived_feeds.txt
 date_of_analysis='8/28/20'
 
+df = pd.read_excel(r'https://epistat.sciensano.be/Data/COVID19BE.xlsx', sheet_name='CASES_AGESEX')
+df3=df.dropna().groupby(["DATE","PROVINCE","REGION"])["CASES"].sum().reset_index()
+df3["Combined_Key"]=df3["PROVINCE"]+", "+df3["REGION"]
+df4=pd.pivot_table(df3, values='CASES', index=['DATE'],columns=['Combined_Key'],aggfunc=np.sum)
+#print(df4)
+#print(df4.columns)
+
 
 output_directory = 'output_belgium'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
-
+'''
 if use_canned_file:
     data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv',sep=';', engine='python')
     assert data.columns[-1] == date_of_analysis
@@ -35,10 +45,10 @@ else:
 data["Combined_Key"]=data["dep"]
 df=data.groupby(["Combined_Key","jour"])["P"].sum().reset_index()
 print(df)
-
-e_dataframe = df.set_index("Combined_Key")
-ids = df[["Combined_Key"]].to_dict('records')
-recs = df["Combined_Key"].to_list()
+'''
+e_dataframe = df3.set_index("Combined_Key")
+ids = df3[["Combined_Key"]].to_dict('records')
+recs = df3["Combined_Key"].to_list()
 
 # stage latest Canada HR-level data for later processing
 #latest_ca_df = stage_latest()
@@ -47,7 +57,8 @@ recs = df["Combined_Key"].to_list()
 #print(latest_ca_df)
 
 e_dataframe0 = e_dataframe#.drop(columns=['dep'])
-e_dataframe1 = pd.pivot_table(e_dataframe0, values='P', index=['jour'],columns=['Combined_Key'],aggfunc=np.sum)
+e_dataframe1 = df4
+#pd.pivot_table(e_dataframe0, values='P', index=['jour'],columns=['Combined_Key'],aggfunc=np.sum)
 print(e_dataframe0)
 print(e_dataframe1)
 
@@ -80,7 +91,7 @@ if False:
     import sys
     sys.exit(0)
 
-tim = list(e_dataframe0["jour"].unique())
+tim = list(e_dataframe0["DATE"].unique())
 tim.pop(0)
 print("time")
 print(tim)
@@ -147,7 +158,7 @@ def classify(ratio, recent_mean, threshold):
     return color
 
 for name in counties:
-    values = np.cumsum(e_dataframe1[name])
+    values = np.cumsum(e_dataframe1[name].fillna(0))
     #print(values)
     num_rows = len(values)
     y50 = values[-14:]

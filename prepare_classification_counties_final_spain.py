@@ -3,8 +3,8 @@ import seaborn as sns
 import json
 import numpy as np
 import os
-numb=11
-date_of_analysis='9/3/20'
+numb=12
+date_of_analysis='9/4/20'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
 #https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-ccaa-spain_consolidated.csv
 
@@ -221,7 +221,7 @@ for name in counties:
     last=values[len(values)-1]
     #print(final[name])
     try:
-        print(name,final[name].to_list())
+        #print(name,final[name].to_list())
         kk=final[name].to_list()
         #np.cumsum(final[name]).to_list()
         for en in kk:
@@ -250,7 +250,7 @@ for name in counties:
         else:
             values0.append(values0[len(values0)-1])
     values=values0
-    print(name,values)
+    #print(name,values)
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-14] for y in y50]
@@ -281,7 +281,7 @@ for name in counties:
         recent_mean0=0
         if max0 > 0:
             ratio = y3[-1] / max0
-            recent_mean = int(np.mean(original_values[-11:]))
+            recent_mean = int(np.mean(original_values[-14:]))
             recent_mean0 += recent_mean
             #if recent_mean > threshold:
             color = classify(ratio, recent_mean, threshold)
@@ -291,8 +291,8 @@ for name in counties:
             #print(name,y3)
             ratio=0
             color="darkgreen"
-        if name=="NA":
-            print(name,color,ratio,recent_mean0,values)    
+        #if name=="NA":
+        print(name,color,ratio,recent_mean0,values)    
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
             json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
