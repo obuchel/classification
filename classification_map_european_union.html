@@ -282,7 +282,80 @@ dataSp["features"][i]["properties"]["province_iso"]="unknown";
          dataFr2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":dataFr["features"][i]["properties"]});
     }
 }    
-	    
+
+
+var dataBl0=[];
+fetch('output_belgium/classification/classification_ids_counties2.json').then(res => res.json()) 
+.then(dataBl0 => { 
+var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
+    var idsBl=[];
+    var names={"Brussels":"Bruxelles"}
+    dataBl0.map(function(d,i){
+	if (d3.keys(names).indexOf(d.id.toString().split(", ")[0])==-1) {
+	
+	    idsBl.push(d.id.toString().split(", ")[0]);
+	} else {
+idsBl.push(names[d.id.toString().split(", ")[0]]);
+	}
+});
+
+//    console.log(dataBl0);
+fetch('BEL_adm2.json').then(res => res.json()) 
+.then(dataBl => {
+
+
+var dataBl2={"type":"FeatureCollection"};
+dataBl2["features"]=[];        
+for (var i=0; i<dataBl["features"].length; i++) {
+  /*  if (typeof dataSp["features"][i]["properties"]["province_iso"]=="undefined"){
+dataSp["features"][i]["properties"]["province_iso"]="unknown";
+    }*/
+    if (idsBl.indexOf(dataBl["features"][i]["properties"]["NAME_2"].replace("-","").replace(" ",""))>-1) {
+        if (dataBl["features"][i]["properties"]["NAME_2"].replace("-","").replace(" ","")!="Bruxelles"){
+	
+        dataBl["features"][i]["id"]=dataBl["features"][i]["properties"]["NAME_2"].replace("-","").replace(" ","");
+	    dataBl["features"][i]["properties"]["id"]=dataBl["features"][i]["properties"]["NAME_2"].replace("-","").replace(" ","");
+	} else {
+
+dataBl["features"][i]["id"]="Brussels";
+	    dataBl["features"][i]["properties"]["id"]="Brussels";
+	}
+	
+    } else {
+//	dataSp["features"][i]["properties"]["province_iso"]="unknown";
+    }
+    if (idsBl.indexOf(dataBl["features"][i]["properties"]["NAME_2"].replace("-","").replace(" ",""))>-1) {
+              dataBl["features"][i]["properties"]["c"]=dataBl0[idsBl.indexOf(dataBl["features"][i]["properties"]["NAME_2"].replace("-","").replace(" ",""))]["c"];
+              dataBl["features"][i]["properties"]["max"]=dataBl0[idsBl.indexOf(dataBl["features"][i]["properties"]["NAME_2"].replace("-","").replace(" ",""))]["max"];
+              dataBl["features"][i]["properties"]["max1"]=Math.log(dataBl0[idsBl.indexOf(dataBl["features"][i]["properties"]["NAME_2"].replace("-","").replace(" ",""))]["max"]+1)*0.5;
+        dataBl["features"][i]["properties"]["v"]=cols[dataBl0[idsBl.indexOf(dataBl["features"][i]["properties"]["NAME_2"].replace("-","").replace(" ",""))]["c"]];
+
+    } else {
+	//console.log(data20["features"][i]["properties"]["NAME_2"]+", "+data20["features"][i]["properties"]["NAME_1"]);
+              dataBl["features"][i]["properties"]["c"]="seagreen";
+              dataBl["features"][i]["properties"]["v"]=-1;
+              dataBl["features"][i]["properties"]["max"]=0;
+              dataBl["features"][i]["properties"]["max1"]=Math.log(1)*0.5;
+    }
+    if (dataBl["features"][i]["geometry"]["type"]=="Polygon"){
+         var polygon = turf.polygon(dataBl["features"][i]["geometry"]["coordinates"]);
+         var center = turf.centerOfMass(polygon);
+         dataBl2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":dataBl["features"][i]["properties"]});
+    } else {
+         var polygon = turf.polygon(dataBl["features"][i]["geometry"]["coordinates"][0]);
+         var center = turf.centerOfMass(polygon);
+         dataBl2["features"].push({"type": "Feature", "geometry": {"type": "Point", "coordinates":center["geometry"]["coordinates"]},"properties":dataBl["features"][i]["properties"]});
+    }
+
+
+}    
+
+
+
+
+
+
+    
 mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjanlrY3diNzIwZDdxM25uN2owN2c5ZHpiIn0.XzMbcbHF6H42u0Uxo1L8lg';
 map = new mapboxgl.Map({
 container: 'map',
@@ -391,7 +464,24 @@ type: 'geojson',
 map.addSource('FranceP', {
 type: 'geojson',
 'data': dataFr    
-});        
+});
+
+
+map.addSource('BelgiumC', {
+type: 'geojson',
+'data': dataBl2    
+});    
+
+
+
+    
+map.addSource('BelgiumP', {
+type: 'geojson',
+'data': dataBl    
+});       
+
+
+
     
 map.addSource('states', {
 type: 'geojson',
@@ -450,6 +540,26 @@ stops: arr
 },
 'filter': ['==', '$type', 'Polygon']
 },"country-label","admin-0-boundary");
+
+map.addLayer({
+'id': 'BelgiumP',
+'type': 'fill',
+'source': 'BelgiumP',
+'paint': {
+'fill-color': {
+property: "v",
+stops: arr
+},
+'fill-outline-color': 'black',
+'fill-opacity': [
+'case',
+['boolean', ['feature-state', 'hover'], false],
+0.6,
+0.5
+]
+},
+'filter': ['==', '$type', 'Polygon']
+},"country-label","admin-0-boundary");    
 
     
 map.addLayer({
@@ -514,7 +624,20 @@ map.addLayer({
 'circle-color': "grey",
 'circle-opacity': 0.1
 }
-},"country-label","admin-0-boundary");    
+},"country-label","admin-0-boundary");
+
+map.addLayer({
+'id': 'BelgiumC',
+'type': 'circle',
+'source': 'BelgiumC',
+'paint': {
+'circle-radius':['get', 'max1'],
+'circle-stroke-color': '#000000',
+'circle-stroke-width': 0.5,
+'circle-color': "grey",
+'circle-opacity': 0.1
+}
+},"country-label","admin-0-boundary");     
 
  map.addLayer({
 'id': 'population2',
@@ -586,7 +709,22 @@ map.addLayer({
 'line-color': '#000000',
 'line-width': 0.2
 }
-},"country-label","admin-0-boundary");    
+},"country-label","admin-0-boundary");
+
+
+map.addLayer({
+'id': 'Belgium_states',
+'type': 'line',
+'source': 'BelgiumP',
+'layout': {
+'line-join': 'round',
+'line-cap': 'round'
+},
+'paint': {
+'line-color': '#000000',
+'line-width': 0.2
+}
+},"country-label","admin-0-boundary");      
 
 map.addLayer({
 'id': 'population3',
@@ -825,6 +963,79 @@ popup=new mapboxgl.Popup()
 
   //  }
 });
+
+
+
+map.on('click', 'BelgiumP', function(e) {
+//console.log(e.features[0].properties);
+ //   if (typeof e.features[0].properties.id!="undefined"){
+    if (typeof popup=="object") popup.remove();
+        hoveredStateId = null;
+        var coordinates = e.features[0].geometry.coordinates[0][0].slice();
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+	var htm=e.features[0].properties.NAME_2+": "+e.features[0].properties.max+"<br>";
+//	alert(htm);
+    hoveredStateId = e.features[0].properties.id;    
+    var lats=e.lngLat;
+if (e.features[0].properties["c"]=="yellow") {
+    var color="#fed976";
+} else if (e.features[0].properties["c"]=="green") {
+ var color="#1a9850";
+} else if (e.features[0].properties["c"]=="red") {
+ var color="#800026";
+} else if (e.features[0].properties["c"]=="orange") {
+ var color="#fd8d3c";
+} else 
+
+{
+    var color="#1a9850";
+}
+    document.getElementById("plot").innerHTML="";
+    //   console.log(e.features[0].properties);
+    var nn={"Wallonie":"Wallonia","Bruxelles":"Brussels","Vlaanderen":"Flanders"};
+    var num=e.features[0].properties.i=e.features[0].properties.id.toString()+", "+nn[e.features[0].properties.NAME_1];
+        var url='output_belgium/classification/data_counties_'+num+'.json';
+	//console.log(url);
+  fetch(url).then(res => res.json()) 
+	.then(data7 => {
+	    console.log(data7);
+            var kk=[];
+	    data7["dates"].map(function(d){
+		var t=d.split("-");
+		//console.log(t);
+		kk.push(d);
+	    });
+
+	    data7["dates"]=kk;
+	    data7["time"]=kk;
+	    //console.log(data7);
+       if (document.getElementById("default").checked==true) {
+        draw_plot(data7,color);
+       } else {
+           for (var i=0; i<arr.length; i++) {
+               if (arr[i][1]==color) {
+                   draw_plot(data7,arr20[i][1]);
+		                  }
+           }
+       }
+popup=new mapboxgl.Popup()
+.setLngLat(lats)
+.setHTML(htm)
+.addTo(map);
+});
+//    }    	else {
+//	d3.select("#plot").html("");
+
+  //  }
+});
+
+
+
+
+
+    
 });
 });	        
 });
@@ -833,7 +1044,10 @@ popup=new mapboxgl.Popup()
 });
 });
 });
-});    
+});
+});
+});
+    
 function change_colors(){
    if (typeof popup=="object") popup.remove();
        document.getElementById("plot").style.visibility="hidden";

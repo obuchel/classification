@@ -43,7 +43,7 @@ for x in range(4,10):
             dates.append(str(y)+"-"+str(x)+"-"+"2020")
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 #print(dates0)
-data=pd.read_csv("/home/abuchel/Downloads/Covid19CountyStatisticsHPSCIreland.csv")
+data=pd.read_csv("/home/abuchel/Downloads/Covid19CountyStatisticsHPSCIreland(1).csv")
 print(data)
 data["date"]=[str(x).split(" ")[0] for x in data["TimeStamp"]]
 data["FID"]=data["CountyName"]
@@ -131,13 +131,13 @@ def classify(ratio, recent_mean, threshold):
         #if recent_mean >= threshold:
         color = "red"
         #else:        
-    elif ratio <= 0.05:
+    elif ratio <= 0.04:
         #if recent_mean >= threshold:
         color = "green"
     elif ratio >= 0.4 and ratio < 0.79:
         #if recent_mean >= threshold:
         color = "orange"
-    elif ratio > 0.05 and ratio < 0.4:
+    elif ratio > 0.04 and ratio < 0.4:
         color = "yellow"
     assert color is not None
     return color
