@@ -3,8 +3,8 @@ import seaborn as sns
 import json
 import numpy as np
 import os
-numb=12
-date_of_analysis='9/6/20'
+numb=16
+date_of_analysis='9/8/20'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
 #https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-ccaa-spain_consolidated.csv
 
