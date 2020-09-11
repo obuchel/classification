@@ -148,7 +148,7 @@ if False:
     import sys
     sys.exit(0)
 
-tim =data2["date"].unique().tolist() 
+tim =data["fecha"].unique().tolist() 
 #tim.pop(0)
 
 ind4 = 0
