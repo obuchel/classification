@@ -16,12 +16,12 @@ new_keys={'Albacete': 'AB', 'Alicante/Alacant': 'A', 'Almería': 'AL', 'Asturias
 #'date', 'province', 'ine_code', 'ccaa', 'new_cases', 'PCR', 'TestAc','activos', 'hospitalized', 'intensive_care', 'deceased','cases_accumulated', 'cases_accumulated_PCR', 'recovered', 'num_casos','num_casos_prueba_pcr', 'num_casos_prueba_test_ac','num_casos_prueba_otras', 'num_casos_prueba_desconocida', 'poblacion','cases_per_cienmil', 'intensive_care_per_1000000','deceassed_per_100000', 'hospitalized_per_100000', 'cases_14days','cases_7days', 'cases_PCR_14days', 'cases_PCR_7days', 'daily_cases','daily_cases_avg7', 'daily_cases_PCR', 'daily_cases_PCR_avg7','daily_deaths', 'daily_deaths_inc', 'daily_deaths_avg3','daily_deaths_avg7', 'deaths_last_week', 'source_name', 'source','comments', 'provincia_iso'
 #date,provincia_iso,new_cases
 
-data2=pd.read_csv("https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-provincias-spain_consolidated.csv")
-#print(data2)
+data2=pd.read_csv("spain_old.csv")
+print(data2)
 
-data2["provincia_iso"]=data2["province"].map(new_keys)
+#data2["provincia_iso"]=data2["province"].map(new_keys)
 data2["Combined_Key"]=data2["provincia_iso"]
-for i in data2[["province","provincia_iso","cases_accumulated_PCR"]].iterrows():
+for i in data2[["provincia_iso","num_casos"]].iterrows():
     print(i[1])
 
 
@@ -43,10 +43,12 @@ e_dataframe_ = df_.set_index("Combined_Key")
 #print(latest_ca_df)
 
 e_dataframe0_ = e_dataframe_#.drop(columns=['dep'])
-e_dataframe1_ = pd.pivot_table(e_dataframe0_, values='cases_accumulated_PCR', index=['date'],columns=['Combined_Key'],aggfunc=np.sum)
+e_dataframe1_ = pd.pivot_table(e_dataframe0_, values='num_casos', index=['fecha'],columns=['Combined_Key'],aggfunc=np.sum)
 #print(e_dataframe0.columns)
-final=e_dataframe1_.iloc[-numb:]
-print(e_dataframe1_['M'])
+final=e_dataframe1_
+print(final)
+print(final.index)
+
 
 '''
 df11 = data2["date"].str.contains("2020-04-15")
@@ -148,9 +150,9 @@ if False:
     import sys
     sys.exit(0)
 
-tim =data["fecha"].unique().tolist() 
+tim =final.index.to_list()+data["fecha"].unique().tolist() 
 #tim.pop(0)
-
+print(tim)
 ind4 = 0
 aar = []
 aar1 = []
@@ -217,91 +219,60 @@ def classify(ratio, recent_mean, threshold):
 
 print(e_dataframe1)
 for name in counties:
-    #print(name)
-    values = np.cumsum(e_dataframe1[name]).to_list()#[0]]
-    #print(name,values)
-    last=values[len(values)-1]
-    #print(final[name])
-    '''
     try:
-        #print(name,final[name].to_list())
-        kk=final[name].to_list()
-        #np.cumsum(final[name]).to_list()
-        for en in kk:
-            values.append(en)
-    except:
-        for en in range(1,11):
-            values.append(last)
-        continue
-    
-    ind5=1
-    for z in e_dataframe1[name].to_list()[1:]:
-        if ind5>=1:
-            #print(z,len(values)-1)
-            if z<values[len(values)-1]:
-                values.append(values[len(values)-1])
-                #print("smaller")
+        values = np.cumsum(final[name].to_list()+e_dataframe1[name].to_list()).tolist()#[0]]
+        last=values[len(values)-1]
+
+        num_rows = len(values)
+        y50 = values[-14:]
+        y5 = [y - values[-14] for y in y50]
+        y = values
+        original_values = compute_original_values(values)
+        x = e_dataframe1[e_dataframe1.columns[0]]
+        y1 = interpolate(y)
+        x2 = x[9:]
+        tim2 = tim[4 : -5]
+        y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=10).mean()['a'].to_list()[9:]
+        #print(y3)
+        ys = y3[-24:]
+        xs = x[-29:-5]  # last 24 days
+        ind2 = 0
+        start = []
+        start2 = []
+        #print(y)
+        if int(np.max(y)) > 0:
+            vv = [int(x) for x in y if x != min(y3)]
+            #print(vv)
+            start.append(y.index(vv[0]))
+        else:
+            start.append(0)
+        threshold = 1
+        if len(start) > 0:
+            max0 = np.max(y3)
+            min0 = np.min(ys)
+            recent_mean0=0
+            if max0 > 0:
+                ratio = y3[-1] / max0
+                recent_mean = int(np.mean(original_values[-14:]))
+                recent_mean0 += recent_mean
+                #if recent_mean > threshold:
+                color = classify(ratio, recent_mean, threshold)
+                #else:
+                #    color = "green"
             else:
-                values.append(z)
-        ind5+=1
-    '''
-    #print(name,values)
-    values0=[values[0]]
-    for el in values:
-        if el>values0[len(values0)-1]:
-            values0.append(el)
-        else:
-            values0.append(values0[len(values0)-1])
-    #values=values0
-    #print(name,values)
-    num_rows = len(values)
-    y50 = values[-14:]
-    y5 = [y - values[-14] for y in y50]
-    y = values
-    original_values = compute_original_values(values)
-    x = e_dataframe1[e_dataframe1.columns[0]]
-    y1 = interpolate(y)
-    x2 = x[9:]
-    tim2 = tim[4 : -5]
-    y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=10).mean()['a'].to_list()[9:]
-    #print(y3)
-    ys = y3[-24:]
-    xs = x[-29:-5]  # last 24 days
-    ind2 = 0
-    start = []
-    start2 = []
-    #print(y)
-    if int(np.max(y)) > 0:
-        vv = [int(x) for x in y if x != min(y3)]
-        #print(vv)
-        start.append(y.index(vv[0]))
-    else:
-        start.append(0)
-    threshold = 1
-    if len(start) > 0:
-        max0 = np.max(y3)
-        min0 = np.min(ys)
-        recent_mean0=0
-        if max0 > 0:
-            ratio = y3[-1] / max0
-            recent_mean = int(np.mean(original_values[-14:]))
-            recent_mean0 += recent_mean
-            #if recent_mean > threshold:
-            color = classify(ratio, recent_mean, threshold)
-            #else:
-            #    color = "green"
-        else:
-            #print(name,y3)
-            ratio=0
-            color="darkgreen"
-        #if name=="NA":
-        print(name,color,ratio,recent_mean0,values)    
-        with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
-            json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
+                #print(name,y3)
+                ratio=0
+                color="darkgreen"
+            #if name=="NA":
+            print(name,color,ratio,recent_mean0,values)    
+            with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
+                json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
-        if name==name:
-            aar1.append({"n":name,"id":ids[recs.index(name)]["provincia_iso"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
-        ind4+=1
+            if name==name:
+                aar1.append({"n":name,"id":ids[recs.index(name)]["provincia_iso"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
+            ind4+=1
+    except:
+        continue
 
 
 # with open('classification/data_counties.json', 'w') as outfile:
