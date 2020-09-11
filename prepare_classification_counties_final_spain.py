@@ -64,8 +64,9 @@ for date in dates1:
 
 
 
-data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv")
-df1 = data["fecha"].str.contains("2020-04-15")
+data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv",sep=",")
+print(data)
+df1 = data["fecha"].str.contains("2020-05-08")
 today = data[df1]
 dates=data["fecha"].unique()
 total = today[["provincia_iso"]]
@@ -214,12 +215,14 @@ def classify(ratio, recent_mean, threshold):
 #counties.append('ML')
 #counties.append('CN')
 
-print("f",final,e_dataframe1_["PM"],e_dataframe1_.columns)
+print(e_dataframe1)
 for name in counties:
+    #print(name)
     values = np.cumsum(e_dataframe1[name]).to_list()#[0]]
     #print(name,values)
     last=values[len(values)-1]
     #print(final[name])
+    '''
     try:
         #print(name,final[name].to_list())
         kk=final[name].to_list()
@@ -230,7 +233,7 @@ for name in counties:
         for en in range(1,11):
             values.append(last)
         continue
-    '''
+    
     ind5=1
     for z in e_dataframe1[name].to_list()[1:]:
         if ind5>=1:
@@ -249,7 +252,7 @@ for name in counties:
             values0.append(el)
         else:
             values0.append(values0[len(values0)-1])
-    values=values0
+    #values=values0
     #print(name,values)
     num_rows = len(values)
     y50 = values[-14:]

@@ -6,7 +6,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='9/9/20'
+date_of_analysis='9/10/20'
 
 
 output_directory = 'output'
@@ -20,7 +20,8 @@ if use_canned_file:
     assert data.columns[-1] == date_of_analysis
 else:
     # Original:
-    data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
+    data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv')
+    #data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
     
 e_dataframe = data.set_index("Combined_Key")
 ids = data[["UID", "Combined_Key"]].to_dict('records')
