@@ -141,15 +141,33 @@ var ids=[];
     if (name0=="Belgium") {
 var names={"Brussels":"Bruxelles"}
     data0.map(function(d,i){
-	if (d3.keys(names).indexOf(d.id.toString().split(", ")[0])==-1) {
-	
+	if (d3.keys(names).indexOf(d.id.toString().split(", ")[0])==-1) {	
 	    ids.push(d.id.toString().split(", ")[0]);
-	} else {
+	}/* else if (name0=="Italy") {
+	    var names={"Trentino-Alto Adige":"Trento","Friuli-Venezia Giulia":"Friuli Venezia Giulia","Apulia":"Puglia","Sicily":"Sicilia"};
+    data0.map(function(d,i){
+	if (d3.keys(names).indexOf(d.id.toString().split(", ")[0])==-1) {	
+	    ids.push(d.id.toString().split(", ")[0]);
+	}*/ else {
 ids.push(names[d.id.toString().split(", ")[0]]);
 	}
 });
-    } else {
+    } else if (name0=="Italy") {
+	    var names={"Trentino-Alto Adige":"Trento","Friuli-Venezia Giulia":"Friuli Venezia Giulia","Apulia":"Puglia","Sicily":"Sicilia"};
+	data0.map(function(d,i){
+	//    console.log(d.id);
+	if (d3.keys(names).indexOf(d.id.toString())==-1) {	
+	    ids.push(d.id.toString());
+	}
+	else {
+ids.push(names[d.id.toString()]);
+	}
+    });
 
+    }
+
+
+    else {
     
 data0.map(function(d,i){
     if (name0=="Germany" && d.id.length==4) {   
@@ -158,12 +176,13 @@ data0.map(function(d,i){
          ids.push(d.id.toString())
     }
 });
-    }	
+    }
 //    console.log(ids);    
 fetch(second_link).then(res => res.json()) 
 .then(data => {  
 var data2={"type":"FeatureCollection"};
-    data2["features"]=[];        
+    data2["features"]=[];
+    var nnk={"Trentino-Alto Adige":"Trento","Friuli-Venezia Giulia":"Friuli Venezia Giulia","Apulia":"Puglia","Sicily":"Sicilia","Brussels":"Bruxelles"};
     for (var i=0; i<data["features"].length; i++) {
         //if (typeof data["features"][i]["properties"][kkey]!="undefined") {
             if (name0=="Belgium"){
@@ -171,31 +190,39 @@ var data2={"type":"FeatureCollection"};
 	    } else {
                 var temp=data["features"][i]["properties"][kkey];
 	    }
+	//console.log(temp);
 	if (typeof temp!="undefined") {    
             
-        if (temp!="Bruxelles"){
+            if (d3.keys(nnk).indexOf(temp)==-1){
 	
             data["features"][i]["id"]=temp.toString();
 	    data["features"][i]["properties"]["id"]=temp;
 	} else {
-
-data["features"][i]["id"]="Brussels";
-	    data["features"][i]["properties"]["id"]="Brussels";
+	   // console.log(temp);
+data["features"][i]["id"]=nnk[temp];
+	    data["features"][i]["properties"]["id"]=nnk[temp];
+	}
+	 
+        } else {
+             if (d3.keys(nnk).indexOf(temp)==-1){
+	
+            data["features"][i]["id"]=temp;
+	    data["features"][i]["properties"]["id"]=temp;
+	} else {
+	   // console.log(temp);
+data["features"][i]["id"]=nnk[temp];
+	    data["features"][i]["properties"]["id"]=nnk[temp];
 	}
 	
-
-
-
-	    
-        } else {
-            data["features"][i]["id"]=temp;
         }
-        if (ids.indexOf(temp)>-1) {
-            data["features"][i]["properties"]["NAME"]=data0[ids.indexOf(temp)]["n"];
-            data["features"][i]["properties"]["c"]=data0[ids.indexOf(temp)]["c"];
-            data["features"][i]["properties"]["max"]=data0[ids.indexOf(temp)]["max"];                   
-            data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(temp)]["max"]+1)*0.5;
-            data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(temp)]["c"]];        
+
+	
+        if (ids.indexOf(data["features"][i]["properties"]["id"])>-1) {
+            data["features"][i]["properties"]["NAME"]=data0[ids.indexOf(data["features"][i]["properties"]["id"])]["n"];
+            data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["id"])]["c"];
+            data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["id"])]["max"];                   
+            data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["id"])]["max"]+1)*0.5;
+            data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["id"])]["c"]];        
         } else {
             data["features"][i]["properties"]["c"]="green";
             data["features"][i]["properties"]["v"]=0;
@@ -213,7 +240,7 @@ data["features"][i]["id"]="Brussels";
         }
     }
 
-    console.log(name0,data["features"]);
+  //  console.log(name0,data["features"]);
 map.addSource(name0, {
 type: 'geojson',
 'data': data    
@@ -275,7 +302,8 @@ map.addLayer({
 }
 },"country-label","admin-0-boundary");    
     
-map.on('click', 'place_data_'+name0, function(e) {
+    map.on('click', 'place_data_'+name0, function(e) {
+	console.log(e.features[0].properties.NAME_1);
     if (typeof popup=="object") popup.remove();
  hoveredStateId = null;
     var coordinates = e.features[0].geometry.coordinates[0][0].slice();
@@ -301,12 +329,30 @@ if (e.features[0].properties["c"]=="yellow") {
 	if (name0=="Germany"){
 var num=e.features[0].id.toString();
 	} else if (name0=="Belgium") {
- var nn={"Wallonie":"Wallonia","Bruxelles":"Brussels","Vlaanderen":"Flanders"};
-    var num=e.features[0].properties.i=e.features[0].properties.id.toString()+", "+nn[e.features[0].properties.NAME_1];
-	} else {
+	    console.log(e.features[0].properties);
+	    var nn={"Wallonie":"Wallonia","Bruxelles":"Brussels","Vlaanderen":"Flanders"};
+	    if (d3.keys(nn).indexOf(e.features[0].properties.NAME_1)>-1) {
+		if (e.features[0].properties.NAME_1=="Bruxelles") {
+                var num="Brussels, "+nn[e.features[0].properties.NAME_1];
+		} else{
+		    var num=e.features[0].properties.id.toString()+", "+nn[e.features[0].properties.NAME_1];
+		}
+	    } else {
+var num=e.features[0].properties.id.toString()+", "+e.features[0].properties.NAME_1;
+	    }
+	} else if (name0=="Italy"){
+	    var nn={"Trentino-Alto Adige":"Trento","Friuli-Venezia Giulia":"Friuli Venezia Giulia","Apulia":"Puglia","Sicily":"Sicilia"}
+	    if (d3.keys(nn).indexOf(e.features[0].properties.NAME_1)==-1) {	    
+		var num=e.features[0].properties.NAME_1;
+	    } else {
+var num=nn[e.features[0].properties.NAME_1];
+	    }    
+	}
+	else {
 var num=e.features[0].properties[name3].toString();
 	}
-    var url='output_'+name0.toLowerCase()+'/classification/data_counties_'+num+'.json';
+	var url='output_'+name0.toLowerCase()+'/classification/data_counties_'+num+'.json';
+	console.log(url);
   fetch(url).then(res => res.json()) 
 	.then(data7 => {
 	    
