@@ -140,9 +140,14 @@ var item = document.createElement('div');
     add_layer('output_slovakia/classification/classification_ids_counties2.json','SVK_adm1-2.json','SVK_adm1-2.json','NAME_1','Slovakia','NAME_1','NAME_1');
     add_layer('output_poland/classification/classification_ids_counties2.json','POL_adm1-2.json','POL_adm1-2.json','NAME_1','Poland','NAME_1','NAME_1');
     add_layer('output_bulgaria/classification/classification_ids_counties2.json','BGR_adm1-2.json','BGR_adm1-2.json','NAME_1','Bulgaria','NAME_1','NAME_1');
-    add_layer('output_romania/classification/classification_ids_counties2.json','ROU_adm1-2.json','ROU_adm1-2.json','NAME_1','Romania','NAME_1','NAME_1');    
-    
-//AUT_adm1-2.json  
+    add_layer('output_romania/classification/classification_ids_counties2.json','ROU_adm1-2.json','ROU_adm1-2.json','NAME_1','Romania','NAME_1','NAME_1');
+    add_layer('output_albania/classification/classification_ids_counties2.json','ALB_adm1-2.json','ALB_adm1-2.json','NAME_1','Albania','NAME_1','NAME_1');
+    add_layer('output_croatia/classification/classification_ids_counties2.json','HRV_adm1-2.json','HRV_adm1-2.json','NAME_1','Croatia','NAME_1','NAME_1');
+    add_layer('output_slovenia/classification/classification_ids_counties2.json','SVN_adm1-2.json','SVN_adm1-2.json','NAME_1','Slovenia','NAME_1','NAME_1');
+    add_layer('output_norway/classification/classification_ids_counties2.json','NOR_adm1-2.json','NOR_adm1-2.json','NAME_1','Norway','NAME_1','NAME_1');
+    add_layer('output_finland/classification/classification_ids_counties2.json','FIN_adm2-2.json','FIN_adm2-2.json','NAME_1','Finland','NAME_1','NAME_1');
+    add_layer('output_sweden/classification/classification_ids_counties2.json','SWE_adm1-1.json','SWE_adm1-1.json','NAME_1','Sweden','NAME_1','NAME_1');
+      
 });
     
   function add_layer(first_link,second_link,third_link,kkey,name0,name2,name3) {
@@ -318,7 +323,7 @@ map.addLayer({
 },"country-label","admin-0-boundary");    
     
     map.on('click', 'place_data_'+name0, function(e) {
-	//console.log(e.features[0].properties);
+	console.log(e.features[0].properties);
     if (typeof popup=="object") popup.remove();
  hoveredStateId = null;
     var coordinates = e.features[0].geometry.coordinates[0][0].slice();
