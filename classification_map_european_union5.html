@@ -378,19 +378,19 @@ var url='output1_'+name0.toLowerCase()+'/classification/data_counties_'+num+'.js
 	} else {
 	    var url='output_'+name0.toLowerCase()+'/classification/data_counties_'+num+'.json';
 	}
-	console.log(url);
+	//console.log(url);
   fetch(url).then(res => res.json()) 
 	.then(data7 => {
 	    
-       if (document.getElementById("default").checked==true) {
+       //if (document.getElementById("default").checked==true) {
         draw_plot(data7,color);
-       } else {
+      /* } else {
            for (var i=0; i<arr.length; i++) {
                if (arr[i][1]==color) {
                     draw_plot(data7,arr20[i][1]);
                }
            }
-       }
+       }*/
 popup=new mapboxgl.Popup()
 .setLngLat(lats)
 .setHTML(htm)
