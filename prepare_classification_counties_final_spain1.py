@@ -220,7 +220,7 @@ def classify(ratio, recent_mean, threshold):
 print(e_dataframe1)
 for name in counties:
     try:
-        values = np.cumsum(final[name].to_list()+e_dataframe1[name].to_list()).tolist()[90:]#[0]]
+        values = np.cumsum(final[name].to_list()+e_dataframe1[name].to_list()).tolist()[180:]#[0]]
         print(values)
         print(len(values))
         last=values[len(values)-1]
@@ -268,7 +268,7 @@ for name in counties:
             #if name=="NA":
             print(name,color,ratio,recent_mean0,values)    
             with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
-                json.dump({"dates":tim2[90:],"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[90:],"original_values":original_values},outfile)
+                json.dump({"dates":tim2[180:],"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[180:],"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
             if name==name:
                 aar1.append({"n":name,"id":ids[recs.index(name)]["provincia_iso"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
