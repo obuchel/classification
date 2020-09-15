@@ -221,6 +221,8 @@ print(e_dataframe1)
 for name in counties:
     try:
         values = np.cumsum(final[name].to_list()+e_dataframe1[name].to_list()).tolist()#[0]]
+        print(values)
+        print(len(values))
         last=values[len(values)-1]
 
         num_rows = len(values)
@@ -283,3 +285,5 @@ print(aar1)
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
 
+print(final.index)
+print(len(tim))

@@ -225,7 +225,7 @@ for kkey in list(all_countries.keys()):
     tim.pop(0)
     
     print("time")
-    print(tim)
+    print(tim[60:])
     ind4 = 0
     aar = []
     aar1 = []
@@ -234,7 +234,8 @@ for kkey in list(all_countries.keys()):
     print(counties)
     
     for name in counties:
-        values = e_dataframe0[name].fillna(0)
+        values = e_dataframe0[name][60:].fillna(0)
+        print(values)
         num_rows = len(values)
         y50 = values[-14:]
         y5 = [y - values[-14] for y in y50]
@@ -275,7 +276,7 @@ for kkey in list(all_countries.keys()):
 
             print(name,color,ratio,recent_mean0,int(max(y5)))    
             with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["Combined_Key"]).split(", ")[0]+'.json', 'w') as outfile:
-                json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
+                json.dump({"dates":tim2[60:],"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim[60:],"original_values":original_values},outfile)
             #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
             aar1.append({"n":name.split(", ")[0],"id":ids[recs.index(name)]["Combined_Key"].split(", ")[0],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             ind4+=1
