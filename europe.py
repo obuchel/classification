@@ -84,8 +84,7 @@ slovenia=df[df["CountryName"]=="Slovenia"]
 #print(slovenia)
 print(df["CountryName"].unique())
 
-all_countries={'Portugal':portugal}
-#{'Switzerland':switzerland, 'United Kingdom':uk, 'Italy':italy,'Luxembourg':luxembourg, 'Portugal':portugal,'Hungary':hungary, 'Austria':austria,  'Liechtenstein':lch, 'Bosnia and Herzegovina':bh,'Slovakia':slovakia, 'Malta':malta,'Norway':norway, 'Andorra':andorra, 'Croatia':croatia,'Cyprus':cyprus, 'Denmark':denmark, 'San Marino':san_marino, 'Serbia':serbia,'Slovenia':slovenia, 'Albania':albania, 'Finland':finland, 'Romania':romania, 'Czech Republic':czech,'Montenegro':montenegro, 'Bulgaria':bulgaria, 'Poland':poland,'North Macedonia':nmacedonia}
+all_countries={'Switzerland':switzerland, 'United Kingdom':uk, 'Italy':italy,'Luxembourg':luxembourg, 'Portugal':portugal,'Hungary':hungary, 'Austria':austria,  'Liechtenstein':lch, 'Bosnia and Herzegovina':bh,'Slovakia':slovakia, 'Malta':malta,'Norway':norway, 'Andorra':andorra, 'Croatia':croatia,'Cyprus':cyprus, 'Denmark':denmark, 'San Marino':san_marino, 'Serbia':serbia,'Slovenia':slovenia, 'Albania':albania, 'Finland':finland, 'Romania':romania, 'Czech Republic':czech,'Montenegro':montenegro, 'Bulgaria':bulgaria, 'Poland':poland,'North Macedonia':nmacedonia}
 print(all_countries)
 
 
@@ -212,7 +211,7 @@ for kkey in list(all_countries.keys()):
     df3["Combined_Key"]=df3["Region"]+", "+df3["CountryName"]
     df4=pd.pivot_table(df3, values='CumulativePositive', index=['Combined_Key'],columns=['Date'],aggfunc=np.sum)
     print(df4)
-    output_directory = 'output_'+kkey
+    output_directory = 'output_'+kkey.lower()
     os.makedirs(output_directory + '/classification', exist_ok=True)
     print(output_directory)
     e_dataframe = df3.set_index("iso3")
