@@ -24,67 +24,68 @@ date_of_analysis='9/9/20'
 df = pd.read_csv('https://raw.githubusercontent.com/ec-jrc/COVID-19/master/data-by-region/jrc-covid-19-all-days-by-regions.csv')
 
 switzerland=df[df["CountryName"]=="Switzerland"]
-print(switzerland)
+#print(switzerland)
 portugal=df[df["CountryName"]=="Portugal"]
 print(portugal)
 luxembourg=df[df["CountryName"]=="Luxembourg"]
-print(luxembourg)
+#print(luxembourg)
 austria=df[df["CountryName"]=="Austria"]
-print(austria)
+#print(austria)
 bulgaria=df[df["CountryName"]=="Bulgaria"]
-print(bulgaria)
+#print(bulgaria)
 italy=df[df["CountryName"]=="Italy"]
-print(italy)
+#print(italy)
 poland=df[df["CountryName"]=="Poland"]
-print(poland)
+#print(poland)
 czech=df[df["CountryName"]=="Czech Republic"]
-print(czech)
+#print(czech)
 slovakia=df[df["CountryName"]=="Slovakia"]
-print(slovakia)
+#print(slovakia)
 hungary=df[df["CountryName"]=="Hungary"]
-print(hungary)
+#print(hungary)
 norway=df[df["CountryName"]=="Norway"]
-print(norway)
+#print(norway)
 finland=df[df["CountryName"]=="Finland"]
-print(finland)
+#print(finland)
 romania=df[df["CountryName"]=="Romania"]
-print(romania)
+#print(romania)
 croatia=df[df["CountryName"]=="Croatia"]
-print(croatia)
+#print(croatia)
 albania=df[df["CountryName"]=="Albania"]
-print(albania)
+#print(albania)
 nmacedonia=df[df["CountryName"]=="North Macedonia"]
-print(nmacedonia)
+#print(nmacedonia)
 kosovo=df[df["CountryName"]=="Kosovo"]
-print(kosovo)
+#print(kosovo)
 serbia=df[df["CountryName"]=="Serbia"]
-print(serbia)
+#print(serbia)
 
 uk=df[df["CountryName"]=="United Kingdom"]
-print(uk)
+#print(uk)
 lch=df[df["CountryName"]=="Liechtenstein"]
-print(lch)
+#print(lch)
 bh=df[df["CountryName"]=="Bosnia and Herzegovina"]
-print(bh)
+#print(bh)
 malta=df[df["CountryName"]=="Malta"]
-print(malta)
+#print(malta)
 andorra=df[df["CountryName"]=="Andorra"]
-print(andorra)
+#print(andorra)
 cyprus=df[df["CountryName"]=="Cyprus"]
-print(cyprus)
+#print(cyprus)
 #denmark=df[df["CountryName"]=="Denmark"]
 #print(denmark)
 denmark=df[df["CountryName"]=="Denmark"]
-print(denmark)
+#print(denmark)
 san_marino=df[df["CountryName"]=="San Marino"]
-print(san_marino)
+#print(san_marino)
 montenegro=df[df["CountryName"]=="Montenegro"]
-print(montenegro)
+#print(montenegro)
 slovenia=df[df["CountryName"]=="Slovenia"]
-print(slovenia)
+#print(slovenia)
 print(df["CountryName"].unique())
 
-all_countries={'Switzerland':switzerland, 'United Kingdom':uk, 'Italy':italy,'Luxembourg':luxembourg, 'Portugal':portugal,'Hungary':hungary, 'Austria':austria,  'Liechtenstein':lch, 'Bosnia and Herzegovina':bh,'Slovakia':slovakia, 'Malta':malta,'Norway':norway, 'Andorra':andorra, 'Croatia':croatia,'Cyprus':cyprus, 'Denmark':denmark, 'San Marino':san_marino, 'Serbia':serbia,'Slovenia':slovenia, 'Albania':albania, 'Finland':finland, 'Romania':romania, 'Czech Republic':czech,'Montenegro':montenegro, 'Bulgaria':bulgaria, 'Poland':poland,'North Macedonia':nmacedonia}
+all_countries={'Portugal':portugal}
+#{'Switzerland':switzerland, 'United Kingdom':uk, 'Italy':italy,'Luxembourg':luxembourg, 'Portugal':portugal,'Hungary':hungary, 'Austria':austria,  'Liechtenstein':lch, 'Bosnia and Herzegovina':bh,'Slovakia':slovakia, 'Malta':malta,'Norway':norway, 'Andorra':andorra, 'Croatia':croatia,'Cyprus':cyprus, 'Denmark':denmark, 'San Marino':san_marino, 'Serbia':serbia,'Slovenia':slovenia, 'Albania':albania, 'Finland':finland, 'Romania':romania, 'Czech Republic':czech,'Montenegro':montenegro, 'Bulgaria':bulgaria, 'Poland':poland,'North Macedonia':nmacedonia}
 print(all_countries)
 
 

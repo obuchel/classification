@@ -130,7 +130,19 @@ var item = document.createElement('div');
     add_layer('output_belgium/classification/classification_ids_counties2.json','BEL_adm2.json','BEL_adm2.json','NAME_2','Belgium','NAME_1','NAME_2');
     add_layer('output_france/classification/classification_ids_counties2.json','depatrements_avec_outre_mer.geojson','depatrements_avec_outre_mer.geojson','code','France','nom','code');
     add_layer('output_italy/classification/classification_ids_counties2.json','ITA_adm1-2.json','ITA_adm1-2.json','NAME_1','Italy','NAME_1','NAME_1');
+    add_layer('output_luxembourg/classification/classification_ids_counties2.json','LUX_adm0.json','LUX_adm0.json','NAME_0','Luxembourg','NAME_0','NAME_0');
+    add_layer('output_andorra/classification/classification_ids_counties2.json','AND_adm0.json','AND_adm0.json','NAME_0','Andorra','NAME_0','NAME_0');
+    add_layer('output_portugal/classification/classification_ids_counties2.json','osm-export-admin-level-4-pl-region.geojson','osm-export-admin-level-4-pl-region.geojson','name','Portugal','name','name');
+    add_layer('output_switzerland/classification/classification_ids_counties2.json','CHE_adm1.json','CHE_adm1.json','NAME_1','Switzerland','NAME_1','NAME_1');
+    add_layer('output_austria/classification/classification_ids_counties2.json','AUT_adm1-2.json','AUT_adm1-2.json','NAME_1','Austria','NAME_1','NAME_1');
+    add_layer('output_czech republic/classification/classification_ids_counties2.json','CZE_adm1-2.json','CZE_adm1-2.json','NAME_1','Czech Republic','NAME_1','NAME_1');
+    add_layer('output_hungary/classification/classification_ids_counties2.json','HUN_adm1-2.json','HUN_adm1-2.json','NAME_1','Hungary','NAME_1','NAME_1');
+    add_layer('output_slovakia/classification/classification_ids_counties2.json','SVK_adm1-2.json','SVK_adm1-2.json','NAME_1','Slovakia','NAME_1','NAME_1');
+    add_layer('output_poland/classification/classification_ids_counties2.json','POL_adm1-2.json','POL_adm1-2.json','NAME_1','Poland','NAME_1','NAME_1');
+    add_layer('output_bulgaria/classification/classification_ids_counties2.json','BGR_adm1-2.json','BGR_adm1-2.json','NAME_1','Bulgaria','NAME_1','NAME_1');
+    add_layer('output_romania/classification/classification_ids_counties2.json','ROU_adm1-2.json','ROU_adm1-2.json','NAME_1','Romania','NAME_1','NAME_1');    
     
+//AUT_adm1-2.json  
 });
     
   function add_layer(first_link,second_link,third_link,kkey,name0,name2,name3) {
@@ -172,12 +184,15 @@ ids.push(names[d.id.toString()]);
 data0.map(function(d,i){
     if (name0=="Germany" && d.id.length==4) {   
          ids.push("0"+d.id.toString())  
+    } else if (name0=="Portugal") {
+	ids.push(d.id.split(", ")[0]);
+
     } else {
          ids.push(d.id.toString())
     }
 });
     }
-//    console.log(ids);    
+   // console.log(ids);    
 fetch(second_link).then(res => res.json()) 
 .then(data => {  
 var data2={"type":"FeatureCollection"};
@@ -216,7 +231,7 @@ data["features"][i]["id"]=nnk[temp];
 	
         }
 
-	
+	//console.log(data["features"][i]["properties"]["id"]);	
         if (ids.indexOf(data["features"][i]["properties"]["id"])>-1) {
             data["features"][i]["properties"]["NAME"]=data0[ids.indexOf(data["features"][i]["properties"]["id"])]["n"];
             data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["id"])]["c"];
@@ -240,7 +255,7 @@ data["features"][i]["id"]=nnk[temp];
         }
     }
 
-  //  console.log(name0,data["features"]);
+    console.log(name0,data["features"]);
 map.addSource(name0, {
 type: 'geojson',
 'data': data    
@@ -303,7 +318,7 @@ map.addLayer({
 },"country-label","admin-0-boundary");    
     
     map.on('click', 'place_data_'+name0, function(e) {
-	console.log(e.features[0].properties.NAME_1);
+	//console.log(e.features[0].properties);
     if (typeof popup=="object") popup.remove();
  hoveredStateId = null;
     var coordinates = e.features[0].geometry.coordinates[0][0].slice();
@@ -329,7 +344,7 @@ if (e.features[0].properties["c"]=="yellow") {
 	if (name0=="Germany"){
 var num=e.features[0].id.toString();
 	} else if (name0=="Belgium") {
-	    console.log(e.features[0].properties);
+	    //console.log(e.features[0].properties);
 	    var nn={"Wallonie":"Wallonia","Bruxelles":"Brussels","Vlaanderen":"Flanders"};
 	    if (d3.keys(nn).indexOf(e.features[0].properties.NAME_1)>-1) {
 		if (e.features[0].properties.NAME_1=="Bruxelles") {
