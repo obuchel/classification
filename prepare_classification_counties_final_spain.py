@@ -4,7 +4,7 @@ import json
 import numpy as np
 import os
 numb=10
-date_of_analysis='9/11/20'
+date_of_analysis='9/12/20'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
 #https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-ccaa-spain_consolidated.csv
 
@@ -220,7 +220,8 @@ def classify(ratio, recent_mean, threshold):
 print(e_dataframe1)
 for name in counties:
     try:
-        values = np.cumsum(final[name].to_list()+e_dataframe1[name].to_list()).tolist()#[0]]
+        values = np.cumsum(e_dataframe1[name]).tolist()
+        #np.cumsum(final[name].to_list()+e_dataframe1[name].to_list()).tolist()#[0]]
         print(values)
         print(len(values))
         last=values[len(values)-1]
