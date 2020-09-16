@@ -150,7 +150,7 @@ if False:
     import sys
     sys.exit(0)
 
-tim =final.index.to_list()+data["fecha"].unique().tolist() 
+tim =data["fecha"].unique().tolist()#final.index.to_list()+data["fecha"].unique().tolist() 
 #tim.pop(0)
 print(tim)
 ind4 = 0
