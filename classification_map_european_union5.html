@@ -201,7 +201,7 @@ data0.map(function(d,i){
 fetch(second_link).then(res => res.json()) 
 	.then(data => {
 
-	    d3.select("#update_date").html(data[0]["date"]);
+	    d3.select("#update_date").html(data0[0]["date"]);
 var data2={"type":"FeatureCollection"};
     data2["features"]=[];
     var nnk={"Trentino-Alto Adige":"Trento","Friuli-Venezia Giulia":"Friuli Venezia Giulia","Apulia":"Puglia","Sicily":"Sicilia","Brussels":"Bruxelles"};
