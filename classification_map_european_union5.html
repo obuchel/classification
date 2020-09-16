@@ -74,7 +74,7 @@ body { margin: 0; padding: 0;}
 </div>
 <div class="map-overlay1" id="legend"></div>
 <script>
-
+  var all_dates={};
   var correct_names={"":"Boarnsterhim, Friesland"}  
 var popup;
 var layerM;
@@ -120,9 +120,10 @@ value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fil
 var item = document.createElement('div');
  item.appendChild(value);legend.appendChild(item);
     var value2 = document.createElement('span');
-     value2.innerHTML = "<br>Updated: <span id='update_date'></span>";value2.style.textAlign="center !important";value2.style.margin="auto";
+    value2.innerHTML = "<br>Updated: <span id='update_date'></span>";
+    value2.style.textAlign="center !important";value2.style.margin="auto";
     var item2 = document.createElement('div');
-     item2.appendChild(value2);
+     //item2.appendChild(value2);
     legend.appendChild(item2);
     add_layer('output1_germany/classification/classification_ids_provinces2.json','landkreise-in-germany.json','bundeslander-in-germany.json','cca_2','Germany','name_1','id');
     add_layer('output1_netherlands/classification/classification_ids_counties2.json','Gemeentegrenzen_2019.geojson','NLD_adm_states.json','Gemeentecode','Netherlands','Gemeentenaam','Gemeentecode');
@@ -152,7 +153,8 @@ var item = document.createElement('div');
     
   function add_layer(first_link,second_link,third_link,kkey,name0,name2,name3) {
 fetch(first_link).then(res => res.json()) 
-.then(data0 => { 
+	  .then(data0 => {
+	      all_dates[name0]=data0[0]['date'];
 var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
 var ids=[];
     if (name0=="Belgium") {
@@ -325,14 +327,15 @@ map.addLayer({
 },"country-label","admin-0-boundary");    
     
     map.on('click', 'place_data_'+name0, function(e) {
-	console.log(e.features[0].properties);
+	//console.log(e.features[0].properties);
     if (typeof popup=="object") popup.remove();
  hoveredStateId = null;
     var coordinates = e.features[0].geometry.coordinates[0][0].slice();
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 }
-     var htm=e.features[0].properties[name2]+": "+e.features[0].properties.max+"<br>";   
+	var htm=e.features[0].properties[name2]+": "+e.features[0].properties.max+"<br>Updated:"+all_dates[name0];
+	
     hoveredStateId = e.features[0].id;    
     var lats=e.lngLat;
 if (e.features[0].properties["c"]=="yellow") {
