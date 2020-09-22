@@ -6,7 +6,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='9/20/20'
+date_of_analysis='9/21/20'
 
 
 output_directory = 'output'
