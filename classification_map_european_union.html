@@ -482,7 +482,7 @@ if(document.getElementById('access').checked) {
 
     
   function draw_plot(data,color) {
-      console.log(data["dates"]);
+      //console.log(data["dates"]);
     document.getElementById("plot").style.visibility="visible";
     document.getElementById("features").style.visibility="visible";
     var data110=[];
@@ -553,7 +553,9 @@ dropShadowFilter.append('svg:feBlend')
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).ticks(5));
+      .call(d3.axisBottom(x).ticks(5).tickFormat(function(date){
+             return d3.timeFormat('%b')(date);
+        }););
 
     // Add Y axis
     var y = d3.scaleLinear()
