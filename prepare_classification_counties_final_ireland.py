@@ -7,7 +7,7 @@ import numpy as np
 import os
 from datetime import datetime
 import matplotlib.pyplot as plt
-date_of_analysis='09/27/20'
+date_of_analysis='10/01/20'
 import math
 output_directory = 'output_ireland'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -33,17 +33,17 @@ print(ddata)
 #read json
 #https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json
 dates=["10-03-2020","11-03-2020","12-03-2020","13-03-2020","14-03-2020","15-03-2020","16-03-2020","17-03-2020","18-03-2020","19-03-2020","20-03-2020","21-03-2020","22-03-2020","23-03-2020","24-03-2020","25-03-2020","26-03-2020","27-03-2020","28-03-2020","29-03-2020","30-03-2020","31-03-2020"]
-for x in range(4,10):
+for x in range(4,11):
     if x<10:
         x="0"+str(x)
     for y in range(1,32):
         if y<10:
             y="0"+str(y)
-        if str(y)+"-"+str(x)+"-"+"2020" not in ["31-04-2020","31-06-2020"]:    
+        if str(y)+"-"+str(x)+"-"+"2020" not in ["31-04-2020","31-06-2020","31-09-2020"]:    
             dates.append(str(y)+"-"+str(x)+"-"+"2020")
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 #print(dates0)
-data=pd.read_csv("/home/abuchel/Downloads/Covid19CountyStatisticsHPSCIreland(5).csv")
+data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland (5).csv")
 print(data)
 data["date"]=[str(x).split(" ")[0] for x in data["TimeStamp"]]
 data["FID"]=data["CountyName"]
