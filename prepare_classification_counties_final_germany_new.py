@@ -1,5 +1,6 @@
 
 
+
 import numpy as np
 import urllib.request as urllib2
 import bz2
@@ -12,7 +13,7 @@ import json
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-date_of_analysis='10/6/20'
+date_of_analysis='10/11/20'
 
 output_directory = 'output_germany'
 os.makedirs(output_directory + '/classification', exist_ok=True)
