@@ -138,30 +138,33 @@ center: [35.217018,31.771959]
 #00441b
 */
      
-var arr=[[-1, '#006d2c'],[1, '#c7e9c0'],[2, '#a1d99b'],[5, '#74c476'],[10, '#41ab5d'],[12, '#238b45'],[14, '#006d2c']];
+//var arr=[[-1, '#006d2c'],[1, '#c7e9c0'],[2, '#a1d99b'],[5, '#74c476'],[10, '#41ab5d'],[12, '#238b45'],[14, '#006d2c']];
   var popup;
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');       
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
 map.on('load', function() {
         var layers = [
             ' : No Cases',
-          ' : 1 day without cases',
-          ' : 2 days without cases',
-          ' : 3-5 days without cases',
-            ' : 6-10 days without cases',
-	    ' : 11-12 days without cases',
-            ' : 13-14 days without cases'
+          ' : 13-14 day without cases',
+          ' : 11-12 days without cases',
+          ' : 6-10 days without cases',
+            ' : 3-5 days without cases',
+	    ' : 1-2 days without cases',
+            ' : 0 days without cases'
         ];
-var arr=[[-1, '#00441b'],[1, '#c7e9c0'],[2, '#a1d99b'],[5, '#74c476'],[10, '#41ab5d'],[12, '#238b45'],[14, '#006d2c']];
+var arr=[[-1, '#00441b'],[0, '#c7e9c0'],[1, '#a1d99b'],[5, '#74c476'],[10, '#41ab5d'],[12, '#238b45'],[14, '#006d2c']];
         var colors = [
 //var arr=[[-1, 'seagreen'],[1, '#ffffcc'],[20, '#fed976'],[200, '#fd8d3c'],[200, '#e31a1c'],[300, '#bd0026'],[400, '#800026']];            
             '#00441b',
-          '#c7e9c0',
-          '#a1d99b',
-          '#74c476',
-            '#41ab5d',
-          '#238b45',
-            '#006d2c'
+               '#006d2c',
+            '#238b45',
+             '#41ab5d',
+              '#74c476',
+               '#a1d99b',
+            
+          '#c7e9c0'
+         
+         
         ];
     
     var value = document.createElement('span');
@@ -324,7 +327,7 @@ stops: arr
           tex +=e.features[0].properties.value;
       }	  else{
           
-          var tex="<br>Green zone"; 
+          var tex="Green zone"; 
       }
 popup=new mapboxgl.Popup()
 .setLngLat(e.lngLat)
