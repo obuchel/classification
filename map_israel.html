@@ -1,3 +1,4 @@
+
 S
 <!DOCTYPE html>
 <html>
@@ -97,11 +98,131 @@ center: [35.217018,31.771959]
 #bd0026
 #800026
 */
-var arr=[[-1, 'seagreen'],[1, '#ffffcc'],[20, '#fed976'],[200, '#fd8d3c'],[200, '#e31a1c'],[300, '#bd0026'],[400, '#800026']];
+var arr=[[-1, 'seagreen'],[1, '#ffffcc'],[20, '#fed976'],[100, '#fd8d3c'],[200, '#e31a1c'],[300, '#bd0026'],[400, '#800026']];
   var popup;
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');       
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
-  map.on('load', function() {
+map.on('load', function() {
+        var layers = [
+            ' : No Cases',
+          ' : 1-20',
+          ' : 20-100',
+          ' : 100-200',
+            ' : 200-300',
+	    ' : 300-400'
+        ];
+
+        var colors = [
+//var arr=[[-1, 'seagreen'],[1, '#ffffcc'],[20, '#fed976'],[200, '#fd8d3c'],[200, '#e31a1c'],[300, '#bd0026'],[400, '#800026']];            
+            'darkseagreen',
+          '#ffffcc',
+          '#fed976',
+          '#fd8d3c',
+            '#bd0026',
+          '#800026'
+        ];
+    
+    var value = document.createElement('span');
+          value.innerHTML = '<b>Legend</b>:';
+var item = document.createElement('div');
+     item.appendChild(value);
+          legend.appendChild(item);
+    
+    
+   // Switch color schemes for accessibility
+
+
+var item0 = document.createElement('div');
+   // item0.innerHTML='Colors: <input type="radio" id="default" name="mySelect" value="scheme1" checked><label for="default</label> <input type="radio" id="access" name="mySelect" value="scheme2"><label for="access">Other</label>';
+
+    legend.appendChild(item0);
+    
+/*
+x.setAttribute("type", "radio");
+    
+     var x = document.createElement("LABEL");
+  var t = document.createTextNode("Color schemes:");
+  x.setAttribute("for", "mySelect");
+  x.appendChild(t);
+  document.getElementById("legend").insertBefore(x,document.getElementById("mySelect"));
+    */
+    
+  /*      // get reference to select element
+var sel = document.getElementsByName('mySelect');
+
+// create new option element
+var opt = document.createElement('option');
+
+// create text node to add to option element (opt)
+opt.appendChild( document.createTextNode('Default') );
+
+// set value property of opt
+opt.value = 'scheme1'; 
+
+// add opt to end of select box (sel)
+sel.appendChild(opt); 
+    
+var sel1 = document.getElementById('mySelect');
+
+// create new option element
+var opt1 = document.createElement('option');    
+opt1.appendChild( document.createTextNode('Accessible scheme') );
+
+// set value property of opt
+opt1.value = 'scheme2'; 
+
+// add opt to end of select box (sel)
+sel1.appendChild(opt1);     
+    */
+    
+   var y=document.getElementsByName('mySelect');
+       for (var i=0; i<y.length; i++){
+          // y[i].addEventListener("change",change_colors);
+       }
+       
+       
+       
+        for (i = 0; i < layers.length; i++) {
+          var layer = layers[i];
+          var color = colors[i];
+          var item = document.createElement('div');
+            item.className = 'legend-div';
+          var key = document.createElement('span');
+          key.className = 'legend-key';
+          key.style.backgroundColor = color;
+            key.style.borderStyle = "ridge";
+
+          var value = document.createElement('span');
+          value.innerHTML = layer;
+          item.appendChild(key);
+          item.appendChild(value);
+          legend.appendChild(item);
+        }
+  var value = document.createElement('span');
+          value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fill="none" stroke="black"/></svg> <svg width="10" height="10">  <circle cx="5" cy="5" r="4.5" fill="none" stroke="black"/></svg> <svg width="15" height="15"><circle cx="7.5" cy="7.5" r="7" fill="none" stroke="black"/></svg> - Numbers of cases past 14 days';
+var item = document.createElement('div');
+    
+    // item.className = 'legend-div';
+     item.appendChild(value);
+        //  legend.appendChild(item);
+    
+    /*
+     var value3 = document.createElement('span');
+    value3.innerHTML = "&nbsp;";
+    var item3 = document.createElement('div');
+     item3.appendChild(value3);
+          legend.appendChild(item3);
+    */
+    
+    var value2 = document.createElement('span');
+ //   value2.innerHTML = "<br>Updated: "+data0[0]["date"];
+     value2.style.textAlign="center !important";
+    value2.style.margin="auto";
+    var item2 = document.createElement('div');
+     item2.appendChild(value2);
+          legend.appendChild(item2);
+
+
 map.addSource('ethnicity', {
 type: 'geojson',
 'data':'municipalities_new.json'    
@@ -121,13 +242,13 @@ type: 'geojson',
 property: "value",
 stops: arr
 },
-'fill-outline-color': 'black',
-'fill-opacity': [
+'fill-outline-color': 'black'
+/*'fill-opacity': [
 'case',
 ['boolean', ['feature-state', 'hover'], false],
 1,
 0.5
-]
+]*/
 },
 'filter': ['==', '$type', 'Polygon']
  });
@@ -140,10 +261,10 @@ stops: arr
 'source': 'dots',
 'paint': {
 // make circles larger as the user zooms from z12 to z22
-'circle-radius': 5,
+'circle-radius': 2,
 // color circles by ethnicity, using a match expression
 // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-match
-    'circle-color': "red",
+    'circle-color': "black",
       "circle-stroke-width": 1,
             "circle-stroke-color": "black"
 }
@@ -168,7 +289,9 @@ popup=new mapboxgl.Popup()
 	  .setHTML(e.features[0].properties.name.split(" __ ")[0]+": "+e.features[0].properties.value+tex)
 .addTo(map);
   });
-
+  map.on('click', 'points', function(e) {
+      console.log(e.features[0].geometry.coordinates);
+      });
 </script>
 </body>
 </html>

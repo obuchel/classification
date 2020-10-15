@@ -26,9 +26,21 @@ with open("municipalities.json","r") as fp:
     data=json.load(fp)
     ind=0
     for item in data0.iterrows():
-        point=Point(item[1]["x"],item[1]["y"])
-        point1=Point(item[1]["y"],item[1]["x"])
         tt=item[1][list(data0.columns)[1]]#.split("/")
+        print(type(item[1]["x"]),float(35.064731016755104))
+        if item[1]["x"]==float(35.064731016755104):
+            print("changed")
+            x=float(35.07)
+        elif item[1]["x"]==float(34.848257303237915):
+            x=float(34.9)
+            print("changed")
+        elif item[1]["x"]==float(34.84655141830444):
+            x=float(34.9)
+        else:
+            x=item[1]["x"]
+            print("changed")
+        point=Point(x,item[1]["y"])
+        point1=Point(item[1]["y"],x)
         #print(tt)
         date=item[1][list(data0.columns)[1]]
         #print(date)
@@ -52,7 +64,7 @@ with open("municipalities.json","r") as fp:
         if name_eng == "":    
             name_eng0=''
             point2=Point(item[1]["y"],item[1]["x"])
-            data90["features"].append({'type': 'Feature','geometry': {'type': 'Point','coordinates':[item[1]["x"],item[1]["y"]]},'properties': {'name': name_eng0,'value':1}});
+            data90["features"].append({'type': 'Feature','geometry': {'type': 'Point','coordinates':[x,item[1]["y"]]},'properties': {'name': name_eng0,'value':1}});
         all_data.append([name_eng,name_eng,date])
         ind +=1
 #print(dates)        
