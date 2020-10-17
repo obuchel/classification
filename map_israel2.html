@@ -317,14 +317,14 @@ stops: arr
       var tex=""
       //"<br>Number of days with 0 cases:";
       if (e.features[0].properties.value!=-1) {
-	  tex +="<br>Number of last days with 0 cases:";
+	 // tex +="<br>Number of last days with 0 cases:";
         //  var vals=[];
      	//  for (var u=0; u<e.features[0].properties.values.length; u++) {
 	    //  if (e.features[0].properties.values[u]==0) {
               //vals.push(e.features[0].properties.value);
 	      //}
 	  //}
-          tex +=e.features[0].properties.value;
+          tex +="<br>"+e.features[0].properties.value+" days with 0 cases";
       }	  else{
           
           var tex="Green zone"; 
