@@ -275,7 +275,7 @@ stops: arr
       var tex=""
       //"<br>Number of days with 0 cases:";
       if (e.features[0].properties.values!=0) {
-	  tex +="<br>Number of days with 0 cases:";
+	  tex +=" days</b> with 0 cases";
           var vals=[];
      	  for (var u=0; u<e.features[0].properties.values.length; u++) {
 	      if (e.features[0].properties.values[u]==0) {
@@ -283,10 +283,11 @@ stops: arr
 	      }
 	  }
           tex +=vals.length;
-      }	  
-popup=new mapboxgl.Popup()
+      }
+
+      popup=new mapboxgl.Popup()
 .setLngLat(e.lngLat)
-	  .setHTML(e.features[0].properties.name.split(" __ ")[0]+": "+e.features[0].properties.value+tex)
+	  .setHTML(e.features[0].properties.name.split(" __ ")[0]+": <br><b>"+tex+e.features[0].properties.value)
 .addTo(map);
   });
   map.on('click', 'points', function(e) {
