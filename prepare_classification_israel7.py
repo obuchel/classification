@@ -29,16 +29,16 @@ with open("municipalities.json","r") as fp:
         tt=item[1][list(data0.columns)[1]]#.split("/")
         print(type(item[1]["x"]),float(35.064731016755104))
         if item[1]["x"]==float(35.064731016755104):
-            print("changed")
+            #print("changed")
             x=float(35.07)
         elif item[1]["x"]==float(34.848257303237915):
             x=float(34.9)
-            print("changed")
+            #print("changed")
         elif item[1]["x"]==float(34.84655141830444):
             x=float(34.9)
         else:
             x=item[1]["x"]
-            print("changed")
+            #print("changed")
         point=Point(x,item[1]["y"])
         point1=Point(item[1]["y"],x)
         #print(tt)
@@ -71,13 +71,13 @@ with open("municipalities.json","r") as fp:
 data3=pd.DataFrame(all_data,columns=["name_eng","name1","date"])
 data5=data3.groupby(["name_eng","date"])["name1"].count().reset_index()
 #print(sum(data5["name1"].to_list()))
-data4=pd.pivot_table(data5, index='name_eng', values="name1",columns='date', aggfunc=np.sum)[["30/9/2020","1/10/2020","2/10/2020","3/10/2020","4/10/2020","5/10/2020","6/10/2020","7/10/2020","8/10/2020","9/10/2020","10/10/2020","11/10/2020","12/10/2020","13/10/2020"]]
+data4=pd.pivot_table(data5, index='name_eng', values="name1",columns='date', aggfunc=np.sum)[["3/10/2020","4/10/2020","5/10/2020","6/10/2020","7/10/2020","8/10/2020","9/10/2020","10/10/2020","11/10/2020","12/10/2020","13/10/2020","14/10/2020","15/10/2020","16/10/2020"]]
 #print(data4.columns)
 
 kkeys={}
 kkeys1={}
 for item in data4.iterrows():
-    print(item[0],np.sum([0 if math.isnan(x) else x for x in list(item[1].values)]))
+    #print(item[0],np.sum([0 if math.isnan(x) else x for x in list(item[1].values)]))
     kkeys[item[0]]=sum([0 if math.isnan(x) else x for x in list(item[1].values)])
     kkeys1[item[0]]=[0 if math.isnan(x) else x for x in list(item[1].values)]
 vals=[]
