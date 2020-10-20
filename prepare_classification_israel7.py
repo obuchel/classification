@@ -78,6 +78,7 @@ data4=pd.pivot_table(data5, index='name_eng', values="name1",columns='date', agg
 
 kkeys={}
 kkeys1={}
+all_vals=[]
 for item in data4.iterrows():
     #print(item[0],np.sum([0 if math.isnan(x) else x for x in list(item[1].values)]))
     kkeys[item[0]]=sum([0 if math.isnan(x) else x for x in list(item[1].values)])
@@ -87,6 +88,7 @@ for item in data["features"]:
     if "name" in list(item["properties"].keys()):
         item["properties"]["name"]=item["properties"]["MUN_HEB"]+", "+item["properties"]["MUN_ENG"]
         item["properties"]["value"]=kkeys[item["properties"]["name"]]
+        all_vals.append(item["properties"]["value"])
         item["properties"]["values"]=kkeys1[item["properties"]["name"]]
     else:
         item["properties"]["name"]=item["properties"]["MUN_HEB"]+", "+item["properties"]["MUN_ENG"]
@@ -94,12 +96,12 @@ for item in data["features"]:
         item["properties"]["values"]=0
     #print(item["properties"])
     vals.append(item["properties"]["value"])
-#print(vals)    
+print(sum(all_vals))    
 #print(sum(vals))
 with open("municipalities_new.json","w") as fp:
     json.dump(data,fp,separators=(', ', ': '), ensure_ascii=False,cls=NumpyEncoder)
 #print(kkeys)
 
-print(data90)
+#print(data90)
 with open("dots_new.json","w") as fp:
     json.dump(data90,fp,separators=(', ', ': '), ensure_ascii=False,cls=NumpyEncoder)
