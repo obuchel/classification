@@ -11,9 +11,9 @@ import csv
 #soup = BeautifulSoup (open("https://datadashboard.health.gov.il/COVID-19/general"), features="lxml")
 url="https://datadashboard.health.gov.il/COVID-19/general"
 html = urllib2.urlopen(url).read()
-bs = BeautifulSoup(html)
+bs = BeautifulSoup(html,features="lxml")
 #print(bs)
 table = bs.find(lambda tag: tag.name=='ngx-app')# and tag.has_attr('id') and tag['id']=="Table1")
-rows = table.findAll(lambda tag: tag.name=='tr') 
+rows = table.findAll(lambda tag: tag.name=='table') 
 #rows = table.findAll(lambda tag: tag.name=='tr')
 print(table)
