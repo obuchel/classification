@@ -270,14 +270,14 @@ for name in counties:
                 #print(name,y3)
                 ratio=0
                 color="darkgreen"
-            #if name=="NA":
-            print(name,color,ratio,recent_mean0,values)    
-            with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
-                json.dump({"dates":tim2[180:],"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[180:],"original_values":original_values},outfile)
-        #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
-            if name!='nan':
+            if name!="nan":
+                print(name,color,ratio,recent_mean0,values)    
+                with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
+                    json.dump({"dates":tim2[180:],"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[180:],"original_values":original_values},outfile)
                 aar1.append({"n":name,"id":ids[recs.index(name)]["provincia_iso"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             else:
+                with open(output_directory + '/classification/data_counties_NA.json', 'w') as outfile:
+                    json.dump({"dates":tim2[180:],"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[180:],"original_values":original_values},outfile)
                 aar1.append({"n":"NA","id":"NA","v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             ind4+=1
     except:
