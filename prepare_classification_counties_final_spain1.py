@@ -69,6 +69,7 @@ for date in dates1:
 
 data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv",sep=",")
 print(data)
+data["provincia_iso"]=data["provincia_iso"].astype(str)
 df1 = data["fecha"].str.contains("2020-05-08")
 today = data[df1]
 dates=data["fecha"].unique()
@@ -157,7 +158,8 @@ print(tim)
 ind4 = 0
 aar = []
 aar1 = []
-counties = e_dataframe1.columns[3:].to_list()
+counties = list(data["provincia_iso"].unique())
+#e_dataframe1.columns[3:].to_list()
 
 
 def compute_original_values(values):
@@ -220,10 +222,12 @@ def classify(ratio, recent_mean, threshold):
 
 print(e_dataframe1)
 for name in counties:
+    print(name)
     try:
-        values = np.cumsum(final[name].to_list()+e_dataframe1[name].to_list()).tolist()[180:]#[0]]
+        #values = np.cumsum(final[name].to_list()+e_dataframe1[name].to_list()).tolist()[180:]#[0]]
+        values = np.cumsum(e_dataframe1[name]).tolist()
         print(values)
-        print(len(values))
+        #print(len(values))
         last=values[len(values)-1]
 
         num_rows = len(values)
@@ -290,3 +294,4 @@ with open(output_directory + '/classification/classification_ids_counties2.json'
 
 print(final.index)
 print(len(tim))
+print(counties)
