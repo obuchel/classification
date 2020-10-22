@@ -280,7 +280,7 @@ for name in counties:
             if name!='nan':
                 aar1.append({"n":name,"id":ids[recs.index(name)]["provincia_iso"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             else:
-                aar1.append({"n":name,"id":"NA","v":ratio,"c":color,"max":int(max(y5)-min(y5))})
+                aar1.append({"n":"NA","id":"NA","v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             ind4+=1
     except:
         continue
