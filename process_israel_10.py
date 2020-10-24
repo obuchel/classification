@@ -23,7 +23,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
-
 #from selenium.webdriver.support.expected_conditions import presence_of_element_located
 #import controller
 #URL = 'https://public.tableau.com/profile/fabio.baraghini#!/vizhome/CuebiqMobilityIndexAnalysis/MobilityIndexMarketArea'
@@ -48,10 +47,6 @@ soup = BeautifulSoup(pg.content, 'lxml')
 table = soup.findAll("div", {"class": "data-view-container"})
 print(table)
 '''
-
-
-
-
 
 #webbrowser.get(using=None)
 #controller.open(ULR, new=0, autoraise=True)
