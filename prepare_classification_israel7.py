@@ -1,3 +1,4 @@
+
 #https://imoh.maps.arcgis.com/apps/webappviewer/index.html?id=20ded58639ff4d47a2e2e36af464c36e&locale=he&/
 
 import math
@@ -43,13 +44,9 @@ with open("municipalities.json","r") as fp:
             #print("changed")
         point=Point(x,item[1]["y"])
         point1=Point(item[1]["y"],x)
-        #print(tt)
         date=item[1][list(data0.columns)[1]]
-        #print(date)
-        #datetime(2020,int(tt[1]),int(tt[0]))
         if date not in dates:
             dates.append(date)
-        #print(item[1])
         name=""
         name_eng=""
         for el in data["features"]:
