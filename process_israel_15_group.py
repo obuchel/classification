@@ -89,7 +89,7 @@ with open("municipalities10.json","r") as fp:
         except:
             item["properties"]["values"]=0
         print(item["properties"])
-    with open("municipalities10.json","w") as fp:
+    with open("municipalities_new.json","w") as fp:
         json.dump(data2,fp,separators=(', ', ': '), ensure_ascii=False,cls=NumpyEncoder)  
 
 #print(final)
