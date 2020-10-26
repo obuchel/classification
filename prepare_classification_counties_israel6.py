@@ -1,11 +1,11 @@
-
+emacs grouped_israelian_cities2.json
 import json
 import pandas as pd
 import numpy as np
 
 all_items=[]
 with open("grouped_israelian_cities2.json","r") as json_file:
-    data=json.load(json_file)
+    data=json.load(json_file)x
     ll=list(data.keys())
     for el in ll:
         for item in data[el]:
