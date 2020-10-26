@@ -15,6 +15,14 @@ for el in list(k3.iterrows()):
     kkeys[el[0][0]]=el[0][1]
 #print(kkeys)    
 data=gpd.read_file("municipalities10.json")
+'''
+coords3={[34.978611 ,31.083056]:"רס-א רצק'",
+[34.695939 ,30.977242]:"'גאדה ריב",
+[34.916111 ,31.284444]: 'דייס לא',
+[34.864 ,31.26]:"(טבש) קייקור ובא",
+         "(טבש) דעייוו'ג ובא":[31.178502,34.745967]}
+'''
+
 
 dss=[]
 mmls={}
@@ -40,8 +48,12 @@ for ele in list(main_data0.iterrows()):
     try:
         dists.append(mmls[ele[1]["district"]])
     except:
-        dists.append("MISSED")             
-        print("MISSED", ele[1]["coords"])
+        try:
+            tt=coords[ele[1]["city"]]
+            dists.append(str(tt[0])+"_"+str(tt[1]))
+        except:    
+            dists.append("MISSED")             
+            print("MISSED", ele[1]["coords"])
     #mmls[ele[1]]
 main_data0["map_districts"]=dists
 

@@ -1,10 +1,6 @@
 
 
 
-
-
-
-
 #https://github.com/Arturiko/israel-cities/blob/master/JsonPropertiesWithoutIDs.json
 
 
@@ -49,7 +45,11 @@ with open("municipalities.json","r") as fp:
         municipalities[el["properties"]["MUN_ENG"]]=el["properties"]["MUN_HEB"]
 
 
-
+coords3={"'קצר א-סר":[31.083056, 34.978611],
+"ביר הדאג'":[30.977242, 34.695939],
+'אל סייד' :[31.284444, 34.916111],
+"אבו רוקייק (שבט)":[31.26, 34.864],
+"אבו ג'ווייעד (שבט)":[31.178502,34.745967]}
 
 muni={}
 munis=[]
@@ -95,7 +95,7 @@ coords={"ABU RUBEI'A":[35.207778,36.520833],
 'JALJULYE':[32.15353,34.9518],  
 'JUDEIDE-MAKER':[32.933333,35.141389], 
 'JULIS':[32.944167,35.185833],  
-        'BEIT JANN':[32.965278,35.379444]}
+'BEIT JANN':[32.965278,35.379444]}
 
 
 '''
@@ -150,11 +150,12 @@ with open("cities.json","r") as fp:
     print(len(data))
     for el in data:
         try:
-            print(el)
+            #print(el)
             try:
                 ll=coords[el["name"]]
             except:
                 ll=coords[el["english_name"]]
+                #ll=coords[el["english_name"]]
             coords2[el["semel_yeshuv"]]=str(ll[0])+"_"+str(ll[1])
         except:
             print("missed")
