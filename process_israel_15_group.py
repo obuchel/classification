@@ -181,3 +181,59 @@ district                            ASHQELON
 coords                   31.665944_34.559466
 
 '''
+main_table2=main_data0[main_data0["map_districts"]=="MISSED"]
+final2=main_table2.groupby(["city","date"])['cumulativeVerified'].sum().reset_index()
+pivoted_table2=pd.pivot_table(final2, values='cumulativeVerified', index=['city'],columns=['date'], aggfunc=np.sum)
+print(pivoted_table2)
+
+
+two_weeks_dots={}
+for city in pivoted_table2.iterrows():
+    ll=city[1].values[-15:][::-1]
+    if sum(ll)>=0:
+        #print(ll,city[0])
+        two_weeks_dots[city[0]]=ll[0]-ll[-1]
+        
+print(two_weeks_dots)
+dot_coords={}
+#main_table2=main_data0[main_data0["map_districts"]=="MISSED"]
+for item in main_table2.iterrows():
+    if item[1]["city"] not in list(dot_coords.keys()): 
+        #print(item[1]["city"],item[1]["coords"])
+        coord_pair=str(item[1]["coords"]).split("_")
+        if len(coord_pair)>1:
+            dot_coords[item[1]["city"]]=[coord_pair[0],coord_pair[1]]
+
+
+
+dot_json={"type": "FeatureCollection","features": []}
+
+for item in list(two_weeks_dots.keys()):
+    print(item,two_weeks_dots[item],dot_coords[item])
+    temp={"type": "Feature","properties":{"name":item,"value":two_weeks_dots[item]},"geometry":{ "type": "Point","coordinates":dot_coords[item]}}
+    dot_json["features"].append(temp)
+print(dot_json)    
+with open("dots_new.json","w") as fp:                                                                                                                                               
+    json.dump(dot_json,fp,separators=(', ', ': '), ensure_ascii=False,cls=NumpyEncoder)   
+'''
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "dbh": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.93345,
+          40.46111
+        ]
+      }
+    }
+  ]
+}
+
+
+'''
