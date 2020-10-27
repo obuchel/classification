@@ -202,7 +202,7 @@ for item in main_table2.iterrows():
         #print(item[1]["city"],item[1]["coords"])
         coord_pair=str(item[1]["coords"]).split("_")
         if len(coord_pair)>1:
-            dot_coords[item[1]["city"]]=[coord_pair[0],coord_pair[1]]
+            dot_coords[item[1]["city"]]=[coord_pair[1],coord_pair[0]]
 
 
 
