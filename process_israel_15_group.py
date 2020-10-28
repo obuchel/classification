@@ -215,10 +215,11 @@ for item in list(two_weeks_dots.keys()):
         temp={"type": "Feature","properties":{"name":item,"value":two_weeks_dots[item]},"geometry":{ "type": "Point","coordinates":dot_coords[item]}}
         dot_json["features"].append(temp)
     except:
+        print(item)
         continue
         #print(item,two_weeks_dots[item],dot_coords[item])
 print(dot_json)    
-with open("dots_new.json","w") as fp:                                                                                                                                               
+with open("dots_new.json","w") as fp:                                                                                                                                              
     json.dump(dot_json,fp,separators=(', ', ': '), ensure_ascii=False,cls=NumpyEncoder)   
 '''
 {
