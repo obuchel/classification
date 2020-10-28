@@ -72,7 +72,7 @@ llk=list(pivoted_table.columns)
 two_weeks={}
 two_weeks_arrs={}
 for item in list(pivoted_table.iterrows()):
-    l=[int(x.replace("<","")) for x in list(item[1].values)]
+    l=[int(x.replace("<15<15","0").replace("<15","0")) for x in list(item[1].values)]
     two_weeks[item[0]]=l[-1]-l[-15]
     l2=l[-15:][::-1]
     print(l2)
@@ -190,7 +190,7 @@ print(pivoted_table2)
 
 two_weeks_dots={}
 for city in pivoted_table2.iterrows():
-    ll=[int(x) if "<15" not in x else 15 for x in city[1].values[-15:][::-1]]
+    ll=[int(x.replace("<15<15","0").replace("<15","0")) for x in city[1].values[-15:][::-1]]
     if sum(ll)>=0:
         #print(ll,city[0])
         two_weeks_dots[city[0]]=ll[0]-ll[-1]
@@ -245,4 +245,4 @@ with open("dots_new.json","w") as fp:
 '''
 
 
-print(pivoted_table)
+pivoted_table.to_csv("pivoted_israel.csv")
