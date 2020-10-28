@@ -1,4 +1,5 @@
 
+
 from numpyencoder import NumpyEncoder
 import json
 import numpy as np
@@ -49,7 +50,7 @@ for ele in list(main_data0.iterrows()):
         dists.append(mmls[ele[1]["district"]])
     except:
         try:
-            tt=coords[ele[1]["city"]]
+            tt=coords[ele[1]["City_Name"]]
             dists.append(str(tt[0])+"_"+str(tt[1]))
         except:    
             dists.append("MISSED")             
@@ -59,11 +60,11 @@ main_data0["map_districts"]=dists
 
 main_table=main_data0[main_data0["map_districts"]!="MISSED"]
 print(main_table["map_districts"].unique())
-final=main_table.groupby(["map_districts","date"])['cumulativeVerified'].sum().reset_index()
+final=main_table.groupby(["map_districts","Date"])['Cumulative_verified_cases'].sum().reset_index()
 name="Tel Aviv - Yafo"
-print(final[final["map_districts"]==name]["cumulativeVerified"])
-print(main_table[main_table["map_districts"]==name]["cumulativeVerified"])
-pivoted_table=pd.pivot_table(final, values='cumulativeVerified', index=['map_districts'],columns=['date'], aggfunc=np.sum)
+print(final[final["map_districts"]==name]["Cumulative_verified_cases"])
+print(main_table[main_table["map_districts"]==name]["Cumulative_verified_cases"])
+pivoted_table=pd.pivot_table(final, values='Cumulative_verified_cases', index=['map_districts'],columns=['Date'], aggfunc=np.sum)
 print(pivoted_table)
 llk=list(pivoted_table.columns)
 #print(llk[-14])
@@ -71,7 +72,7 @@ llk=list(pivoted_table.columns)
 two_weeks={}
 two_weeks_arrs={}
 for item in list(pivoted_table.iterrows()):
-    l=list(item[1].values)
+    l=[int(x) if "<15" not in x else 15 for x in list(item[1].values)]
     two_weeks[item[0]]=l[-1]-l[-15]
     l2=l[-15:][::-1]
     print(l2)
@@ -182,14 +183,14 @@ coords                   31.665944_34.559466
 
 '''
 main_table2=main_data0[main_data0["map_districts"]=="MISSED"]
-final2=main_table2.groupby(["city","date"])['cumulativeVerified'].sum().reset_index()
-pivoted_table2=pd.pivot_table(final2, values='cumulativeVerified', index=['city'],columns=['date'], aggfunc=np.sum)
+final2=main_table2.groupby(["City_Name","Date"])['Cumulative_verified_cases'].sum().reset_index()
+pivoted_table2=pd.pivot_table(final2, values='Cumulative_verified_cases', index=['City_Name'],columns=['Date'], aggfunc=np.sum)
 print(pivoted_table2)
 
 
 two_weeks_dots={}
 for city in pivoted_table2.iterrows():
-    ll=city[1].values[-15:][::-1]
+    ll=[int(x) if "<15" not in x else 15 for x in city[1].values[-15:][::-1]]
     if sum(ll)>=0:
         #print(ll,city[0])
         two_weeks_dots[city[0]]=ll[0]-ll[-1]
@@ -198,20 +199,24 @@ print(two_weeks_dots)
 dot_coords={}
 #main_table2=main_data0[main_data0["map_districts"]=="MISSED"]
 for item in main_table2.iterrows():
-    if item[1]["city"] not in list(dot_coords.keys()): 
+    if item[1]["City_Name"] not in list(dot_coords.keys()): 
         #print(item[1]["city"],item[1]["coords"])
         coord_pair=str(item[1]["coords"]).split("_")
         if len(coord_pair)>1:
-            dot_coords[item[1]["city"]]=[coord_pair[1],coord_pair[0]]
+            dot_coords[item[1]["City_Name"]]=[coord_pair[1],coord_pair[0]]
 
 
 
 dot_json={"type": "FeatureCollection","features": []}
 
 for item in list(two_weeks_dots.keys()):
-    print(item,two_weeks_dots[item],dot_coords[item])
-    temp={"type": "Feature","properties":{"name":item,"value":two_weeks_dots[item]},"geometry":{ "type": "Point","coordinates":dot_coords[item]}}
-    dot_json["features"].append(temp)
+    #print(item,two_weeks_dots[item],dot_coords[item])
+    try:
+        temp={"type": "Feature","properties":{"name":item,"value":two_weeks_dots[item]},"geometry":{ "type": "Point","coordinates":dot_coords[item]}}
+        dot_json["features"].append(temp)
+    except:
+        continue
+        #print(item,two_weeks_dots[item],dot_coords[item])
 print(dot_json)    
 with open("dots_new.json","w") as fp:                                                                                                                                               
     json.dump(dot_json,fp,separators=(', ', ': '), ensure_ascii=False,cls=NumpyEncoder)   

@@ -174,20 +174,20 @@ with open("cities.json","r") as fp:
             #shem_napa 
             kkeys[el["semel_yeshuv"]]=el['english_name']#shem_napa
 
-
+#_id,City_Name,City_Code,Date,Cumulative_verified_cases,Cumulated_recovered,Cumulated_deaths,Cumulated_number_of_tests,Cumulated_number_of_diagnostic_tests
 print(coords2)
 print(len(muni["features"]))
-main_data=pd.read_csv("israeli-covid-cases.csv")
-print(len(list(main_data["cityCode"].unique())))
-main_data["district"]=main_data["cityCode"].astype(str).map(kkeys)
-main_data["coords"]=main_data["cityCode"].astype(str).map(coords2)
+main_data=pd.read_csv("israel_file.csv")
+print(len(list(main_data["City_Code"].unique())))
+main_data["district"]=main_data["City_Code"].astype(str).map(kkeys)
+main_data["coords"]=main_data["City_Code"].astype(str).map(coords2)
 #print(main_data["cityCode"].unique())
 #main_data.fillna(0)
 print(main_data[main_data["coords"]==0])
 print(main_data["coords"].unique())
 print(len(muni["features"]))
 main_data.to_csv("israeli-covid-cases_coords.csv")
-
+print(main_data)
 #dd=pd.read_csv("https://raw.githubusercontent.com/yuvadm/geolocations-il/master/cities.csv")
 #print(len(list(dd["City"].map(names).unique())))
 
@@ -195,6 +195,6 @@ main_data.to_csv("israeli-covid-cases_coords.csv")
 main_data0=pd.read_csv("israeli-covid-cases_coords.csv")
 kl=main_data0[main_data0["coords"].isna()==True]
 print(kl["district"].unique())
-print(kl["city"].unique())
+print(kl["City_Name"].unique())
 
 #print(main_data0["coords"].isna())
