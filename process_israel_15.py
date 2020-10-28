@@ -76,10 +76,9 @@ with open("municipalities10.json","r") as fp:
         munis.append(el["properties"]["MUN_ENG"])
         #el["properties"]["MUN_HEB"]=municipalities[el["properties"]["MUN_ENG"]]
     #print(muni)
-    '''
-    with open("municipalities10.json","w") as fp1:
-        json.dump(muni,fp1)
-    '''
+with open("municipalities10.json","w") as fp1:
+    json.dump(muni,fp1)
+    
 coords={"ABU RUBEI'A":[35.207778,36.520833], 
 'ABU QUREINAT':[31.103056,34.951944], 
 'ABU TULUL':[31.142053,34.914358], 
