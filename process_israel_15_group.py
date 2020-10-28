@@ -72,7 +72,7 @@ llk=list(pivoted_table.columns)
 two_weeks={}
 two_weeks_arrs={}
 for item in list(pivoted_table.iterrows()):
-    l=[int(x) if "<15" not in x else 15 for x in list(item[1].values)]
+    l=[int(x.replace("<","")) for x in list(item[1].values)]
     two_weeks[item[0]]=l[-1]-l[-15]
     l2=l[-15:][::-1]
     print(l2)
@@ -243,3 +243,6 @@ with open("dots_new.json","w") as fp:
 
 
 '''
+
+
+print(pivoted_table)
