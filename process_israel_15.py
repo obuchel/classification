@@ -44,9 +44,12 @@ with open("municipalities.json","r") as fp:
         if el["properties"]["MUN_ENG"]=="No Jurisdiction":
             if ind!=287:
                 el["properties"]["MUN_ENG"]="No Jurisdiction "+str(ind)
+                print(el["properties"])
                 nj.append(el)
+        ind+=1        
+    for el in municipalities["features"]:            
         municipalities[el["properties"]["MUN_ENG"]]=el["properties"]["MUN_HEB"]
-        ind+=1
+        
         
 coords3={"'קצר א-סר":[31.083056, 34.978611],
 "ביר הדאג'":[30.977242, 34.695939],
@@ -67,7 +70,7 @@ with open("municipalities10.json","r") as fp:
     muni=json.load(fp)
     print(len(muni["features"]))
     for el in muni["features"]:
-        if el["properties"]["MUN_ENG"]=="No Jurisdiction":
+        if "No Jurisdiction" in el["properties"]["MUN_ENG"]:
             muni["features"].remove(el)
     kk=muni["features"]+nj
     muni["features"]=kk
