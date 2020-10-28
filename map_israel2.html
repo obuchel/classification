@@ -1,6 +1,4 @@
 
-
-S
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,6 +77,7 @@ height:25.5% !important;
 <div id="map"></div> 
 <div class="map-overlay" id="legend"></div>
 <script>
+    var dd="10/28/20";
  fetch('municipalities_new.json').then(res => res.json()) 
 .then(data => {    
      
@@ -241,7 +240,7 @@ sel1.appendChild(opt1);
           legend.appendChild(item);
    }
   var value = document.createElement('span');
-          value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fill="none" stroke="black"/></svg> <svg width="10" height="10">  <circle cx="5" cy="5" r="4.5" fill="none" stroke="black"/></svg> <svg width="15" height="15"><circle cx="7.5" cy="7.5" r="7" fill="none" stroke="black"/></svg> - Numbers of cases past 14 days';
+          value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fill="none" stroke="black"/></svg> <svg width="10" height="10">  <circle cx="5" cy="5" r="4.5" fill="none" stroke="black"/></svg> <svg width="15" height="15"><circle cx="7.5" cy="7.5" r="7" fill="none" stroke="black"/></svg> - Numbers of cases past 14 days <p>Updated: '+dd;
 var item = document.createElement('div');
     
     // item.className = 'legend-div';

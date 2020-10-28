@@ -78,6 +78,7 @@ height:25.5% !important;
 <div id="map"></div> 
 <div class="map-overlay" id="legend"></div>
 <script>
+  var dd="10/28/20";  
 mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjanlrY3diNzIwZDdxM25uN2owN2c5ZHpiIn0.XzMbcbHF6H42u0Uxo1L8lg';
 var map = new mapboxgl.Map({
 container: 'map',
@@ -201,7 +202,7 @@ sel1.appendChild(opt1);
           legend.appendChild(item);
         }
   var value = document.createElement('span');
-          value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fill="none" stroke="black"/></svg> <svg width="10" height="10">  <circle cx="5" cy="5" r="4.5" fill="none" stroke="black"/></svg> <svg width="15" height="15"><circle cx="7.5" cy="7.5" r="7" fill="none" stroke="black"/></svg> - Numbers of cases past 14 days';
+          value.innerHTML = '<svg width="2" height="2">  <circle cx="1" cy="1" r="0.8" fill="none" stroke="black"/></svg> <svg width="10" height="10">  <circle cx="5" cy="5" r="4.5" fill="none" stroke="black"/></svg> <svg width="15" height="15"><circle cx="7.5" cy="7.5" r="7" fill="none" stroke="black"/></svg> - Numbers of cases past 14 days <p>Updated: '+dd;
 var item = document.createElement('div');
     
     // item.className = 'legend-div';
@@ -283,7 +284,7 @@ stops: arr
 	  //tex +=" days</b> with 0 cases";
           var ll0=e.features[0].properties.values;
 	  var ll=ll0.replace("[","").replace("]","").split(",").reverse();
-	  console.log(ll);
+	  #console.log(ll);
 	  var stop=ll.length;  
       	  for (var u=0; u<stop; u++) {
 	      console.log(ll[u]);
@@ -298,7 +299,7 @@ stops: arr
 	  }
           tex +="<br><b>"+vals.length+" days</b> with 0 cases";
       }
-
+    
       popup=new mapboxgl.Popup()
 .setLngLat(e.lngLat)
 	  .setHTML(e.features[0].properties.name.split(" __ ")[0]+": "+e.features[0].properties.value+tex)
