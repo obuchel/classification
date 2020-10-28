@@ -300,10 +300,10 @@ map.on('click', 'place_data0', function(e) {
           tex +="<br><b>"+vals.length+" days</b> with 0 cases";
       }
 
-    if (e.features[0].properties.name.indexOf("No Jurisdiction")>-1) {
+    if (e.features[0].properties.name.indexOf("No Jurisdiction")==-1) {
 	var label=e.features[0].properties.name.split(" __ ")[0]+": "+e.features[0].properties.value+tex;
     } else {
-var label=e.features[0].properties.name.split(" __ ")[0];
+var label="No Jurisdiction";
 
     }
       popup=new mapboxgl.Popup()
