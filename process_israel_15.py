@@ -38,13 +38,17 @@ names={'םהוש': 'Shoham','בייה תמור':'Ramat Hovav','בגנב-הרער
 'םלוס':'Sulam',"(טבש) דייס":'AlSayid Tribe','המלס':'Salama'}
 
 municipalities={}
+nj=[]
 with open("municipalities.json","r") as fp:
     municipalities=json.load(fp)
+    ind =0
     for el in municipalities["features"]:
-        print(el["properties"])
+        if el["properties"]["MUN_ENG"]=="No Jurisdiction":
+            el["properties"]["MUN_ENG"]="No Jurisdiction "+str(ind)
+            nj.append(el)
         municipalities[el["properties"]["MUN_ENG"]]=el["properties"]["MUN_HEB"]
-
-
+        ind+=1
+        
 coords3={"'קצר א-סר":[31.083056, 34.978611],
 "ביר הדאג'":[30.977242, 34.695939],
 'אל סייד' :[31.284444, 34.916111],
@@ -62,6 +66,12 @@ muni={}
 munis=[]
 with open("municipalities10.json","r") as fp:
     muni=json.load(fp)
+    print(len(muni["features"]))
+    for el in muni["features"]:
+        if el["properties"]["MUN_ENG"]=="No Jurisdiction":
+            muni["features"].remove(el)
+    kk=muni["features"]+nj
+    muni["features"]=kk
     for el in muni["features"]:
         munis.append(el["properties"]["MUN_ENG"])
         #el["properties"]["MUN_HEB"]=municipalities[el["properties"]["MUN_ENG"]]
@@ -148,7 +158,7 @@ coords={"ABU RUBEI'A":[35.207778,36.520833],
 dd=pd.read_csv("https://raw.githubusercontent.com/yuvadm/geolocations-il/master/cities.csv")
 for el in list(dd.iterrows()):
     coords[el[1]["City"]]=[el[1]["Latitude"],el[1]["Longitude"]]
-print(coords)    
+#print(coords)    
 
 
 coords2={}
@@ -157,8 +167,8 @@ kkeys={}
 names={}
 with open("cities.json","r") as fp:
     data=json.load(fp)
-    print("length")
-    print(len(data))
+    #print("length")
+    #print(len(data))
     for el in data:
         try:
             #print(el)
@@ -169,8 +179,9 @@ with open("cities.json","r") as fp:
                 #ll=coords[el["english_name"]]
             coords2[el["semel_yeshuv"]]=str(ll[0])+"_"+str(ll[1])
         except:
-            print("missed")
-            print(el)
+            #print("missed")
+            #print(el)
+            continue
         names[el["name"]]=el["semel_yeshuv"]
         mm=[x.lower() for x in munis]
         if el['english_name'].lower() in mm:
@@ -182,26 +193,26 @@ with open("cities.json","r") as fp:
             kkeys[el["semel_yeshuv"]]=el['english_name']#shem_napa
 
 #_id,City_Name,City_Code,Date,Cumulative_verified_cases,Cumulated_recovered,Cumulated_deaths,Cumulated_number_of_tests,Cumulated_number_of_diagnostic_tests
-print(coords2)
-print(len(muni["features"]))
+#print(coords2)
+#print(len(muni["features"]))
 main_data=pd.read_csv("israel_file.csv")
-print(len(list(main_data["City_Code"].unique())))
+#print(len(list(main_data["City_Code"].unique())))
 main_data["district"]=main_data["City_Code"].astype(str).map(kkeys)
 main_data["coords"]=main_data["City_Code"].astype(str).map(coords2)
 #print(main_data["cityCode"].unique())
 #main_data.fillna(0)
-print(main_data[main_data["coords"]==0])
-print(main_data["coords"].unique())
-print(len(muni["features"]))
+#print(main_data[main_data["coords"]==0])
+#print(main_data["coords"].unique())
+#print(len(muni["features"]))
 main_data.to_csv("israeli-covid-cases_coords.csv")
-print(main_data)
+#print(main_data)
 #dd=pd.read_csv("https://raw.githubusercontent.com/yuvadm/geolocations-il/master/cities.csv")
 #print(len(list(dd["City"].map(names).unique())))
 
 
 main_data0=pd.read_csv("israeli-covid-cases_coords.csv")
 kl=main_data0[main_data0["coords"].isna()==True]
-print(kl["district"].unique())
-print(kl["City_Name"].unique())
+#print(kl["district"].unique())
+#print(kl["City_Name"].unique())
 
 #print(main_data0["coords"].isna())
