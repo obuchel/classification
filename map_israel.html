@@ -98,7 +98,7 @@ center: [35.217018,31.771959]
 #bd0026
 #800026
 */
-var arr=[[-1, 'seagreen'],[1, '#ffffcc'],[20, '#fed976'],[500, '#fd8d3c'],[1000, '#e31a1c'],[3000, '#bd0026'],[10050, '#800026']];
+var arr=[[-1, 'seagreen'],[1, '#ffffcc'],[20, '#fed976'],[500, '#fd8d3c'],[1000, '#e31a1c'],[2000, '#bd0026'],[2500, '#800026']];
   var popup;
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');       
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
@@ -108,8 +108,9 @@ map.on('load', function() {
           ' : 1-20',
           ' : 20-200',
           ' : 200-500',
-            ' : 1000-3000',
-	    ' : 3000-10000'
+            ' : 500-1000',
+	    ' : 1000-2000',
+	    ' : 2000-3000'
         ];
 
         var colors = [
@@ -117,7 +118,8 @@ map.on('load', function() {
             'darkseagreen',
           '#ffffcc',
           '#fed976',
-          '#fd8d3c',
+            '#fd8d3c',
+	    '#e31a1c',
             '#bd0026',
           '#800026'
         ];
