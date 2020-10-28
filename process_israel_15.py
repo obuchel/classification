@@ -43,7 +43,7 @@ with open("municipalities.json","r") as fp:
     municipalities=json.load(fp)
     ind =0
     for el in municipalities["features"]:
-        if el["properties"]["MUN_ENG"]=="No Jurisdiction":
+        if el["properties"]["MUN_ENG"]=="No Jurisdiction" and ind!=287:
             el["properties"]["MUN_ENG"]="No Jurisdiction "+str(ind)
             nj.append(el)
         municipalities[el["properties"]["MUN_ENG"]]=el["properties"]["MUN_HEB"]
