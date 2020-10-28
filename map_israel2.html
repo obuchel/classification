@@ -368,7 +368,7 @@ var label="No Jurisdiction";
       
 popup=new mapboxgl.Popup()
 .setLngLat(e.lngLat)
-	  .setHTML(e.features[0].properties.name.split(" __ ")[0]+" "+tex)
+	  .setHTML(label)
 .addTo(map);
   });
   map.on('click', 'points', function(e) {
