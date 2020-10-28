@@ -1,6 +1,4 @@
 
-
-
 #https://github.com/Arturiko/israel-cities/blob/master/JsonPropertiesWithoutIDs.json
 
 
@@ -43,9 +41,10 @@ with open("municipalities.json","r") as fp:
     municipalities=json.load(fp)
     ind =0
     for el in municipalities["features"]:
-        if el["properties"]["MUN_ENG"]=="No Jurisdiction" and ind!=287:
-            el["properties"]["MUN_ENG"]="No Jurisdiction "+str(ind)
-            nj.append(el)
+        if el["properties"]["MUN_ENG"]=="No Jurisdiction":
+            if ind!=287:
+                el["properties"]["MUN_ENG"]="No Jurisdiction "+str(ind)
+                nj.append(el)
         municipalities[el["properties"]["MUN_ENG"]]=el["properties"]["MUN_HEB"]
         ind+=1
         
@@ -53,8 +52,8 @@ coords3={"'קצר א-סר":[31.083056, 34.978611],
 "ביר הדאג'":[30.977242, 34.695939],
 'אל סייד' :[31.284444, 34.916111],
 "אבו רוקייק (שבט)":[31.26, 34.864],
-         "אבו ג'ווייעד (שבט)":[31.178502,34.745967],
-         "דייס לא":[31.284444,34.916111]}
+"אבו ג'ווייעד (שבט)":[31.178502,34.745967],
+"דייס לא":[31.284444,34.916111]}
 
 '''
 אל סייד
