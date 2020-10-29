@@ -56,9 +56,12 @@ coords3={"'קצר א-סר":[31.083056, 34.978611],
 'אל סייד' :[31.284444, 34.916111],
 "אבו רוקייק (שבט)":[31.26, 34.864],
 "אבו ג'ווייעד (שבט)":[31.178502,34.745967],
-"דייס לא":[31.284444,34.916111]}
+         "דייס לא":[31.284444,34.916111],
+         "ביר הדאג'":[30.977242, 34.695939],
+         "קצר א-סר":[34.982169,31.08304]}
 
 '''
+31.08304, 34.982169,31.08304
 אל סייד
 ביר הדאג'
 קצר א-סר
@@ -160,7 +163,7 @@ dd=pd.read_csv("https://raw.githubusercontent.com/yuvadm/geolocations-il/master/
 for el in list(dd.iterrows()):
     coords[el[1]["City"]]=[el[1]["Latitude"],el[1]["Longitude"]]
 #print(coords)    
-
+#{'semel_yeshuv': '970', 'name': 'תראבין א-צאנע )שבט(', 'english_name': 'TARABIN AS-SANI', 'semel_napa': '62', 'shem_napa': 'באר שבע', 'semel_lishkat_mana': '62', 'lishka': 'באר שבע', 'semel_moatza_ezorit': '0', 'shem_moaatza': ''}
 
 coords2={}
 data=[]
@@ -180,9 +183,12 @@ with open("cities.json","r") as fp:
                 #ll=coords[el["english_name"]]
             coords2[el["semel_yeshuv"]]=str(ll[0])+"_"+str(ll[1])
         except:
-            #print("missed")
-            #print(el)
-            continue
+            print("missed")
+            try:
+                ll=coords3[el["name"]]
+                coords2[el["semel_yeshuv"]]=str(ll[0])+"_"+str(ll[1])
+            except:    
+                continue
         names[el["name"]]=el["semel_yeshuv"]
         mm=[x.lower() for x in munis]
         if el['english_name'].lower() in mm:
