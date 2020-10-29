@@ -89,10 +89,11 @@ height:25.5% !important;
          data["features"][i]["properties"]["value"]=-1;
           }
         if (data["features"][i]["properties"]["values"]!==0 && data["features"][i]["properties"]["value"]!==-1) { 
-         var arr=data["features"][i]["properties"]["values"].reverse();
-          var stop=arr.length;  
+            var arr3=data["features"][i]["properties"]["values"].reverse();
+	    console.log(arr3);
+          var stop=arr3.length;  
             for (var u=0; u<stop; u++) {
-                if (arr[u]>0) {
+                if (arr3[u]>0) {
                     
                     stop=u;
                 }
@@ -162,9 +163,8 @@ var arr=[[-1, '#00441b'],[0, '#ff1500'],[2, '#eeff00'],[5, '#74c476'],[10, '#41a
             '#238b45',
              '#41ab5d',
               '#74c476',
-               '#eeff00',
-            
-          '#ff1500'
+               '#eeff00',   
+               '#ff1500'
          
          
         ];
