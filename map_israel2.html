@@ -354,9 +354,9 @@ var vals=[];
           var tex="Green zone";                                                                                                                                                      
       }     
 
-      console.log(e.features[0].properties);
+      //console.log(e.features[0].properties);
     if (e.features[0].properties.name.indexOf("No Jurisdiction")==-1) {
-	var label=e.features[0].properties.name.split(" __ ")[0]+": "+e.features[0].properties.value+tex;
+	var label=e.features[0].properties.name.split(" __ ")[0]+": "+d3.sum(vals)+tex;
     } else {
 var label="No Jurisdiction";
 
