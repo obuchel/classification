@@ -330,11 +330,12 @@ stops: arr
           var tex="Green zone"; 
       }
 */
-var vals=[];
+      var vals=[];
+      var ll=[];
       if (e.features[0].properties.value>0) {
           //tex +=" days</b> with 0 cases";                                                                                                                                          
           var ll0=e.features[0].properties.values;
-          var ll=ll0.replace("[","").replace("]","").split(",").reverse();
+          ll=ll0.replace("[","").replace("]","").split(",").reverse();
           //console.log(ll);                                                                                                                                                         
           var stop=ll.length;
           for (var u=0; u<stop; u++) {
