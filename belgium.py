@@ -21,7 +21,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='10/29/20'
+date_of_analysis='10/31/20'
 
 df = pd.read_excel(r'https://epistat.sciensano.be/Data/COVID19BE.xlsx', sheet_name='CASES_AGESEX')
 df3=df.dropna().groupby(["DATE","PROVINCE","REGION"])["CASES"].sum().reset_index()
