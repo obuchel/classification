@@ -99,9 +99,9 @@ if False:
     import sys
     sys.exit(0)
 
-tim = dates#list(e_dataframe0.columns)
+tim = dates0#list(e_dataframe0.columns)
 #tim.pop(0)
-
+print(tim)
 ind4 = 0
 aar = []
 aar1 = []
