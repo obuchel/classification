@@ -20,7 +20,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='11/13/20'
+date_of_analysis='11/17/20'
 
 df = pd.read_csv('https://raw.githubusercontent.com/ec-jrc/COVID-19/master/data-by-region/jrc-covid-19-all-days-by-regions.csv')
 

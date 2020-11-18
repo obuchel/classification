@@ -12,7 +12,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='11/10/20'
+date_of_analysis='11/14/20'
 
 
 output_directory = 'output1_france'
