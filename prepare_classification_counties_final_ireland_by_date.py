@@ -10,7 +10,7 @@ import numpy as np
 import os
 from datetime import datetime
 import matplotlib.pyplot as plt
-date_of_analysis='11/19/20'
+date_of_analysis='11/17/20'
 import math
 output_directory = 'output_ireland1'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -218,5 +218,6 @@ for name in counties:
 #    json.dump(aar,outfile)
 aar1[0]["date"]=date_of_analysis
 # this file is used by the map
+print(aar1)
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
