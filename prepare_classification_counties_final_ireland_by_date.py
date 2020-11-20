@@ -207,7 +207,7 @@ for name in counties:
         plt.show()
         #int(max(y))
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["FID"])+'.json', 'w') as outfile:
-            json.dump({"dates":tim2,"max_14":max(y5),"max":max(y5),"value":y3,"time":tim,"original_values":original_values},outfile)
+            json.dump({"dates":tim2,"max_14":y5[len(y5)-1]-y5[0],"max":y5[len(y5)-1]-y5[0],"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
            
         aar1.append({"n":name,"id":ids[recs.index(name)]["FID"],"v":ratio,"c":color,"max":max(y5)})
@@ -219,5 +219,5 @@ for name in counties:
 aar1[0]["date"]=date_of_analysis
 # this file is used by the map
 print(aar1)
-with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
+with open(output_directory + '/classification/classification_ids_counties22.json', 'w') as outfile:
     json.dump(aar1, outfile)
