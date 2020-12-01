@@ -1,15 +1,11 @@
 
-
-
-
-
 import json
 import numpy as np
 import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='11/29/20'
+date_of_analysis='11/30/20'
 
 
 output_directory = 'output'
@@ -138,8 +134,8 @@ def classify(ratio, recent_mean, threshold):
 for name in counties:
     values = e_dataframe1[name]
     num_rows = len(values)
-    y50 = values[-14:]
-    y5 = [y - values[-14] for y in y50]
+    y50 = values[-15:]
+    y5 = [y - values[-15] for y in y50]
     y = values
     original_values = compute_original_values(values)
     x = e_dataframe1[e_dataframe1.columns[0]]
