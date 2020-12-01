@@ -38,6 +38,7 @@ else:
     # Original:
     data = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/406c6a23-e283-4300-9484-54e78c8ae675',sep=';',engine="python")
 #print(data.columns)
+data=data[data['cl_age90']==0]
 data["Combined_Key"]=data["dep"]
 df_=data.groupby(["Combined_Key","jour"])["P"].sum().reset_index()
 df=pd.concat([df4, df_])

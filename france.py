@@ -39,6 +39,7 @@ else:
     # Original:
     data = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/406c6a23-e283-4300-9484-54e78c8ae675',sep=';',engine="python")
 #print(data.columns)
+data=data[data['cl_age90']==0]
 data["Combined_Key"]=data["dep"]
 df_=data.groupby(["Combined_Key","jour"])["P"].sum().reset_index()
 df=pd.concat([df4, df_])
@@ -84,7 +85,7 @@ add_day_columns(e_dataframe1)
 
 if False:
     # show intermediate result and abortthe script right here
-    print(e_dataframe1.iloc[10:, :5])
+    #print(e_dataframe1.iloc[10:, :5])
     import sys
     sys.exit(0)
 
@@ -160,6 +161,7 @@ for name in counties:
     num_rows = len(values)
     y50 = values[-14:]
     y5 = [y - values[-14] for y in y50]
+    print(y5)
     y = values
     original_values = compute_original_values(values)
     x = e_dataframe1[e_dataframe1.columns[0]]
@@ -195,7 +197,7 @@ for name in counties:
             ratio=0
             color="darkgreen"
 
-        print(name,color,ratio,recent_mean0,values,tim)    
+        #print(name,color,ratio,recent_mean0,values,tim)    
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["Combined_Key"])+'.json', 'w') as outfile:
             json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":np.max(y),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
