@@ -1,4 +1,6 @@
 
+
+
 #https://static.data.gouv.fr/resources/donnees-relatives-aux-resultats-des-tests-virologiques-covid-19/20200829-191505/sp-pos-quot-dep-2020-08-29-19h15.csv
 #https://www.data.gouv.fr/fr/datasets/r/406c6a23-e283-4300-9484-54e78c8ae675
 #https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-avec-outre-mer.geojson
@@ -13,7 +15,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='11/25/20'
+date_of_analysis='12/2/20'
 
 
 output_directory = 'output_france'
