@@ -1,5 +1,6 @@
 
 
+
 import json
 
 import numpy as np
@@ -7,7 +8,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='12/5/20'
+date_of_analysis='12/10/20'
 
 
 output_directory = 'output_netherlands'
