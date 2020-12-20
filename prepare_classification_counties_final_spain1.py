@@ -7,7 +7,7 @@ import json
 import numpy as np
 import os
 numb=10
-date_of_analysis='12/10/20'
+date_of_analysis='12/17/20'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
 #https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-ccaa-spain_consolidated.csv
 

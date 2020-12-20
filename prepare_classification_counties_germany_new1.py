@@ -10,7 +10,7 @@ import json
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-date_of_analysis='11/17/20'
+date_of_analysis='12/19/20'
 
 output_directory = 'output_germany'
 os.makedirs(output_directory + '/classification', exist_ok=True)
