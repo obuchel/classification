@@ -625,7 +625,7 @@ stops: arr2
 function draw_plot(data,color) {
     
     
-    console.log(data);
+//    console.log(data);
     document.getElementById("plot").style.visibility="visible";
    document.getElementById("features").style.visibility="visible";
     //console.log(data);
@@ -655,7 +655,7 @@ function draw_plot(data,color) {
         data10.push(temp);
     }
    //console.log(data110.map(function(d){ return d.value}),data10.map(function(d){ return d.value}));
-    var margin = {top: 25, right: 20, bottom: 20, left: 35},
+    var margin = {top: 25, right: 20, bottom: 20, left: 45},
     width = 250 - margin.left - margin.right,
     height = window.innerHeight*0.3 - margin.top - margin.bottom;
     
