@@ -12,7 +12,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 
-date_of_analysis='12/19/20'
+date_of_analysis='12/26/20'
 
 
 output_directory = 'output_arizona'
@@ -20,7 +20,7 @@ os.makedirs(output_directory + '/classification', exist_ok=True)
 
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
-data = pd.read_csv('/Users/olgabuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code (2).csv')
+data = pd.read_csv('/Users/olgabuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code.csv')
 #/abuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code.csv')
 data["dates"]=data.apply(lambda row: str(row.Date).split(" ")[0], axis=1)
 data["Combined_Key"]=data["Zip Code"]
