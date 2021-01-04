@@ -639,7 +639,7 @@ function draw_plot(data,color) {
         } else {
             var val=0;
         }
-        var temp={"date":new Date(2020,Number(data["dates"][i].split("/")[0])-1,Number(data["dates"][i].split("/")[1])),"value":val};
+        var temp={"date":new Date(Number(data["dates"][i].split("/")[2]),Number(data["dates"][i].split("/")[0])-1,Number(data["dates"][i].split("/")[1])),"value":val};
         data110.push(temp);
     }
     
@@ -651,7 +651,7 @@ function draw_plot(data,color) {
         } else {
             var val=0;
         }
-        var temp={"date":new Date(2020,Number(data["time"][i].split("/")[0])-1,Number(data["time"][i].split("/")[1])),"value":val};
+        var temp={"date":new Date(Number(data["dates"][i].split("/")[2]),Number(data["time"][i].split("/")[0])-1,Number(data["time"][i].split("/")[1])),"value":val};
         data10.push(temp);
     }
    //console.log(data110.map(function(d){ return d.value}),data10.map(function(d){ return d.value}));
