@@ -8,7 +8,7 @@ import numpy as np
 import os
 from datetime import datetime
 import matplotlib.pyplot as plt
-date_of_analysis='12/17/20'
+date_of_analysis='01/01/21'
 import math
 output_directory = 'output_ireland'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -42,9 +42,18 @@ for x in range(4,13):
             y="0"+str(y)
         if str(y)+"-"+str(x)+"-"+"2020" not in ["31-04-2020","31-06-2020","31-09-2020","31-11-2020"]:    
             dates.append(str(y)+"-"+str(x)+"-"+"2020")
+for x in range(1,2):
+    if x<10:
+        x="0"+str(x)
+    for y in range(1,32):
+        if y<10:
+            y="0"+str(y)
+        if str(y)+"-"+str(x)+"-"+"2021" not in ["30-02-2021","31-02-2021","31-04-2021","31-06-2021","31-09-2021","31-11-2021"]:
+            dates.append(str(y)+"-"+str(x)+"-"+"2021")
+            
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
-#print(dates0)
-data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland (4).csv")
+print(dates0)
+data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland (6).csv")
 print(data)
 data["date"]=[str(x).split(" ")[0] for x in data["TimeStamp"]]
 data["FID"]=data["CountyName"]
