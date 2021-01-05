@@ -52,7 +52,7 @@
     fetch('naics_codes.json')
   .then(response => response.json())
     .then(function(data0) {
-	console.log(data0.keys()[0]);
+	console.log(d3.keys(data0)[0]);
 	d3.json("data_928120.json",function(data) {	
     const jsonInput = data;
 	  
