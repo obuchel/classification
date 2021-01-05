@@ -20,7 +20,7 @@ import wget
 
 url = 'https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv'
  
-wget.download(url, '../Covid19Casos.csv')
+#wget.download(url, '../Covid19Casos.csv')
 
 
 
@@ -236,7 +236,8 @@ for name in counties:
         #print(ids.index(name))
         #print(ids[ids.index(name)])
         with open(output_directory + '/classification/data_counties_'+str(ids[ids.index(name)])+'.json', 'w') as outfile:
-            json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim[1:],"original_values": original_values[1:]},outfile)
+            print(tim2[14:],y3[14:],original_values[15:],tim[15:])
+            json.dump({"dates":tim2[14:],"max_14":int(max(y5)),"max":int(max(y)),"value":y3[14:],"time":tim[15:],"original_values": original_values[15:]},outfile)
             #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})                
         aar1.append({"n":lists[name],"id":ids[ids.index(name)],"v":ratio,"c":color,"max":int(max(y5))})
     else:
