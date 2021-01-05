@@ -54,17 +54,12 @@
     .then(function(data0) {
 	console.log(d3.keys(data0)[0]);
 	d3.json("naics_code_data/data_"+d3.keys(data0)[0].toString()+".json",function(data) {
-/*
 
-{"initialViewState": {"bearing": 45, "latitude": 36.174465, "longitude": -86.76796, "pitch": 50, "zoom": 4}, "layers": [{"@@type": "ArcLay\
-er", "autoHighlight": true, "data": [], "getSourceColor": [240, 100, 0, 40], "getSourcePosition": "@@=[source_lon, source_lat]", "getTarge\
-tColor": [0, 255, 0, 40], "getTargetPosition": "@@=[target_lon, target_lat]", "getTilt": 15, "getWidth": "@@=weight*10", "id": "662197e5-3\
-11c-46dd-b52a-51bad3126c97", "pickable": true}], "mapProvider": "mapbox", "mapStyle": "mapbox://styles/mapbox/dark-v9", "views": [{"@@type\
-": "MapView", "controller": true}]} 
-*/
 	    data["layers"][0]["pickable"]=true;
 	    data["views"][0]["controller"]=true;
 	    data["layers"][0]["autoHighlight"]=true;
+
+	    console.log(data);
     const jsonInput = data;
 	  
     const MAPBOX_API_KEY = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjanlrY3diNzIwZDdxM25uN2owN2c5ZHpiIn0.XzMbcbHF6H42u0Uxo1L8lg';
