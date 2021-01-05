@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
     <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~8.3.*/dist/index.js'></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
     <style>
     body {
       margin: 0;
@@ -50,8 +51,9 @@
 
     fetch('naics_codes.json')
   .then(response => response.json())
-    .then(function(data) {
-	  console.log(data); 
+    .then(function(data0) {
+	console.log(data0.keys()[0]);
+	d3.json("data_928120.json",function(data) {	
     const jsonInput = data;
 	  
     const MAPBOX_API_KEY = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjanlrY3diNzIwZDdxM25uN2owN2c5ZHpiIn0.XzMbcbHF6H42u0Uxo1L8lg';
@@ -67,6 +69,7 @@
       tooltip,
       customLibraries
     });
+	    });
     });
   </script>
 </html>
