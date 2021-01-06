@@ -99,10 +99,10 @@
  */
 
 	    visibleLayers = new deck.ArcLayer({
-            id: "current-layers",
+		id:"current-layers",
 		//jsonInput,
 
-    data["layers"][0]["data"],
+		data:data["layers"][0]["data"],
     pickable: true,
     getWidth: 12,
 		getSourcePosition: d => [d.source_lon,d.source_lat],
@@ -152,7 +152,7 @@
 var newLayers = [ new deck.ArcLayer({
             id: "current-layers",
                 //jsonInput,                                                                                                              
-    data["layers"][0]["data"],
+    data:data["layers"][0]["data"],
     pickable: true,
     getWidth: 12,
                 getSourcePosition: d => [d.source_lon,d.source_lat],
