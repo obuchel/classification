@@ -60,6 +60,8 @@
     var deck;
     var tarimDeck;
     var visibleLayers;
+    var GREEN_RGB = [0, 255, 0, 40];
+    var RED_RGB = [240, 100, 0, 40];
      fetch('naics_codes.json')
   .then(response => response.json())
     .then(function(data0) {
@@ -99,23 +101,17 @@
 	    visibleLayers = new deck.ArcLayer({
             id: "current-layers",
 		//jsonInput,
-		data:data["layers"][0]["data"],
-/*            opacity: 0.6,
-            stroked: false,
-            filled: true,
-            extruded: true,
-            wireframe: true,
-            fp64: true,*/
-            //lightSettings: LIGHT_SETTINGS,
-            //getElevation: f => (/* f.properties.alan ? (5 + 20 * f.properties
-            //        .ekiliAlan / f.properties.alan) :  */5555),
-            //getFillColor: f => /*(colorSetter(f.properties.urunType) ? colorSetter(f
-            //            .properties.urunType) : [0, 0, 0]) */random_rgba(),
-		//getLineColor: f => [0, 0, 0],
-	    //jsonInput,                                                                                                               
-            onHover:tooltip,
-            pickable: true
-            //onHover: updateTooltip
+
+    data["layers"][0]["data"],
+    pickable: true,
+    getWidth: 12,
+		getSourcePosition: d => [d.source_lon,d.source_lat],
+    getTargetPosition: d => [d.target_lon,d.target_lat],
+    //getSourceColor: d => [Math.sqrt(d.inbound), 140, 0],
+//		getTargetColor: d => [Math.sqrt(d.outbound), 140, 0],
+		getSourceColor:RED_RGB,
+    getTargetColor:GREEN_RGB,
+
         });
 
 	    tarimDeck = new deck.DeckGL({
@@ -153,25 +149,18 @@
      tooltip = {'html': '{weight} linkss <br /> Home of business in red; home location of customers in green'};
 
 	    
-var newLayers = [new deck.ArcLayer({
-                            id: "current-layers",
-                            data: data["layers"][0]["data"],
- /*                           opacity: 0.8,
-                            stroked: false,
-                            filled: true,
-                            extruded: true,
-                            wireframe: true,
-                            fp64: true,*/
-                           /* lightSettings: LIGHT_SETTINGS,
-                            getElevation: f => (/* f.properties.alan ? (5 + 20 * f.properties
-                    .ekiliAlan / f.properties.alan) :  *//*5555),
-                            getFillColor: f => /*(colorSetter(f.properties.urunType) ? colorSetter(f
-                        .properties.urunType) : [0, 0, 0]) *//*random_rgba(),
-                            getLineColor: f => [0, 0, 0],*/
-                            pickable: true,
-                            tooltip
+var newLayers = [ new deck.ArcLayer({
+            id: "current-layers",
+                //jsonInput,                                                                                                              
+    data["layers"][0]["data"],
+    pickable: true,
+    getWidth: 12,
+                getSourcePosition: d => [d.source_lon,d.source_lat],
+    getTargetPosition: d => [d.target_lon,d.target_lat],
+                getSourceColor:RED_RGB,
+    getTargetColor:GREEN_RGB,
 
-                        })];
+        })];
 
 	tarimDeck.setProps(newLayers);
 
