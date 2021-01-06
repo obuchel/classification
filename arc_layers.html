@@ -45,6 +45,8 @@
     </style>
   </head>
   <body>
+       <select id="select-container">
+    </select>
     <div id="deck-container">
     </div>
   </body>
@@ -53,10 +55,18 @@
     fetch('naics_codes.json')
   .then(response => response.json())
     .then(function(data0) {
-	console.log(d3.keys(data0)[0]);
-	d3.json("naics_code_data/data_"+d3.keys(data0)[0]+".json",function(data0) {
+	//console.log(d3.keys(data0)[0]);
+	var html="";
+	for (var i=0; i<d3.keys(data0).length; i++) {
+	    
+	    html +="<option value='"+d3.keys(data0)[i]+"'>"+d3.keys(data0)[i]+" - "+data0[d3.keys(data0)[i]]+"</option>";
+
+
+	}
+	d3.select("#select-container").append(html);
+	d3.json("naics_code_data/data_"+d3.keys(data0)[0]+".json",function(data10) {
             //console.log(data);
-	    data=data0;
+	    data=data10;
 	    data["layers"][0]["data"]=JSON.parse(data["layers"][0]["data"]);
  	    data["layers"][0]["pickable"]=true;
 	    data["views"][0]["controller"]=true;
@@ -80,5 +90,14 @@
     });
 	    });
     });
+
+    function change_map(e){
+
+	alert(e.value);
+
+
+    }
+
+    document.getElementById("select-container").addEventListener("change",change_map,false);
   </script>
 </html>
