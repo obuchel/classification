@@ -125,17 +125,24 @@
             container: document.getElementById('deck-container'),
             latitude: 36.174465,
             longitude: -86.76796,
-            zoom: 4,
+		zoom: 4,
+		 initialViewState: {longitude: -86.76796, latitude: 36.174465, zoom: 4},
+  // optional callback
+  onViewStateChange: ({viewState}) => {
+    // you can manipulate the viewState here if needed
+    return viewState;
+  },
+		controller: true,
             //maxZoom: 16,
 		pitch: 50,
-		'bearing': 45,
+		bearing: 45,
             layers: [visibleLayers]
         });
 	    });
     });
 
     function change_map(e){
-	console.log(e);
+//	console.log(e);
 	
 	d3.json("naics_code_data/data_"+e.target.value+".json",function(data10) {
             data=data10;
