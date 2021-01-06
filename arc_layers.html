@@ -56,7 +56,7 @@
 	console.log(d3.keys(data0)[0]);
 	d3.json("naics_code_data/data_"+d3.keys(data0)[0]+".json",function(data0) {
             //console.log(data);
-	    data=JSON.parse(data0);
+	    data=data0;
  	    data["layers"][0]["pickable"]=true;
 	    data["views"][0]["controller"]=true;
 	    data["layers"][0]["autoHighlight"]=true;
