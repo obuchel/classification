@@ -120,9 +120,9 @@
 		container: 'deck-container',
 		mapboxApiAccessToken: MAPBOX_API_KEY,
 //            mapboxAccessToken: 'pk.eyJ1IjoiaGFiaWwyNCIsImEiOiJjanU5cHk1a3QwbGZwNGRuMHc4dHZsMGJwIn0.Yrkp8-SSLDqHTRCKzXd8DA',
-			//mapStyle: 'https://free.tilehosting.com/styles/positron/style.json?key=2OrAmqAgbK4HwBOq6vWN',
+		//	mapStyle: 'https://free.tilehosting.com/styles/positron/style.json?key=2OrAmqAgbK4HwBOq6vWN',
 		mapProvider: "mapbox",
-		mapStyle: "mapbox://mapbox-dark-v9",
+	//	mapStyle: "mapbox://mapbox-dark-v9",
 //https://api.mapbox.com/styles/v1/?access_token=no-token            
       initialViewState: {
         longitude: -86.767960,
@@ -168,7 +168,7 @@ var newLayers = [new deck.ArcLayer({
 
         })];
 
-	    tarimDeck.setProps({"layers": newLayers});
+	    tarimDeck.setProps({"layers":newLayers});
 
 });
     }
