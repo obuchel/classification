@@ -98,7 +98,8 @@
 
 	    visibleLayers = new deck.GeoJsonLayer({
             id: "current-layers",
-            jsonInput,
+		//jsonInput,
+		data["layers"][0]["data"],
             opacity: 0.6,
             stroked: false,
             filled: true,
@@ -151,7 +152,7 @@
 	    
 var newLayers = [new deck.GeoJsonLayer({
                             id: "current-layers",
-                            data: data,
+                            data: data["layers"][0]["data"],
                             opacity: 0.8,
                             stroked: false,
                             filled: true,
