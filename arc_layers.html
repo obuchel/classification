@@ -51,8 +51,16 @@
     </div>
   </body>
   <script>
+    var jsonInput = {};
+    var MAPBOX_API_KEY = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjanlrY3diNzIwZDdxM25uN2owN2c5ZHpiIn0.XzMbcbHF6H42u0Uxo1L8lg';
+    var GOOGLE_MAPS_API_KEY = 'None';
+    var tooltip = {};
+    var customLibraries = null;
 
-    fetch('naics_codes.json')
+    var deck;
+    var tarimDeck;
+    var visibleLayers;
+     fetch('naics_codes.json')
   .then(response => response.json())
     .then(function(data0) {
 	//console.log(d3.keys(data0)[0]);
@@ -73,27 +81,70 @@
 	    data["layers"][0]["autoHighlight"]=true;
 
 	    console.log(data);
-    const jsonInput = data;
+    jsonInput = data;
 	  
-    const MAPBOX_API_KEY = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjanlrY3diNzIwZDdxM25uN2owN2c5ZHpiIn0.XzMbcbHF6H42u0Uxo1L8lg';
-    const GOOGLE_MAPS_API_KEY = 'None';
-    const tooltip = {'html': '{weight} linkss <br /> Home of business in red; home location of customers in green'};
-    const customLibraries = null;
-
-    const deck = createDeck({
+     tooltip = {'html': '{weight} linkss <br /> Home of business in red; home location of customers in green'};
+ /*
+    deck = createDeck({
       mapboxApiKey: MAPBOX_API_KEY,
       googleMapsKey: GOOGLE_MAPS_API_KEY,
-      container: document.getElementById('deck-container'),
+	container: document.getElementById('deck-container'),
+	id: "current-layers",
       jsonInput,
       tooltip,
       customLibraries
     });
+ */
+
+	    visibleLayers = new deck.GeoJsonLayer({
+            id: "current-layers",
+            data,
+            opacity: 0.6,
+            stroked: false,
+            filled: true,
+            extruded: true,
+            wireframe: true,
+            fp64: true,
+            //lightSettings: LIGHT_SETTINGS,
+            //getElevation: f => (/* f.properties.alan ? (5 + 20 * f.properties
+            //        .ekiliAlan / f.properties.alan) :  */5555),
+            //getFillColor: f => /*(colorSetter(f.properties.urunType) ? colorSetter(f
+            //            .properties.urunType) : [0, 0, 0]) */random_rgba(),
+		//getLineColor: f => [0, 0, 0],
+	    jsonInput,                                                                                                               
+            tooltip,
+            pickable: true
+            //onHover: updateTooltip
+        });
+
+	    tarimDeck = new deck.DeckGL({
+		mapboxApiKey: MAPBOX_API_KEY,
+            //mapboxAccessToken: 'pk.eyJ1IjoiaGFiaWwyNCIsImEiOiJjanU5cHk1a3QwbGZwNGRuMHc4dHZsMGJwIn0.Yrkp8-SSLDqHTRCKzXd8DA',
+            mapStyle: 'https://free.tilehosting.com/styles/positron/style.json?key=2OrAmqAgbK4HwBOq6vWN',
+            container: document.getElementById('deck-container'),
+            latitude: 36.174465,
+            longitude: -86.76796,
+            zoom: 4,
+            //maxZoom: 16,
+		pitch: 50,
+		'bearing': 45,
+            layers: [visibleLayers]
+        });
 	    });
     });
 
     function change_map(e){
-
-	alert(e.value);
+	console.log(e);
+	alert(e.target.value);
+map.removeLayer(deck);
+	
+deck.setProps({layers: [
+  new ScatterplotLayer({
+    id: 'same-id-as-last-time',
+    ...
+  }),
+  ...
+]});
 
 
     }
