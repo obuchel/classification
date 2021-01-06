@@ -149,12 +149,12 @@
      tooltip = {'html': '{weight} linkss <br /> Home of business in red; home location of customers in green'};
 
 	    
-var newLayers = [ new deck.ArcLayer({
+var newLayers = [new deck.ArcLayer({
             id: "current-layers",
                 //jsonInput,                                                                                                              
     data:data["layers"][0]["data"],
     pickable: true,
-    getWidth: "weight",
+    getWidth: 12,
                 getSourcePosition: d => [d.source_lon,d.source_lat],
     getTargetPosition: d => [d.target_lon,d.target_lat],
                 getSourceColor:RED_RGB,
@@ -162,7 +162,7 @@ var newLayers = [ new deck.ArcLayer({
 
         })];
 
-	tarimDeck.setProps(newLayers);
+	    tarimDeck.setProps({newLayers});
 
 });
     }
