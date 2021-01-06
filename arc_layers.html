@@ -83,7 +83,7 @@
 	    console.log(data);
     jsonInput = data;
 	  
-     tooltip = {'html': '{weight} linkss <br /> Home of business in red; home location of customers in green'};
+     tooltip = {'html': '{weight} links <br /> Home of business in red; home location of customers in green'};
  /*
     deck = createDeck({
       mapboxApiKey: MAPBOX_API_KEY,
@@ -99,7 +99,7 @@
 	    visibleLayers = new deck.GeoJsonLayer({
             id: "current-layers",
 		//jsonInput,
-		data:data["layers"][0]["data"],
+		data:data,
             opacity: 0.6,
             stroked: false,
             filled: true,
@@ -159,7 +159,7 @@
 	    
 var newLayers = [new deck.GeoJsonLayer({
                             id: "current-layers",
-                            data: data["layers"][0]["data"],
+                            data: data,
                             opacity: 0.8,
                             stroked: false,
                             filled: true,
