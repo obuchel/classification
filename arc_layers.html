@@ -96,16 +96,16 @@
     });
  */
 
-	    visibleLayers = new deck.GeoJsonLayer({
+	    visibleLayers = new deck.ArcLayer({
             id: "current-layers",
 		//jsonInput,
-		data:data,
-            opacity: 0.6,
+		data:data["layers"][0]["data"],
+/*            opacity: 0.6,
             stroked: false,
             filled: true,
             extruded: true,
             wireframe: true,
-            fp64: true,
+            fp64: true,*/
             //lightSettings: LIGHT_SETTINGS,
             //getElevation: f => (/* f.properties.alan ? (5 + 20 * f.properties
             //        .ekiliAlan / f.properties.alan) :  */5555),
@@ -123,20 +123,16 @@
             //mapboxAccessToken: 'pk.eyJ1IjoiaGFiaWwyNCIsImEiOiJjanU5cHk1a3QwbGZwNGRuMHc4dHZsMGJwIn0.Yrkp8-SSLDqHTRCKzXd8DA',
             mapStyle: 'https://free.tilehosting.com/styles/positron/style.json?key=2OrAmqAgbK4HwBOq6vWN',
             container: document.getElementById('deck-container'),
-            latitude: 36.174465,
-            longitude: -86.76796,
-		zoom: 4,
-		 initialViewState: {longitude: -86.76796, latitude: 36.174465, zoom: 4},
-  // optional callback
-  onViewStateChange: ({viewState}) => {
-    // you can manipulate the viewState here if needed
-    return viewState;
-  },
-		controller: true,
-            //maxZoom: 16,
-		pitch: 50,
-		bearing: 45,
-            layers: [visibleLayers]
+      initialViewState: {
+        longitude: -100,
+        latitude: 40.7,
+        zoom: 3,
+        maxZoom: 15,
+        pitch: 30,
+        bearing: 30
+      },
+      controller: true,
+      layers: [visibleLayers]
         });
 	    });
     });
@@ -157,15 +153,15 @@
      tooltip = {'html': '{weight} linkss <br /> Home of business in red; home location of customers in green'};
 
 	    
-var newLayers = [new deck.GeoJsonLayer({
+var newLayers = [new deck.ArcLayer({
                             id: "current-layers",
-                            data: data,
-                            opacity: 0.8,
+                            data: data["layers"][0]["data"],
+ /*                           opacity: 0.8,
                             stroked: false,
                             filled: true,
                             extruded: true,
                             wireframe: true,
-                            fp64: true,
+                            fp64: true,*/
                            /* lightSettings: LIGHT_SETTINGS,
                             getElevation: f => (/* f.properties.alan ? (5 + 20 * f.properties
                     .ekiliAlan / f.properties.alan) :  *//*5555),
