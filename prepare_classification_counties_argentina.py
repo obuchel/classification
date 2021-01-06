@@ -20,7 +20,7 @@ import wget
 
 url = 'https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv'
  
-#wget.download(url, '../Covid19Casos.csv')
+wget.download(url, '../Covid19Casos.csv')
 
 
 
