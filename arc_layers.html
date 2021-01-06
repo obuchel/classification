@@ -98,7 +98,7 @@
 
 	    visibleLayers = new deck.GeoJsonLayer({
             id: "current-layers",
-            data,
+            jsonInput,
             opacity: 0.6,
             stroked: false,
             filled: true,
@@ -111,7 +111,7 @@
             //getFillColor: f => /*(colorSetter(f.properties.urunType) ? colorSetter(f
             //            .properties.urunType) : [0, 0, 0]) */random_rgba(),
 		//getLineColor: f => [0, 0, 0],
-	    jsonInput,                                                                                                               
+	    //jsonInput,                                                                                                               
             tooltip,
             pickable: true
             //onHover: updateTooltip
@@ -135,17 +135,44 @@
 
     function change_map(e){
 	console.log(e);
-	alert(e.target.value);
-map.removeLayer(deck);
 	
-deck.setProps({layers: [
-  new ScatterplotLayer({
-    id: 'same-id-as-last-time',
-    ...
-  }),
-  ...
-]});
+	d3.json("naics_code_data/data_"+e.target.value+".json",function(data10) {
+            data=data10;
+            data["layers"][0]["data"]=JSON.parse(data["layers"][0]["data"]);
+            data["layers"][0]["pickable"]=true;
+            data["views"][0]["controller"]=true;
+            data["layers"][0]["autoHighlight"]=true;
 
+            console.log(data);
+    jsonInput = data;
+
+     tooltip = {'html': '{weight} linkss <br /> Home of business in red; home location of customers in green'};
+
+	    
+var newLayers = [new deck.GeoJsonLayer({
+                            id: "current-layers",
+                            data: data,
+                            opacity: 0.8,
+                            stroked: false,
+                            filled: true,
+                            extruded: true,
+                            wireframe: true,
+                            fp64: true,
+                           /* lightSettings: LIGHT_SETTINGS,
+                            getElevation: f => (/* f.properties.alan ? (5 + 20 * f.properties
+                    .ekiliAlan / f.properties.alan) :  *//*5555),
+                            getFillColor: f => /*(colorSetter(f.properties.urunType) ? colorSetter(f
+                        .properties.urunType) : [0, 0, 0]) *//*random_rgba(),
+                            getLineColor: f => [0, 0, 0],*/
+                            pickable: true,
+                            tooltip
+
+                        })];
+
+	tarimDeck.setProps(newLayers);
+
+]});
+});
 
     }
 
