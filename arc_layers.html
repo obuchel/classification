@@ -99,7 +99,7 @@
 	    visibleLayers = new deck.GeoJsonLayer({
             id: "current-layers",
 		//jsonInput,
-		data["layers"][0]["data"],
+		data:data["layers"][0]["data"],
             opacity: 0.6,
             stroked: false,
             filled: true,
@@ -113,7 +113,7 @@
             //            .properties.urunType) : [0, 0, 0]) */random_rgba(),
 		//getLineColor: f => [0, 0, 0],
 	    //jsonInput,                                                                                                               
-            tooltip,
+            onHover:tooltip,
             pickable: true
             //onHover: updateTooltip
         });
