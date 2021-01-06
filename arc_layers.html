@@ -154,7 +154,7 @@ var newLayers = [ new deck.ArcLayer({
                 //jsonInput,                                                                                                              
     data:data["layers"][0]["data"],
     pickable: true,
-    getWidth: 12,
+    getWidth: "weight",
                 getSourcePosition: d => [d.source_lon,d.source_lat],
     getTargetPosition: d => [d.target_lon,d.target_lat],
                 getSourceColor:RED_RGB,
