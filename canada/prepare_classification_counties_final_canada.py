@@ -1,4 +1,5 @@
 
+
 import json
 
 import numpy as np
@@ -7,7 +8,7 @@ import os
 from prep_canada_data import stage_latest
 
 
-date_of_analysis='01/06/21'
+date_of_analysis='01/07/21'
 
 output_directory = 'output_canada'
 os.makedirs(output_directory + '/classification', exist_ok=True)

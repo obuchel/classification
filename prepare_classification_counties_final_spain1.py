@@ -8,7 +8,7 @@ import json
 import numpy as np
 import os
 numb=10
-date_of_analysis='12/22/20'
+date_of_analysis='01/07/20'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
 #https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-ccaa-spain_consolidated.csv
 
@@ -70,7 +70,7 @@ for date in dates1:
 
 
 
-data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv",sep=",")
+data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/casos_diagnostico_provincia.csv",sep=",")
 print(data)
 data["provincia_iso"]=data["provincia_iso"].astype(str)
 df1 = data["fecha"].str.contains("2020-05-08")
@@ -86,7 +86,7 @@ for date in dates:
 kkeys={"provincia_iso":"provincia_iso"}
 #cols=[x.split("-")[1]+"/"+x.split("-")[2]+"/20" if len(x.split("-"))>1 else x for x in list(total.columns)]
 for item in list(total.columns)[1:]:
-    kkeys[item]=item.split("-")[1]+"/"+item.split("-")[2]+"/20"
+    kkeys[item]=item.split("-")[1]+"/"+item.split("-")[2]+"/"+item.split("-")[0]
 
 #print(kkeys)
 total=total.rename(columns=kkeys)
