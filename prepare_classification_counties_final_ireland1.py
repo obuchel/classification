@@ -9,7 +9,7 @@ import numpy as np
 import os
 from datetime import datetime
 import matplotlib.pyplot as plt
-date_of_analysis='01/01/21'
+date_of_analysis='01/08/21'
 n=150
 import math
 output_directory = 'output_ireland1'
@@ -55,7 +55,7 @@ for x in range(1,2):
 
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 #print(dates0)
-data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland.csv")
+data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland-3.csv")
 print(data)
 data["date"]=[str(x).split(" ")[0] for x in data["TimeStamp"]]
 data["FID"]=data["CountyName"]
