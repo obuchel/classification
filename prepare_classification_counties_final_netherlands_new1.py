@@ -7,7 +7,7 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='01/04/21'
+date_of_analysis='01/08/21'
 
 
 output_directory = 'output1_netherlands'
@@ -43,9 +43,12 @@ total["Combined_Key"]=total["Municipality_code"]
 total
 
 for date in dates:
-  day = data[ data['Date_of_report'].str.contains(date) ]
-  reports = day['Total_reported'].to_list()
-  total[date] = reports
+    try:
+        day = data[ data['Date_of_report'].str.contains(date) ]
+        reports = day['Total_reported'].to_list()
+        total[date] = reports
+    except:
+        continue
 #total["Combined"]=total["Municipality_name"]+", "+total["Province"]
 #scratch
 print(total)
