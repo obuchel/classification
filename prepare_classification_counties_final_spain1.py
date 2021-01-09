@@ -2,13 +2,14 @@
 
 
 
+
 import pandas as pd
 import seaborn as sns
 import json
 import numpy as np
 import os
 numb=10
-date_of_analysis='01/07/20'
+date_of_analysis='01/08/20'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
 #https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-ccaa-spain_consolidated.csv
 
@@ -50,8 +51,8 @@ e_dataframe0_ = e_dataframe_#.drop(columns=['dep'])
 e_dataframe1_ = pd.pivot_table(e_dataframe0_, values='num_casos', index=['fecha'],columns=['Combined_Key'],aggfunc=np.sum)
 #print(e_dataframe0.columns)
 final=e_dataframe1_
-print(final)
-print(final.index)
+#print(final)
+#print(final.index)
 
 
 '''
@@ -88,7 +89,7 @@ kkeys={"provincia_iso":"provincia_iso"}
 for item in list(total.columns)[1:]:
     kkeys[item]=item.split("-")[1]+"/"+item.split("-")[2]+"/"+item.split("-")[0]
 
-#print(kkeys)
+print(kkeys.keys())
 total=total.rename(columns=kkeys)
 print(total)
 
@@ -155,9 +156,13 @@ if False:
     import sys
     sys.exit(0)
 
-tim =final.index.to_list()+data["fecha"].unique().tolist() 
+#tim =final.index.to_list()+data["fecha"].unique().tolist() 
 #tim.pop(0)
+tim =data["fecha"].unique().tolist()     
 print(tim)
+
+
+
 ind4 = 0
 aar = []
 aar1 = []
@@ -274,13 +279,15 @@ for name in counties:
                 ratio=0
                 color="darkgreen"
             if name!="nan":
-                print(name,color,ratio,recent_mean0,values)    
+                print(y3)
+                print(len(tim2),len(y3),len(tim[1:]),len(original_values))
+                #282 364 291 372
                 with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
-                    json.dump({"dates":tim2[180:],"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[180:],"original_values":original_values},outfile)
+                    json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[1:],"original_values":original_values},outfile)
                 aar1.append({"n":name,"id":ids[recs.index(name)]["provincia_iso"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             else:
                 with open(output_directory + '/classification/data_counties_NA.json', 'w') as outfile:
-                    json.dump({"dates":tim2[180:],"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[180:],"original_values":original_values},outfile)
+                    json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[1:],"original_values":original_values},outfile)
                 aar1.append({"n":"NA","id":"NA","v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             ind4+=1
     except:
@@ -298,3 +305,4 @@ with open(output_directory + '/classification/classification_ids_counties2.json'
 print(final.index)
 print(len(tim))
 print(counties)
+#print(kkeys.keys())

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import pandas as pd
 import seaborn as sns
 import json
@@ -90,9 +84,9 @@ kkeys={"provincia_iso":"provincia_iso"}
 for item in list(total.columns)[1:]:
     kkeys[item]=item.split("-")[1]+"/"+item.split("-")[2]+"/"+item.split("-")[0]
 
-#print(kkeys)
+print(kkeys.keys())
 total=total.rename(columns=kkeys)
-print(total)
+#print(total)
 
 output_directory = 'output_spain'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -277,7 +271,8 @@ for name in counties:
                 ratio=0
                 color="darkgreen"
             if name!="nan":
-                print(name,color,ratio,recent_mean0,values)    
+                #print(name,color,ratio,recent_mean0,values)
+                print(len(tim2),len(y3),len(tim[1:]),len(original_values))
                 with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
                     json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
