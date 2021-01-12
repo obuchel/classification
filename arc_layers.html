@@ -78,7 +78,7 @@
 
 	}
 	d3.select("#select-container").html(html);
-	d3.json("naics_code_data/data_"+d3.keys(data0)[0]+".json",function(data10) {
+	d3.json("new_naics/data_11_"+d3.keys(data0)[0]+".json",function(data10) {
             //console.log(data);
 	    data=data10;
 	    data["layers"][0]["data"]=JSON.parse(data["layers"][0]["data"]);
@@ -149,7 +149,7 @@ mapStyle: 'mapbox://styles/mapbox/dark-v9'
     function change_map(e){
 //	console.log(e);
 	
-	d3.json("naics_code_data/data_"+e.target.value+".json",function(data10) {
+	d3.json("new_naics/data_11_"+e.target.value+".json",function(data10) {
             data=data10;
             data["layers"][0]["data"]=JSON.parse(data["layers"][0]["data"]);
             data["layers"][0]["pickable"]=true;
