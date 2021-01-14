@@ -1,5 +1,6 @@
 
 
+
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -49,7 +50,26 @@
     </style>
   </head>
   <body>
-       <select id="select-container">
+    <div>
+      <input type="radio" id="november" name="date" value="11" checked>
+      <label for="male">November, 2020</label>
+            <input type="radio" id="october" name="date" value="10">
+	    <label for="male">October, 2020</label>
+	        <input type="radio" id="September" name="date" value="09">
+		<label for="male">September, 2020</label>
+		<input type="radio" id="august" name="date" value="08">
+	        <label for="male">August, 2020</label>
+		<input type="radio" id="july" name="date" value="07">
+		<label for="male">July, 2020</label>
+               <input type="radio" id="june" name="date" value="06">
+		<label for="male">June, 2020</label>
+               <input type="radio" id="may" name="date" value="05">
+		<label for="male">May, 2020</label>
+			      
+      </div>
+
+    
+    <select id="select-container">
     </select>
     <div id="deck-container">
     </div>
@@ -78,7 +98,7 @@
 
 	}
 	d3.select("#select-container").html(html);
-	d3.json("new_naics/data_11_"+d3.keys(data0)[0]+".json",function(data10) {
+	d3.json("new_naics/11/data_11_"+d3.keys(data0)[0]+".json",function(data10) {
             //console.log(data);
 	    data=data10;
 	    data["layers"][0]["data"]=JSON.parse(data["layers"][0]["data"]);
@@ -86,7 +106,7 @@
 	    data["views"][0]["controller"]=true;
 	    data["layers"][0]["autoHighlight"]=true;
 
-	    console.log(data);
+	   // console.log(data);
     jsonInput = data;
 	  
      tooltip = {'html': '{weight} links <br /> Home of business in red; home location of customers in green'};
@@ -146,15 +166,46 @@ mapStyle: 'mapbox://styles/mapbox/dark-v9'
 	    });
     });
 
+document.getElementsByName('date').forEach(key => {
+  this.onchange = change_map;
+});
+
+
+    
     function change_map(e){
-//	console.log(e);
-	
-	d3.json("new_naics/data_11_"+e.target.value+".json",function(data10) {
-            data=data10;
-            data["layers"][0]["data"]=JSON.parse(data["layers"][0]["data"]);
-            data["layers"][0]["pickable"]=true;
-            data["views"][0]["controller"]=true;
-            data["layers"][0]["autoHighlight"]=true;
+//		console.log(e);
+
+	var ch;
+    var arr=document.getElementsByName('date');
+    for (var x=0; x<arr.length; x++){
+	if (arr[x].checked==true){
+	    ch=arr[x].value;
+	}
+
+    }
+  /*  if (ch=="11") {
+//	var data=data0;
+	d3.json("new_naics/11/data_"+ch+"_"+document.getElementById('select-container').value+".json",function(data10) {
+            //data=data10;
+            data10["layers"][0]["data"]=JSON.parse(data10["layers"][0]["data"]);
+            data10["layers"][0]["pickable"]=true;
+            data10["views"][0]["controller"]=true;
+            data10["layers"][0]["autoHighlight"]=true;
+	    data=data10;
+	});
+
+
+	} else {*/
+
+d3.json("new_naics/"+ch+"/data_"+ch+"_"+document.getElementById('select-container').value+".json",function(data10) {
+            //data=data10;                                                                                                                          
+            data10["layers"][0]["data"]=JSON.parse(data10["layers"][0]["data"]);
+            data10["layers"][0]["pickable"]=true;
+            data10["views"][0]["controller"]=true;
+    data10["layers"][0]["autoHighlight"]=true;
+    data=data10;
+    //    });
+  //  }
 
         //    console.log(data);
     jsonInput = data;
