@@ -2,19 +2,33 @@
 
 
 
+
+
+
+
 #https://data.mesaaz.gov/api/views/bcxg-q9nz/rows.csv?accessType=DOWNLOAD
 #https://data.mesaaz.gov/Fire-and-Medical/Daily-COVID-19-Cases-by-Zip-Code/bcxg-q9nz/data
 
 import json
-
+from datetime import datetime
 import numpy as np
 import pandas as pd
 import os
+import time, calendar, pandas as pd
+    
+def to_posix_ts(d: datetime, utc:bool=True) -> float:
+    print(d)
+    tt=d.timetuple()
+    return (calendar.timegm(tt) if utc else time.mktime(tt)) + round(d.microsecond/1000000, 0)
+
 #from prep_canada_data import stage_latest
 
 date_of_analysis='1/13/21'
 
+def pd_timestamp_from_datetime(d: datetime) -> pd.Timestamp:
+        return pd.to_datetime(to_posix_ts(d), unit='s')
 
+    
 output_directory = 'output_arizona'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 
@@ -23,8 +37,18 @@ use_canned_file = False
 data = pd.read_csv('/Users/olgabuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code.csv')
 #/abuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code.csv')
 data["dates"]=data.apply(lambda row: str(row.Date).split(" ")[0], axis=1)
+#data.sort_values(by=['dates'])
 data["Combined_Key"]=data["Zip Code"]
-df=data#pd.pivot_table(data,index=["dates"],columns='Combined_Key',values=["Confirmed Cases Count"],aggfunc=np.sum)
+data["m"]=pd.to_datetime(data["dates"]).dt.month
+data["y"]=pd.to_datetime(data["dates"]).dt.year
+data["d"]=pd.to_datetime(data["dates"]).dt.day
+data["date1"]=pd.to_datetime(data["dates"],format='%m/%d/%Y')
+#pd.Timestamp(year=data["y"], month=data["m"], day=data["d"], hour=12)
+print(data["d"])
+#[x.replace("/","") for x in data["dates"].to_list()]
+data=data.sort_values(by='date1',ascending=True)
+df=data.sort_values(by='date1',ascending=True)#pd.pivot_table(data,index=["dates"],columns='Combined_Key',values=["Confirmed Cases Count"],aggfunc=np.sum)
+#print(df["dates"].unique())
 df4=df.fillna(0)
 print(df4)
 '''
@@ -84,7 +108,7 @@ if False:
     import sys
     sys.exit(0)
 
-tim = list(data.dates.unique())
+tim = list(df.dates.unique())
 print(tim)
 tim.pop(0)
 
@@ -210,4 +234,5 @@ aar1[0]["date"]=date_of_analysis
 # this file is used by the map
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
-
+print(df)
+#print(print(data.sort_values(by='date1',ascending=True)))
