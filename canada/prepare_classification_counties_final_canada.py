@@ -8,7 +8,7 @@ import os
 from prep_canada_data import stage_latest
 
 
-date_of_analysis='02/02/21'
+date_of_analysis='02/03/21'
 
 output_directory = 'output_canada'
 os.makedirs(output_directory + '/classification', exist_ok=True)
