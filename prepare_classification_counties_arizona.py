@@ -23,7 +23,7 @@ def to_posix_ts(d: datetime, utc:bool=True) -> float:
 
 #from prep_canada_data import stage_latest
 
-date_of_analysis='2/5/21'
+date_of_analysis='2/14/21'
 
 def pd_timestamp_from_datetime(d: datetime) -> pd.Timestamp:
         return pd.to_datetime(to_posix_ts(d), unit='s')
