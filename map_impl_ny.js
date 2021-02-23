@@ -75,9 +75,9 @@ var data3=[];
 map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v10',
-zoom: 3,
+zoom: 6,
   //  attributionControl: false,
-center: [-82.447303,37.753574]
+center: [-73.935242,40.730610]
 });
      
         
@@ -87,7 +87,7 @@ center: [-82.447303,37.753574]
             
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
 map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
-fetch('states5.json').then(res => res.json()) 
+fetch('new_york_state.json').then(res => res.json()) 
 .then(data8 => {             
 
     
