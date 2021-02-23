@@ -36,9 +36,9 @@ container: 'map',
 style: 'mapbox://styles/mapbox/light-v9',
 zoom: 3,
    //  attributionControl: false,
-center: [-75.231887,43.096569]
+center: [-75.04,42.63]
 });
-         
+    //42.63 -75.04     
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');       
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
 map.on('load', function() {    
