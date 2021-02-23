@@ -77,7 +77,7 @@ container: 'map',
 style: 'mapbox://styles/mapbox/light-v10',
 zoom: 6,
   //  attributionControl: false,
-center: [-73.935242,40.730610]
+center: [-75.231887,43.096569]
 });
      
         
