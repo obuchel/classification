@@ -34,7 +34,7 @@ var data3=[];
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v9',
-zoom: 6,
+zoom: 5,
    //  attributionControl: false,
 center: [-119.449444,37.166111]
 });
