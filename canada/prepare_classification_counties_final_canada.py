@@ -8,7 +8,7 @@ import os
 from prep_canada_data import stage_latest
 
 
-date_of_analysis='02/28/21'
+date_of_analysis='03/01/21'
 
 output_directory = 'output_canada'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -32,7 +32,7 @@ for x in range(2,13):
             y="0"+str(y)
         if str(y)+"-"+str(x)+"-"+"2020" not in ["30-02-2020","31-02-2020","31-04-2020","31-06-2020","31-09-2020","31-11-2020"]:    
             dates.append(str(y)+"-"+str(x)+"-"+"2020")
-for x in range(1,3):
+for x in range(1,4):
     if x<10:
         x="0"+str(x)
     for y in range(1,32):
@@ -41,7 +41,7 @@ for x in range(1,3):
         if str(y)+"-"+str(x)+"-"+"2021" not in ["29-02-2021","30-02-2021","31-02-2021","31-04-2021","31-06-2021","31-09-2021","31-11-2021"]:
             dates.append(str(y)+"-"+str(x)+"-"+"2021")
 print(dates)            
-dates0=dates[:len(dates)-(28-int(date_of_analysis.split("/")[1]))]        
+dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]        
 
 print(dates0)
 data={}
