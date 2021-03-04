@@ -165,7 +165,7 @@ def classify(ratio, recent_mean, threshold):
 for name in counties:
     #e_dataframe1[name]=e_dataframe1[name].update(pd.Series([e_dataframe1[name][len(e_dataframe1[name])-16],e_dataframe1[name][len(e_dataframe1[name])-16]], index=[len(e_dataframe1[name])-15, 2]))
     values0=[x for x in e_dataframe1[name]]#.replace(len(e_dataframe1[name])-15,e_dataframe1[name][len(e_dataframe1[name])-16])
-    values_=[]
+    values_=[0]
     indd=0
     for en in values0:
         if indd==121:
@@ -188,9 +188,9 @@ for name in counties:
     original_values = values_
     print(original_values)
     #compute_original_values(values)
-    x = e_dataframe1[e_dataframe1.columns[0]]
+    x = e_dataframe1[e_dataframe1.columns[0]].to_list()
     y1 = interpolate(y)    
-    x2 = x#[3:]
+    x2 = ["2020-11-10"]+x#[3:]
     tim2 = tim#[1 : -2]
     y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=1).mean()['a'].to_list()#[3:]
     y3=[x if x>0 else 0 for x in y3]
@@ -231,7 +231,7 @@ for name in counties:
         plt.plot(x2,y3,color=color)
         #plt.show()    
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["FID"])+'.json', 'w') as outfile:
-            json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
+            json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values[1:]},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
         
         aar1.append({"n":name,"id":ids[recs.index(name)]["FID"],"v":ratio,"c":color,"max":int(max(y5))})
