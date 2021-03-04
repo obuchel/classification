@@ -136,7 +136,7 @@ var item = document.createElement('div');
     add_layer('output1_luxembourg/classification/classification_ids_counties2.json','LUX_adm0.json','LUX_adm0.json','NAME_0','Luxembourg','NAME_0','NAME_0');
     add_layer('output1_andorra/classification/classification_ids_counties2.json','AND_adm0.json','AND_adm0.json','NAME_0','Andorra','NAME_0','NAME_0');
 */
-    add_layer('output_portugal_municipalities/classification/classification_ids_counties2.json','COVID_Concelhos_ConcelhosDetalhes.json','COVID_Concelhos_ConcelhosDetalhes.json','name','Portugal','Dico','Dico');
+    add_layer('output_portugal_municipalities/classification/classification_ids_counties2.json','COVID_Concelhos_ConcelhosDetalhes.json','COVID_Concelhos_ConcelhosDetalhes.json','Dico','Portugal2','Dico','Dico');
     /*
     add_layer('output1_switzerland/classification/classification_ids_counties2.json','CHE_adm1.json','CHE_adm1.json','NAME_1','Switzerland','NAME_1','NAME_1');
     add_layer('output1_austria/classification/classification_ids_counties2.json','AUT_adm1-2.json','AUT_adm1-2.json','NAME_1','Austria','NAME_1','NAME_1');
@@ -157,6 +157,7 @@ var item = document.createElement('div');
 });
     
   function add_layer(first_link,second_link,third_link,kkey,name0,name2,name3) {
+      console.log(first_link,second_link,third_link,kkey,name0,name2,name3);
 fetch(first_link).then(res => res.json()) 
 	  .then(data0 => {
 	      all_dates[name0]=data0[0]['date'];
@@ -332,7 +333,7 @@ map.addLayer({
 },"country-label","admin-0-boundary");    
     
     map.on('click', 'place_data_'+name0, function(e) {
-	//console.log(e.features[0].properties);
+	console.log(e.features[0].properties);
     if (typeof popup=="object") popup.remove();
  hoveredStateId = null;
     var coordinates = e.features[0].geometry.coordinates[0][0].slice();
@@ -386,12 +387,12 @@ var num=e.features[0].properties[name3].toString();
 var url='output_'+name0.toLowerCase()+'/classification/data_counties_'+num+'.json';
 
 	} else {
-	    var url='output_'+name0.toLowerCase()+'/classification/data_counties_'+num+'.json';
+	    var url='output_Portugal_municiplaities/classification/data_counties_'+num+'.json';
 	}
-	//console.log(url);
+	console.log(url);
   fetch(url).then(res => res.json()) 
 	.then(data7 => {
-	    
+	    console.log(data7);    
        //if (document.getElementById("default").checked==true) {
         draw_plot(data7,color);
       /* } else {

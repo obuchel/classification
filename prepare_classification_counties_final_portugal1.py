@@ -6,10 +6,11 @@ import pandas as pd
 import json
 import numpy as np
 import os
+import math
 from datetime import datetime
 import matplotlib.pyplot as plt
 date_of_analysis='3/3/21'
-import math
+
 output_directory = 'output_portugal_municipalities'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 import datetime
@@ -222,6 +223,8 @@ for name in counties:
         #else:
         #print(name,y3)
         #ratio=0
+        if math.isnan(ratio)==True:
+            ratio=0
         #color="green"
         print(recent_mean,ratio,name,color)
         plt.title(name)
