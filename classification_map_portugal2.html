@@ -387,7 +387,13 @@ var num=e.features[0].properties[name3].toString();
 var url='output_'+name0.toLowerCase()+'/classification/data_counties_'+num+'.json';
 
 	} else {
-	    var url='output_Portugal_municiplaities/classification/data_counties_'+num+'.json';
+	    if (num.charAt(0)=="0"){
+		num=num.substr(1,num.length);
+	    }
+	    else {
+		num=num;
+	    }
+	    var url='output_Portugal_municipalities/classification/data_counties_'+num+'.json';
 	}
 	console.log(url);
   fetch(url).then(res => res.json()) 
