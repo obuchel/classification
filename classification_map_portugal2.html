@@ -587,8 +587,8 @@ dropShadowFilter.append('svg:feBlend')
       var path1 = svg.append("path")
       .datum(data10)
       .attr("fill", "none")
-      .attr("stroke", "grey")
-      .attr("stroke-width", 0.5)
+      .attr("stroke", color)
+      .attr("stroke-width", 3)
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.value) })
@@ -596,7 +596,9 @@ dropShadowFilter.append('svg:feBlend')
         );
        // .style("filter", "url(#drop-shadow)");
   
-// Add the line
+      // Add the line
+
+      /*
       var path = svg.append("path")
       .datum(data110)
 
@@ -609,7 +611,7 @@ dropShadowFilter.append('svg:feBlend')
            // .curve(d3.curveNatural)
         );
        // .style("filter", "url(#drop-shadow)");
-    
+    */
     var curtain = svg.append('rect')
  .attr('x', -1 * width)
  .attr('y', -1 * height)
