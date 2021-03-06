@@ -54,7 +54,7 @@ for x in range(1,4):
             
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 print(dates0)
-data=pd.read_csv("/Users/olgabuchel/Downloads/data_concelhos_new.csv")
+data=pd.read_csv("data_concelhos_new.csv")
 #print(data)
 #X          Y  OBJECTID           Concelho  ConfirmadosAcumulado  Recuperados  Obitos                 Data  Dicofre
 #OBJECTID  Dico            Concelho  Distrito  ConfirmadosAcumulado_Conc  Recuperados_Conc  Obitos_Conc               Data_Conc  SHAPE_Length  SHAPE_Area
