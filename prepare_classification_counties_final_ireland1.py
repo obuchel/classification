@@ -9,7 +9,7 @@ import numpy as np
 import os
 from datetime import datetime
 import matplotlib.pyplot as plt
-date_of_analysis='01/08/21'
+date_of_analysis='03/07/21'
 n=150
 import math
 output_directory = 'output_ireland1'
@@ -44,18 +44,18 @@ for x in range(4,12):
             y="0"+str(y)
         if str(y)+"-"+str(x)+"-"+"2020" not in ["31-04-2020","31-06-2020","31-09-2020"]:    
             dates.append(str(y)+"-"+str(x)+"-"+"2020")
-for x in range(1,2):
+for x in range(1,4):
     if x<10:
         x="0"+str(x)
     for y in range(1,32):
         if y<10:
             y="0"+str(y)
-        if str(y)+"-"+str(x)+"-"+"2021" not in ["30-02-2021","31-02-2021","31-04-2021","31-06-2021","31-09-2021","31-11-2021"]:
+        if str(y)+"-"+str(x)+"-"+"2021" not in ["29-02-2021","30-02-2021","31-02-2021","31-04-2021","31-06-2021","31-09-2021","31-11-2021"]:
             dates.append(str(y)+"-"+str(x)+"-"+"2021")
 
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 #print(dates0)
-data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland-3.csv")
+data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland.csv")
 print(data)
 data["date"]=[str(x).split(" ")[0] for x in data["TimeStamp"]]
 data["FID"]=data["CountyName"]
