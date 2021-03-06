@@ -20,9 +20,10 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt https://epistat.sciensano.be/Data/COVID19BE.xlsx
-date_of_analysis='02/26/21'
+date_of_analysis='03/05/21'
 
 df = pd.read_excel(r'/Users/olgabuchel/Downloads/COVID19BE.xlsx', sheet_name='CASES_AGESEX')
+df["DATE"]=df["DATE"].astype(str)
 df3=df.dropna().groupby(["DATE","PROVINCE","REGION"])["CASES"].sum().reset_index()
 df3["Combined_Key"]=df3["PROVINCE"]+", "+df3["REGION"]
 df4=pd.pivot_table(df3, values='CASES', index=['DATE'],columns=['Combined_Key'],aggfunc=np.sum)

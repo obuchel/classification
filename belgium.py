@@ -33,7 +33,7 @@ class NumpyEncoder(json.JSONEncoder):
 
 
 df = pd.read_excel(r'/Users/olgabuchel/Downloads/COVID19BE.xlsx', sheet_name='CASES_AGESEX')
-#df["DATE"]=pd.to_datetime(str(df["DATE"]))
+df["DATE"]=df["DATE"].astype(str)
 print(df["DATE"])
 df3=df.dropna().groupby(["DATE","PROVINCE","REGION"])["CASES"].sum().reset_index()
 df3["Combined_Key"]=df3["PROVINCE"]+", "+df3["REGION"]
@@ -215,8 +215,8 @@ for name in counties:
         print(name,color,ratio,recent_mean0,int(max(y5)))    
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["Combined_Key"])+'.json', 'w') as outfile:
             #print(tim2,int(max(y5)-min(y5)),int(max(y)),tim,original_values)
-            dumped = json.dumps({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values}, cls=NumpyEncoder)
-            json.dump(dumped,outfile)
+            json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values}, outfile)
+            #json.dump(dumped,outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
         aar1.append({"n":name,"id":ids[recs.index(name)]["Combined_Key"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
         ind4+=1
