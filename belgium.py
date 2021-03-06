@@ -11,7 +11,7 @@
 #https://webcritech.jrc.ec.europa.eu/modellingoutput/cv/eu_cv_region/eu_cv_region_inf.htm
 #DATE PROVINCE REGION AGEGROUP SEX  CASES
 
-
+from bson import json_util
 import json
 
 import numpy as np
@@ -19,9 +19,22 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt https://epistat.sciensano.be/Data/COVID19BE.xlsx
-date_of_analysis='2/26/21'
+date_of_analysis='03/05/21'
+class NumpyEncoder(json.JSONEncoder):
+    """ Special json encoder for numpy types """
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return json.JSONEncoder.default(self, obj)
+
 
 df = pd.read_excel(r'/Users/olgabuchel/Downloads/COVID19BE.xlsx', sheet_name='CASES_AGESEX')
+#df["DATE"]=pd.to_datetime(str(df["DATE"]))
+print(df["DATE"])
 df3=df.dropna().groupby(["DATE","PROVINCE","REGION"])["CASES"].sum().reset_index()
 df3["Combined_Key"]=df3["PROVINCE"]+", "+df3["REGION"]
 df4=pd.pivot_table(df3, values='CASES', index=['DATE'],columns=['Combined_Key'],aggfunc=np.sum)
@@ -91,8 +104,9 @@ if False:
     import sys
     sys.exit(0)
 
-tim = list(e_dataframe0["DATE"].unique())
+tim = list(e_dataframe0["DATE"].unique())#[x.strftime('%m/%d/%Y') for x in list(e_dataframe0["DATE"].unique())]
 tim.pop(0)
+
 print("time")
 print(tim)
 ind4 = 0
@@ -200,7 +214,9 @@ for name in counties:
 
         print(name,color,ratio,recent_mean0,int(max(y5)))    
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["Combined_Key"])+'.json', 'w') as outfile:
-            json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
+            #print(tim2,int(max(y5)-min(y5)),int(max(y)),tim,original_values)
+            dumped = json.dumps({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values}, cls=NumpyEncoder)
+            json.dump(dumped,outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
         aar1.append({"n":name,"id":ids[recs.index(name)]["Combined_Key"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
         ind4+=1
@@ -211,5 +227,5 @@ for name in counties:
 aar1[0]["date"]=date_of_analysis
 # this file is used by the map
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
-    json.dump(aar1, outfile)
+    json.dump(aar1, outfile,default=json_util.default)
 
