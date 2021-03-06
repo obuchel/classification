@@ -12,7 +12,7 @@ import json
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-date_of_analysis='03/05/21'
+date_of_analysis='03/07/21'
 
 output_directory = 'output_germany'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -102,13 +102,13 @@ tim = list(cr["time_iso8601"])
 #[x.replace("0      ","") for x in list(df["date"])]
 #0      
 tim.pop(0)
-print(tim)   
+#print(tim)   
 
 ind4 = 0
 aar = []
 aar1 = []
 counties = list(e_dataframe0.index)[1:]
-print(counties)                                                                                                                                                                     
+#print(counties)                                                                                                                                                                     
 
 def compute_original_values(values):
     result = []
@@ -231,3 +231,4 @@ print(aar1)
 with open(output_directory + '/classification/classification_ids_provinces2.json', 'w') as outfile:
     json.dump(aar1, outfile)    
 
+#print(tim2)
