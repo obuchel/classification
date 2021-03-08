@@ -80,7 +80,11 @@ height:25.5% !important;
 <div id="map"></div> 
 <div class="map-overlay" id="legend"></div>
 <script>
-    var dd="03/07/21";
+    let now = new Date();
+  var m=now.getMonth()+1;
+  var d=now.getDate()+1;
+var dd=m+"/"+d+"/2021";
+//    var dd="03/07/21";
  fetch('municipalities_new.json').then(res => res.json()) 
 .then(data => {    
      

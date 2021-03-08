@@ -9,7 +9,11 @@ import os
 import math
 from datetime import datetime
 import matplotlib.pyplot as plt
-date_of_analysis='3/7/21'
+#date_of_analysis='3/7/21'
+from datetime import date
+#date_of_analysis='03/07/21'                                                                                                                                                      
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
 
 output_directory = 'output_portugal_municipalities'
 os.makedirs(output_directory + '/classification', exist_ok=True)
@@ -51,7 +55,8 @@ for x in range(1,4):
             y="0"+str(y)
         if str(y)+"-"+str(x)+"-"+"2021" not in ["29-02-2021","30-02-2021","31-02-2021","31-04-2021","31-06-2021","31-09-2021","31-11-2021"]:
             dates.append(str(y)+"-"+str(x)+"-"+"2021")
-            
+url='https://raw.githubusercontent.com/dssg-pt/covid19pt-data/master/data_concelhos_new.csv'
+os.system("wget "+url+" --no-check-certificate")
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 print(dates0)
 data=pd.read_csv("data_concelhos_new.csv")
@@ -237,7 +242,7 @@ for name in counties:
         aar1.append({"n":name,"id":ids[recs.index(name)]["FID"],"v":ratio,"c":color,"max":int(max(y5))})
         ind4+=1
 
-plt.show()
+#plt.show()
 # with open('classification/data_counties.json', 'w') as outfile:
 #    json.dump(aar,outfile)
 aar1[0]["date"]=date_of_analysis

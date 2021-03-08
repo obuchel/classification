@@ -9,7 +9,11 @@ import numpy as np
 import os
 from datetime import datetime
 import matplotlib.pyplot as plt
-date_of_analysis='03/07/21'
+#date_of_analysis='03/07/21'
+from datetime import date
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
+
 n=150
 import math
 output_directory = 'output_ireland1'
@@ -55,7 +59,12 @@ for x in range(1,4):
 
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 #print(dates0)
-data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland.csv")
+url = 'https://opendata.arcgis.com/datasets/d9be85b30d7748b5b7c09450b8aede63_0.csv'
+os.system("mv ../Covid19CountyStatisticsHPSCIreland.csv /Users/olgabuchel/.Trash/Covid19CountyStatisticsHPSCIreland.csv")
+os.system("wget "+url+" --no-check-certificate")
+os.system("mv d9be85b30d7748b5b7c09450b8aede63_0.csv ../Covid19CountyStatisticsHPSCIreland.csv")
+data=pd.read_csv("../Covid19CountyStatisticsHPSCIreland.csv")
+#data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland.csv")
 print(data)
 data["date"]=[str(x).split(" ")[0] for x in data["TimeStamp"]]
 data["FID"]=data["CountyName"]
@@ -210,7 +219,7 @@ for name in counties:
         print(recent_mean,ratio,name,color)
         plt.title(name)
         plt.plot(x2,y3,color=color)
-        plt.show()    
+        #plt.show()    
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["FID"])+'.json', 'w') as outfile:
             json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})

@@ -12,8 +12,11 @@ import json
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-date_of_analysis='02/26/21'
-
+#date_of_analysis='02/26/21'
+from datetime import date
+#date_of_analysis='03/07/21'                                                                                                                                                      
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
 output_directory = 'output1_germany'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 

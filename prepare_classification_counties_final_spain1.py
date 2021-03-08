@@ -9,10 +9,13 @@ import json
 import numpy as np
 import os
 numb=10
-date_of_analysis='03/06/21'
+#date_of_analysis='03/06/21'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
 #https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-ccaa-spain_consolidated.csv
-
+from datetime import date
+#date_of_analysis='03/07/21'                                                                                                                                                      
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
 new_keys={'Albacete': 'AB', 'Alicante/Alacant': 'A', 'Almería': 'AL', 'Asturias': 'O', 'Badajoz': 'BA', 'Barcelona': 'B', 'Bizkaia': 'BI', 'Burgos': 'BU', 'Cantabria': 'S', 'Castellón/Castelló': 'CS', 'Ceuta': 'CE', 'Ciudad Real': 'CR', 'Cuenca': 'CU', 'Cáceres': 'CC', 'Cádiz': 'CA', 'Córdoba': 'CO', 'Gipuzkoa': 'SS', 'Girona': 'GI', 'Granada': 'GR', 'Guadalajara': 'GU', 'Huelva': 'H', 'Huesca': 'HU', 'Jaén': 'J', 'León': 'LE', 'Lleida': 'L', 'Lugo': 'LU', 'Madrid': 'M', 'Melilla': 'ML', 'Murcia': 'MU', 'Málaga': 'MA', 'Navarra': 'NA', 'Ourense': 'OR', 'Palencia': 'P', 'Pontevedra': 'PO', 'Salamanca': 'SA', 'Santa Cruz de Tenerife': 'TF', 'Segovia': 'SG', 'Sevilla': 'SE', 'Soria': 'SO', 'Tarragona': 'T', 'Teruel': 'TE', 'Toledo': 'TO', 'Valencia/València': 'V', 'Valladolid': 'VA', 'Zamora': 'ZA', 'Zaragoza': 'Z', 'Araba/Álava': 'VI', 'Ávila': 'AV','Rioja, La':'LO','Palmas, Las':'CN','Balears, Illes':'PM','Coruña, A':'C'}
 #['Albacete' 'Alicante/Alacant' 'Almería' 'Araba/Álava' 'Asturias' 'Ávila''Badajoz' 'Balears, Illes' 'Barcelona' 'Bizkaia' 'Burgos' 'Cáceres''Cádiz' 'Cantabria' 'Castellón/Castelló' 'Ceuta' 'Ciudad Real' 'Córdoba' 'Coruña, A' 'Cuenca' 'Gipuzkoa' 'Girona' 'Granada' 'Guadalajara' 'Huelva' 'Huesca' 'Jaén' 'León' 'Lleida' 'Lugo' 'Madrid' 'Málaga' 'Melilla' 'Murcia' 'Navarra' 'Ourense' 'Palencia' 'Palmas, Las' 'Pontevedra' 'Rioja, La' 'Salamanca' 'Santa Cruz de Tenerife' 'Segovia' 'Sevilla' 'Soria' 'Tarragona' 'Teruel' 'Toledo' 'Valencia/València' 'Valladolid''Zamora' 'Zaragoza']
 

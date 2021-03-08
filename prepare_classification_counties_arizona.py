@@ -7,7 +7,8 @@ import numpy as np
 import pandas as pd
 import os
 import time, calendar, pandas as pd
-    
+import wget    
+
 def to_posix_ts(d: datetime, utc:bool=True) -> float:
     print(d)
     tt=d.timetuple()
@@ -15,7 +16,11 @@ def to_posix_ts(d: datetime, utc:bool=True) -> float:
 
 #from prep_canada_data import stage_latest
 
-date_of_analysis='03/06/21'
+#date_of_analysis='03/07/21'
+from datetime import date
+#date_of_analysis='03/07/21'
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
 
 def pd_timestamp_from_datetime(d: datetime) -> pd.Timestamp:
         return pd.to_datetime(to_posix_ts(d), unit='s')
@@ -26,7 +31,12 @@ os.makedirs(output_directory + '/classification', exist_ok=True)
 
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
-data = pd.read_csv('/Users/olgabuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code.csv')
+url = 'https://data.mesaaz.gov/api/views/bcxg-q9nz/rows.csv?accessType=DOWNLOAD'
+#wget.download(url, '../Daily_COVID-19_Cases_by_Zip_Code.csv')
+os.system("mv ../Daily_COVID-19_Cases_by_Zip_Code.csv /Users/olgabuchel/.Trash/Daily_COVID-19_Cases_by_Zip_Code.csv")
+os.system("wget "+url+" --no-check-certificate")
+os.system("mv rows.csv?accessType=DOWNLOAD ../Daily_COVID-19_Cases_by_Zip_Code.csv")
+data = pd.read_csv('../Daily_COVID-19_Cases_by_Zip_Code.csv')
 #/abuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code.csv')
 data["dates"]=data.apply(lambda row: str(row.Date).split(" ")[0], axis=1)
 #data.sort_values(by=['dates'])

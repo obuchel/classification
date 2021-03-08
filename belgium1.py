@@ -20,9 +20,19 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt https://epistat.sciensano.be/Data/COVID19BE.xlsx
-date_of_analysis='03/05/21'
+#date_of_analysis='03/05/21'
+from datetime import date
+#date_of_analysis='03/07/21'                                                                                                                                                     
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
+url = 'https://epistat.sciensano.be/Data/COVID19BE.xlsx'
+#wget.download(url, '../Daily_COVID-19_Cases_by_Zip_Code.csv')                                                                                                                   
+os.system("mv ../COVID19BE.xlsx /Users/olgabuchel/.Trash/COVID19BE.xlsx")
+os.system("wget "+url+" --no-check-certificate")
+os.system("mv COVID19BE.xlsx ../COVID19BE.xlsx")
 
-df = pd.read_excel(r'/Users/olgabuchel/Downloads/COVID19BE.xlsx', sheet_name='CASES_AGESEX')
+df = pd.read_excel(r'../COVID19BE.xlsx', sheet_name='CASES_AGESEX')
+#df = pd.read_excel(r'/Users/olgabuchel/Downloads/COVID19BE.xlsx', sheet_name='CASES_AGESEX')
 df["DATE"]=df["DATE"].astype(str)
 df3=df.dropna().groupby(["DATE","PROVINCE","REGION"])["CASES"].sum().reset_index()
 df3["Combined_Key"]=df3["PROVINCE"]+", "+df3["REGION"]

@@ -25,8 +25,10 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='3/5/21'
-
+#date_of_analysis='3/5/21'
+from datetime import date
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
 df = pd.read_csv('https://raw.githubusercontent.com/ec-jrc/COVID-19/master/data-by-region/jrc-covid-19-all-days-by-regions.csv')
 
 switzerland=df[df["CountryName"]=="Switzerland"]

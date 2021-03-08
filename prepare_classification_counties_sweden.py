@@ -8,10 +8,23 @@ import numpy as np
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
+from datetime import date
+#date_of_analysis='03/07/21'                                                                                                                                                     
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
+import wget
 #from prep_canada_data import stage_latest
-date_of_analysis='03/06/21'
+#date_of_analysis='03/06/21'
 #xls = pd.ExcelFile('/home/abuchel/Downloads/Folkhalsomyndigheten_Covid19.xlsx')
-df = pd.read_excel(r'/Users/olgabuchel/Downloads/Folkhalsomyndigheten_Covid19-2.xlsx', sheet_name='Antal per dag region')
+
+url='https://www.arcgis.com/sharing/rest/content/items/b5e7488e117749c19881cce45db13f7e/data?Folkhalsomyndigheten_Covid19.xlsx'
+#url = 'https://ago-item-storage.s3.us-east-1.amazonaws.com/b5e7488e117749c19881cce45db13f7e/Folkhalsomyndigheten_Covid19.xlsx?X-Amz-Security-Token=IQoJb3JpZ2luX2VjECYaCXVzLWVhc3QtMSJGMEQCIHZnzeDVWBUXdk3kjN7fwSwN%2BsxJAiKN8dNbu%2BaEgdLnAiA6kdtB49NuVDUscgqZx6e7C89KQn9W69c5f7hwYjHGVyq0AwhPEAAaDDYwNDc1ODEwMjY2NSIM7KrLs6x2JCCodUkFKpEDtpoMNdoM2IhAJJRERU%2FxCxkR8XfAlm4HY2W%2BP0EHHh6HNoHpPrAg64qwwQCywKrKeoHvtR8voMZMlcnjBbECbc77biAShxpE3P2YCohV44EVDl%2B41ub3kSV2GmR4vWWqgWWZ0qUvBnYPNp%2FnmnHoJ%2BMF%2Fk8VhRL0HdzENyJbMdMqOtnKFiDH2m7hU3zgUIFoQjq82opztKWRdBWMUIswsqYKwXyn2XI9XesysAknrqg2P76QcKgYH53V94FFcErGsnGBFGN0nLJBY1i0OKS7eilQGPMpSTc9t7Z5dLO2Phyej1y4uWouMYUqoggp3PZ6%2B4S0mOksr2ORm1t%2B07CzrtH6ZrVd47LyAOOqLzoGhUWj1ozPIDjI4IA9qaAF2g5mabQ7nicK1dNBsNnbU7tLmxWYCWV3gyHxeIAJHgMCzljT7uh3ibk9thoQ9j9m83Ch1LoLucwBTjDeWAknfej8imjJwhQ99bvlxaJETFhIiYmVBBQJ0%2BWu8jpMdQb8uKDkkJ18cf5Ls5aCGDGF99G6Q5UwhLCaggY67AHIZMjxF4kNVH7BPr0Gnb6K5kJYDAX6FM76YhzyA0Na2FJFBHsXL1IsFVXqSebtM0KPfSBmHCn4XUaxrLyUH1JaIghJIEwY%2Fy5cSx8uRDPRN1CkFah0X7NGrTKifN9EHGxc%2FA4rqRDPifcZ4r2qE0UUk9MUV%2B7rNy6QWEqlbRBx1DHnCUglrhfXsONjBZGK4JMtF4joO0Fg1KMyLnJnykdQWnVp9ougpf3iKDZWysYNCbtmqbOLGsr5FVwkwlemhr2JzJjd3Gajegwtc8izgUGZNZoAU3jVJ2xDk2wCzBR6EhM68vd0TWbrTgs2gQ%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20210308T223055Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAYZTTEKKE4B6SSW5J%2F20210308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=aad845d96b7667be0b507e13840607d380e6728559626a2aafdc9abd5f044664'
+#wget.download(url, '../Daily_COVID-19_Cases_by_Zip_Code.csv')                                                                                                                    
+os.system("mv ../Folkhalsomyndigheten_Covid19.xlsx /Users/olgabuchel/.Trash/Folkhalsomyndigheten_Covid19.xlsx")
+os.system("wget "+url+" --auth-no-challenge --user-agent='Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36' --no-check-certificate")
+os.system("mv data?Folkhalsomyndigheten_Covid19.xlsx ../Folkhalsomyndigheten_Covid19.xlsx")
+
+df = pd.read_excel(r'../Folkhalsomyndigheten_Covid19.xlsx', sheet_name='Antal per dag region')
 print(df)
 df["dates"]=[str(l).split("T")[0] for l in list(df.Statistikdatum.unique())]
 output_directory = 'output_sweden'

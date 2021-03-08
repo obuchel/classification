@@ -7,13 +7,22 @@ import json
 import numpy as np
 import os
 from datetime import datetime
+from datetime import date
 import matplotlib.pyplot as plt
-date_of_analysis='03/07/21'
+#date_of_analysis='03/07/21'
 import math
 output_directory = 'output_ireland'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 import datetime
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
+
 '''
+
+https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Covid19CountyStatisticsHPSCIreland/FeatureServer/0/query?outFields=*&returnGeometry=false&resultOffset=0&resultRecordCount=10&f=json&orderByFields=CountyName&where=1%3D1&inSR=4326&geometry=%7B%22spatialReference%22%3A%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D%2C%22xmin%22%3A-1979228.802855562%2C%22ymin%22%3A6216821.988285863%2C%22xmax%22%3A129210.1853621793%2C%22ymax%22%3A7929011.421873356%7D&geometryType=esriGeometryEnvelope&spatialRel=esriSpatialRelIntersects
+
+https://opendata.arcgis.com/datasets/d9be85b30d7748b5b7c09450b8aede63_0.csv
+
 source = requests.get("https://opendata.arcgis.com/datasets/d9be85b30d7748b5b7c09450b8aede63_0.geojson").json()
 print(source)
 dd=[]
@@ -53,7 +62,14 @@ for x in range(1,4):
             
 dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 print(dates0)
-data=pd.read_csv("/Users/olgabuchel/Downloads/Covid19CountyStatisticsHPSCIreland-2.csv")
+
+url = 'https://opendata.arcgis.com/datasets/d9be85b30d7748b5b7c09450b8aede63_0.csv'
+os.system("mv ../Covid19CountyStatisticsHPSCIreland.csv /Users/olgabuchel/.Trash/Covid19CountyStatisticsHPSCIreland.csv")
+os.system("wget "+url+" --no-check-certificate")
+os.system("mv d9be85b30d7748b5b7c09450b8aede63_0.csv ../Covid19CountyStatisticsHPSCIreland.csv")
+
+
+data=pd.read_csv("../Covid19CountyStatisticsHPSCIreland.csv")
 print(data)
 data["date"]=[str(x).split(" ")[0] for x in data["TimeStamp"]]
 data["FID"]=data["CountyName"]
@@ -207,7 +223,7 @@ for name in counties:
         print(recent_mean,ratio,name,color)
         plt.title(name)
         plt.plot(x2,y3,color=color)
-        plt.show()    
+        #plt.show()    
         with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["FID"])+'.json', 'w') as outfile:
             json.dump({"dates":tim2,"max_14":int(max(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})

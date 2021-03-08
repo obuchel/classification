@@ -12,8 +12,11 @@ import pandas as pd
 import os
 #from prep_canada_data import stage_latest
 #https://cdn.mbta.com/archive/archived_feeds.txt
-date_of_analysis='3/5/21'
-
+#date_of_analysis='3/5/21'
+from datetime import date
+#date_of_analysis='03/07/21'                                                                                                                                                      
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
 
 output_directory = 'output1_france'
 os.makedirs(output_directory + '/classification', exist_ok=True)

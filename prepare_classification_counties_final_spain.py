@@ -4,7 +4,14 @@ import json
 import numpy as np
 import os
 numb=10
-date_of_analysis='03/06/21'
+from datetime import date
+#date_of_analysis='03/07/21'                                                                                                                                                      
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
+
+
+
+#date_of_analysis='03/06/21'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
 #https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-ccaa-spain_consolidated.csv
 

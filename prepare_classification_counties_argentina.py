@@ -18,9 +18,13 @@ import csv
 import unicodecsv
 import matplotlib.pyplot as plt
 #onlyfiles = [f for f in listdir('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/') if isfile(join('/Users/olgabuchel/Downloads/2020-rki-archive-master/data/0_archived/', f))]
-date_of_analysis='03/07/21'
+from datetime import date
+#date_of_analysis='03/07/21'                                                                                                                                                     
+date_of_analysis=date.today().strftime("%m/%d/%y")
+print(date_of_analysis)
 import wget
 
+os.system("mv ../Covid19Casos.csv ../Covid19Casos0.csv")
 url = 'https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv'
  
 wget.download(url, '../Covid19Casos.csv')
