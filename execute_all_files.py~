@@ -1,0 +1,18 @@
+import schedule
+import time
+import os
+'''
+def job(t):
+    print("I'm working...", t)
+    return
+
+schedule.every().day.at("18:45").do(job,'It is 19:00')
+
+while True:
+    schedule.run_pending()
+'''
+os.system("python3 prepare_classification_counties_final_ireland.py")
+os.system("python3 prepare_classification_counties_final_ireland1.py")
+#    time.sleep(60) # wait one minute
+
+#nohup python2.7 MyScheduledProgram.py &    

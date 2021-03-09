@@ -7,13 +7,14 @@ import json
 import numpy as np
 import os
 from datetime import datetime
-from datetime import date
+#from datetime import date
 import matplotlib.pyplot as plt
 #date_of_analysis='03/07/21'
 import math
 output_directory = 'output_ireland'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 import datetime
+from datetime import date
 date_of_analysis=date.today().strftime("%m/%d/%y")
 print(date_of_analysis)
 
