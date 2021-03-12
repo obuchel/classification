@@ -53,7 +53,7 @@ var data3=[];
                     }
                     
                     else {*/
-                    htm.push([data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["Distrito"],data["features"][i]["properties"]["max"],data0[ids.indexOf(data["features"][i]["id"])]["c"]]);
+                    htm.push([data["features"][i]["properties"]["Distrito"],data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["max"],data0[ids.indexOf(data["features"][i]["id"])]["c"]]);
                    /* }*/
                 } else {
 
@@ -65,7 +65,7 @@ var data3=[];
                     }
                     
                     else {*/
-                     htm.push([data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["Distrito"],data["features"][i]["properties"]["max"],"dark green"]);
+                     htm.push([data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["max"],"dark green"]);
                    // }
                 }
                 if (data["features"][i]["geometry"]["type"]=="Polygon"){
@@ -129,8 +129,8 @@ map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
         ],
         data: htm,
         columns: [
-            { title: "State" },
-            { title: "County" },
+            { title: "Distrito" },
+            { title: "Concelho" },
             { title: "# of cases" },
             { title: "Color" }
             
