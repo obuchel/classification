@@ -55,7 +55,7 @@ data0.map(function(d,i){if (d.id.toString().length>3) {ids.push(d.id.toString().
                     }
                     
                     else {*/
-                    htm.push([fips_ids[data["features"][i]["properties"]["Dico"]],data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["max"],data0[ids.indexOf(data["features"][i]["id"])]["c"]]);
+                    htm.push([data["features"][i]["properties"]["Dico"],data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["max"],data0[ids.indexOf(data["features"][i]["id"])]["c"]]);
                    /* }*/
                 } else {
 
@@ -67,7 +67,7 @@ data0.map(function(d,i){if (d.id.toString().length>3) {ids.push(d.id.toString().
                     }
                     
                     else {*/
-                     htm.push([fips_ids[data["features"][i]["properties"]["Dico"]],data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["max"],"dark green"]);
+                     htm.push([data["features"][i]["properties"]["Dico"],data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["max"],"dark green"]);
                    // }
                 }
                 if (data["features"][i]["geometry"]["type"]=="Polygon"){
