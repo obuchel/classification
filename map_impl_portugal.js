@@ -32,7 +32,7 @@ var data3=[];
              // console.log(data0);  
          var cols={"darkgreen":-1,"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=[];
-    data0.map(function(d,i){ids.push(d.id.toString())});
+    data0.map(function(d,i){ids.push(d.id)});
            //console.log(ids);
         fetch('COVID_Concelhos_ConcelhosDetalhes.json').then(res => res.json()) 
 .then(data => {  
