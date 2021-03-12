@@ -32,9 +32,7 @@ var data3=[];
              // console.log(data0);  
          var cols={"darkgreen":-1,"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=[];
-data0.map(function(d,i){if (d.id.toString().length>3) {ids.push(d.id.toString().substr(3)) }else 
-{ids.push(d.id.toString())}
-});
+    data0.map(function(d,i){ids.push(d.id.toString())});
            //console.log(ids);
         fetch('COVID_Concelhos_ConcelhosDetalhes.json').then(res => res.json()) 
 .then(data => {  
@@ -55,7 +53,7 @@ data0.map(function(d,i){if (d.id.toString().length>3) {ids.push(d.id.toString().
                     }
                     
                     else {*/
-                    htm.push([data["features"][i]["properties"]["Dico"],data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["max"],data0[ids.indexOf(data["features"][i]["id"])]["c"]]);
+                    htm.push([data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["Distrito"],data["features"][i]["properties"]["max"],data0[ids.indexOf(data["features"][i]["id"])]["c"]]);
                    /* }*/
                 } else {
 
@@ -67,7 +65,7 @@ data0.map(function(d,i){if (d.id.toString().length>3) {ids.push(d.id.toString().
                     }
                     
                     else {*/
-                     htm.push([data["features"][i]["properties"]["Dico"],data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["max"],"dark green"]);
+                     htm.push([data["features"][i]["properties"]["Concelho"],data["features"][i]["properties"]["Distrito"],data["features"][i]["properties"]["max"],"dark green"]);
                    // }
                 }
                 if (data["features"][i]["geometry"]["type"]=="Polygon"){
