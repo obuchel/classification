@@ -50,3 +50,4 @@ os.system("print('israel')")
 #    time.sleep(60) # wait one minute
 
 #nohup python2.7 MyScheduledProgram.py &    
+#git reset --hard HEAD~2
