@@ -11,16 +11,16 @@ schedule.every().day.at("18:45").do(job,'It is 19:00')
 while True:
     schedule.run_pending()
 '''
-'''
+
 os.system("python3 /Users/olgabuchel/downloads/decksample/directory/COVID-19_map_final/jhu_fixed.py")
 os.system("python3 prepare_classification_counties_final_ireland.py")
 os.system("python3 prepare_classification_counties_final_ireland1.py")
 os.system("print('ireland')")
 os.system("python3 prepare_classification_counties_final.py")
 os.system("print('us')")
-'''
-#os.system("python3 prepare_classification_counties_argentina.py")
-#os.system("print('argentina')")
+
+os.system("python3 prepare_classification_counties_argentina.py")
+os.system("print('argentina')")
 os.system("python3 prepare_classification_counties_arizona.py")
 os.system("print('arizona')")
 os.system("python3 prepare_classification_counties_final_germany_new.py")
