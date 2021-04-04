@@ -23,6 +23,7 @@ os.system("python3 prepare_classification_counties_argentina.py")
 os.system("print('argentina')")
 os.system("python3 prepare_classification_counties_arizona.py")
 os.system("print('arizona')")
+
 os.system("python3 prepare_classification_counties_final_germany_new.py")
 os.system("python3 prepare_classification_counties_final_germany_new1.py")
 os.system("print('germany')")

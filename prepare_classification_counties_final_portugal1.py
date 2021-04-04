@@ -47,7 +47,7 @@ for x in range(4,13):
             y="0"+str(y)
         if str(y)+"-"+str(x)+"-"+"2020" not in ["31-04-2020","31-06-2020","31-09-2020","31-11-2020"]:    
             dates.append(str(y)+"-"+str(x)+"-"+"2020")
-for x in range(1,4):
+for x in range(1,5):
     if x<10:
         x="0"+str(x)
     for y in range(1,32):
@@ -57,7 +57,7 @@ for x in range(1,4):
             dates.append(str(y)+"-"+str(x)+"-"+"2021")
 url='https://raw.githubusercontent.com/dssg-pt/covid19pt-data/master/data_concelhos_new.csv'
 os.system("wget "+url+" --no-check-certificate")
-dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
+dates0=dates[:len(dates)-(30-int(date_of_analysis.split("/")[1]))]
 print(dates0)
 data=pd.read_csv("data_concelhos_new.csv")
 #print(data)
