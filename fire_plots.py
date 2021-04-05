@@ -8,7 +8,7 @@ data10=data0[["Concelho","Distrito"]].reset_index(drop=True)
 ll=dict(data10.values)
 data["data"]=pd.to_datetime(data['data'],format="%d-%m-%Y")
 #data            concelho  confirmados_14
-data2=data.pivot(index='data', columns='concelho', values='confirmados_14')
+data2=data.pivot(index='data', columns='concelho', values='casos_14dias')
 cols=list(data2.columns)
 cols1=list([str(x).split(" ")[0] for x in data2.index])
 
@@ -17,13 +17,13 @@ arrs=[]
 for item in data2.fillna(0).iterrows():
     it=0
     for el in item[1].values:
-        print(cols[it])#,ll[cols[it]])
+        #print(el)#,ll[cols[it]])
         arrs.append({"x":str(cols1[item0]),"y":cols[it],"z":int(el),"p":ll[cols[it]]})
         it+=1
     item0+=1
 print(arrs)    
 print(cols)
 print(cols1)
-
-with open("fire.json", "w") as fp:
+print(data[['casos_14dias','confirmados_14']])
+with open("fire_x1.json", "w") as fp:
     json.dump(arrs,fp)
