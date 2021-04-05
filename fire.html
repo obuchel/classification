@@ -27,10 +27,14 @@ var htm="";
 
 	      if (provinces.indexOf(data0[i]["p"])==-1) {
                   provinces.push(data0[i]["p"]);
-		  htm+="<option>"+data0[i]["p"]+"</option>";
+		  //htm+="<option>"+data0[i]["p"]+"</option>";
 	      }
 	  };
-      
+provinces.sort();
+      for (var i=0; i<provinces.length; i++){
+   htm+="<option>"+provinces[i]+"</option>";
+      }
+            
     document.getElementById("selection").innerHTML=htm;
      
       var sortBySelect = document.querySelector("select#selection"); 
@@ -56,7 +60,7 @@ sortBySelect.dispatchEvent(new Event("change"));
 	    }
 
 	  };
-      
+	myGroups.sort();      
         console.log(data);
       var margin = {top: 30, right: 30, bottom: 150, left: 150},
   width = 800 - margin.left - margin.right,
