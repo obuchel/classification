@@ -3,7 +3,8 @@
 <meta charset="utf-8">
 <style>
   .axis text { font: 12px sans-serif; }
-   .axis0 text { font: 12px sans-serif; }
+  .axis0 text { font: 12px sans-serif; }
+  .one{font: 8px sans-serif;}
 </style>
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
@@ -12,16 +13,16 @@
 <select id="selection"></select>
 <div id="my_dataviz"></div>
 <script>
-  var data=[];
+  var data0=[];
   var provinces=[];
 var htm="";
 //https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv
-  d3.json("fire.json", function(data0) {
+  d3.json("fire.json", function(data_0) {
       
-      data=data0;
+      data0=data_0;
       
            // data0.map(function(d){
-	  for (var i=0; i<data.length; i++){
+	  for (var i=0; i<data0.length; i++){
 	 
 
 	      if (provinces.indexOf(data0[i]["p"])==-1) {
@@ -40,21 +41,23 @@ sortBySelect.dispatchEvent(new Event("change"));
     
     function init(sel){
 	// console.log(sel);
-	var myGroups =['2020-11-11', '2020-11-20', '2020-11-26', '2020-12-03', '2020-12-09', '2020-12-18', '2020-12-21', '2020-12-28', '2021-01-06', '2021-01-13', '2021-01-19', '2021-01-27', '2021-02-03', '2021-02-10', '2021-02-17', '2021-02-24', '2021-03-03', '2021-03-10', '2021-03-17', '2021-03-24']
+	var data=[];
+	var myGroups =[];
+	    //['2020-11-11', '2020-11-20', '2020-11-26', '2020-12-03', '2020-12-09', '2020-12-18', '2020-12-21', '2020-12-28', '2021-01-06', '2021-01-13', '2021-01-19', '2021-01-27', '2021-02-03', '2021-02-10', '2021-02-17', '2021-02-24', '2021-03-03', '2021-03-10', '2021-03-17', '2021-03-24']
 	    //['11-11-2020', '20-11-2020', '26-11-2020', '03-12-2020', '09-12-2020', '18-12-2020', '21-12-2020', '28-12-2020', '06-01-2021', '13-01-2021', '19-01-2021', '27-01-2021', '03-02-2021', '10-02-2021', '17-02-2021', '24-02-2021', '03-03-2021', '10-03-2021', '17-03-2021', '24-03-2021'];
         document.getElementById("my_dataviz").innerHTML="";
          // data0.map(function(d){
-	  for (var i=0; i<data.length; i++){
-	      var kk=data[i]["x"].split(" ")[0].split("-");
-	      console.log(kk);
-	    if (data[i]["p"]==sel.target.options[sel.target.selectedIndex].text){//ÉVORA AVEIRO VISEU
-		data.push({"y":data[i]["y"],"x":kk[0]+"-"+kk[1]+"-"+kk[2],"z":data[i]["z"]})
-		//myGroups.push(kk[0]+"-"+kk[1]+"-"+kk[2]);
+	  for (var i=0; i<data0.length; i++){
+	      var kk=data0[i]["x"];//.split(" ")[0].split("-");
+	     //console.log(kk);
+	    if (data0[i]["p"]==sel.target.options[sel.target.selectedIndex].text){//ÉVORA AVEIRO VISEU
+		data.push({"y":data0[i]["y"],"x":kk,"z":data0[i]["z"],"p":data0[i]["p"]})
+		myGroups.push(kk);
 	    }
 
 	  };
       
-        
+        console.log(data);
       var margin = {top: 30, right: 30, bottom: 150, left: 150},
   width = 800 - margin.left - margin.right,
   height = 800 - margin.top - margin.bottom;
@@ -113,17 +116,24 @@ var myColor = d3.scaleLinear()
     .range(["#69b3a2","white","red"])
     .domain([d3.extent(data.map(function(d){return Math.log(d.z+1)}))[0],d3.extent(data.map(function(d){return Math.log(d.z+1)}))[1]/2,d3.extent(data.map(function(d){return Math.log(d.z+1)}))[1]])
 
-svg.selectAll()
+var bar=svg.selectAll()
 .data(data, function(d) {return d.y+':'+Math.log(d.z+1);})
-.enter()
-.append("rect")
+    .enter().append("g");
+bar.append("rect")
 .attr("x", function(d) { return x(d.x) })
 .attr("y", function(d) { return y(d.y) })
 .attr("width", x.bandwidth() )
 .attr("height", y.bandwidth() )
-.style("fill", function(d) { return myColor(Math.log(d.z+1))} )
+    .style("fill", function(d) { return myColor(Math.log(d.z+1))} );
+	bar.append("text")
+	    .attr("class","one")
+	    .attr("x", function(d) { return x(d.x)+x.bandwidth()/3; })
+	    .attr("y", function(d) { return y(d.y)+y.bandwidth()/2;})
+	    .attr("dy", ".35em")
+	    .text(function(d) { return d.z; });	
 
-    }
+	
+}
 document.getElementById("selection").addEventListener("change", init,false);
 </script>
 </body>
