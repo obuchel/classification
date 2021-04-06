@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+  .axis text { font: 12px sans-serif; }
+  .axis0 text { font: 12px sans-serif; }
+  .one{font: 3px sans-serif;}
+  div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+</style>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<select id="selection"></select>
+<div id="my_dataviz"></div>
+<script>
+  // Define the div for the tooltip
+var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
+  var data0=[];
+  var provinces=[];
+var htm="";
+//https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv
+ // d3.json("fire1.json", function(data_0) {
+fetch('fire1.json')
+  .then(response => response.json())
+    .then(data_0 => {
+      data0=data_0;
+      
+           // data0.map(function(d){
+	  for (var i=0; i<data_0.length; i++){
+	 
+
+	      if (provinces.indexOf(data_0[i]["p"])==-1) {
+                  provinces.push(data_0[i]["p"]);
+		  //htm+="<option>"+data0[i]["p"]+"</option>";
+	      }
+	  };
+provinces.sort();
+      for (var i=0; i<provinces.length; i++){
+   htm+="<option>"+provinces[i]+"</option>";
+      }
+            
+    document.getElementById("selection").innerHTML=htm;
+     
+      var sortBySelect = document.querySelector("select#selection"); 
+sortBySelect.value = "California"; 
+sortBySelect.dispatchEvent(new Event("change"));
+    //init(); 
+
+})
+    
+    function init(sel){
+	// console.log(sel);
+	var data=[];
+	var myGroups =[];
+	    //['2020-11-11', '2020-11-20', '2020-11-26', '2020-12-03', '2020-12-09', '2020-12-18', '2020-12-21', '2020-12-28', '2021-01-06', '2021-01-13', '2021-01-19', '2021-01-27', '2021-02-03', '2021-02-10', '2021-02-17', '2021-02-24', '2021-03-03', '2021-03-10', '2021-03-17', '2021-03-24']
+	    //['11-11-2020', '20-11-2020', '26-11-2020', '03-12-2020', '09-12-2020', '18-12-2020', '21-12-2020', '28-12-2020', '06-01-2021', '13-01-2021', '19-01-2021', '27-01-2021', '03-02-2021', '10-02-2021', '17-02-2021', '24-02-2021', '03-03-2021', '10-03-2021', '17-03-2021', '24-03-2021'];
+        document.getElementById("my_dataviz").innerHTML="";
+         // data0.map(function(d){
+	  for (var i=0; i<data0.length; i++){
+	      var kk=data0[i]["x"];//.split(" ")[0].split("-");
+	     //console.log(kk);
+	    if (data0[i]["p"]==sel.target.options[sel.target.selectedIndex].text){//ÉVORA AVEIRO VISEU
+		data.push({"y":data0[i]["y"],"x":kk,"z":data0[i]["z"],"p":data0[i]["p"]})
+		if (myGroups.indexOf(kk)==-1) {
+		    myGroups.push(kk);
+		}
+	    }
+
+	  };
+	//myGroups.sort();      
+//        console.log(myGroups);
+      var margin = {top: 30, right: 30, bottom: 150, left: 150},
+  width = 1300 - margin.left - margin.right,
+  height = 800 - margin.top - margin.bottom;
+var svg = d3.select("#my_dataviz")
+.append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+.append("g")
+  .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")");
+	
+	    //['11-11-2020', '20-11-2020', '26-11-2020', '03-12-2020', '09-12-2020', '18-12-2020', '21-12-2020', '28-12-2020', '06-01-2021', '13-01-2021', '19-01-2021', '27-01-2021', '03-02-2021', '10-02-2021', '17-02-2021', '24-02-2021', '03-03-2021', '10-03-2021', '17-03-2021', '24-03-2021']
+// Build X scales and axis:
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .domain(myGroups)
+  .padding(0.01);
+	svg.append("g")
+	    .attr("class","axis2")
+  .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+  .selectAll("text")	
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+    .attr("transform", "rotate(-65)");
+
+  var y;
+
+      
+      //console.log(provinces);
+      // data0.map(function(d){if (d.p=="AVEIRO"){data.push(d)}});
+      myVars=[];
+      data.map(function(d){
+                          
+              if (d["p"]==sel.target.options[sel.target.selectedIndex].text){//ÉVORA AVEIRO VISEU
+	myVars.push(d.y)
+	    }             
+                          
+                          });
+      myVars.reverse();
+//	console.log(myGroups);
+      y = d3.scaleBand()
+  .range([ height, 0 ])
+    .domain(myVars)
+  .padding(0.01);
+  svg.append("g")
+    .attr("class","axis")
+	  .call(d3.axisLeft(y));
+      d3.selectAll(".axis text").on('mouseover', function () {
+        d3.select(this).style("font","12px sans-serif");                                                                                                                            
+   })                                                                                                                                                                               
+  .on('mouseout', function () {                                                                                                                                                     
+      d3.select(this).style("font","12px sans-serif");
+  });
+
+var myColor = d3.scaleLinear()
+    .range(["#1a9850","#91cf60","#d9ef8b","#ffffbf","#fee08b","#fc8d59","#d73027"])
+    .domain([d3.extent(data.map(function(d){return d.z}))[0],d3.extent(data.map(function(d){return d.z}))[1]/8,d3.extent(data.map(function(d){return d.z}))[1]/4,d3.extent(data.map(function(d){return d.z}))[1]/2,d3.extent(data.map(function(d){return d.z}))[1]*(0.5+1/8),d3.extent(data.map(function(d){return d.z}))[1]*(0.5+2/8),d3.extent(data.map(function(d){return d.z}))[1]])
+
+var bar=svg.selectAll()
+.data(data, function(d) {return d.y+':'+d.z;})
+    .enter().append("g");
+bar.append("rect")
+.attr("x", function(d) { return x(d.x) })
+.attr("y", function(d) { return y(d.y) })
+.attr("width", x.bandwidth() )
+.attr("height", y.bandwidth() )
+	    .style("fill", function(d) { return myColor(d.z)} )
+	    .on("mouseover",function(d){
+		div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div	.html(d.y+" - "+d.x+" - "+d.z)	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");	
+            })					
+        .on("mouseout", function(d) {		
+            div.transition()		
+                .duration(500)		
+                .style("opacity", 0);	
+	    
+
+            });
+	bar.append("text")
+	    .attr("class","one")
+	    .attr("x", function(d) { return x(d.x)+x.bandwidth()/3; })
+	    .attr("y", function(d) { return y(d.y)+y.bandwidth()/2;})
+	    .attr("dy", ".35em");
+//	    .text(function(d) { return d.z; });	
+	d3.selectAll(".axis2 text").style('opacity', function (d,i) {
+	    //console.log(["1"].indexOf(d["x"])==-1);
+	    if (["1/22/20","2/1/20","3/1/20","4/1/20","5/1/20","6/1/20","7/1/20","8/1/20","9/1/20","10/1/20","11/1/20","12/1/20","1/1/21","2/1/21","3/1/21","4/1/21"].indexOf(d3.select(this).text())==-1) {
+		return 0;
+	    } else {
+                return 1;
+	    }
+   })
+
+	
+}
+document.getElementById("selection").addEventListener("change", init,false);
+</script>
+</body>
+</html>
