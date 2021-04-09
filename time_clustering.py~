@@ -1,0 +1,80 @@
+from sktime.datasets.base import load_italy_power_demand
+data = load_italy_power_demand()
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt 
+
+
+# Reshape the data so each series is a column and call the dataframe.corr() function 
+distance_matrix = pd.concat([series for series in data['dim_0'].values], axis=1).corr()
+print(distance_matrix)
+
+from sktime.distances.elastic_cython import dtw_distance
+
+# Italy Power Demand time series are loaded in a pd.Series format.
+# The dtw_distance function expects series to be shaped as a (l, m) array, 
+# where l=length of series, m=# dimensions           
+series_list = data['dim_0'].values
+for i in range(len(series_list)):
+    length = len(series_list[i])
+    series_list[i] = series_list[i].values.reshape((length, 1))
+
+# Initialize distance matrix
+n_series = len(series_list)
+distance_matrix = np.zeros(shape=(n_series, n_series))
+
+# Build distance matrix
+for i in range(n_series):
+    for j in range(n_series):
+        x = series_list[i]
+        y = series_list[j]
+        if i != j:
+            dist = dtw_distance(x, y)
+            distance_matrix[i, j] = dist
+print(distance_matrix)            
+            
+from scipy.cluster.hierarchy import single, complete, average, ward, dendrogram
+
+def hierarchical_clustering(dist_mat, method='complete'):
+    if method == 'complete':
+        Z = complete(distance_matrix)
+    if method == 'single':
+        Z = single(distance_matrix)
+    if method == 'average':
+        Z = average(distance_matrix)
+    if method == 'ward':
+        Z = ward(distance_matrix)
+    
+    fig = plt.figure(figsize=(16, 8))
+    dn = dendrogram(Z)
+    plt.title(f"Dendrogram for {method}-linkage with correlation distance")
+    plt.show()
+    
+    return Z
+
+linkage_matrix = hierarchical_clustering(distance_matrix)
+from scipy.cluster.hierarchy import fcluster
+
+# select maximum number of clusters
+cluster_labels = fcluster(linkage_matrix, 4, criterion='maxclust')
+print(np.unique(cluster_labels))
+#>> 4 unique clusters
+cluster_labels = fcluster(linkage_matrix, 10, criterion='maxclust')
+print(np.unique(cluster_labels))
+#>> 10 unique clusters
+
+# hand-select an appropriate cut-off on the dendrogram
+cluster_labels = fcluster(linkage_matrix, 600, criterion='distance')
+#/Users/olgabuchel/Downloads/DeckSample/classification_project/time_clustering.py print(cluster_labels)
+print(np.unique(cluster_labels))
+#>> 3 unique clusters
+cluster_labels = fcluster(linkage_matrix, 800, criterion='distance')
+print(np.unique(cluster_labels))
+#>> 2 unique clusters
+
+#/Users/olgabuchel/Downloads/DeckSample/classification_project/time_clustering.py
+#/Users/olgabuchel/Sites/to_Olha/visualization_working_june27/twitter/text_analysis/nlp_course/machine_learning_examples-master/unsupervised_class/hcluster.py
+#/Users/olgabuchel/myAnaconda/data/movies/prepare_classification3.py
+#https://towardsdatascience.com/how-to-apply-hierarchical-clustering-to-time-series-a5fe2a7d8447
+
+print(data)
