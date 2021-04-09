@@ -98,32 +98,47 @@ var comms=["All",0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 1
 var data3=[];    
 
     var data0=[];
-            fetch('output_canada/classification/classification_ids_provinces2.json').then(res => res.json()) 
+            fetch('output_toronto/classification/classification_ids_provinces2.json').then(res => res.json()) 
 .then(data0 => { 
              // console.log(data0);  
          var cols={"green":0,"yellow":0.1,"orange":0.4,"red":1}       
                 var ids=[];
                 
-                data0.map(function(d,i){ids.push(d.id.toString())});
+    data0.map(function(d,i){
+//if (d["properties"]["AREA_NAME"]!="Mimico (includes Humber Bay Shores) (17)") {
+    //data["features"][i]["id"]=data["features"][i]["properties"]["AREA_NAME"].toString().split(" (")[0];
+    ids.push(d.id);
+  //      } else {
+
+//	    ids.push("Mimico (includes Humber Bay Shores)");
+
+//	}
+    });
           // console.log(ids);
-        fetch('all_canada_hr9.json').then(res => res.json()) 
+        fetch('Neighbourhoods.geojson').then(res => res.json()) 
 .then(data => {  
             
            // console.log(data);
  var data2={"type":"FeatureCollection"};
     data2["features"]=[];        
             
-            for (var i=0; i<data["features"].length; i++) {
-                data["features"][i]["id"]=data["features"][i]["properties"]["HR_UID"].toString();
-               
+    for (var i=0; i<data["features"].length; i++) {
+	if (data["features"][i]["properties"]["AREA_NAME"]!="Mimico (includes Humber Bay Shores) (17)") {
+                data["features"][i]["id"]=data["features"][i]["properties"]["AREA_NAME"].toString().split(" (")[0];
+        } else {
+
+	    data["features"][i]["id"]="Mimico (includes Humber Bay Shores)";
+	}
+
+	console.log(data["features"][i]["id"],ids.indexOf(data["features"][i]["properties"]["id"]));	
                 // if (data["features"][i]["properties"]["STATEFP"]!="72") {
-                if (ids.indexOf(data["features"][i]["properties"]["HR_UID"])>-1) {
-                     data["features"][i]["properties"]["NAME"]=data0[ids.indexOf(data["features"][i]["properties"]["HR_UID"])]["n"];
+        if (ids.indexOf(data["features"][i]["id"])>-1) {
+            data["features"][i]["properties"]["NAME"]=data0[ids.indexOf(data["features"][i]["id"])]["n"];
                     
-                      data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["properties"]["HR_UID"])]["c"];
-                    data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["properties"]["HR_UID"])]["max"];
-                     data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["properties"]["HR_UID"])]["max"]+1)*0.5;
-                data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["properties"]["HR_UID"])]["c"]];
+            data["features"][i]["properties"]["c"]=data0[ids.indexOf(data["features"][i]["id"])]["c"];
+            data["features"][i]["properties"]["max"]=data0[ids.indexOf(data["features"][i]["id"])]["max"];
+            data["features"][i]["properties"]["max1"]=Math.log(data0[ids.indexOf(data["features"][i]["id"])]["max"]+1)*0.5;
+            data["features"][i]["properties"]["v"]=cols[data0[ids.indexOf(data["features"][i]["id"])]["c"]];
                 } else {
                    console.log( data["features"][i]);
                     data["features"][i]["properties"]["v"]=-1;
@@ -170,9 +185,9 @@ console.log(data2);
 map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/light-v10',
-zoom: 3,
+zoom: 10,
     attributionControl: false,
-center: [-87.447303,48.753574]
+    center: [-79.347015,43.751070]
 });
      
         
@@ -182,7 +197,7 @@ center: [-87.447303,48.753574]
             
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');      
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
-fetch('all_canada_hr9P.json').then(res => res.json()) 
+fetch('Neighbourhoods.geojson').then(res => res.json()) 
 .then(data8 => {             
 
     
@@ -382,7 +397,7 @@ stops: arr
 }
 },"");   
 map.on('click', 'place_data0', function(e) {
-    console.log(e.features[0]["properties"]);
+    //console.log(e.features[0]["properties"]);
     
     if (typeof popup=="object") popup.remove();
 
@@ -394,7 +409,7 @@ map.on('click', 'place_data0', function(e) {
 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 }
     
-     var htm=e.features[0].properties.NAME+": "+e.features[0].properties.max+"<br>";
+    // var htm=e.features[0].properties.NAME+": "+e.features[0].properties.max+"<br>";
     
     hoveredStateId = e.features[0].id;    
     var lats=e.lngLat;
@@ -412,14 +427,19 @@ if (e.features[0].properties["c"]=="yellow") {
     //e.features[0].properties["c"];
     //console.log(color);
 }
+ var htm=e.features[0].properties.NAME+": "+e.features[0].properties.max+"<br>";
 
     document.getElementById("plot").innerHTML="";
-    
+   /* console.log(e.features[0].id.toString());    
     if (e.features[0].id.toString().length==4){
         var num=e.features[0].id.toString();
         
+	} else {*/
+    if (e.features[0].properties.AREA_NAME!="Mimico (includes Humber Bay Shores) (17)") {
+    var num=e.features[0].properties.NAME.toString();
     } else {
-    var num=e.features[0].id.toString();
+	var num=e.features[0].properties.AREA_NAME.toString().replace(" (17)","");
+	e.features[0].properties.NAME="Mimico (includes Humber Bay Shores)";
     }
     
    /* if (["630","16","316","580","850"].indexOf(num)>-1) {
@@ -427,9 +447,9 @@ if (e.features[0].properties["c"]=="yellow") {
         var url='output_canada/classification/data_counties_'+num+'.json';
     } else {*/
         
-        var url='output_canada/classification/data_counties_'+num+'.json';
+    var url='output_toronto/classification/data_counties_'+num.replace("/","_")+'.json';
   // }
-    
+    console.log(url);
     
   fetch(url).then(res => res.json()) 
 .then(data7 => {    
@@ -724,7 +744,7 @@ function draw_plot(data,color) {
             var val=data["value"][i];
             
             
-            var temp={"date":new Date(Number(data["dates"][i].split("-")[2]),Number(data["dates"][i].split("-")[1])-1,Number(data["dates"][i].split("-")[0])),"value":val};
+            var temp={"date":new Date(Number(data["dates"][i].split("-")[0]),Number(data["dates"][i].split("-")[1])-1,Number(data["dates"][i].split("-")[2])),"value":val};
         data110.push(temp);
         } else {
             //var val=0;
@@ -737,7 +757,7 @@ function draw_plot(data,color) {
     for (var i=1; i<data["time"].length; i++) {
         if (data["original_values"][i]>=0){
             var val=data["original_values"][i];
-            var temp={"date":new Date(Number(data["time"][i].split("-")[2]),Number(data["time"][i].split("-")[1])-1,Number(data["time"][i].split("-")[0])),"value":val};
+            var temp={"date":new Date(Number(data["time"][i].split("-")[0]),Number(data["time"][i].split("-")[1])-1,Number(data["time"][i].split("-")[2])),"value":val};
         data10.push(temp);
         } else {
             var val=0;
