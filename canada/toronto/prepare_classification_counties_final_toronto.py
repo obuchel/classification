@@ -20,8 +20,10 @@ data2["Reported Date"]=data2["Reported Date"]
 #pd.to_datetime(data2["Reported Date"],format="%Y-%m-%d")
 data2.set_index("Reported Date")
 data2["X"]=[1 for x in range(0,len(data2))]
-print(data2)
+#print(data2)
 data=data2.pivot_table(values='X', index=['Reported Date'], columns='Neighbourhood Name', aggfunc='count')
+data.to_csv("toronto_data.csv")
+print(data)
 dates=list(data.index)
 #Neighbourhood Name Reported Date
 '''

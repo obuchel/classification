@@ -1,6 +1,7 @@
 from sktime.datasets.base import load_italy_power_demand
-data = load_italy_power_demand()
 import pandas as pd
+data = pd.read_csv("/Users/olgabuchel/downloads/decksample/classification_project/canada/toronto/toronto_data.csv").fillna(0)
+data2 = load_italy_power_demand()
 import numpy as np
 import matplotlib.pyplot as plt 
 
@@ -8,8 +9,8 @@ import matplotlib.pyplot as plt
 
 
 # Reshape the data so each series is a column and call the dataframe.corr() function 
-distance_matrix = pd.concat([series for series in data['dim_0'].values], axis=1).corr()
-print(distance_matrix.columns)
+distance_matrix = data.corr()
+#print(distance_matrix.columns)
 #print(pd.concat([series for series in data['dim_0'].values], axis=1).corr())
 
 
@@ -18,18 +19,22 @@ from sktime.distances.elastic_cython import dtw_distance
 # Italy Power Demand time series are loaded in a pd.Series format.
 # The dtw_distance function expects series to be shaped as a (l, m) array, 
 # where l=length of series, m=# dimensions           
-series_list = data['dim_0'].values
+series_list = list(distance_matrix.columns)
+print(series_list)
 for i in range(len(series_list)):
-    length = len(series_list[i])
-    series_list[i] = series_list[i].values.reshape((length, 1))
+    length = len(data[series_list[i]])
+    series_list[i] = data[series_list[i]].values.reshape((length, 1))
+print(series_list)    
 
 # Initialize distance matrix
-n_series = len(series_list)
+n_series = len(list(distance_matrix.columns))
 distance_matrix = np.zeros(shape=(n_series, n_series))
 
 # Build distance matrix
 for i in range(n_series):
     for j in range(n_series):
+        #x = distance_matrix[list(distance_matrix.columns)[i]]
+        #y = list(distance_matrix.columns)[j]
         x = series_list[i]
         y = series_list[j]
         if i != j:
@@ -59,13 +64,15 @@ linkage_matrix = hierarchical_clustering(distance_matrix)
 from scipy.cluster.hierarchy import fcluster
 
 # select maximum number of clusters
-cluster_labels = fcluster(linkage_matrix, 6, criterion='maxclust')
+cluster_labels = fcluster(linkage_matrix, 5, criterion='maxclust')
 print(np.unique(cluster_labels))
 print(len(list(cluster_labels)))
+print(len(list(data.columns)))
 print(list(cluster_labels))
+print(list(data.columns))    
 '''
 #>> 4 unique clusters
-cluster_labels = fcluster(linkage_matrix, 10, criterion='maxclust')
+cluster_labels = fcluster(linkage_matrix, 4, criterion='maxclust')
 print(np.unique(cluster_labels))
 #>> 10 unique clusters
 
