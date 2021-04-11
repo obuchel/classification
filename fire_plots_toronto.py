@@ -47,7 +47,7 @@ for item in data2.fillna(0).iterrows():
         if cols[it]!="data":#,ll[cols[it]])
             if el<0:
                 el=0
-            arrs.append({"x":str(cols1[item0]),"y":cols[it],"z":int(el),"p":"Toronto"})#,"p":ll[cols[it]]})
+            arrs.append({"x":cols[it],"y":str(cols1[item0]),"z":int(el),"p":"Toronto"})#,"p":ll[cols[it]]})
         it+=1
     item0+=1
 print(arrs)    
