@@ -1,5 +1,4 @@
 
-
 import json
 import numpy as np
 import pandas as pd
@@ -136,16 +135,23 @@ def classify(ratio, recent_mean, threshold):
 
 for name in counties:
     values = e_dataframe1[name]
+    values0 = e_dataframe1[name].fillna(0)[390:]
+    #print(values0)
     num_rows = len(values)
     y50 = values[-15:]
     y5 = [y - values[-15] for y in y50]
     y = values
     original_values = compute_original_values(values)
     x = e_dataframe1[e_dataframe1.columns[0]]
-    y1 = interpolate(y)
+    y1 = interpolate(values)
+    y10 = interpolate(values0)
+    #print(y10)
     x2 = x[9:]
     tim2 = tim[3 : -4]
     y3 = pd.DataFrame(y1, columns=["a"]).rolling(window=7).mean()['a'].to_list()[6:]
+    #print(y3)
+    y6 = pd.DataFrame(y10, columns=["a"]).rolling(window=7).mean()['a'].to_list()[6:]
+    #print(y6)
     ys = y3[-24:]
     xs = x[-29:-5]  # last 24 days
     ind2 = 0
@@ -158,14 +164,16 @@ for name in counties:
         start.append(0)
     threshold = 1
     if len(start) > 0:
-        max0 = np.max(y3)
+        max0 = np.max(y6)
+        print(max0)
         min0 = np.min(ys)
         recent_mean0=0
         if max0 > 0:
-            ratio = y3[-1] / max0
+            ratio = y6[-1] / max0
             recent_mean = int(np.mean(original_values[-11:]))
             recent_mean0 += recent_mean
             #if recent_mean > threshold:
+            print(ratio,recent_mean, threshold)
             color = classify(ratio, recent_mean, threshold)
             #else:
             #    color = "green"
