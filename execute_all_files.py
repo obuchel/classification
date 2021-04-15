@@ -16,7 +16,7 @@ os.system("python3 /Users/olgabuchel/downloads/decksample/directory/COVID-19_map
 os.system("python3 prepare_classification_counties_final_ireland.py")
 os.system("python3 prepare_classification_counties_final_ireland1.py")
 os.system("print('ireland')")
-os.system("python3 prepare_classification_counties_final.py")
+os.system("python3 prepare_classification_counties_final_new.py")
 os.system("print('us')")
 
 os.system("python3 prepare_classification_counties_argentina.py")

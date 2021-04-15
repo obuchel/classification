@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+  .axis text { font: 12px sans-serif; }
+  .axis0 text { font: 12px sans-serif; }
+  .one{font: 3px sans-serif;}
+  div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 80px;					
+    height: 70px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: white;	
+    border: 0.6px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+  }
+
+#all {
+    border: 3px solid #fff;
+    padding: 20px;
+}
+
+.float-child1 {
+    width: 70%;
+    float: left;
+  /*  padding: 20px;
+    border: 2px solid red;*/
+}
+.float-child2 {
+    width: 30%;
+    float: left;
+   /* padding: 20px;
+    border: 2px solid red;*/
+}
+#map { position: relative; top: 0; bottom: 0; width: 100%; height:900px;}
+</style>
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<select id="selection"></select>
+<div id="all">
+<div id="my_dataviz" class="float-child"></div>
+<div id="map" class="float-child"></div>
+</div>
+<script>
+
+//https://obuchel.github.io/classification/canada/Neighbourhoods.geojson
+/*
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJjanlrY3diNzIwZDdxM25uN2owN2c5ZHpiIn0.XzMbcbHF6H42u0Uxo1L8lg';
+var map = new mapboxgl.Map({
+container: 'map', // container ID
+style: 'mapbox://styles/mapbox/light-v10', // style URL
+center: [-79.347015,43.701070], // starting position
+zoom: 10 // starting zoom
+});
+ 
+map.on('load', function () {
+// Add a data source containing GeoJSON data.
+map.addSource('maine', {
+'type': 'geojson',
+'data': "Neighbourhoods_cl.geojson"
+});
+ /*
+#e41a1c
+#377eb8
+#4daf4a
+#984ea3
+#ff7f00
+#ffff33
+#a65628
+#f781bf
+#999999
+
+*/
+  /*
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'maine',
+'type': 'fill',
+'source': 'maine', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': {
+              property: 'cl', // this will be your density property form you geojson
+              stops: [
+                [1, '#e41a1c'], //red
+                  [2, '#377eb8'],//blue
+		  [3, '#999999'],//green
+		  [4, '#984ea3'],//purple
+		  [5, '#ff7f00'],//orange
+
+              ]
+            }, // blue color fill
+'fill-opacity': 0.5
+}
+});
+// Add a black outline around the polygon.
+map.addLayer({
+'id': 'outline',
+'type': 'line',
+'source': 'maine',
+'layout': {},
+'paint': {
+'line-color': "#000",
+'line-width': 0.5
+}
+});
+});
+
+*/
+
+  
+
+  
+
+// Define the div for the tooltip
+var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
+  var data0=[];
+  var provinces=[];
+var htm="";
+//https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv
+ // d3.json("fire1.json", function(data_0) {
+fetch('fire_argentina_provinces.json')
+  .then(response => response.json())
+    .then(data_0 => {
+      data0=data_0;
+      
+           // data0.map(function(d){
+	  for (var i=0; i<data_0.length; i++){
+	 
+
+	      if (provinces.indexOf(data_0[i]["p"])==-1) {
+                  provinces.push(data_0[i]["p"]);
+		  //htm+="<option>"+data0[i]["p"]+"</option>";
+	      }
+	  };
+provinces.sort();
+      for (var i=0; i<provinces.length; i++){
+   htm+="<option>"+provinces[i]+"</option>";
+      }
+            
+    document.getElementById("selection").innerHTML=htm;
+     
+      var sortBySelect = document.querySelector("select#selection"); 
+sortBySelect.value = "Formosa"; 
+sortBySelect.dispatchEvent(new Event("change"));
+    //init(); 
+
+})
+    
+    function init(sel){
+	// console.log(sel);
+	var data=[];
+	var myGroups =[];
+	    //['2020-11-11', '2020-11-20', '2020-11-26', '2020-12-03', '2020-12-09', '2020-12-18', '2020-12-21', '2020-12-28', '2021-01-06', '2021-01-13', '2021-01-19', '2021-01-27', '2021-02-03', '2021-02-10', '2021-02-17', '2021-02-24', '2021-03-03', '2021-03-10', '2021-03-17', '2021-03-24']
+	    //['11-11-2020', '20-11-2020', '26-11-2020', '03-12-2020', '09-12-2020', '18-12-2020', '21-12-2020', '28-12-2020', '06-01-2021', '13-01-2021', '19-01-2021', '27-01-2021', '03-02-2021', '10-02-2021', '17-02-2021', '24-02-2021', '03-03-2021', '10-03-2021', '17-03-2021', '24-03-2021'];
+        document.getElementById("my_dataviz").innerHTML="";
+         // data0.map(function(d){
+	  for (var i=0; i<data0.length; i++){
+	      var kk=data0[i]["x"];//.split(" ")[0].split("-");
+	     //console.log(kk);
+	    if (data0[i]["p"]==sel.target.options[sel.target.selectedIndex].text){//ÉVORA AVEIRO VISEU
+		data.push({"x":kk,"y":data0[i]["y"],"z":data0[i]["z"],"p":data0[i]["p"]})
+		if (myGroups.indexOf(kk)==-1) {
+		    myGroups.push(kk);
+		}
+	    }
+
+	  };
+	//myGroups.sort();      
+        console.log(myGroups);
+      var margin = {top: 30, right: 30, bottom: 150, left: 150},
+  width = 900 - margin.left - margin.right,
+  height = 1000 - margin.top - margin.bottom;
+var svg = d3.select("#my_dataviz")
+.append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+.append("g")
+  .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")");
+	
+// Build X scales and axis:
+var y = d3.scaleBand()
+    .range([ height, 0 ])
+  .domain(myGroups)
+  .padding(0.01);
+	svg.append("g")
+	    .attr("class","axis2")
+  //.attr("transform", "translate(0," + width + ")")
+	    .call(d3.axisLeft(y));
+/*  .selectAll("text")	
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+    .attr("transform", "rotate(-65)");
+*/
+
+
+	
+  var x;
+
+      
+      //console.log(provinces);
+      // data0.map(function(d){if (d.p=="AVEIRO"){data.push(d)}});
+	myVars=[];
+	/*['Downsview-Roding-CFB', 'Woburn', 'Glenfield-Jane Heights', 'Malvern', 'Mount Olive-Silverstone-Jamestown', 'Rouge', 'West Humber-Clairville', 'Bendale', 'Black Creek', 'Dorset Park', 'Englemount-Lawrence', 'Humbermede', 'Islington-City Centre West', "L'Amoreaux", 'Newtonbrook West', 'Steeles', 'Thorncliffe Park', 'Westminster-Branson', 'York University Heights', 'Agincourt North', 'Agincourt South-Malvern West', 'Annex', 'Banbury-Don Mills', 'Bathurst Manor', 'Bayview Woods-Steeles', 'Bedford Park-Nortown', 'Birchcliffe-Cliffside', 'Briar Hill - Belgravia', 'Brookhaven-Amesbury', 'Cabbagetown-South St. James Town', 'Caledonia-Fairbank', 'Casa Loma', 'Centennial Scarborough', 'Church-Yonge Corridor', 'Clairlea-Birchmount', 'Clanton Park', 'Cliffcrest', 'Corso Italia-Davenport', 'Danforth-East York', 'Don Valley Village', 'Dovercourt-Wallace Emerson-Junction', 'East End-Danforth', 'Edenbridge-Humber Valley', 'Eglinton East', 'Elms-Old Rexdale', 'Etobicoke West Mall', 'Flemingdon Park', 'Henry Farm', 'High Park North', 'High Park-Swansea', 'Highland Creek', 'Hillcrest Village', 'Humber Heights-Westmount', 'Humber Summit', 'Humewood-Cedarvale', 'Keelesdale-Eglinton West', 'Kennedy Park', 'Kensington-Chinatown', 'Kingsview Village-The Westway', 'Leaside-Bennington', 'Little Portugal', 'Maple Leaf', 'Milliken', 'Mimico (includes Humber Bay Shores)', 'Morningside', 'Moss Park', 'Mount Dennis', 'Mount Pleasant West', 'New Toronto', 'Niagara', 'North St. James Town', "O'Connor-Parkview", 'Oakridge', 'Oakwood Village', 'Parkwoods-Donalda', 'Pelmo Park-Humberlea', 'Pleasant View', 'Rockcliffe-Smythe', 'Rustic', 'Scarborough Village', 'South Parkdale', 'South Riverdale', 'Stonegate-Queensway', "Tam O'Shanter-Sullivan", 'Taylor-Massey', 'Thistletown-Beaumond Heights', 'Victoria Village', 'Waterfront Communities-The Island', 'West Hill', 'Weston', 'Weston-Pellam Park', 'Wexford/Maryvale', 'Willowdale East', 'Willowridge-Martingrove-Richview', 'Wychwood', 'Yorkdale-Glen Park', 'Alderwood', 'Bay Street Corridor', 'Bayview Village', 'Beechborough-Greenbrook', 'Blake-Jones', 'Bridle Path-Sunnybrook-York Mills', 'Broadview North', 'Danforth', 'Dufferin Grove', 'Eringate-Centennial-West Deane', 'Forest Hill North', 'Forest Hill South', 'Greenwood-Coxwell', 'Guildwood', 'Ionview', 'Junction Area', 'Kingsway South', 'Lambton Baby Point', 'Lansing-Westgate', 'Lawrence Park North', 'Lawrence Park South', 'Long Branch', 'Markland Wood', 'Mount Pleasant East', 'Newtonbrook East', 'North Riverdale', 'Old East York', 'Palmerston-Little Italy', 'Playter Estates-Danforth', 'Princess-Rosethorn', 'Regent Park', 'Rexdale-Kipling', 'Roncesvalles', 'Rosedale-Moore Park', 'Runnymede-Bloor West Village', 'St.Andrew-Windfields', 'The Beaches', 'Trinity-Bellwoods', 'University', 'Willowdale West', 'Woodbine Corridor', 'Woodbine-Lumsden', 'Yonge-Eglinton', 'Yonge-St.Clair'];
+	 */
+	
+      data.map(function(d){
+       if (d["p"]==sel.target.options[sel.target.selectedIndex].text){                    
+          if (myVars.indexOf(d.y)==-1){//ÉVORA AVEIRO VISEU
+	myVars.push(d.y)
+	    }             
+       }              
+                          });
+	//myVars.sort().reverse();
+	console.log(d3.extent(data.map(function(d){return d.z})));
+      x = d3.scaleBand()
+	    .range([ 0, width ])
+    .domain(myVars)
+  .padding(0.01);
+  svg.append("g")
+	    .attr("class","axis")
+	.attr("transform", "translate(0," + height + ")")
+	    .call(d3.axisBottom(x))
+	 .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+    .attr("transform", "rotate(-65)");
+      d3.selectAll(".axis text").on('mouseover', function () {
+        d3.select(this).style("font","12px sans-serif");                                                                                                                            
+   })                                                                                                                                                                              .on('mouseout', function () {                                                                                                                                                     
+      d3.select(this).style("font","12px sans-serif");
+  });
+
+var myColor = d3.scaleLinear()
+    .range(["#1a9850","#91cf60","#d9ef8b","#ffffbf","#fee08b","#fc8d59","#d73027"])
+    .domain([-1,0,50,100,500,1000,3000,10500])
+
+var bar=svg.selectAll()
+.data(data, function(d) {return d.y+':'+d.z;})
+    .enter().append("g");
+bar.append("rect")
+.attr("x", function(d) { return x(d.y) })
+	    .attr("y", function(d) { return y(d.x) })
+.attr("width", x.bandwidth() )
+.attr("height", y.bandwidth() )
+	    .style("fill", function(d) { return myColor(d.z)} )
+	    .on("mouseover",function(d){
+		div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div	.html(d.y+" - "+d.x+" - "+d.z)	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");	
+            })					
+        .on("mouseout", function(d) {		
+            div.transition()		
+                .duration(500)		
+                .style("opacity", 0);	
+	    
+
+            });
+	bar.append("text")
+	    .attr("class","one")
+	    .attr("x", function(d) { return x(d.y)+x.bandwidth()/3; })
+	    .attr("y", function(d) { return y(d.x)+y.bandwidth()/2;})
+	    .attr("dy", ".35em");
+//	    .text(function(d) { return d.z; });	
+	d3.selectAll(".axis2 text").style('opacity', function (d,i) {
+	    //console.log(["1"].indexOf(d["x"])==-1);
+	    if (["2020-01-23","2020-02-01","2020-03-01","2020-04-01","2020-05-01","2020-06-01","2020-07-01","2020-08-01","2020-09-01","2020-10-01","2020-11-01","2020-12-01","2021-01-01","2021-02-01","2021-03-01","2021-04-01"].indexOf(d3.select(this).text())==-1) {
+		return 0;
+	    } else {
+                return 1;
+	    }
+	})
+
+/*
+	
+svg.append("rect")
+.attr("x", function(d) { return 0 })
+.attr("y", function(d) { return 0 })
+	    .attr("width", x.bandwidth()*2 )
+	    .attr("height", height )
+	    .style("fill-opacity", 0)
+	    .style("stroke-width","0.7px")
+	    .style("stroke","#e41a1c");
+svg.append("rect")
+.attr("x", function(d) { return x.bandwidth()*2 })
+.attr("y", function(d) { return 0 })
+            .attr("width", x.bandwidth()*5 )
+            .attr("height", height )
+            .style("fill-opacity", 0)
+            .style("stroke-width","0.6px")
+            .style("stroke","#377eb8");	
+
+svg.append("rect")
+.attr("x", function(d) { return x.bandwidth()*7 })
+.attr("y", function(d) { return 0 })
+            .attr("width", x.bandwidth()*12 )
+            .attr("height", height )
+            .style("fill-opacity", 0)
+            .style("stroke-width","0.5px")
+            .style("stroke","#999999");
+svg.append("rect")
+	    .attr("x", function(d) { return x.bandwidth()*(12+5+2) })
+.attr("y", function(d) { return 0 })
+            .attr("width", x.bandwidth()*77 )
+            .attr("height", height )
+            .style("fill-opacity", 0)
+            .style("stroke-width","0.5px")
+            .style("stroke","#984ea3");
+
+
+svg.append("rect")
+	    .attr("x", function(d) { return x.bandwidth()*(77+12+5+2) })
+.attr("y", function(d) { return 0 })
+            .attr("width", x.bandwidth()*45 )
+            .attr("height", height )
+            .style("fill-opacity", 0)
+            .style("stroke-width","0.5px")
+            .style("stroke","#ff7f00");
+
+svg.append("text")
+        .attr("x", x.bandwidth())             
+        .attr("y", 0)
+        .attr("text-anchor", "middle")  
+        .style("font-size", "8px") 
+        //.style("text-decoration", "underline")  
+            .text("red");
+svg.append("text")
+	.attr("x", x.bandwidth()*4)
+        .attr("y", 0)
+        .attr("text-anchor", "middle")
+        .style("font-size", "8px")
+        //.style("text-decoration", "underline")                                                                                                                                    
+            .text("blue");
+svg.append("text")
+	.attr("x", x.bandwidth()*12)
+        .attr("y", 0)
+        .attr("text-anchor", "middle")
+        .style("font-size", "8px")
+        .text("grey");
+svg.append("text")
+        .attr("x", x.bandwidth()*60)
+        .attr("y", 0)
+        .attr("text-anchor", "middle")
+        .style("font-size", "8px")
+            .text("purple");
+svg.append("text")
+	.attr("x", x.bandwidth()*120)
+        .attr("y", 0)
+        .attr("text-anchor", "middle")
+        .style("font-size", "8px")
+            .text("orange");	
+*/
+}
+document.getElementById("selection").addEventListener("change", init,false);
+
+/*
+
+  [1, '#e41a1c'], //red                                                                                                                                               
+                  [2, '#377eb8'],//blue                                                                                                                                             
+                  [3, '#4daf4a'],//green                                                                                                                                            
+                  [4, '#984ea3'],//purple                                                                                                                                           
+                  [5, '#ff7f00'],//orange     
+
+*/
+  
+</script>
+</body>
+</html>
