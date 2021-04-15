@@ -32,7 +32,23 @@ print(data2)
 #data.pivot(index='data', columns='concelho', values='confirmados_14')
 cols=list(data2.columns)
 cols1=list([str(x).split(" ")[0] for x in data2.index])
-print(data2.sum(axis = 0, skipna = True))
+kkd0=data2.sum(axis = 0, skipna = True).to_dict()
+#argentina_population.csv
+data13=pd.read_csv("argentina_population.csv")
+data13["Population (2013)1"]=[int(str(x).replace(",","")) for x in data13["Population (2013)"].to_list()]
+kkd=data13[["Province/District","Population (2013)1"]].set_index("Province/District").to_dict()["Population (2013)1"]
+
+all=[]
+for item in list(kkd0.keys()):
+    try:
+        all.append([item,kkd0[item],kkd[item],kkd0[item]/kkd[item]])
+    except:
+        all.append([item,kkd0[item],0,kkd0[item]])
+
+dd=pd.DataFrame(all,columns=["Province","Cases","Population","Ratio"])
+dd0=dd.sort_values(by=['Ratio'], ascending=False)
+print(dd0)
+print(dd0["Province"].to_list())
 item0=0
 arrs=[]
 for item in data2.iterrows():
@@ -47,7 +63,7 @@ for item in data2.iterrows():
 #print(arrs)    
 #print(cols)
 #print(cols1)
-
+print(kkd)
 with open("fire_argentina.json", "w") as fp:
     json.dump(arrs,fp)
 
