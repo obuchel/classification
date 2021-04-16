@@ -1,7 +1,8 @@
 import pandas as pd
 import json
 import geopandas as gpd
-data_=pd.read_csv("/Users/olgabuchel/Downloads/Covid19Casos.csv", index_col=0)
+data_1=pd.read_csv("/Users/olgabuchel/Downloads/Covid19Casos.csv", index_col=0)
+data_=data_1[data_1['clasificacion_resumen']=="Confirmado"]
 print(data_["residencia_provincia_nombre"].unique())
 data_["ind"]=data_['residencia_departamento_nombre']+", "+data_['residencia_provincia_nombre']
 data=data_.groupby(['fecha_diagnostico','ind']).count().reset_index()

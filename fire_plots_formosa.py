@@ -1,13 +1,14 @@
 import pandas as pd
 import json
 import geopandas as gpd
-data_=pd.read_csv("/Users/olgabuchel/Downloads/Covid19Casos.csv", index_col=0)
-print(data_["residencia_provincia_nombre"].unique())
+data_1=pd.read_csv("/Users/olgabuchel/Downloads/Covid19Casos.csv", index_col=0)
+#print(data_['clasificacion_resumen'].unique())#'clasificacion', 'clasificacion_resumen'
+data_=data_1[data_1['clasificacion_resumen']=="Confirmado"]
 data=data_.groupby(['fecha_diagnostico','residencia_provincia_nombre']).count().reset_index()
 print(data)
 data2=pd.pivot_table(data=data,index="fecha_diagnostico",columns='residencia_provincia_nombre', values='sexo').fillna(0)
-print(data2)
-
+#print(data2)
+data2.to_csv("argentina_check.csv")
 '''
 pivoted_table=pd.pivot_table(data=df3,index='idd', columns='fecha_diagnostico', values='residencia_pais_nombre',margins=False, dropna=False) #aggfunc={'residencia_pais_nombre':'sum'}    
 #print(data)
@@ -63,8 +64,8 @@ for item in data2.iterrows():
 #print(arrs)    
 #print(cols)
 #print(cols1)
-print(kkd)
-print(kkd0)
+#print(kkd)
+#print(kkd0)
 with open("fire_argentina.json", "w") as fp:
     json.dump(arrs,fp)
 
