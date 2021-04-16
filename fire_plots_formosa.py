@@ -64,6 +64,7 @@ for item in data2.iterrows():
 #print(cols)
 #print(cols1)
 print(kkd)
+print(kkd0)
 with open("fire_argentina.json", "w") as fp:
     json.dump(arrs,fp)
 
