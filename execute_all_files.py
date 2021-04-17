@@ -11,7 +11,7 @@ schedule.every().day.at("18:45").do(job,'It is 19:00')
 while True:
     schedule.run_pending()
 '''
-'''
+
 os.system("python3 /Users/olgabuchel/downloads/decksample/directory/COVID-19_map_final/jhu_fixed.py")
 os.system("python3 prepare_classification_counties_final_ireland.py")
 os.system("python3 prepare_classification_counties_final_ireland1.py")
@@ -54,7 +54,7 @@ os.system("print('israel')")
 #    time.sleep(60) # wait one minute
 os.system("python3 fire_plots_us_ra.py")
 os.system("python3 fire_plots_us.py")
-'''
+
 os.system("python3 fire_plots_us_cum.py")
 #nohup python2.7 MyScheduledProgram.py &    
 #git reset --hard HEAD~2
