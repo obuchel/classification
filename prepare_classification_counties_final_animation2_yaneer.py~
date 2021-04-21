@@ -1,5 +1,6 @@
 
 
+
 import json
 import numpy as np
 import pandas as pd
@@ -12,7 +13,8 @@ output_directory = 'output'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
-
+pop=pd.read_csv('US_population.csv').set_index("State")
+population=pop.to_dict("index")
 if use_canned_file:
     data = pd.read_csv('data/time_series/time_series_covid19_confirmed_US.csv')
     assert data.columns[-1] == date_of_analysis
@@ -132,8 +134,29 @@ def classify(ratio, recent_mean, threshold):
             color = "green"
     assert color is not None
     return color
+
+def classify1(y3, recent_mean,name):
+    N0 = 20
+    F0=0.5
+    F1=0.2
+    current_average=recent_mean
+    #np.mean(v[-14:])
+    if (current_average<F0*N0) or (current_average< N0 and current_average< np.max(y3)*F0):
+        #print("green",name)
+        color="green"
+    elif (current_average<1.5*N0 and current_average<np.max(y3)*F0) or (current_average<np.max(y3)*F1):
+        #print("yellow",name)
+        color="yellow"
+    else:
+        #print("red",name)
+        color="red"
+    return color
+
+
+
+all_states0={}
 all_states={}
-all_dates=list(e_dataframe.columns)[30:50]
+all_dates=list(e_dataframe.columns)[30:]
 for item in all_dates:
     rm=all_dates[all_dates.index(item):]
     #print(e_dataframe0.drop(columns=rm))                                                                                                                                            
@@ -169,10 +192,11 @@ for item in all_dates:
             recent_mean0=0
             if max0 > 0:
                 ratio = y3[-1] / max0
-                recent_mean = int(np.mean(original_values[-11:]))
+                recent_mean = int(np.mean(original_values[-14:]))
                 recent_mean0 += recent_mean
                 #if recent_mean > threshold:
-                color = classify(ratio, recent_mean, threshold)
+                color = classify1(y3, recent_mean,name)
+                #classify(ratio, recent_mean, threshold)
                 #else:
                 #    color = "green"
             else:
@@ -181,9 +205,13 @@ for item in all_dates:
                 color="darkgreen"
             if name not in list(all_states.keys()):    
                 all_states[name]={}
-                all_states[name][item]=color
+                all_states0[name]={}
+                #print(recent_mean/population[name]["Population"]*100)
+                all_states0[name][item]=[color,recent_mean0]
+                all_states[name][item]=[color,recent_mean0,population[name]["Population"],(recent_mean0/population[name]["Population"])*100000]
             else:
-                all_states[name][item]=color                
+                all_states0[name][item]=[color,recent_mean0]
+                all_states[name][item]=[color,recent_mean0,population[name]["Population"],(recent_mean0/population[name]["Population"])*100000]                
                 #print(item,name,color,ratio,recent_mean0,int(max(y5)))
             '''
             with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
@@ -192,8 +220,27 @@ for item in all_dates:
             aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             '''
             ind4+=1
-print(all_states)    
+print(all_states0)
+with open("us_states_colors.json","w") as fp:
+    json.dump(all_states0,fp)
+with open("us_states_colors_full.json","w") as fp:
+    json.dump(all_states,fp)
+all_k=[]
+for item in list(all_states.keys()):
+    for item2 in list(all_states[item].keys()):
+        all_states[item][item2].append(item)
+        all_states[item][item2].append(item2)
+        all_k.append(all_states[item][item2])
+final=pd.DataFrame(all_k,columns=["class","mean_cases","population","ratio","state","date"])
+final2=final.sort_values(by=['ratio'], ascending=False)
+final2.to_csv("us_states_rankings.csv")
+final3=final2[final2["date"]=="2021-04-20"].set_index("state")
+print(final3)
+
 '''
+ 0    1        2         3
+yellow  520  4921532  0.010566
+yellow  520  4921532  0.010566  Alabama  2020-02-20
 # with open('classification/data_counties.json', 'w') as outfile:
 #    json.dump(aar,outfile)
 aar1[0]["date"]=date_of_analysis
