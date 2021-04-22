@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add a GeoJSON polygon</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+#slider-range-max{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<p>
+  <label for="amount">Minimum number of bedrooms:</label>
+  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+</p>
+<div id="slider-range-max"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJmOWQ2MzQxNmE0M2Y3YmVjNzA2NmM2MGQzYTIwYmQ3OCJ9.psxJSN8q9n2-HfFGoIUNJA';
+var map = new mapboxgl.Map({
+container: 'map', // container ID
+style: 'mapbox://styles/mapbox/light-v10', // style URL
+center: [-68.137343, 45.137451], // starting position
+zoom: 5 // starting zoom
+});
+ 
+map.on('load', function () {
+// Add a data source containing GeoJSON data.
+map.addSource('maine', {
+'type': 'geojson',
+'data': "states_colors2.json"   
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'maine',
+'type': 'fill',
+'source': 'maine', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': [
+'match',
+['get', 'c_1'],
+'1',
+'green',
+'2',
+'yellow',
+'3',
+'red',
+/* other */ '#ccc'
+], // blue color fill
+    'fill-opacity': 0.5
+//filter: ['regex', 'values', /\,1\,/, true]    
+}
+});
+// Add a black outline around the polygon.
+map.addLayer({
+'id': 'outline',
+'type': 'line',
+'source': 'maine',
+'layout': {},
+'paint': {
+'line-color': '#000',
+'line-width': 3
+}
+});
+});
+
+  $( function() {
+    $( "#slider-range-max" ).slider({
+      range: "max",
+      min: 0,
+      max: 430,
+      value: 0,
+      slide: function( event, ui ) {
+var newP=[
+'match',
+    ['get', 'c_'+ui.value.toString()],
+'1',
+'green',
+'2',
+'yellow',
+'3',
+'red',
+/* other */ '#ccc'
+];
+
+//map.getLayer('maine').setPaint(newP);
+map.setPaintProperty("maine", 'fill-color', newP);	  
+      }
+    });
+    $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
+  } );
+
+
+</script>
+ 
+</body>
+</html>
