@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add a GeoJSON polygon</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 50px; bottom: 0; width: 100%; }
+#slider-range-max{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+#features {
+        display:block !important;
+        top: 0;
+	margin-left: auto;
+    margin-right: auto;
+        height: 50px;
+        margin-top: 20px;
+        width: 250px;
+	visibility:visible;
+      }
+#days {
+font-size: 150%;
+}
+</style>
+</head>
+<body>
+
+ <div class="map-overlay" id="features">
+
+      <div id="days"></div>
+ </div>
+
+<div id="map"></div> 
+<script>
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+var speedFactor = 30; // number of frames per longitude degree
+var animation; // to store and cancel the animation
+var startTime = 0;
+var progress = 0; // progress = timestamp - startTime
+  var resetTime = false; // indicator of whether time reset is needed for the animation
+fetch('states_dates.json')
+  .then(response => response.json())
+    .then(days => {
+  
+  mapboxgl.accessToken = 'pk.eyJ1Ijoib2J1Y2hlbCIsImEiOiJmOWQ2MzQxNmE0M2Y3YmVjNzA2NmM2MGQzYTIwYmQ3OCJ9.psxJSN8q9n2-HfFGoIUNJA';
+var map = new mapboxgl.Map({
+container: 'map', // container ID
+style: 'mapbox://styles/mapbox/light-v10', // style URL
+center: [-92.137343, 39.137451], // starting position
+zoom: 4 // starting zoom
+});
+var stateLegendEl = document.getElementById('features');
+stateLegendEl.style.display = 'block'; 
+map.on('load', function () {
+// Add a data source containing GeoJSON data.
+map.addSource('maine', {
+'type': 'geojson',
+'data': "counties_colors2.json"   
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'maine',
+'type': 'fill',
+'source': 'maine', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': [
+'match',
+['get', '0'],
+'1',
+'green',
+'2',
+'yellow',
+'3',
+'red',
+/* other */ '#ccc'
+], // blue color fill
+    'fill-opacity': 0.5
+//filter: ['regex', 'values', /\,1\,/, true]    
+}
+});
+// Add a black outline around the polygon.
+map.addLayer({
+'id': 'outline',
+'type': 'line',
+'source': 'maine',
+'layout': {},
+'paint': {
+'line-color': '#000',
+'line-width': 1.5
+}
+});
+//});
+
+let start = Date.now(); // remember start time
+
+let timer = setInterval(function() {
+  // how much time passed from the start?
+  let timePassed = Date.now() - start;
+
+  if (timePassed >= 200*425) {
+    clearInterval(timer); // finish the animation after 2 seconds
+    return;
+  }
+
+  // draw the animation at the moment timePassed
+  draw(timePassed);
+
+}, 200);
+
+// as timePassed goes from 0 to 2000
+// left gets values from 0px to 400px
+function draw(timePassed) {
+    //train.style.left = timePassed / 5 + 'px';
+
+      var newP=[
+'match',
+	  ['get', ''+Math.round(timePassed/200).toString()],
+'1',
+'green',
+'2',
+'yellow',
+'3',
+'red',
+ '#ccc'
+];
+    map.setPaintProperty("maine", 'fill-color', newP);
+    document.getElementById('days').innerHTML=days[Math.round(timePassed/200)];
+
+}
+
+
+
+
+
+
+
+/*
+
+  $( function() {
+    $( "#slider-range-max" ).slider({
+      range: "max",
+      min: 0,
+      max: 425,
+      value: 0,
+      slide: function( event, ui ) {
+var newP=[
+'match',
+    ['get', 'c_'+ui.value.toString()],
+'1',
+'green',
+'2',
+'yellow',
+'3',
+'red',
+ '#ccc'
+];
+
+//map.getLayer('maine').setPaint(newP);
+map.setPaintProperty("maine", 'fill-color', newP);	  
+      }
+    });
+    $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
+  } );
+*/
+});
+    });
+	
+</script>
+ 
+</body>
+</html>

@@ -7,7 +7,7 @@ from datetime import date
 date_of_analysis=date.today().strftime("%m/%d/%y")
 print(date_of_analysis)
 
-#date_of_analysis='04/18/21'
+date_of_analysis='04/22/21'
 
 output_directory = 'output_canada'
 os.makedirs(output_directory + '/classification', exist_ok=True)

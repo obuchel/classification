@@ -139,7 +139,7 @@ def classify(ratio, recent_mean, threshold):
     return color
 
 def classify1(y3, recent_mean,name):
-    N0 = 20
+    N0 = 10
     F0=0.5
     F1=0.2
     current_average=recent_mean
@@ -227,9 +227,9 @@ for item in all_dates:
 print(all_states0)
 
 
-with open("us_counties_colors.json","w") as fp:
+with open("us_counties_colors_10.json","w") as fp:
     json.dump(all_states0,fp)
-with open("us_counties_colors_full.json","w") as fp:
+with open("us_counties_colors_full_10.json","w") as fp:
     json.dump(all_states,fp)
 all_k=[]
 '''
