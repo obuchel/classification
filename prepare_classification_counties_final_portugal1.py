@@ -56,10 +56,11 @@ for x in range(1,5):
         if str(y)+"-"+str(x)+"-"+"2021" not in ["29-02-2021","30-02-2021","31-02-2021","31-04-2021","31-06-2021","31-09-2021","31-11-2021"]:
             dates.append(str(y)+"-"+str(x)+"-"+"2021")
 url='https://raw.githubusercontent.com/dssg-pt/covid19pt-data/master/data_concelhos_new.csv'
+os.system("rm data_concelhos_new.csv")
 os.system("wget "+url+" --no-check-certificate")
 dates0=dates[:len(dates)-(30-int(date_of_analysis.split("/")[1]))]
 print(dates0)
-data=pd.read_csv("data_concelhos_new.csv")
+data=pd.read_csv("/Users/olgabuchel/downloads/decksample/classification_project/data_concelhos_new.csv")
 #print(data)
 #X          Y  OBJECTID           Concelho  ConfirmadosAcumulado  Recuperados  Obitos                 Data  Dicofre
 #OBJECTID  Dico            Concelho  Distrito  ConfirmadosAcumulado_Conc  Recuperados_Conc  Obitos_Conc               Data_Conc  SHAPE_Length  SHAPE_Area

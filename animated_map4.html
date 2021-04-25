@@ -51,7 +51,7 @@ var animation; // to store and cancel the animation
 var startTime = 0;
 var progress = 0; // progress = timestamp - startTime
   var resetTime = false; // indicator of whether time reset is needed for the animation
-fetch('states_dates.json')
+fetch('dates_week.json')
   .then(response => response.json())
     .then(days => {
   
@@ -68,7 +68,7 @@ map.on('load', function () {
 // Add a data source containing GeoJSON data.
 map.addSource('maine', {
 'type': 'geojson',
-'data': "counties_colors2_10.json"   
+'data': "counties_week.json"   
 });
  
 // Add a new layer to visualize the polygon.
@@ -112,7 +112,7 @@ let timer = setInterval(function() {
   // how much time passed from the start?
   let timePassed = Date.now() - start;
 
-  if (timePassed >= 200*425) {
+  if (timePassed >= 200*64) {
     clearInterval(timer); // finish the animation after 2 seconds
     return;
   }
@@ -139,7 +139,7 @@ function draw(timePassed) {
  '#ccc'
 ];
     map.setPaintProperty("maine", 'fill-color', newP);
-    document.getElementById('days').innerHTML=days[Math.round(timePassed/200)];
+    document.getElementById('days').innerHTML=days[Math.round(timePassed/200)+2];
 
 }
 
