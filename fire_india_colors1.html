@@ -262,7 +262,8 @@ var y = d3.scaleBand()
       
       //console.log(provinces);
       // data0.map(function(d){if (d.p=="AVEIRO"){data.push(d)}});
-	myVars=['Maharashtra', 'Kerala', 'Karnataka', 'Tamil Nadu', 'Andhra Pradesh', 'Delhi', 'Uttar Pradesh', 'West Bengal', 'Chhattisgarh', 'Rajasthan', 'Madhya Pradesh', 'Gujarat', 'Odisha', 'Telangana', 'Haryana', 'Bihar', 'Punjab', 'Assam', 'Jharkhand', 'Jammu and Kashmir', 'Uttarakhand', 'Himachal Pradesh', 'Goa', 'Puducherry', 'Tripura', 'Chandigarh', 'Manipur', 'Arunachal Pradesh', 'Meghalaya', 'Nagaland', 'Ladakh', 'Sikkim', 'Andaman and Nicobar Islands', 'Mizoram', 'Dadra and Nagar Haveli and Daman and Diu', 'Lakshadweep'];
+	myVars=['Maharashtra', 'Kerala', 'Karnataka', 'Tamil Nadu', 'Uttar Pradesh', 'Andhra Pradesh', 'Delhi', 'West Bengal', 'Chhattisgarh', 'Rajasthan', 'Madhya Pradesh', 'Gujarat', 'Haryana', 'Odisha', 'Telangana', 'Bihar', 'Punjab', 'Assam', 'Jharkhand', 'Jammu and Kashmir', 'Uttarakhand', 'Himachal Pradesh', 'Goa', 'Puducherry', 'Chandigarh', 'Tripura', 'Manipur', 'Arunachal Pradesh', 'Meghalaya', 'Ladakh', 'Nagaland', 'Sikkim', 'Dadra and Nagar Haveli and Daman and Diu', 'Andaman and Nicobar Islands', 'Mizoram', 'Lakshadweep'];
+	    //['Maharashtra', 'Kerala', 'Karnataka', 'Tamil Nadu', 'Andhra Pradesh', 'Delhi', 'Uttar Pradesh', 'West Bengal', 'Chhattisgarh', 'Rajasthan', 'Madhya Pradesh', 'Gujarat', 'Odisha', 'Telangana', 'Haryana', 'Bihar', 'Punjab', 'Assam', 'Jharkhand', 'Jammu and Kashmir', 'Uttarakhand', 'Himachal Pradesh', 'Goa', 'Puducherry', 'Tripura', 'Chandigarh', 'Manipur', 'Arunachal Pradesh', 'Meghalaya', 'Nagaland', 'Ladakh', 'Sikkim', 'Andaman and Nicobar Islands', 'Mizoram', 'Dadra and Nagar Haveli and Daman and Diu', 'Lakshadweep'];
 	    //['Tierra del Fuego', 'Santa Cruz', 'CABA', 'Neuquén', 'Río Negro', 'La Pampa', 'Chubut', 'Santa Fe', 'Tucumán', 'Buenos Aires', 'San Luis', 'Córdoba', 'Mendoza', 'Chaco', 'Entre Ríos', 'La Rioja', 'Jujuy', 'Corrientes', 'Catamarca', 'Santiago del Estero', 'San Juan', 'Salta', 'Misiones', 'Formosa']
 	    //['CABA', 'Santa Cruz', 'San Luis', 'Tierra del Fuego', 'Córdoba', 'La Pampa', 'Neuquén', 'Chubut', 'Tucumán', 'Buenos Aires', 'Río Negro', 'Chaco', 'Corrientes', 'Santa Fe', 'Formosa', 'Catamarca', 'La Rioja', 'Santiago del Estero', 'Mendoza', 'Jujuy', 'San Juan', 'Entre Ríos', 'Salta', 'Misiones']
 	    //['Buenos Aires','CABA','Córdoba','Santa Fe','Tucumán','Mendoza','Chaco','Corrientes','San Luis','Santiago del Estero','Neuquén','Entre Ríos','Río Negro','Santa Cruz','Chubut','Salta','La Pampa','Formosa','La Rioja','Jujuy','San Juan','Catamarca','Tierra del Fuego','Misiones','SIN ESPECIFICAR'];
@@ -301,7 +302,7 @@ var y = d3.scaleBand()
 
 var myColor = d3.scaleLinear()
     .range(["#1a9850","#91cf60","#d9ef8b","#ffffbf","#fee08b","#fc8d59","#d73027"])
-    .domain([-1,0,100,200,500,1000,30000,68000])
+    .domain([-1,0,10,30,100,1000,10000,100000])
 
 var bar=svg.selectAll()
 .data(data, function(d) {return d.y+':'+d.z;})
