@@ -51,7 +51,7 @@ var animation; // to store and cancel the animation
 var startTime = 0;
 var progress = 0; // progress = timestamp - startTime
   var resetTime = false; // indicator of whether time reset is needed for the animation
-fetch('dates_anim.json')
+fetch('dates_js.json')
   .then(response => response.json())
     .then(days => {
   
@@ -70,7 +70,19 @@ map.addSource('maine', {
 'type': 'geojson',
 'data': "counties_js.json"   
 });
- 
+/*
+
+if (e.features[0].properties["c"]=="yellow") {
+    var color="#fed976";
+} else if (e.features[0].properties["c"]=="green") {
+ var color="#1a9850";
+} else if (e.features[0].properties["c"]=="red") {
+ var color="#800026";
+} else if (e.features[0].properties["c"]=="orange") {
+ var color="#fd8d3c";
+
+
+*/ 
 // Add a new layer to visualize the polygon.
 map.addLayer({
 'id': 'maine',
@@ -82,13 +94,13 @@ map.addLayer({
 'match',
 ['get', '0'],
 '1',
-'green',
+'#1a9850',
 '2',
-'yellow',
+'#fed976',
 '3',
-'#FFA500',
+'#fd8d3c',
 '4',
-'red',
+'#800026',
 /* other */ '#ccc'
 ], // blue color fill
     'fill-opacity': 0.5
@@ -103,11 +115,11 @@ map.addLayer({
 'layout': {},
 'paint': {
 'line-color': '#000',
-'line-width': 1.5
+'line-width': 0.5
 }
 });
 //});
-
+///map.on('load', 'maine', function (e){
 let start = Date.now(); // remember start time
 
 let timer = setInterval(function() {
@@ -124,6 +136,8 @@ let timer = setInterval(function() {
 
 }, 200);
 
+//});    
+
 // as timePassed goes from 0 to 2000
 // left gets values from 0px to 400px
 function draw(timePassed) {
@@ -133,13 +147,13 @@ var newP=[
 'match',
 ['get', ''+Math.round(timePassed/200).toString()],
 '1',
-'green',
+'#1a9850',
 '2',
-'yellow',
+'#fed976',
 '3',
-    '#FFA500',
-    '4',
-    'red',
+'#fd8d3c',
+'4',
+'#800026',
  '#ccc'
 ];
     map.setPaintProperty("maine", 'fill-color', newP);

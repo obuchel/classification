@@ -159,7 +159,10 @@ def classify1(y3, recent_mean,name):
 
 all_states0={}
 all_states={}
-all_dates=list(e_dataframe.columns)[20:]
+all_dates=list(e_dataframe.columns)#[20:]
+with open("dates_js.json","w") as fp:                                                                                                                               
+    json.dump(all_dates,fp) 
+
 for item in all_dates:
     rm=all_dates[all_dates.index(item):]
     #print(e_dataframe0.drop(columns=rm))                                                                                                                                            
@@ -217,12 +220,14 @@ for item in all_dates:
                 all_states0[name][item]=[color,recent_mean0]
                 #all_states[name][item]=[color,recent_mean0,population[name]["Population"],(recent_mean0/population[name]["Population"])*100000]                
                 #print(item,name,color,ratio,recent_mean0,int(max(y5)))
+            
             '''
             with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["UID"])+'.json', 'w') as outfile:
                 json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(max(y)),"value":y3,"time":tim,"original_values":original_values},outfile)
             #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
             aar1.append({"n":name,"id":ids[recs.index(name)]["UID"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             '''
+
             ind4+=1
 print(all_states0)
 
@@ -232,6 +237,7 @@ with open("us_counties_colors_10_js.json","w") as fp:
 with open("us_counties_colors_full_10_js.json","w") as fp:
     json.dump(all_states,fp)
 all_k=[]
+
 '''
 for item in list(all_states.keys()):
     for item2 in list(all_states[item].keys()):
