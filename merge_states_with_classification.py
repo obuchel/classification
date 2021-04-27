@@ -12,8 +12,8 @@ print(fips)
 
 #us_counties_colors.json
 #us_states_colors.json
-colors={"red":3,"yellow":2,"green":1,"darkgreen":1}
-with open("us_counties_colors_week.json","r") as fp:
+colors={"red":4,"orange":3,"yellow":2,"green":1,"darkgreen":1}
+with open("us_counties_colors_10_js.json","r") as fp:
     data=json.load(fp)
     print(data)
     for item in list(data.keys()):
@@ -38,7 +38,7 @@ with open("counties5.json","r") as fp:
             print(item)
             continue
 print(geo)            
-with open("counties_week.json","w") as fp:
+with open("counties_js.json","w") as fp:
     json.dump(geo,fp)
 
 '''    

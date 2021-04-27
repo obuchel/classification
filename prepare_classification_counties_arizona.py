@@ -1,6 +1,6 @@
 #https://data.mesaaz.gov/api/views/bcxg-q9nz/rows.csv?accessType=DOWNLOAD
 #https://data.mesaaz.gov/Fire-and-Medical/Daily-COVID-19-Cases-by-Zip-Code/bcxg-q9nz/data
-
+import csv
 import json
 from datetime import datetime
 import numpy as np
@@ -31,12 +31,22 @@ os.makedirs(output_directory + '/classification', exist_ok=True)
 
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
+'''
 url = 'https://data.mesaaz.gov/api/views/bcxg-q9nz/rows.csv?accessType=DOWNLOAD'
 #wget.download(url, '../Daily_COVID-19_Cases_by_Zip_Code.csv')
 os.system("mv ../Daily_COVID-19_Cases_by_Zip_Code.csv /Users/olgabuchel/.Trash/Daily_COVID-19_Cases_by_Zip_Code.csv")
 os.system("wget "+url+" --no-check-certificate")
 os.system("mv rows.csv?accessType=DOWNLOAD ../Daily_COVID-19_Cases_by_Zip_Code.csv")
-data = pd.read_csv('../Daily_COVID-19_Cases_by_Zip_Code.csv')
+'''
+data = pd.read_csv('../Daily_COVID-19_Cases_by_Zip_Code.csv', delimiter=',',error_bad_lines=False,quoting=csv.QUOTE_MINIMAL)
+'''
+with open('../Daily_COVID-19_Cases_by_Zip_Code.csv', newline='') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    for row in spamreader:
+        print(', '.join(row))
+'''
+
+
 #/abuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code.csv')
 data["dates"]=data.apply(lambda row: str(row.Date).split(" ")[0], axis=1)
 #data.sort_values(by=['dates'])
