@@ -48,7 +48,7 @@ for x in range(4,12):
             y="0"+str(y)
         if str(y)+"-"+str(x)+"-"+"2020" not in ["31-04-2020","31-06-2020","31-09-2020"]:    
             dates.append(str(y)+"-"+str(x)+"-"+"2020")
-for x in range(1,5):
+for x in range(1,6):
     if x<10:
         x="0"+str(x)
     for y in range(1,32):
@@ -57,7 +57,7 @@ for x in range(1,5):
         if str(y)+"-"+str(x)+"-"+"2021" not in ["29-02-2021","30-02-2021","31-02-2021","31-04-2021","31-06-2021","31-09-2021","31-11-2021"]:
             dates.append(str(y)+"-"+str(x)+"-"+"2021")
 
-dates0=dates[:len(dates)-(30-int(date_of_analysis.split("/")[1]))]
+dates0=dates[:len(dates)-(31-int(date_of_analysis.split("/")[1]))]
 #print(dates0)
 url = 'https://opendata.arcgis.com/datasets/d9be85b30d7748b5b7c09450b8aede63_0.csv'
 os.system("mv ../Covid19CountyStatisticsHPSCIreland.csv /Users/olgabuchel/.Trash/Covid19CountyStatisticsHPSCIreland.csv")
