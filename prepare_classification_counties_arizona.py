@@ -31,13 +31,12 @@ os.makedirs(output_directory + '/classification', exist_ok=True)
 
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False
-'''
+
 url = 'https://data.mesaaz.gov/api/views/bcxg-q9nz/rows.csv?accessType=DOWNLOAD'
 #wget.download(url, '../Daily_COVID-19_Cases_by_Zip_Code.csv')
 os.system("mv ../Daily_COVID-19_Cases_by_Zip_Code.csv /Users/olgabuchel/.Trash/Daily_COVID-19_Cases_by_Zip_Code.csv")
 os.system("wget "+url+" --no-check-certificate")
 os.system("mv rows.csv?accessType=DOWNLOAD ../Daily_COVID-19_Cases_by_Zip_Code.csv")
-'''
 data = pd.read_csv('../Daily_COVID-19_Cases_by_Zip_Code.csv', delimiter=',',error_bad_lines=False,quoting=csv.QUOTE_MINIMAL)
 '''
 with open('../Daily_COVID-19_Cases_by_Zip_Code.csv', newline='') as csvfile:
@@ -45,7 +44,6 @@ with open('../Daily_COVID-19_Cases_by_Zip_Code.csv', newline='') as csvfile:
     for row in spamreader:
         print(', '.join(row))
 '''
-
 
 #/abuchel/Downloads/Daily_COVID-19_Cases_by_Zip_Code.csv')
 data["dates"]=data.apply(lambda row: str(row.Date).split(" ")[0], axis=1)
