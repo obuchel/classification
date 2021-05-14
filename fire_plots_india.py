@@ -12,7 +12,7 @@ import geopandas as gpd
 
 
 df = pd.read_csv('https://raw.githubusercontent.com/coder-amey/COVID-19-India_Data/master/time-series/India_aggregated.csv')
-df = df.pivot(index='Date', columns='Region', values='Deceased')#Confirmed')
+df = df.pivot(index='Date', columns='Region', values='Confirmed')#Confirmed')
 df.index = pd.to_datetime(df.index, dayfirst=True, format='%d-%m-%Y')
 df.sort_index(inplace=True)
 df.drop('National Total', inplace=True, axis=1)
