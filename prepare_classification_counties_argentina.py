@@ -1,3 +1,4 @@
+#http://datos.salud.gob.ar/dataset/covid-19-casos-registrados-en-la-republica-argentina
 #https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv
 import numpy as np
 import urllib.request as urllib2

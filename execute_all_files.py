@@ -19,8 +19,8 @@ os.system("print('ireland')")
 os.system("python3 prepare_classification_counties_final_new.py")
 os.system("print('us')")
 
-os.system("python3 prepare_classification_counties_argentina.py")
-os.system("print('argentina')")
+#os.system("python3 prepare_classification_counties_argentina.py")
+#os.system("print('argentina')")
 
 os.system("python3 prepare_classification_counties_arizona.py")
 os.system("print('arizona')")
