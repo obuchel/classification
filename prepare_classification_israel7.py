@@ -9,8 +9,8 @@ from datetime import date, datetime
 from shapely.geometry import shape, Point
 from numpyencoder import NumpyEncoder
 
-data1_=pd.read_csv("/Users/olgabuchel/Downloads/data_isr.csv")
-data2_=pd.read_csv("/Users/olgabuchel/Downloads/data_isr4.csv")
+data1_=pd.read_csv("data_isr.csv")
+data2_=pd.read_csv("data_isr4.csv")
 #data2_=pd.read_csv("/Users/olgabuchel/Downloads/data_isr.csv")
 #print(data0[["x","y"]])
 

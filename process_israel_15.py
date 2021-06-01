@@ -70,7 +70,8 @@ coords3={"'קצר א-סר":[31.083056, 34.978611],
 '''
 muni={}
 munis=[]
-with open("municipalities10.json","r") as fp:
+print("10")
+with open("municipalities11.json","r") as fp:
     muni=json.load(fp)
     print(len(muni["features"]))
     for el in muni["features"]:
