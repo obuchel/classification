@@ -1,4 +1,5 @@
 #http://datos.salud.gob.ar/dataset/covid-19-casos-registrados-en-la-republica-argentina
+#https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.zip
 #https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv
 import numpy as np
 import urllib.request as urllib2
@@ -28,7 +29,7 @@ url = 'https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv'
 
 output_directory = 'output_argentina'
 os.makedirs(output_directory + '/classification', exist_ok=True)
-
+#pd.read_csv('filename.tar.gz', compression='gzip', header=0, sep=',', quotechar='"')
 url='/Users/olgabuchel/Downloads/Covid19Casos.csv'
 all_data=[]
 kkeys=[]
