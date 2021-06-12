@@ -63,7 +63,10 @@ print(lists)
 id='residencia_departamento_id' #'residencia_provincia_id'
 idds=[]
 for el in all_data:
-    idds.append(list(lists.keys())[list(lists.values()).index(el[5]+", "+el[6])])
+    try:
+        idds.append(list(lists.keys())[list(lists.values()).index(el[5]+", "+el[6])])
+    except:
+        continue
 print(idds)
 
 
