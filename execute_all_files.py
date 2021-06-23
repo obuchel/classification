@@ -53,6 +53,7 @@ os.system("python3 prepare_israel_data.py")
 os.system("python3 process_israel_15.py")
 os.system("python3 process_israel_15_group.py")
 os.system("print('israel')")
+os.system("python3 fire_plots.py")  
 '''
 #    time.sleep(60) # wait one minute
 os.system("python3 fire_plots_us_ra.py")
