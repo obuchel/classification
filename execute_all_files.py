@@ -53,6 +53,7 @@ os.system("python3 prepare_israel_data.py")
 os.system("python3 process_israel_15.py")
 os.system("python3 process_israel_15_group.py")
 os.system("print('israel')")
+'''
 #    time.sleep(60) # wait one minute
 os.system("python3 fire_plots_us_ra.py")
 os.system("python3 fire_plots_us.py")
@@ -60,3 +61,4 @@ os.system("python3 fire_plots.py")
 os.system("python3 fire_plots_us_cum.py")
 #nohup python2.7 MyScheduledProgram.py &    
 #git reset --hard HEAD~2
+'''
