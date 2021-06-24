@@ -14,7 +14,7 @@ output_directory = '../output_toronto'
 os.makedirs(output_directory + '/classification', exist_ok=True)
 # Use canned CSV file, so we can compare results to earlier runs of the script.
 use_canned_file = False #/Users/olgabuchel/Downloads/COVID19 cases.csv
-data0=pd.read_csv('COVID19 cases.csv')
+data0=pd.read_csv('/Users/olgabuchel/Downloads/COVID19 cases.csv')
 #print(data.columns)
 data2=data0[["Reported Date","Neighbourhood Name"]]
 data2["Reported Date"]=data2["Reported Date"]
