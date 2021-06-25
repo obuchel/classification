@@ -93,7 +93,7 @@ var dd=m+"/"+d+"/2021";
          data["features"][i]["properties"]["value"]=-1;
           }
         if (data["features"][i]["properties"]["values"]!==0 && data["features"][i]["properties"]["value"]!==-1) { 
-            var arr3=data["features"][i]["properties"]["values"].reverse();
+            var arr3=data["features"][i]["properties"]["values"];//.reverse();
 	    console.log(arr3);
           var stop=arr3.length;  
             for (var u=0; u<stop; u++) {
