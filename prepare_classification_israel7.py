@@ -80,6 +80,7 @@ for item in data4.iterrows():
     #print(item[0],np.sum([0 if math.isnan(x) else x for x in list(item[1].values)]))
     kkeys[item[0]]=sum([0 if math.isnan(x) else x for x in list(item[1].values)])
     kkeys1[item[0]]=[0 if math.isnan(x) else x for x in list(item[1].values)]
+    print(kkeys[item[0]],kkeys1[item[0]])
 vals=[]
 for item in data["features"]:
     if "name" in list(item["properties"].keys()):
