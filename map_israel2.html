@@ -340,10 +340,10 @@ stops: arr
 */
       var vals=[];
       var ll=[];
-      if (e.features[0].properties.values!=0) {
+    //  if (e.features[0].properties.values!=0) {
           //tex +=" days</b> with 0 cases";                                                                                                                                          
           var ll0=e.features[0].properties.values;
-          ll=ll0.replace("[","").replace("]","").split(",");//.reverse();
+          ll=ll0.replace("[","").replace("]","").split(",").reverse();
           //console.log(ll);                                                                                                                                                         
           var stop=ll.length;
           for (var u=0; u<stop; u++) {
@@ -356,13 +356,15 @@ stops: arr
 
               }
           }
-	  if (e.features[0].properties.value<0){e.features[0].properties.value=0;}
-          tex +="<br><b>"+e.features[0].properties.value+" days</b> with 0 cases";
+
+	  console.log(vals);
+	  if (vals.length<14){
+          tex +="<br><b>"+vals.length+" days</b> with 0 cases";
       }  else{                                                                                                                                                                      
                                                                                                                                                                                      
           var tex="<br>Green zone";                                                                                                                                                      
       }     
-
+     // }
       console.log(e.features[0].properties);
     if (e.features[0].properties.name.indexOf("No Jurisdiction")==-1) {
 	var label=e.features[0].properties.name.split(" __ ")[0]+": "+d3.sum(ll)+tex;
