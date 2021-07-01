@@ -1,5 +1,5 @@
 #https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-provincias-spain_consolidated.csv
-
+#https://raw.githubusercontent.com/rejcom/maps/master/okresy_kraje.json czech republic
 import pandas as pd
 import seaborn as sns
 import json
@@ -11,7 +11,7 @@ from datetime import date
 date_of_analysis=date.today().strftime("%m/%d/%y")
 print(date_of_analysis)
 
-
+output_directory="output1_spain"
 
 #date_of_analysis='03/06/21'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
@@ -72,64 +72,21 @@ for date in dates1:
   total1[date]=reports1
 '''
 #print(total1)
-
-
-data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/casos_diagnostico_provincia.csv",sep=",")         
+#https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-provincias-spain_consolidated.csv     
+#"date","province","ine_code","ccaa","new_cases" https://cnecovid.isciii.es/covid19/resources/casos_diagnostico_provincia.csv
+data=pd.read_csv("https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-provincias-spain_consolidated.csv",sep=",")         
 #data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv",sep=",")
 print(data)
-df1 = data["fecha"].str.contains("2020-05-08")
-data["provincia_iso"]=data["provincia_iso"].astype(str)
-today = data[df1]
-dates=data["fecha"].unique()
-total = today[["provincia_iso"]]
 
-for date in dates:
-  day = data[ data["fecha"].str.contains(date) ]
-  reports = list(day["num_casos"])
-  total[date]=reports
-#cols=[str(x).split("-")[1]+"/"+str(x).split("-")[2]+"/20" if len(str(x).split("-"))>0 else x for x in list(total.columns)]
-kkeys={"provincia_iso":"provincia_iso"}
-#cols=[x.split("-")[1]+"/"+x.split("-")[2]+"/20" if len(x.split("-"))>1 else x for x in list(total.columns)]
-for item in list(total.columns)[1:]:
-    kkeys[item]=item.split("-")[1]+"/"+item.split("-")[2]+"/"+item.split("-")[0]
+e_dataframe1 = pd.pivot_table(data, values='new_cases', index=['date'],columns=['province'],aggfunc=np.sum).fillna(0)
+print(e_dataframe1)
 
-print(kkeys.keys())
-total=total.rename(columns=kkeys)
-#print(total)
-
-output_directory = 'output_spain'
-os.makedirs(output_directory + '/classification', exist_ok=True)
-
-# Use canned CSV file, so we can compare results to earlier runs of the script.
-use_canned_file = False
-
-
-
-'''
-if use_canned_file:
-    data = pd.read_csv()
-    assert data.columns[-1] == date_of_analysis
-else:
-    # Original:
-    data = pd.read_csv()
-'''
-    
-e_dataframe = total.set_index("provincia_iso")
-ids = data[["provincia_iso"]].to_dict('records')
-recs = data["provincia_iso"].to_list()
-#print(ids)
-# stage latest Canada HR-level data for later processing
-#latest_ca_df = stage_latest()
-#print(latest_ca_df)
-#assert latest_ca_df.index.names == ['Combined_Key']
-#print(latest_ca_df)
-
-e_dataframe0 = e_dataframe
-#.drop(columns=['UID','iso2','iso3','code3','FIPS','Admin2','Province_State','Country_Region','Lat','Long_'])
-e_dataframe1 = e_dataframe0.transpose()
-#print(e_dataframe1)
-
-
+e_dataframe = e_dataframe1.T
+#total.set_index("province")
+ids = data[["province"]].to_dict('records')
+recs = data["province"].to_list()
+print(recs)
+print(e_dataframe)
 
 def add_day_columns(df):
     """Add columns Elapsed_days, Decimals, Day_Year to df."""
@@ -150,7 +107,7 @@ def add_day_columns(df):
     df.insert(0, "Elapsed_days", elapsed_days, True)
 
 
-add_day_columns(e_dataframe1)
+#add_day_columns(e_dataframe1)
 #print(e_dataframe1)
 
 
@@ -160,14 +117,15 @@ if False:
     import sys
     sys.exit(0)
 
-tim =data["fecha"].unique().tolist()#final.index.to_list()+data["fecha"].unique().tolist() 
+tim =data["date"].unique().tolist()#final.index.to_list()+data["fecha"].unique().tolist() 
 #tim.pop(0)
 print(tim)
 ind4 = 0
 aar = []
 aar1 = []
-counties = e_dataframe1.columns[3:].to_list()
+counties = e_dataframe1.columns.to_list()
 
+print(counties)
 
 def compute_original_values(values):
     result = []
@@ -228,7 +186,7 @@ def classify(ratio, recent_mean, threshold):
 #counties.append('CN')
 
 
-print(counties, data["provincia_iso"].unique())
+#print(counties, data["provincia_iso"].unique())
 
 print(e_dataframe1)
 for name in counties:
@@ -282,10 +240,10 @@ for name in counties:
             if name!="nan":
                 #print(name,color,ratio,recent_mean0,values)
                 print(len(tim2),len(y3),len(tim[9:]),len(original_values[8:]))
-                with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["provincia_iso"])+'.json', 'w') as outfile:
+                with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["province"])+'.json', 'w') as outfile:
                     json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[9:],"original_values":original_values[8:]},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
-                aar1.append({"n":name,"id":ids[recs.index(name)]["provincia_iso"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
+                aar1.append({"n":name,"id":ids[recs.index(name)]["province"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             else:
                 with open(output_directory + '/classification/data_counties_NA.json', 'w') as outfile:
                     json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[9:],"original_values":original_values[8:]},outfile)
@@ -298,10 +256,15 @@ for name in counties:
 # with open('classification/data_counties.json', 'w') as outfile:
 #    json.dump(aar,outfile)
 aar1[0]["date"]=date_of_analysis
-print(len(aar1))
+print(aar1)
 # this file is used by the map
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
 
 print(final.index)
-print(len(tim))
+print(tim)
+
+with open("ESP_adm2.json","r") as fp:
+    dd=json.load(fp)
+    for it in dd["features"]:
+        print(it["properties"]["NAME_2"])
