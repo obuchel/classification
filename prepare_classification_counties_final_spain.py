@@ -11,7 +11,7 @@ from datetime import date
 date_of_analysis=date.today().strftime("%m/%d/%y")
 print(date_of_analysis)
 
-output_directory="output1_spain"
+output_directory="output_spain"
 
 #date_of_analysis='03/06/21'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
@@ -240,10 +240,10 @@ for name in counties:
             if name!="nan":
                 #print(name,color,ratio,recent_mean0,values)
                 print(len(tim2),len(y3),len(tim[9:]),len(original_values[8:]))
-                with open(output_directory + '/classification/data_counties_'+str(ids[recs.index(name)]["province"])+'.json', 'w') as outfile:
+                with open(output_directory + '/classification/data_counties_'+new_keys[str(ids[recs.index(name)]["province"])]+'.json', 'w') as outfile:
                     json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[9:],"original_values":original_values[8:]},outfile)
         #aar.append({"color":color,"province":name.split(",")[0],"country":name.split(",")[1],"id":"new_id_"+str(ind4),"value1":ratio, "dates":tim2,"value":y3})
-                aar1.append({"n":name,"id":ids[recs.index(name)]["province"],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
+                aar1.append({"n":name,"id":new_keys[ids[recs.index(name)]["province"]],"v":ratio,"c":color,"max":int(max(y5)-min(y5))})
             else:
                 with open(output_directory + '/classification/data_counties_NA.json', 'w') as outfile:
                     json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[9:],"original_values":original_values[8:]},outfile)
