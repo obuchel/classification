@@ -11,7 +11,7 @@ from datetime import date
 date_of_analysis=date.today().strftime("%m/%d/%y")
 print(date_of_analysis)
 
-output_directory="output_spain"
+output_directory="output1_spain"
 
 #date_of_analysis='03/06/21'
 #https://github.com/montera34/escovid19data/blob/master/data/output/covid19-ccaa-spain_consolidated.csv
@@ -24,7 +24,7 @@ new_keys={'Albacete': 'AB', 'Alicante/Alacant': 'A', 'Almería': 'AL', 'Asturias
 
 #'date', 'province', 'ine_code', 'ccaa', 'new_cases', 'PCR', 'TestAc','activos', 'hospitalized', 'intensive_care', 'deceased','cases_accumulated', 'cases_accumulated_PCR', 'recovered', 'num_casos','num_casos_prueba_pcr', 'num_casos_prueba_test_ac','num_casos_prueba_otras', 'num_casos_prueba_desconocida', 'poblacion','cases_per_cienmil', 'intensive_care_per_1000000','deceassed_per_100000', 'hospitalized_per_100000', 'cases_14days','cases_7days', 'cases_PCR_14days', 'cases_PCR_7days', 'daily_cases','daily_cases_avg7', 'daily_cases_PCR', 'daily_cases_PCR_avg7','daily_deaths', 'daily_deaths_inc', 'daily_deaths_avg3','daily_deaths_avg7', 'deaths_last_week', 'source_name', 'source','comments', 'provincia_iso'
 #date,provincia_iso,new_cases
-
+'''
 data2=pd.read_csv("spain_old.csv")
 print(data2)
 
@@ -57,7 +57,7 @@ e_dataframe1_ = pd.pivot_table(e_dataframe0_, values='num_casos', index=['fecha'
 final=e_dataframe1_
 print(final)
 print(final.index)
-
+'''
 
 '''
 df11 = data2["date"].str.contains("2020-04-15")
@@ -76,10 +76,15 @@ for date in dates1:
 #"date","province","ine_code","ccaa","new_cases" https://cnecovid.isciii.es/covid19/resources/casos_diagnostico_provincia.csv
 data=pd.read_csv("https://raw.githubusercontent.com/montera34/escovid19data/master/data/output/covid19-provincias-spain_consolidated.csv",sep=",")         
 #data=pd.read_csv("https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv",sep=",")
-print(data)
+print(data[data['province']=="Madrid"].columns)
+#df=data[data['province']=="Huesca"]['num_casos2'].to_list()
+#print(df)
+#print(data[data['province']=="Navarra"][['num_casos','num_casos_prueba_pcr', 'num_casos_prueba_test_ac','num_casos_prueba_ag', 'num_casos_prueba_elisa','num_casos_prueba_desconocida', 'num_casos_cum1', 'num_casos2']])
+#df.to_csv("madrid.csv")
+#print(data[['new_cases',"num_casos"]])
 
-e_dataframe1 = pd.pivot_table(data, values='new_cases', index=['date'],columns=['province'],aggfunc=np.sum).fillna(0)
-print(e_dataframe1)
+e_dataframe1 = pd.pivot_table(data, values='num_casos2', index=['date'],columns=['province'],aggfunc=np.sum).fillna(0)
+print(e_dataframe1['Madrid'])
 
 e_dataframe = e_dataframe1.T
 #total.set_index("province")
@@ -188,13 +193,14 @@ def classify(ratio, recent_mean, threshold):
 
 #print(counties, data["provincia_iso"].unique())
 
-print(e_dataframe1)
+#print(e_dataframe1)
 for name in counties:
     try:
-        values = np.cumsum(e_dataframe1[name]).tolist()
+        values = np.cumsum(e_dataframe1[name].fillna(0)).tolist()
         #np.cumsum(final[name].to_list()+e_dataframe1[name].to_list()).tolist()#[0]]
         print(values)
-        print(len(values))
+    
+        #print(len(values))
         last=values[len(values)-1]
 
         num_rows = len(values)
@@ -234,11 +240,11 @@ for name in counties:
                 #else:
                 #    color = "green"
             else:
-                #print(name,y3)
+                print(name,y3)
                 ratio=0
                 color="darkgreen"
             if name!="nan":
-                #print(name,color,ratio,recent_mean0,values)
+                print(name,color,ratio,recent_mean0,values)
                 print(len(tim2),len(y3),len(tim[9:]),len(original_values[8:]))
                 with open(output_directory + '/classification/data_counties_'+new_keys[str(ids[recs.index(name)]["province"])]+'.json', 'w') as outfile:
                     json.dump({"dates":tim2,"max_14": int(max(y5)-min(y5)),"max":int(np.max(y)),"value":y3,"time":tim[9:],"original_values":original_values[8:]},outfile)
@@ -261,10 +267,13 @@ print(aar1)
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
 
-print(final.index)
-print(tim)
+#print(final.index)
+#print(tim)
 
+
+'''
 with open("ESP_adm2.json","r") as fp:
     dd=json.load(fp)
     for it in dd["features"]:
         print(it["properties"]["NAME_2"])
+'''
