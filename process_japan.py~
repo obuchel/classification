@@ -62,7 +62,7 @@ if False:
     import sys
     sys.exit(0)
 
-tim = list(e_dataframe0.columns)
+tim = list(e_dataframe1.index)
 tim.pop(0)
 print(tim)
 ind4 = 0
