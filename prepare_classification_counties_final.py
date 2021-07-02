@@ -80,7 +80,7 @@ aar1 = []
 counties = e_dataframe1.columns[3:]
 print(counties)
 
-'''
+
 def compute_original_values(values):
     result = []
     ind3 = 0
@@ -190,4 +190,3 @@ aar1[0]["date"]=date_of_analysis
 # this file is used by the map
 with open(output_directory + '/classification/classification_ids_counties2.json', 'w') as outfile:
     json.dump(aar1, outfile)
-'''
